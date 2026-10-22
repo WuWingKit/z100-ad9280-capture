@@ -1,0 +1,26 @@
+name: Source checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: source-checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-and-rtl:
+    name: Source and RTL checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Validate portable source baseline
+        run: python3 scripts/check_repository.py
+      - name: Install Icarus Verilog
+        run: sudo apt-get update -qq && sudo apt-get install -y iverilog
+      - name: Run lightweight packing and AXIS protocol simulation
+        run: |
+          iverilog -g2012 -s tb_pack_axis_smoke -o /tmp/rtl_smoke bd_start.srcs/sources_1/new/adc_capture_pack.v bd_start.srcs/sources_1/new/fifo_to_axis.v sim/tb_pack_axis_smoke.v
+          vvp /tmp/rtl_smoke

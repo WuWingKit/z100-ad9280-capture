@@ -24,3 +24,8 @@ bd_start.srcs/sources_1/bd/capture_bd/*.bxml
 bd_start.srcs/sources_1/bd/capture_bd/*_ooc.xdc
 bd_start.srcs/sources_1/ip/adc_clk_wiz/*
 !bd_start.srcs/sources_1/ip/adc_clk_wiz/adc_clk_wiz.xci
+xsim.dir/
+xvlog.*
+xelab.*
+rtl_smoke.log
+*.pb

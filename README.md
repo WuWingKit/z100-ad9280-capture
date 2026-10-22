@@ -8,6 +8,15 @@ Vivado / Xilinx SDK **2018.3**，目标 **XC7Z035FFG900-2**。
 - [完整测试工程包及bit/HDF/ELF下载](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.1.0-20261022)
 - [上电前实物核对](POWER_CHECK.md)
 - [CDC和时序审查说明](hardware/REVIEW_NOTES.md)
+- [多人协作、分支与PR规则](CONTRIBUTING.md)
+
+## 多人共同开发
+
+从main创建功能分支，通过PR提交；至少一位其他成员审阅并通过`Source and RTL checks`后合并。main禁止强推和删除，采用Squash merge，合并后自动删除功能分支。所有者保留紧急管理能力。
+
+已为`SunXingzhi`和`Qing8889494`发送Write邀请，接受后可以推送分支；第三位成员un.待提供GitHub用户名后邀请。邀请状态以GitHub Settings → Collaborators为准。
+
+CI包含可移植的BD/XCI/XDC基线检查，以及打包/AXIS轻量RTL测试。它不包含Vivado完整工程构建、实际异步FIFO、PS/DMA/DDR或ADC模拟精度验证。若项目规范有意变化，应同时更新测试基线、说明和验证证据。
 
 ## 截止2026-10-22的状态
 

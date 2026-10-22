@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Oct 22 16:03:30 2026
+# Process ID: 109504
+# Current directory: E:/FPGAWork/z100-ad9280-capture
+# Command line: xsim.exe -log rtl_smoke.log -mode tcl -source {xsim.dir/rtl_smoke/xsim_script.tcl}
+# Log file: E:/FPGAWork/z100-ad9280-capture/rtl_smoke.log
+# Journal file: E:/FPGAWork/z100-ad9280-capture\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/rtl_smoke/xsim_script.tcl
+# xsim {rtl_smoke} -autoloadwcfg -runall
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+run -all
+RTL_SMOKE_PASS frames=2 samples=200 words=50 stalls=44 full_abort=PASS
+$finish called at time : 2490 ns : File "E:/FPGAWork/z100-ad9280-capture/sim/tb_pack_axis_smoke.v" Line 76
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 22 16:03:34 2026...
