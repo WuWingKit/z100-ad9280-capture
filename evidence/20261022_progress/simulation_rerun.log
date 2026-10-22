@@ -1,0 +1,166 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Oct 22 15:28:38 2026
+# Process ID: 78452
+# Current directory: E:/FPGAWork/z100_adc_hw_20261022
+# Command line: vivado.exe -mode batch -source E:\FPGAWork\z100_adc_hw_20261022\evidence\20261022_progress\rerun_sim.tcl -log E:\FPGAWork\z100_adc_hw_20261022\evidence\20261022_progress\simulation_rerun.log -journal E:\FPGAWork\z100_adc_hw_20261022\evidence\20261022_progress\simulation_rerun.jou
+# Log file: E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/simulation_rerun.log
+# Journal file: E:\FPGAWork\z100_adc_hw_20261022\evidence\20261022_progress\simulation_rerun.jou
+#-----------------------------------------------------------
+source {E:\FPGAWork\z100_adc_hw_20261022\evidence\20261022_progress\rerun_sim.tcl}
+# set root E:/FPGAWork/z100_adc_hw_20261022
+# set result [file join $root bd_start.sim sim_1 behav xsim z100_sim_result.txt]
+# if {[file exists $result]} {file delete -force $result}
+# source [file join $root scripts run_hw_sim.tcl]
+## set root [file normalize [file join [file dirname [info script]] ..]]
+## open_project [file join $root bd_start.xpr]
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+## if {![llength [get_files -quiet *tb_z100_hw.v]]} {
+##     add_files -fileset sim_1 -norecurse [list [file join $root sim tb_z100_hw.v]]
+## }
+## set_property top tb_z100_hw [get_filesets sim_1]
+## set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
+## update_compile_order -fileset sim_1
+update_compile_order: Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 409.414 ; gain = 7.441
+## launch_simulation -mode behavioral
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/FPGAWork/z100_adc_hw_20261022/bd_start.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'E:/Xilinx/Vivado/2018.3/data/xsim/xsim.ini' copied to run dir:'E:/FPGAWork/z100_adc_hw_20261022/bd_start.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_z100_hw' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/FPGAWork/z100_adc_hw_20261022/bd_start.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L axi_vip_v1_1_4 -L processing_system7_vip_v1_0_6 -L smartconnect_v1_0 -L xilinx_vip -prj tb_z100_hw_vlog.prj"
+"xvhdl --incr --relax -prj tb_z100_hw_vhdl.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/FPGAWork/z100_adc_hw_20261022/bd_start.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 102538411b04419290a00222af27a185 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L fifo_generator_v13_2_3 -L util_vector_logic_v2_0_1 -L lib_pkg_v1_0_2 -L lib_fifo_v1_0_12 -L lib_srl_fifo_v1_0_2 -L lib_cdc_v1_0_2 -L axi_datamover_v5_1_20 -L axi_sg_v4_1_11 -L axi_dma_v7_1_19 -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_4 -L processing_system7_vip_v1_0_6 -L proc_sys_reset_v5_0_13 -L xlconstant_v1_1_5 -L smartconnect_v1_0 -L generic_baseblocks_v2_1_0 -L axi_register_slice_v2_1_18 -L axi_data_fifo_v2_1_17 -L axi_crossbar_v2_1_19 -L axi_lite_ipif_v3_0_4 -L interrupt_control_v3_1_4 -L axi_gpio_v2_0_20 -L axi_protocol_converter_v2_1_18 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_z100_hw_behav xil_defaultlib.tb_z100_hw xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_gp.v:208]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5463]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5481]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_gp.v:292]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:78]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:80]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:89]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10170]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10188]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:165]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:174]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10189]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:251]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:260]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:337]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:346]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_bid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7074]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_rid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7092]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7093]
+WARNING: [VRFC 10-3027] 'ocm_wr_strb_port0' was previously declared with a different range [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:3726]
+WARNING: [VRFC 10-3283] element index 64 into 'wrp_strb' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:6051]
+WARNING: [VRFC 10-3283] element index 64 into 'wrp_strb' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10811]
+WARNING: [VRFC 10-3283] element index 128 into 'wrp_strb' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7689]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_fifo_rd_ptr' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7902]
+WARNING: [VRFC 10-3705] select index 4 into 'ar_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8041]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_rresp_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8138]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_wr_ptr' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8157]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8298]
+WARNING: [VRFC 10-3705] select index 4 into 'rresp_time_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8303]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_rd_ptr' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8308]
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 430.164 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '6' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/FPGAWork/z100_adc_hw_20261022/bd_start.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_z100_hw_behav -key {Behavioral:sim_1:Functional:tb_z100_hw} -tclbatch {tb_z100_hw.tcl} -protoinst "protoinst_files/bd_2591.protoinst" -protoinst "protoinst_files/capture_bd.protoinst" -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/bd_2591.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m00_exit/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m00_exit/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m_axi
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/s_axi
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//m00_sc2axi/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_axi2sc/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/m_axi
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_mmu/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_mmu/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_si_converter/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_si_converter/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_transaction_regulator/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_transaction_regulator/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s_axi
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/capture_bd.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//axi_dma_0/M_AXI_S2MM
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//axi_dma_0/S_AXIS_S2MM
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//axi_dma_0/S_AXI_LITE
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//axi_gpio_0/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//axi_smc/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//axi_smc/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//fifo_to_axis_0/m_axis
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//processing_system7_0/M_AXI_GP0
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//processing_system7_0/S_AXI_HP0
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m00_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m00_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m01_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m01_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/auto_pc/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/auto_pc/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/xbar/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/xbar/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_z100_hw/dut/u_bd/capture_bd_i//ps7_0_axi_periph/xbar/S00_AXI
+WARNING: [Wavedata 42-559] Protocol instance "/tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+WARNING: [Wavedata 42-559] Protocol instance "/tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/s_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+WARNING: [Wavedata 42-559] Protocol instance "/tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/m_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+WARNING: [Wavedata 42-559] Protocol instance "/tb_z100_hw/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+Time resolution is 1 ps
+source tb_z100_hw.tcl
+### current_wave_config
+
+Memory request of  536870924 bytes could not be fulfilled.
+ Total memory consumed so far :24 bytes
+Command failed: Simulator command interrupted.
+
+Simulation engine not responding
+The simulator has terminated in an unexpected manner.  Please review the simulation log (xsim.log) for details.
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_z100_hw_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:20 . Memory (MB): peak = 454.555 ; gain = 45.141
+## log_wave /tb_z100_hw/ad_clk /tb_z100_hw/ad_data /tb_z100_hw/frame_id /tb_z100_hw/sampled /tb_z100_hw/words /tb_z100_hw/stalls /tb_z100_hw/status /tb_z100_hw/gpio_status
+ERROR: unknown error occurred
+    while executing
+"log_wave /tb_z100_hw/ad_clk /tb_z100_hw/ad_data /tb_z100_hw/frame_id /tb_z100_hw/sampled /tb_z100_hw/words /tb_z100_hw/stalls /tb_z100_hw/status /tb_z..."
+    (file "E:/FPGAWork/z100_adc_hw_20261022/scripts/run_hw_sim.tcl" line 10)
+
+    while executing
+"source [file join $root scripts run_hw_sim.tcl]"
+    (file "E:\FPGAWork\z100_adc_hw_20261022\evidence\20261022_progress\rerun_sim.tcl" line 4)
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 22 15:29:16 2026...

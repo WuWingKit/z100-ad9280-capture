@@ -1,0 +1,9 @@
+<table><thead><tr><th background-color="light-gray">项目</th><th background-color="light-gray">当前结论</th><th background-color="light-gray">证据与边界</th></tr></thead><tbody>
+<tr><td>板上数字链路</td><td>通过一次100点递增序列自检</td><td>用户15:24:46截图显示00～63、sum=4950、errors=0、SELFTEST PASS；截图不是代理新采集。</td></tr>
+<tr><td>真实ADC通路</td><td>程序完成一次100点采集，返回125/126</td><td>用户提供c命令串口数据；输入未接信号源，属于未受控输入条件，不能证明模拟测量准确。</td></tr>
+<tr><td>离线集成仿真</td><td>早先两帧、2676项检查通过</td><td>已有报告；本次复跑因XSim申请536870924字节内存失败而受阻，未得到新的PASS。</td></tr>
+<tr><td>实现与软件构建</td><td>bit、HDF、Debug ELF已生成</td><td>已有布局布线报告：WNS=3.562ns、WHS=0.060ns；DRC无错误，CDC保留提示。</td></tr>
+<tr><td>Flash固化</td><td>尚未完成</td><td>当前按JTAG Debug运行；未生成本项目FSBL/BOOT.BIN，未烧写Flash。</td></tr>
+</tbody></table>
+<p>归档日期：2026-10-22（北京时间）。报告对象为当前Z100测试工程，不是最初旧雷达工程。上板实测依据由用户提供；本次代理执行的是本地数据复核、文件校验和离线仿真尝试，没有连接JTAG/串口或重新操作板卡。</p>
+<callout emoji="📌" background-color="light-blue"><p>阶段成果：已把“8位采样→32位打包→FIFO→AXI-Stream→DMA→DDR→PS串口”链路从仿真推进到板上数字自检。下一阶段重点是已知模拟输入验证、重复帧稳定性与长期运行测试。</p></callout>

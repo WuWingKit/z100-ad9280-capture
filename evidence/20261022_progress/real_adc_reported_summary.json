@@ -1,0 +1,18 @@
+{
+  "source": "User pasted c-command UART hex stream in conversation; footer decoded from ASCII. No new hardware capture.",
+  "input_condition": "ADC module connected; analog input not connected to a signal source, per user. Not a calibrated zero input.",
+  "frame_samples": 100,
+  "reported_sum": 12503,
+  "reported_min": 125,
+  "reported_max": 126,
+  "reported_errors": 0,
+  "decoded_footer": "END ADC100 sum=12503 min=125 max=126 errors=0",
+  "decoded_result": "CAPTURE OK (signal quality not assessed)",
+  "inferred_distribution_from_count_min_max_sum": {
+    "125": 97,
+    "126": 3
+  },
+  "mean_code": 125.03,
+  "peak_to_peak_codes": 1,
+  "limitation": "Full original UART byte stream was not exported to a local raw file; only reported statistics are retained here. Analog accuracy not validated."
+}

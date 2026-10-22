@@ -1,0 +1,39 @@
+<hr/><h1>四、c命令真实采集：串口解码与结论</h1>
+<p>用户报告AD模块已连接，但模拟输入未接信号源。未接输入不等于经过验证的0V输入，悬空端及模块内部偏置可能产生基本固定的码值。</p>
+<table><thead><tr><th background-color="light-gray">接收内容</th><th background-color="light-gray">正确解释</th></tr></thead><tbody>
+<tr><td>0x37、0x44</td><td>ASCII字符7和D，组成文本7D；代表一个ADC码值0x7D=125，不是两个采样点</td></tr>
+<tr><td>0x37、0x45</td><td>文本7E，代表ADC码值126</td></tr>
+<tr><td>0x20 / 0x0D 0x0A</td><td>空格 / 回车换行，属于文本排版</td></tr>
+</tbody></table>
+<pre lang="text"><code>END ADC100 sum=12503 min=125 max=126 errors=0
+CAPTURE OK (signal quality not assessed)</code></pre>
+<table><thead><tr><th background-color="light-gray">指标</th><th background-color="light-gray">结果</th><th background-color="light-gray">说明</th></tr></thead><tbody>
+<tr><td>点数/总和</td><td>100 / 12503</td><td>根据该帧输出与程序帧长解释</td></tr>
+<tr><td>最小/最大/平均</td><td>125 / 126 / 125.03</td><td>峰峰波动1个码值；尚不能换算成准确电压</td></tr>
+<tr><td>分布复核</td><td>125共97点，126共3点</td><td>由N=100、min/max和sum推得：97×125+3×126=12503</td></tr>
+<tr><td>errors=0</td><td>缓冲区保护检查未发现异常</td><td>REAL模式没有已知逐点标准答案，不能把errors=0解释为ADC测量误差为零</td></tr>
+<tr><td>CAPTURE OK</td><td>程序检查到DMA完成、计数100且未触发失败分支</td><td>输出明确声明signal quality not assessed</td></tr>
+</tbody></table>
+<callout emoji="❗" background-color="light-yellow"><p>当前数据与“未接信号源”的情景相容，但不是模拟正确性的充分证明。不能据此认定125对应0V，也不能证明ADC全部数据位或采样边沿均已充分验证。本次只留存c帧统计摘要；未把缺少独立原始日志的内容伪造成新采集CSV。</p></callout>
+<hr/><h1>五、本次代理执行的测试与历史报告复核</h1>
+<table><thead><tr><th background-color="light-gray">检查</th><th background-color="light-gray">结果</th><th background-color="light-gray">证据文件/限制</th></tr></thead><tbody>
+<tr><td>截图转录与统计复算</td><td>通过</td><td>ramp_screenshot_transcript.txt、ramp_screenshot_transcribed.csv、evidence_analysis.json</td></tr>
+<tr><td>解析器负向测试4项</td><td>全部按预期拒绝</td><td>缺点、重复点、点序交换、统计尾行篡改；这是软件校验器测试，不是硬件故障注入</td></tr>
+<tr><td>c统计与ASCII解码</td><td>相符</td><td>real_adc_reported_summary.json；保留来源与未验证项</td></tr>
+<tr><td>7个历史构建产物/源文件哈希</td><td>全部一致</td><td>bit、HDF、ELF、XDC、两个新增RTL和main.c与早先验证记录相同</td></tr>
+<tr><td>原工程备份ZIP CRC</td><td>通过，670个条目</td><td>原备份bd_start_before_z100_20261022.zip可读且CRC无坏项</td></tr>
+<tr><td>原工程快照比对</td><td>3个源文件一致，XPR变化</td><td>adc_capture_pack.v、fifo_to_axis.v、capture_bd.bd哈希一致；原始bd_start.xpr不同，未擅自还原，不能再声称所有文件完全未变</td></tr>
+<tr><td>本次完整仿真复跑</td><td>受阻，未通过</td><td>XSim申请536870924字节失败；关闭波形的批处理重试仍失败。本次没有新的仿真PASS，未关闭用户应用或修改硬件设计来绕过</td></tr>
+<tr><td>早先完整集成仿真</td><td>PASS，2帧/200点/2676项</td><td>simulation_previous.txt及hardware/hw_sim.log；ADC为数字模型，DDR为PS VIP行为模型，不是实际模拟输入或物理DDR仿真</td></tr>
+</tbody></table>
+<p>早先集成仿真覆盖：真实输入数字时序模型、内部RAMP模式、跨域请求确认、四点字节顺序、FIFO与AXI反压下数据保持、TKEEP、TLAST、第25字帧结束、DMA无错与完成、DDR100字节逐点比对、后续28字节保护区。</p>
+<hr/><h1>六、时序、CDC与板卡操作边界</h1>
+<table><thead><tr><th background-color="light-gray">项目</th><th background-color="light-gray">已知情况</th><th background-color="light-gray">后续要求</th></tr></thead><tbody>
+<tr><td>布局布线时序</td><td>已有报告WNS=3.562ns、WHS=0.060ns；失败端点0；当前bit哈希一致</td><td>更改BD/时钟/约束后重新实现；本次未重新运行实现</td></tr>
+<tr><td>DRC</td><td>0 Errors，1条REQP-181 Advisory：DMA内部BRAM WRITE_FIRST模式</td><td>保留厂家实现及建议，不宣称完全无告警</td></tr>
+<tr><td>CDC-13 Critical</td><td>厂家FIFO内部复位同步逻辑到FIFO36E1原语RST</td><td>未屏蔽；双侧时钟运行、初始化后等待100ms，仍需重复复位恢复实测</td></tr>
+<tr><td>CDC-5 Warning</td><td>7位sample_count诊断总线跨域</td><td>仅在完成后再等10us读取稳定计数；busy期间不能作为逐拍精确控制量</td></tr>
+<tr><td>输入时序约束</td><td>ADC数据与OTR采用0～35ns预算；驱动与采样相差180°</td><td>预算不等于实测，需核对模块延迟、连接与信号完整性</td></tr>
+<tr><td>实物安全</td><td>用户已进行Debug测试；代理没有独立检查接线、电压或供电</td><td>继续遵守POWER_CHECK.md；J37方向、V_B10/V_B11为3V3，禁止带电改线</td></tr>
+</tbody></table>
+<p>代理未执行新的JTAG下载、串口命令、Flash擦写或启动模式修改。用户截图证明已进行板上自检，但不能据此反推所有供电与接线细节均已独立核验。</p>

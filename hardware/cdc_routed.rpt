@@ -1,0 +1,21 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Thu Oct 22 14:49:20 2026
+| Host         : SenIta running 64-bit major release  (build 9200)
+| Command      : report_cdc -file E:/FPGAWork/z100_adc_hw_20261022/hardware/cdc_routed.rpt
+| Design       : z100_adc_top
+| Device       : 7z035-ffg900
+| Speed File   : -2  PRODUCTION 1.11 2014-09-11
+-------------------------------------------------------------------------------------------
+
+CDC Report
+
+Severity  Source Clock          Destination Clock     CDC Type                 Exceptions           Endpoints  Safe  Unsafe  Unknown  No ASYNC_REG  
+--------  --------------------  --------------------  -----------------------  -------------------  ---------  ----  ------  -------  ------------  
+Critical  clk_out2_adc_clk_wiz  clk_fpga_0            No Common Primary Clock  Asynch Clock Groups         16    15       1        0             7  
+Info      input port clock      clk_fpga_0            No Common Primary Clock  False Path                   1     1       0        0             0  
+Info      ad_forward_clk        clk_out2_adc_clk_wiz  Safely Timed             None                        33    33       0        0             0  
+Info      clk_fpga_0            clk_out2_adc_clk_wiz  No Common Primary Clock  Asynch Clock Groups          3     3       0        0             0  
+Info      input port clock      clk_out2_adc_clk_wiz  No Common Primary Clock  False Path                   1     1       0        0             0  
+

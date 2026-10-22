@@ -1,0 +1,38 @@
+<hr/><h1>七、工程交接、GitHub仓库与可下载成果</h1>
+<callout emoji="📦" background-color="light-blue"><p>已按用户要求新建公开GitHub仓库。Git保存源码、BD/XCI配置、报告和证据；Release提供当前硬件测试工程完整包，包含bit、HDF、ELF及SDK工程。厂家完整资料盘、安装程序、SDK工作区缓存和巨大波形不上传。</p></callout>
+<p><a href="https://github.com/WuWingKit/z100-ad9280-capture">GitHub公开仓库：WuWingKit/z100-ad9280-capture</a></p>
+<p><a href="https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.1.0-20261022">完整测试工程Release：v0.1.0-20261022</a></p>
+<p><a href="https://github.com/WuWingKit/z100-ad9280-capture/releases/download/v0.1.0-20261022/z100-ad9280-capture-20261022.zip">直接下载当前测试工程ZIP</a></p>
+<table><thead><tr><th background-color="light-gray">内容</th><th background-color="light-gray">打开位置/用途</th></tr></thead><tbody>
+<tr><td>Vivado工程</td><td>完整包解压后根目录bd_start.xpr；顶层z100_adc_top；BD为capture_bd</td></tr>
+<tr><td>BD与RTL</td><td>bd_start.srcs/sources_1/bd/capture_bd/capture_bd.bd；rtl/；bd_start.srcs/sources_1/new/</td></tr>
+<tr><td>约束</td><td>constraints/z100_adc.xdc，AD数据输入、AA17时钟输出及延迟预算</td></tr>
+<tr><td>FPGA与ARM产物</td><td>hardware/z100_adc.bit；sdk_workspace/adc_uart/Debug/adc_uart.elf；hardware/system.hdf及z100_adc.hdf</td></tr>
+<tr><td>SDK工作区</td><td>sdk_workspace；如未出现工程，用Import→General→Existing Projects导入z100_hw、adc_bsp、adc_uart</td></tr>
+<tr><td>测试与证据</td><td>evidence/20261022_progress：原图、人工转录CSV、统计JSON、检查脚本、成功及失败日志</td></tr>
+<tr><td>源码重建入口</td><td>scripts/recreate_project.tcl；本次已在Vivado2018.3验证工程重建、BD校验与IP输出生成通过，不等同于重新综合/仿真通过</td></tr>
+<tr><td>完整性验证</td><td>Release同时提供SHA256SUMS.txt和package_manifest.json；解压前可比对ZIP的SHA-256</td></tr>
+</tbody></table>
+<p>原测试工作目录：E:/FPGAWork/z100_adc_hw_20261022。最初学习工程：E:/WorkSpace/Phased-array radar/fpga-learning/bd_start。原始备份：该学习目录的backups/bd_start_before_z100_20261022.zip。文档里的本机路径用于定位，其他成员应以解压目录为准。</p>
+<p>新成员建议下载Release ZIP到无中文、无空格目录。直接克隆Git源码时，应通过重建脚本生成本机IP输出；不能假定缓存与二进制已包含在Git源码下载包中。</p>
+<hr/><h1>八、下一阶段验证清单与汇报口径</h1>
+<checkbox done="true">完成四点打包、异步FIFO、AXI-Stream、DMA、DDR、PS串口链路搭建</checkbox>
+<checkbox done="true">完成板上一次t计数序列自检，截图显示SELFTEST PASS</checkbox>
+<checkbox done="true">完成一次c真实输入读取，记录100点统计125/126；尚未评价模拟性能</checkbox>
+<checkbox done="true">保存证据、校验历史产物、建立公开GitHub仓库和完整工程交接包</checkbox>
+<checkbox done="false">确认模块模拟输入电路与允许范围，建立已知直流输入的码值/电压对应关系</checkbox>
+<checkbox done="false">使用合规幅度、频率的已知波形验证实际采样、数据位和采样边沿</checkbox>
+<checkbox done="false">重复t/c多帧及复位后恢复测试，记录失败率、OTR、DMA状态与原始串口日志</checkbox>
+<checkbox done="false">解决本机XSim内存分配问题后重跑完整集成仿真；不得用历史PASS替代</checkbox>
+<checkbox done="false">按板级需求复核CDC提示和最坏输入时序，评估更长帧、乒乓缓存和连续传输需求</checkbox>
+<checkbox done="false">JTAG实测稳定后，再启用QSPI、生成FSBL/BOOT.BIN并做Flash断电自启动验证</checkbox>
+<blockquote><p>可用于汇报：本阶段完成Z100采集测试系统的BD与Verilog联合设计，打通采样打包、FIFO、AXI DMA写DDR和PS串口输出。板上100点递增序列自检通过；真实ADC未接信号源时返回125/126的近恒定码值，传输统计一致。已完成源码重建与成果归档，模拟精度、重复采集稳定性、连续采集及Flash固化仍是后续任务。</p></blockquote>
+<hr/><h1>九、资料依据与证据分级</h1>
+<table><thead><tr><th background-color="light-gray">依据</th><th background-color="light-gray">用途/分级</th></tr></thead><tbody>
+<tr><td>用户最新t截图与之前c串口数据</td><td>板上执行证据；由用户提供，不冒充代理亲自实测</td></tr>
+<tr><td>本地Verilog、BD、XDC、C源码</td><td>实现逻辑与参数解释；与最终bit/ELF哈希对应</td></tr>
+<tr><td>历史时序/DRC/CDC/仿真报告</td><td>历史离线构建证据，保留当时日期；不代表本次全量重跑通过</td></tr>
+<tr><td>本次evidence_analysis.json、source_recreate.log、失败仿真日志</td><td>本次本地复核证据；成功、受阻与未做项均保留</td></tr>
+<tr><td>配套27_hs_ad_da例程、Z100 FPGA/Vitis指南及原理图</td><td>引脚、J37、电压跳线、DDR、UART与QSPI操作依据；完整厂家资料不公开上传</td></tr>
+</tbody></table>
+<p><a href="https://scnk2ajxowqf.feishu.cn/docx/WXuWdubuooe1DTxna6lcTCVxnrc">此前用户提供的后续任务文档（背景链接，本次未重新读取，不将其未核实内容作为新测试结果）</a></p>

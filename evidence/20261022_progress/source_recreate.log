@@ -1,0 +1,142 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Oct 22 15:39:38 2026
+# Process ID: 103804
+# Current directory: E:/FPGAWork/z100-ad9280-capture
+# Command line: vivado.exe -mode batch -source E:/FPGAWork/z100-ad9280-capture/scripts/recreate_project.tcl -log E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/source_recreate.log -journal E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/source_recreate.jou
+# Log file: E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/source_recreate.log
+# Journal file: E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/source_recreate.jou
+#-----------------------------------------------------------
+source E:/FPGAWork/z100-ad9280-capture/scripts/recreate_project.tcl
+# set root [file normalize [file join [file dirname [info script]] ..]]
+# set dest [file join $root _rebuild]
+# if {[file exists [file join $dest bd_start.xpr]]} {
+#     error "_rebuild/bd_start.xpr already exists; open it instead of overwriting"
+# }
+# create_project bd_start $dest -part xc7z035ffg900-2
+# set_property target_language Verilog [current_project]
+# set_property simulator_language Mixed [current_project]
+# foreach rel {bd_start.srcs/sources_1/new/adc_capture_pack.v bd_start.srcs/sources_1/new/fifo_to_axis.v rtl/adc_board_control.v rtl/z100_adc_top.v} {
+#     add_files -norecurse [file join $root $rel]
+# }
+# update_compile_order -fileset sources_1
+# read_ip [file join $root bd_start.srcs sources_1 ip adc_clk_wiz adc_clk_wiz.xci]
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+# add_files -norecurse [file join $root bd_start.srcs sources_1 bd capture_bd capture_bd.bd]
+# set bd [get_files -all */capture_bd.bd]
+# open_bd_design $bd
+Adding cell -- xilinx.com:ip:fifo_generator:13.2 - fifo_generator_0
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_fifo_generator_0_0 
+INFO: [xilinx.com:ip:fifo_generator:13.2-5968] /fifo_generator_0Executing the post_config_ip from bd
+Adding cell -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_0
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_util_vector_logic_0_0 
+Adding cell -- xilinx.com:module_ref:adc_capture_pack:1.0 - adc_capture_pack_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+WARNING: [IP_Flow 19-3153] Bus Interface 'adc_clk': ASSOCIATED_BUSIF bus parameter is missing.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [BD 41-1728] Could not find a module with name: capture_bd_adc_capture_pack_0_0 
+Adding cell -- xilinx.com:module_ref:fifo_to_axis:1.0 - fifo_to_axis_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axis' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'axis_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'axis_clk': Added interface parameter 'ASSOCIATED_BUSIF' with value 'm_axis'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [BD 41-1728] Could not find a module with name: capture_bd_fifo_to_axis_0_0 
+Adding cell -- xilinx.com:ip:axi_dma:7.1 - axi_dma_0
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_axi_dma_0_0 
+Adding cell -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_processing_system7_0_0 
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_proc_sys_reset_0_0 
+Adding cell -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_1
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_util_vector_logic_1_0 
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - xlconstant_0
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_xlconstant_0_0 
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - xlconstant_1
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_xlconstant_0_1 
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_ps7_0_axi_periph_0 
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_xbar_0 
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_auto_pc_0 
+Adding cell -- xilinx.com:ip:smartconnect:1.0 - axi_smc
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_axi_smc_0 
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+INFO: [BD 41-434] Could not find an IP with XCI file by name: capture_bd_axi_gpio_0_0 
+Adding cell -- xilinx.com:module_ref:adc_board_control:1.0 - adc_board_control_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'capture_rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'axis_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'capture_rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+WARNING: [IP_Flow 19-3153] Bus Interface 'adc_clk': ASSOCIATED_BUSIF bus parameter is missing.
+WARNING: [IP_Flow 19-3153] Bus Interface 'axis_clk': ASSOCIATED_BUSIF bus parameter is missing.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [BD 41-1728] Could not find a module with name: capture_bd_adc_board_control_0_0 
+Successfully read diagram <capture_bd> from BD file <E:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/capture_bd.bd>
+INFO: [BD 41-433] 
+Design successfully migrated to use XCI files...
+open_bd_design: Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 690.766 ; gain = 114.613
+# validate_bd_design
+WARNING: [BD 41-927] Following properties on pin /adc_capture_pack_0/adc_clk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=capture_bd_adc_clk_0 
+WARNING: [BD 41-927] Following properties on pin /fifo_to_axis_0/axis_clk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=capture_bd_processing_system7_0_0_FCLK_CLK0 
+WARNING: [BD 41-927] Following properties on pin /adc_board_control_0/axis_clk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=capture_bd_processing_system7_0_0_FCLK_CLK0 
+WARNING: [BD 41-927] Following properties on pin /adc_board_control_0/adc_clk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=capture_bd_adc_clk_0 
+# generate_target all $bd
+INFO: [BD 41-1662] The design 'capture_bd.bd' is already validated. Therefore parameter propagation will not be re-run.
+Wrote  : <E:\FPGAWork\z100-ad9280-capture\bd_start.srcs\sources_1\bd\capture_bd\capture_bd.bd> 
+VHDL Output written to : E:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/synth/capture_bd.v
+VHDL Output written to : E:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/sim/capture_bd.v
+VHDL Output written to : E:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/hdl/capture_bd_wrapper.v
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fifo_generator_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_vector_logic_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block adc_capture_pack_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fifo_to_axis_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_dma_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_vector_logic_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconstant_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconstant_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/xbar .
+Exporting to file e:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/hw_handoff/capture_bd_axi_smc_0.hwh
+Generated Block Design Tcl file e:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/hw_handoff/capture_bd_axi_smc_0_bd.tcl
+Generated Hardware Definition File e:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/synth/capture_bd_axi_smc_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_smc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block adc_board_control_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'e:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_auto_pc_0/capture_bd_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file E:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/hw_handoff/capture_bd.hwh
+Generated Block Design Tcl file E:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/hw_handoff/capture_bd_bd.tcl
+Generated Hardware Definition File E:/FPGAWork/z100-ad9280-capture/bd_start.srcs/sources_1/bd/capture_bd/synth/capture_bd.hwdef
+generate_target: Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 912.602 ; gain = 172.781
+# add_files -norecurse [make_wrapper -files $bd -top]
+# add_files -fileset constrs_1 -norecurse [file join $root constraints z100_adc.xdc]
+# add_files -fileset sim_1 -norecurse [file join $root sim tb_z100_hw.v]
+# set_property top z100_adc_top [get_filesets sources_1]
+# set_property top tb_z100_hw [get_filesets sim_1]
+# set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
+# update_compile_order -fileset sources_1
+# update_compile_order -fileset sim_1
+update_compile_order: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 912.602 ; gain = 0.000
+# puts {SOURCE_PROJECT_RECREATED}
+SOURCE_PROJECT_RECREATED
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 22 15:40:25 2026...

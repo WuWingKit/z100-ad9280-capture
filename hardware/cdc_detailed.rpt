@@ -1,0 +1,63 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Thu Oct 22 14:50:01 2026
+| Host         : SenIta running 64-bit major release  (build 9200)
+| Command      : report_cdc -details -file E:/FPGAWork/z100_adc_hw_20261022/hardware/cdc_detailed.rpt
+| Design       : z100_adc_top
+| Device       : 7z035-ffg900
+| Speed File   : -2  PRODUCTION 1.11 2014-09-11
+------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+ID      Severity  Count  Description
+------  --------  -----  -------------------------------------------------------
+CDC-3   Info         11  1-bit synchronized with ASYNC_REG property
+CDC-5   Warning       1  Multi-bit synchronized with missing ASYNC_REG property
+CDC-9   Info          2  Asynchronous reset synchronized with ASYNC_REG property
+CDC-13  Critical      1  1-bit CDC path on a non-FD primitive
+
+Source Clock: clk_out2_adc_clk_wiz
+Destination Clock: clk_fpga_0
+CDC Type: No Common Primary Clock
+
+Row  ID      Severity  Description                                             Depth  Exception            Source (From)                                                                                                                 Destination (To)
+---  ------  --------  ------------------------------------------------------  -----  -------------------  ----------------------------------------------------------------------------------------------------------------------------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1  CDC-5   Warning   Multi-bit synchronized with missing ASYNC_REG property      7  Asynch Clock Groups  u_bd/capture_bd_i/adc_capture_pack_0/inst/sample_count_reg[6:0]/C                                                             u_bd/capture_bd_i/adc_board_control_0/inst/count_meta_reg[6:0]/D
+  2  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_board_control_0/inst/adc_reset_sync_reg[1]/C                                                            u_bd/capture_bd_i/adc_board_control_0/inst/ready_meta_reg/D
+  3  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_capture_pack_0/inst/busy_reg/C                                                                          u_bd/capture_bd_i/adc_board_control_0/inst/status_meta_reg[0]/D
+  4  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_capture_pack_0/inst/overflow_reg/C                                                                      u_bd/capture_bd_i/adc_board_control_0/inst/status_meta_reg[1]/D
+  5  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_board_control_0/inst/done_latched_reg/C                                                                 u_bd/capture_bd_i/adc_board_control_0/inst/status_meta_reg[2]/D
+  6  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_board_control_0/inst/request_seen_reg/C                                                                 u_bd/capture_bd_i/adc_board_control_0/inst/status_meta_reg[3]/D
+  7  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_board_control_0/inst/command_rejected_reg/C                                                             u_bd/capture_bd_i/adc_board_control_0/inst/status_meta_reg[4]/D
+  8  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_board_control_0/inst/heartbeat_reg/C                                                                    u_bd/capture_bd_i/adc_board_control_0/inst/status_meta_reg[5]/D
+  9  CDC-3   Info      1-bit synchronized with ASYNC_REG property                  7  Asynch Clock Groups  u_bd/capture_bd_i/adc_board_control_0/inst/otr_latched_reg/C                                                                  u_bd/capture_bd_i/adc_board_control_0/inst/status_meta_reg[6]/D
+ 10  CDC-13  Critical  1-bit CDC path on a non-FD primitive                        0  Asynch Clock Groups  u_bd/capture_bd_i/fifo_generator_0/U0/inst_fifo_gen/gconvfifo.rf/gbi.bi/g7ser_birst.rstbt/rsync.ric.power_on_wr_rst_reg[0]/C  u_bd/capture_bd_i/fifo_generator_0/U0/inst_fifo_gen/gconvfifo.rf/gbi.bi/v7_bi_fifo.fblk/gextw[1].gnll_fifo.inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1/RST
+
+Source Clock: input port clock
+Destination Clock: clk_fpga_0
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                 Depth  Exception   Source (From)  Destination (To)
+---  -----  --------  ------------------------------------------  -----  ----------  -------------  --------------------------------------------------------------------------------------------------------------------------------------------
+  1  CDC-3  Info      1-bit synchronized with ASYNC_REG property      4  False Path  sys_rst_n      u_bd/capture_bd_i/proc_sys_reset_0/U0/EXT_LPF/ACTIVE_LOW_EXT.ACT_LO_EXT/GENERATE_LEVEL_P_S_CDC.SINGLE_BIT.CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to/D
+
+Source Clock: clk_fpga_0
+Destination Clock: clk_out2_adc_clk_wiz
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                              Depth  Exception            Source (From)                                                                Destination (To)
+---  -----  --------  -------------------------------------------------------  -----  -------------------  ---------------------------------------------------------------------------  --------------------------------------------------------------------
+  1  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  Asynch Clock Groups  u_bd/capture_bd_i/proc_sys_reset_0/U0/ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N/C  u_bd/capture_bd_i/adc_board_control_0/inst/adc_reset_sync_reg[0]/CLR
+  2  CDC-3  Info      1-bit synchronized with ASYNC_REG property                   2  Asynch Clock Groups  u_bd/capture_bd_i/axi_gpio_0/U0/gpio_core_1/Dual.gpio_Data_Out_reg[30]/C     u_bd/capture_bd_i/adc_board_control_0/inst/mode_sync_reg[0]/D
+  3  CDC-3  Info      1-bit synchronized with ASYNC_REG property                   2  Asynch Clock Groups  u_bd/capture_bd_i/axi_gpio_0/U0/gpio_core_1/Dual.gpio_Data_Out_reg[31]/C     u_bd/capture_bd_i/adc_board_control_0/inst/request_sync_reg[0]/D
+
+Source Clock: input port clock
+Destination Clock: clk_out2_adc_clk_wiz
+CDC Type: No Common Primary Clock
+
+Row  ID     Severity  Description                                              Depth  Exception   Source (From)  Destination (To)
+---  -----  --------  -------------------------------------------------------  -----  ----------  -------------  -----------------------------------------------------------------------------------------------------------------------
+  1  CDC-9  Info      Asynchronous reset synchronized with ASYNC_REG property      2  False Path  sys_rst_n      u_bd/capture_bd_i/fifo_generator_0/U0/inst_fifo_gen/gconvfifo.rf/gbi.bi/g7ser_birst.rstbt/rsync.ric.wr_rst_reg1_reg/PRE
+

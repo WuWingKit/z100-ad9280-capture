@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-22T15:42:20.847600+08:00",
+  "user_board_evidence": "t screenshot: SELFTEST PASS; c reported frame: sum12503 min125 max126",
+  "agent_hardware_actions": "NONE",
+  "local_reanalysis": "PASS; four parser negative tests rejected; seven prior artifact hashes match; backup CRC pass",
+  "simulation_rerun": "BLOCKED: XSim cannot allocate 536870924 bytes, including a no-wave retry; no new PASS",
+  "historical_simulation": "PASS frames=2 samples=200 DDR_bytes=200 checks=2676",
+  "source_recreate": "PASS: Vivado2018.3 source project created, BD validated and output products generated; not a new synthesis or simulation pass",
+  "original_snapshot_comparison": {
+    "bd_start.xpr": false,
+    "adc_capture_pack.v": true,
+    "fifo_to_axis.v": true,
+    "capture_bd.bd": true
+  },
+  "note": "Historical offline_preflight.json is dated evidence, not a claim that all original files still match. XPR has changed; original RTL and BD still match."
+}

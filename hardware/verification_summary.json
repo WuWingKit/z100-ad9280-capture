@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22T14:51:54.537878",
+  "simulation": "PASS frames=2 samples=200 DDR_bytes=200 checks=2676",
+  "timing_setup_slack_ns": 3.562,
+  "timing_hold_slack_ns": 0.06,
+  "drc_errors": 0,
+  "cdc_review": "One FIFO primitive reset CDC-13 Critical and one diagnostic count CDC-5 Warning retained; see REVIEW_NOTES.md",
+  "arm_app": "SDK2018.3 Debug compiled",
+  "uart_pc_script": "PowerShell syntax parsed; not serial-tested",
+  "hardware_connected_or_programmed": false,
+  "physical_power_and_wiring": "NOT VERIFIED",
+  "files": {
+    "hardware/z100_adc.bit": {
+      "bytes": 13321512,
+      "sha256": "3bef3bb526035e82379daeae99f8cf25bb409afa9a9405e8db7a7d0195f2317d"
+    },
+    "hardware/z100_adc.hdf": {
+      "bytes": 512433,
+      "sha256": "78b13f7b84b79bc459b0b09f0a1873aa0f9b7f41f9b47e0f90028ec63635a92c"
+    },
+    "sdk_workspace/adc_uart/Debug/adc_uart.elf": {
+      "bytes": 377340,
+      "sha256": "dd3d6cf5bfc92253d6eab5ff07959c66b032277705f7e64494cebfe6665edd28"
+    },
+    "constraints/z100_adc.xdc": {
+      "bytes": 2075,
+      "sha256": "bc1d1af4d328ac1307393027ad755da99dff02a386408459ae72ff0c7111a460"
+    },
+    "rtl/z100_adc_top.v": {
+      "bytes": 2436,
+      "sha256": "35658b94d251adef33d6754cfe216c52b16e170f809148cca5cb7c69593ccd22"
+    },
+    "rtl/adc_board_control.v": {
+      "bytes": 3812,
+      "sha256": "27670bbdfc902c165619c3209c1e5a2897db957ddbac50105c6654e4a687616a"
+    },
+    "software/main.c": {
+      "bytes": 5402,
+      "sha256": "039b21e1000c3a4d7f31439e5864a4c8c29e263e0f046fb444058a5b4057f496"
+    }
+  }
+}

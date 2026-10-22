@@ -1,0 +1,76 @@
+<hr/>
+<h1>二、系统架构与数据流</h1>
+<p>t与c共享打包、FIFO、DMA、DDR和串口链路；只有c使用AD9280外部数据引脚。实测结论应按此边界解读。</p>
+<whiteboard type="svg"><svg xmlns="http://www.w3.org/2000/svg" width="1440" height="890" viewBox="0 0 1440 890">
+<rect x="0" y="0" width="1440" height="890" rx="24" fill="#f5f7fb"/>
+<text x="40" y="51" font-size="30" font-weight="700" fill="#17233e">Z100 · 从8位采样到电脑留存</text>
+<text x="40" y="83" font-size="19" fill="#53627c">数据面：一次100点 = 25个32位字 = 100字节DDR数据</text>
+<rect x="995" y="27" width="405" height="54" rx="27" fill="#dceafe"/>
+<text x="1021" y="60" font-size="18" fill="#2357a6">ADC 10MHz / 180°采样 · AXI 100MHz</text>
+<rect x="24" y="118" width="1392" height="248" rx="22" fill="#e8f0fe"/>
+<text x="43" y="152" font-size="21" font-weight="700" fill="#245aa7">PL · 数据生成、打包与流式搬运</text>
+<rect x="40" y="180" width="180" height="145" rx="17" fill="#ffffff" stroke="#739bdd" stroke-width="2"/>
+<path d="M61 210 L72 210 L72 198 L86 198 L86 220 L100 220 L100 206 L114 206" fill="none" stroke="#2b67bb" stroke-width="3"/>
+<text x="61" y="250" font-size="24" font-weight="700" fill="#17233e">AD9280</text>
+<text x="61" y="281" font-size="19" fill="#53627c">真实8位输入</text>
+<text x="61" y="308" font-size="17" fill="#53627c">c：外部数据引脚</text>
+<line x1="220" y1="250" x2="250" y2="250" stroke="#3272c4" stroke-width="3"/><polygon points="250,243 260,250 250,257" fill="#3272c4"/>
+<polygon points="260,187 410,209 410,301 260,323" fill="#ffffff" stroke="#739bdd" stroke-width="2"/>
+<text x="278" y="244" font-size="22" font-weight="700" fill="#17233e">模式选择</text>
+<text x="278" y="277" font-size="18" fill="#53627c">t：RAMP</text>
+<text x="278" y="303" font-size="17" fill="#53627c">0～99计数</text>
+<line x1="410" y1="250" x2="440" y2="250" stroke="#3272c4" stroke-width="3"/><polygon points="440,243 450,250 440,257" fill="#3272c4"/>
+<rect x="450" y="180" width="180" height="145" rx="17" fill="#ffffff" stroke="#739bdd" stroke-width="2"/>
+<text x="469" y="222" font-size="23" font-weight="700" fill="#17233e">四点打包</text>
+<text x="469" y="255" font-size="21" fill="#245aa7">8位 × 4 → 32位</text>
+<text x="469" y="288" font-size="17" fill="#53627c">先采点在低字节</text>
+<line x1="630" y1="250" x2="660" y2="250" stroke="#3272c4" stroke-width="3"/><polygon points="660,243 670,250 660,257" fill="#3272c4"/>
+<rect x="670" y="180" width="210" height="145" rx="17" fill="#ffffff" stroke="#739bdd" stroke-width="2"/>
+<text x="690" y="222" font-size="23" font-weight="700" fill="#17233e">异步 FIFO</text>
+<text x="690" y="256" font-size="21" fill="#245aa7">32位 × 1024</text>
+<text x="690" y="288" font-size="18" fill="#53627c">FWFT · 跨时钟缓存</text>
+<line x1="880" y1="250" x2="910" y2="250" stroke="#3272c4" stroke-width="3"/><polygon points="910,243 920,250 910,257" fill="#3272c4"/>
+<rect x="920" y="180" width="210" height="145" rx="17" fill="#ffffff" stroke="#739bdd" stroke-width="2"/>
+<text x="940" y="222" font-size="22" font-weight="700" fill="#17233e">fifo_to_axis</text>
+<text x="940" y="256" font-size="20" fill="#245aa7">AXI-Stream 32位</text>
+<text x="940" y="288" font-size="17" fill="#53627c">握手成功才读FIFO</text>
+<line x1="1130" y1="250" x2="1160" y2="250" stroke="#3272c4" stroke-width="3"/><polygon points="1160,243 1170,250 1160,257" fill="#3272c4"/>
+<rect x="1170" y="180" width="210" height="145" rx="17" fill="#285faa"/>
+<text x="1190" y="222" font-size="24" font-weight="700" fill="#ffffff">AXI DMA</text>
+<text x="1190" y="256" font-size="22" fill="#ffffff">S2MM 写通道</text>
+<text x="1190" y="288" font-size="17" fill="#dceafe">第25字 TLAST = 1</text>
+<text x="1310" y="409" font-size="18" fill="#53627c">AXI写事务</text>
+<rect x="24" y="423" width="1392" height="225" rx="22" fill="#e5f3ed"/>
+<line x1="1275" y1="325" x2="1275" y2="464" stroke="#3272c4" stroke-width="3"/><polygon points="1268,464 1275,474 1282,464" fill="#3272c4"/>
+<text x="43" y="457" font-size="21" font-weight="700" fill="#257155">PL互连 → PS内存与软件 → PC</text>
+<rect x="1170" y="480" width="210" height="130" rx="17" fill="#ffffff" stroke="#75ad95" stroke-width="2"/>
+<text x="1187" y="522" font-size="20" font-weight="700" fill="#17233e">SmartConnect</text>
+<text x="1187" y="556" font-size="23" fill="#257155">→ PS HP0</text>
+<text x="1187" y="586" font-size="17" fill="#53627c">高性能DDR访问口</text>
+<line x1="1170" y1="545" x2="1140" y2="545" stroke="#288361" stroke-width="3"/><polygon points="1140,538 1130,545 1140,552" fill="#288361"/>
+<ellipse cx="1025" cy="497" rx="105" ry="21" fill="#d4eade" stroke="#75ad95" stroke-width="2"/>
+<path d="M920 497 L920 585 C920 612 1130 612 1130 585 L1130 497" fill="#ffffff" stroke="#75ad95" stroke-width="2"/>
+<ellipse cx="1025" cy="497" rx="105" ry="21" fill="#d4eade" stroke="#75ad95" stroke-width="2"/>
+<text x="980" y="550" font-size="26" font-weight="700" fill="#17233e">DDR</text>
+<text x="950" y="581" font-size="18" fill="#53627c">100字节接收缓冲区</text>
+<line x1="920" y1="545" x2="890" y2="545" stroke="#288361" stroke-width="3"/><polygon points="890,538 880,545 890,552" fill="#288361"/>
+<rect x="670" y="480" width="210" height="130" rx="17" fill="#ffffff" stroke="#75ad95" stroke-width="2"/>
+<text x="690" y="522" font-size="24" font-weight="700" fill="#17233e">ARM · C程序</text>
+<text x="690" y="556" font-size="19" fill="#257155">等DMA完成后读DDR</text>
+<text x="690" y="586" font-size="17" fill="#53627c">缓存维护 · 校验 · 格式化</text>
+<line x1="670" y1="545" x2="640" y2="545" stroke="#288361" stroke-width="3"/><polygon points="640,538 630,545 640,552" fill="#288361"/>
+<rect x="450" y="480" width="180" height="130" rx="17" fill="#ffffff" stroke="#75ad95" stroke-width="2"/>
+<text x="467" y="522" font-size="24" font-weight="700" fill="#17233e">PS UART0</text>
+<text x="467" y="556" font-size="19" fill="#257155">115200 · 8N1</text>
+<text x="467" y="586" font-size="17" fill="#53627c">ASCII十六进制文本</text>
+<line x1="450" y1="545" x2="420" y2="545" stroke="#288361" stroke-width="3"/><polygon points="420,538 410,545 420,552" fill="#288361"/>
+<rect x="40" y="480" width="370" height="130" rx="17" fill="#1c6d54"/>
+<text x="62" y="522" font-size="25" font-weight="700" fill="#ffffff">电脑 · 串口与数据留存</text>
+<text x="62" y="556" font-size="20" fill="#ffffff">t：SELFTEST PASS</text>
+<text x="62" y="586" font-size="18" fill="#d8eee3">c：125 / 126；模拟输入未接信号源</text>
+<text x="43" y="693" font-size="21" font-weight="700" fill="#715124">控制面 · 先准备DMA，再发采集请求</text>
+<rect x="40" y="714" width="1360" height="67" rx="33" fill="#fff0d9"/>
+<text x="64" y="755" font-size="21" fill="#715124">PC命令 t / c / s → PS UART → ARM → GP0 / AXI GPIO → 请求翻转位跨时钟同步 → start_pulse</text>
+<circle cx="56" cy="830" r="9" fill="#288361"/><text x="78" y="837" font-size="19" fill="#3d5065">已验证：数字通路自检与一帧真实输入读取</text>
+<circle cx="742" cy="830" r="9" fill="#cc8a28"/><text x="764" y="837" font-size="19" fill="#3d5065">待验证：模拟幅度、频率响应、采样准确性</text>
+</svg></whiteboard>

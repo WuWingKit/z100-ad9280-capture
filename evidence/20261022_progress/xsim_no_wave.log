@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Oct 22 15:32:07 2026
+# Process ID: 97600
+# Current directory: E:/FPGAWork/z100_adc_hw_20261022/bd_start.sim/sim_1/behav/xsim
+# Command line: xsim.exe -log E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/xsim_no_wave.log -mode tcl -source {xsim.dir/tb_z100_hw_behav/xsim_script.tcl}
+# Log file: E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/xsim_no_wave.log
+# Journal file: E:/FPGAWork/z100_adc_hw_20261022/bd_start.sim/sim_1/behav/xsim\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/tb_z100_hw_behav/xsim_script.tcl
+# xsim {tb_z100_hw_behav} -autoloadwcfg -tclbatch {E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/run_no_wave.tcl}
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source E:/FPGAWork/z100_adc_hw_20261022/evidence/20261022_progress/run_no_wave.tcl
+## run all
+
+Memory request of  536870924 bytes could not be fulfilled.
+ Total memory consumed so far :24 bytes
+Command failed: Simulator command interrupted.
+
+Simulation engine not responding
+The simulator has terminated in an unexpected manner.  Please review the simulation log (xsim.log) for details.
+## quit
+INFO: [Common 17-206] Exiting xsim at Thu Oct 22 15:32:11 2026...

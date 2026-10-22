@@ -1,0 +1,32 @@
+<table><thead><tr><th background-color="light-gray">器件/模块</th><th background-color="light-gray">作用与接口</th><th background-color="light-gray">本版参数</th></tr></thead><tbody>
+<tr><td>Z100 / Zynq-7000</td><td>PL运行采集逻辑，PS ARM运行裸机程序</td><td>工程目标XC7Z035FFG900-2；实物型号应与之匹配</td></tr>
+<tr><td>AD9280及配套AD模块</td><td>模拟信号转换为8位并行数字码；OTR指示超量程</td><td>ADC驱动10MHz；FPGA采样相位180°；OTR接输入</td></tr>
+<tr><td>adc_capture_pack</td><td>在start_pulse后接收100个有效点，前三点暂存，第4点拼成32位并写FIFO</td><td>先采点位于低字节；每4点写一次，25字/帧；满时停止并报overflow</td></tr>
+<tr><td>FIFO Generator</td><td>跨ADC与AXI时钟域缓冲采样数据</td><td>32位写、32位读、深度1024、独立时钟、FWFT</td></tr>
+<tr><td>fifo_to_axis</td><td>将FIFO接口变成AXI-Stream，按握手推进</td><td>TKEEP=1111；第25字TLAST；TVALID与TREADY同时为1才读FIFO</td></tr>
+<tr><td>AXI DMA S2MM</td><td>接收Stream并主动发起内存写事务</td><td>一帧100字节；控制地址0x40400000；软件先配置DMA再启动采集</td></tr>
+<tr><td>AXI SmartConnect / PS HP0</td><td>连接DMA内存映射主接口与PS高性能从接口，访问DDR</td><td>数据路径经过HP0；HP0是接口，不是单独的存储器</td></tr>
+<tr><td>AXI GPIO / PS GP0</td><td>PS写启动与模式，读采集状态</td><td>地址0x41200000；请求通过翻转位跨时钟同步，避免短脉冲丢失</td></tr>
+<tr><td>Processor System Reset</td><td>生成AXI侧复位并配合同步释放逻辑</td><td>FIFO为高有效复位；采集模块使用低有效复位；不可直接混接</td></tr>
+<tr><td>PS UART0</td><td>ARM输出采样结果与状态，接收t/c/s命令</td><td>MIO14 RX、MIO15 TX；板载USB串口；115200、8N1、无流控</td></tr>
+</tbody></table>
+<p>ADC持续获得时钟；命令c启动的是FPGA记录一帧100点，而不是让ADC从停止状态开始转换。当前没有把板上按键设为采集启动键，复位按键也不是采集启动键。</p>
+<callout emoji="❗" background-color="light-yellow"><p>100点×1字节=100字节DDR数据；串口输出为十六进制文本，实际串口字节数大于100。10MHz下相邻采样间隔0.1μs，100点首尾跨度9.9μs，整帧采集约10μs。115200串口不支持连续上传10MB/s原始采样流。</p></callout>
+<hr/><h1>三、板上t命令数字自检：截图与数据复核</h1>
+<p>用户截图显示15:24:46发送t，模式为RAMP。下方原图作为板上执行证据保留；代理没有重新发串口命令。CSV与文本为对截图可见数据的人工转录，不是自动采集的原始串口文件。</p>
+<pre lang="text"><code>BEGIN ADC100 mode=RAMP bytes=100
+00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10 11 12 13
+14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20 21 22 23 24 25 26 27
+28 29 2A 2B 2C 2D 2E 2F 30 31 32 33 34 35 36 37 38 39 3A 3B
+3C 3D 3E 3F 40 41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F
+50 51 52 53 54 55 56 57 58 59 5A 5B 5C 5D 5E 5F 60 61 62 63
+END ADC100 sum=4950 min=0 max=99 errors=0
+SELFTEST PASS</code></pre>
+<table><thead><tr><th background-color="light-gray">校验项</th><th background-color="light-gray">复核结果</th></tr></thead><tbody>
+<tr><td>长度与顺序</td><td>100点，逐点等于十进制0～99；无缺点、重复或倒序</td></tr>
+<tr><td>统计值</td><td>总和4950；最小0；最大99；平均49.5，与截图一致</td></tr>
+<tr><td>errors含义</td><td>RAMP模式逐点与i比较，并检查100字节之后的28字节A5保护区；errors=0表示这些检查未发现错误</td></tr>
+<tr><td>截图中的03被拆开</td><td>一条接收消息末尾为0，下一条开头为3；属于串口分包显示，不是样点丢失</td></tr>
+<tr><td>覆盖范围</td><td>测试模式选择之后的打包、FIFO、AXI握手、DMA、DDR、ARM与串口链路</td></tr>
+<tr><td>不覆盖范围</td><td>ADC模拟转换精度、外部数据引脚接线完整性、输入电压标定、模拟带宽</td></tr>
+</tbody></table>

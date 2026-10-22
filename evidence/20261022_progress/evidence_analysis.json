@@ -1,0 +1,33 @@
+{
+  "time": "2026-10-22T15:29:49.059140+08:00",
+  "operator": "Codex local evidence analysis; no hardware connection",
+  "ramp": {
+    "source": "user_screenshot_manual_transcription",
+    "count": 100,
+    "sum": 4950,
+    "min": 0,
+    "max": 99,
+    "mean": 49.5,
+    "sequence_matches_0_to_99": true
+  },
+  "negative_parser_tests": {
+    "missing_sample": "REJECTED_AS_EXPECTED",
+    "duplicate_sample": "REJECTED_AS_EXPECTED",
+    "swapped_order": "REJECTED_AS_EXPECTED",
+    "changed_footer": "REJECTED_AS_EXPECTED"
+  },
+  "real_adc_statistics_consistent": true,
+  "prior_build_artifact_hashes_match": {
+    "hardware/z100_adc.bit": true,
+    "hardware/z100_adc.hdf": true,
+    "sdk_workspace/adc_uart/Debug/adc_uart.elf": true,
+    "constraints/z100_adc.xdc": true,
+    "rtl/z100_adc_top.v": true,
+    "rtl/adc_board_control.v": true,
+    "software/main.c": true
+  },
+  "original_backup_crc": "PASS",
+  "original_backup_entries": 670,
+  "hardware_retested_by_agent": false,
+  "result": "PASS"
+}
