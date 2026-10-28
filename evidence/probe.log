@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 28 15:00:32 2026
+# Process ID: 46632
+# Current directory: E:/FPGAWork/z100_cordic_loop_20261028
+# Command line: vivado.exe -mode batch -source E:/FPGAWork/z100_cordic_loop_20261028/scripts/probe_cordic.tcl -log E:/FPGAWork/z100_cordic_loop_20261028/evidence/probe.log -journal E:/FPGAWork/z100_cordic_loop_20261028/evidence/probe.jou
+# Log file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/probe.log
+# Journal file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/probe.jou
+#-----------------------------------------------------------
+source E:/FPGAWork/z100_cordic_loop_20261028/scripts/probe_cordic.tcl
+# set root [file normalize [file join [file dirname [info script]] ..]]
+# create_project probe [file join $root _probe] -part xc7z035ffg900-2
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 321.609 ; gain = 82.211
+# create_ip -name cordic -vendor xilinx.com -library ip -version 6.0 -module_name cordic_sincos
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+# set f [open [file join $root evidence cordic_properties.txt] w]
+WARNING: [Vivado 12-3672] The is_managed property should only be queried on the file object representing this IP. Use the get_files command to access file objects.
+WARNING: [Vivado 12-3670] The generate_synth_checkpoint property should only be queried on the file object representing this IP. Use the get_files command to access file objects.
+# foreach p [list_property [get_ips cordic_sincos]] {
+#  if {[string match CONFIG.* $p]} {puts $f "$p=[get_property $p [get_ips cordic_sincos]]"}
+# }
+# close $f
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 15:00:51 2026...

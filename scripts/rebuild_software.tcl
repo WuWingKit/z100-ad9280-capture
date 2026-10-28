@@ -1,5 +1,7 @@
 set root [file normalize [file join [file dirname [info script]] ..]]
-setws [file join $root sdk_workspace]
 file copy -force [file join $root software main.c] [file join $root sdk_workspace adc_uart src main.c]
-projects -build -type app -name adc_uart
+setws [file join $root sdk_workspace]
+projects -build
+file copy -force [file join $root sdk_workspace adc_uart Debug adc_uart.elf] [file join $root hardware adc_uart.elf]
+puts {Z100_SOFTWARE_REBUILD_PASS}
 exit

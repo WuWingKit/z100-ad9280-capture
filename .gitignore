@@ -29,3 +29,8 @@ xvlog.*
 xelab.*
 rtl_smoke.log
 *.pb
+pc/_deps/
+sim_project/
+_probe/
+*.elf
+PUBLISH_STATE.json

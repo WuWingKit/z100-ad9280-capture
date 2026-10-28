@@ -1,0 +1,1 @@
+PASS frames=5 checks=39707 cordic_checks=9306 stalls=1876 invalid_config=PASS overflow_recovery=PASS

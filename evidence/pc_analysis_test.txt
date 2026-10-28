@@ -1,0 +1,1 @@
+PC_ANALYSIS_PASS frequencies=4 CRC/truncation/error_rejection=PASS flat_input_rejection=PASS

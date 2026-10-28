@@ -23,3 +23,20 @@ samples=[int(v,16) for line in data.splitlines() if re.fullmatch(r'[0-9A-F]{2}( 
 assert samples==list(range(100)) and sum(samples)==4950
 print('REPOSITORY_BASELINE_PASS: BD/XCI/XDC inputs and archived evidence consistent')
 print('Not a Vivado build, physical ADC test, or electrical safety certification.')
+
+cordic=bd['components']['cordic_sincos_0']['parameters']
+for k,v in {'Functional_Selection':'Sin_and_Cos','Phase_Format':'Scaled_Radians',
+            'Input_Width':'16','Output_Width':'16','ARESETN':'true'}.items():
+    assert cordic[k]['value']==v,(k,cordic[k])
+# Depth 1024 is the FIFO Generator 13.2 default and may be omitted in BD JSON.
+assert fifo.get('Input_Depth',{'value':'1024'})['value']=='1024'
+for path in ['rtl/measurement_core.v','rtl/fifo_to_axis.v','sim/tb_measurement.v',
+             'sim/tb_loop_ddr.v','pc/capture_analyze.py','docs/CDC_REVIEW.md']:
+    assert (root/path).is_file(),path
+verification=json.loads((root/'evidence/verification.json').read_text())
+assert verification['hardware_operations_performed'] is False
+assert verification['timing_met'] is True
+assert 'PASS frames=5' in verification['core_simulation']
+assert 'PASS frames=2' in verification['bd_dma_ddr_simulation']
+print('CORDIC_SOURCE_CHECK_PASS: current configuration and archived offline evidence consistent')
+

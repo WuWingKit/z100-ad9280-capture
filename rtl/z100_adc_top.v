@@ -27,6 +27,8 @@ module z100_adc_top(
     input wire sys_rst_n,
     input wire [7:0] ad_data,
     input wire ad_otr,
+    output wire [7:0] da_data,
+    output wire da_clk,
     output wire ad_clk
 );
     wire adc_drive_clk, adc_sample_clk, adc_locked;
@@ -39,7 +41,10 @@ module z100_adc_top(
         .C(adc_drive_clk), .CE(1'b1), .D1(1'b1), .D2(1'b0),
         .R(1'b0), .S(1'b0), .Q(ad_clk)
     );
+    ODDR #(.DDR_CLK_EDGE("SAME_EDGE"), .INIT(1'b0), .SRTYPE("SYNC")) u_dac_clk_out (
+        .C(adc_sample_clk), .CE(1'b1), .D1(1'b0), .D2(1'b1), .R(1'b0), .S(1'b0), .Q(da_clk));
     capture_bd_wrapper u_bd (
+        .dac_data(da_data),
         .DDR_0_addr(DDR_0_addr),
         .DDR_0_ba(DDR_0_ba),
         .DDR_0_cas_n(DDR_0_cas_n),

@@ -1,0 +1,2 @@
+WEB_DSP_PASS CRC32 / packet checks / RAMP / flat rejection / 4 frequencies / actual Xilinx-model CSV
+{"n":4096,"frequency":99992.04430657563,"phaseDeg":0.00013181304897664213,"binHz":2441.40625}

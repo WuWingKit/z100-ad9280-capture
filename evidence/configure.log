@@ -1,0 +1,241 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 28 15:03:03 2026
+# Process ID: 43472
+# Current directory: E:/FPGAWork/z100_cordic_loop_20261028
+# Command line: vivado.exe -mode batch -source E:/FPGAWork/z100_cordic_loop_20261028/scripts/configure.tcl -log E:/FPGAWork/z100_cordic_loop_20261028/evidence/configure.log -journal E:/FPGAWork/z100_cordic_loop_20261028/evidence/configure.jou
+# Log file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/configure.log
+# Journal file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/configure.jou
+#-----------------------------------------------------------
+source E:/FPGAWork/z100_cordic_loop_20261028/scripts/configure.tcl
+# set root [file normalize [file join [file dirname [info script]] ..]]
+# open_project [file join $root bd_start.xpr]
+INFO: [Project 1-313] Project file moved from 'E:/FPGAWork/z100_adc_hw_20261022' since last save.
+WARNING: [Project 1-312] File not found as 'E:/FPGAWork/z100_cordic_loop_20261028/sim/tb_z100_hw.v'; using path 'E:/FPGAWork/z100_adc_hw_20261022/sim/tb_z100_hw.v' instead.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-509] GeneratedRun file for 'synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_fifo_generator_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_adc_capture_pack_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_util_vector_logic_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_fifo_to_axis_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_axi_dma_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_processing_system7_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_proc_sys_reset_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_util_vector_logic_1_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_axi_smc_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_xbar_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_axi_gpio_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'adc_clk_wiz_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'capture_bd_adc_board_control_0_0_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'impl_1' not found
+INFO: [filemgmt 56-1] IPUserFilesDir: Directory not found as 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files'; using path 'E:/FPGAWork/z100_adc_hw_20261022/bd_start.ip_user_files' instead.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 401.785 ; gain = 140.121
+# foreach f [get_files -quiet *adc_board_control.v] {remove_files $f}
+# foreach f [get_files -quiet *adc_capture_pack.v] {remove_files $f}
+# foreach f [get_files -quiet *fifo_to_axis.v] {remove_files $f}
+# add_files -norecurse [list [file join $root rtl measurement_core.v] [file join $root rtl fifo_to_axis.v]]
+# update_compile_order -fileset sources_1
+# open_bd_design [get_files -all */capture_bd.bd]
+Adding cell -- xilinx.com:ip:fifo_generator:13.2 - fifo_generator_0
+INFO: [xilinx.com:ip:fifo_generator:13.2-5968] /fifo_generator_0Executing the post_config_ip from bd
+Adding cell -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_0
+Adding cell -- xilinx.com:module_ref:adc_capture_pack:1.0 - adc_capture_pack_0
+CRITICAL WARNING: [BD 41-1726] Unable to resolve module-source for block '/adc_capture_pack_0'.
+Given inputs for module-source, Top-module name : adc_capture_pack, Module Type : RTL.
+Please review and update or add design-sources to this project to resolve this module-reference.
+Adding cell -- xilinx.com:module_ref:fifo_to_axis:1.0 - fifo_to_axis_0
+Adding cell -- xilinx.com:ip:axi_dma:7.1 - axi_dma_0
+Adding cell -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding cell -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_1
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - xlconstant_0
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - xlconstant_1
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding cell -- xilinx.com:ip:smartconnect:1.0 - axi_smc
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding cell -- xilinx.com:module_ref:adc_board_control:1.0 - adc_board_control_0
+CRITICAL WARNING: [BD 41-1726] Unable to resolve module-source for block '/adc_board_control_0'.
+Given inputs for module-source, Top-module name : adc_board_control, Module Type : RTL.
+Please review and update or add design-sources to this project to resolve this module-reference.
+Successfully read diagram <capture_bd> from BD file <E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/capture_bd.bd>
+open_bd_design: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 428.609 ; gain = 25.707
+# delete_bd_objs [get_bd_cells adc_board_control_0] [get_bd_cells adc_capture_pack_0]
+# foreach p {busy_0 done_0 overflow_0 sample_count_0 stream_done_0} {delete_bd_objs [get_bd_ports $p]}
+# update_module_reference [get_ips capture_bd_fifo_to_axis_0_0]
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axis' of definition 'xilinx.com:interface:axis:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'axis_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'axis_clk': Added interface parameter 'ASSOCIATED_BUSIF' with value 'm_axis'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+Upgrading 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/capture_bd.bd'
+INFO: [IP_Flow 19-1972] Upgraded capture_bd_fifo_to_axis_0_0 from fifo_to_axis_v1_0 1.0 to fifo_to_axis_v1_0 1.0
+WARNING: [IP_Flow 19-4698] Upgrade has added port 'frame_samples'
+WARNING: [IP_Flow 19-3298] Detected external port differences while upgrading 'capture_bd_fifo_to_axis_0_0'. These changes may impact your design.
+CRITICAL WARNING: [Coretcl 2-1280] The upgrade of 'capture_bd_fifo_to_axis_0_0' has identified issues that may require user intervention. Please verify that the instance is correctly configured, and review any upgrade messages.
+WARNING: [BD 41-597] NET <adc_capture_pack_0_fifo_din> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_fifo_wr_en> has no source
+WARNING: [BD 41-597] NET <start_pulse_0_1> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_busy> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_done> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_overflow> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_sample_count> has no source
+WARNING: [BD 41-597] NET <adc_board_control_0_status> has no source
+WARNING: [BD 41-597] NET <adc_board_control_0_capture_rst_n> has no source
+WARNING: [BD 41-597] NET <adc_board_control_0_adc_sample> has no source
+Wrote  : <E:\FPGAWork\z100_cordic_loop_20261028\bd_start.srcs\sources_1\bd\capture_bd\capture_bd.bd> 
+# create_bd_cell -type module -reference measurement_core measurement_core_0
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'WAIT_DMA' by 012345 for port or parameter 'active_wave'
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'WAIT_ZERO' by 012 for port or parameter 'active_wave'
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'ERROR' by 0123456 for port or parameter 'adc_status'
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'IDLE' by 0 for port or parameter 'adc_status'
+INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'WAIT_DMA' by 012345 for port or parameter 'adc_status'
+INFO: [IP_Flow 19-5107] Inferred bus interface 'fifo_reset' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'adc_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'axis_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+WARNING: [IP_Flow 19-3153] Bus Interface 'adc_clk': ASSOCIATED_BUSIF bus parameter is missing.
+WARNING: [IP_Flow 19-3153] Bus Interface 'axis_clk': ASSOCIATED_BUSIF bus parameter is missing.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+# create_bd_cell -type ip -vlnv xilinx.com:ip:cordic:6.0 cordic_sincos_0
+# set_property -dict [list CONFIG.Functional_Selection Sin_and_Cos CONFIG.Phase_Format Scaled_Radians \
+#  CONFIG.Input_Width 16 CONFIG.Output_Width 16 CONFIG.ARESETN true CONFIG.Coarse_Rotation true \
+#  CONFIG.Architectural_Configuration Parallel CONFIG.Pipelining_Mode Maximum \
+#  CONFIG.flow_control NonBlocking CONFIG.Round_Mode Nearest_Even] [get_bd_cells cordic_sincos_0]
+# create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_config
+# set_property -dict [list CONFIG.C_IS_DUAL 1 CONFIG.C_ALL_OUTPUTS 1 CONFIG.C_ALL_OUTPUTS_2 1 \
+#  CONFIG.C_GPIO_WIDTH 32 CONFIG.C_GPIO2_WIDTH 32] [get_bd_cells axi_gpio_config]
+# set_property CONFIG.NUM_MI 3 [get_bd_cells ps7_0_axi_periph]
+# connect_bd_intf_net [get_bd_intf_pins ps7_0_axi_periph/M02_AXI] [get_bd_intf_pins axi_gpio_config/S_AXI]
+# foreach pin {measurement_core_0/axis_clk axi_gpio_config/s_axi_aclk ps7_0_axi_periph/M02_ACLK} {
+#  connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins $pin]
+# }
+# foreach pin {measurement_core_0/rst_n axi_gpio_config/s_axi_aresetn ps7_0_axi_periph/M02_ARESETN} {
+#  connect_bd_net [get_bd_pins proc_sys_reset_0/peripheral_aresetn] [get_bd_pins $pin]
+# }
+# foreach pin {measurement_core_0/adc_clk cordic_sincos_0/aclk} {
+#  connect_bd_net [get_bd_ports adc_clk_0] [get_bd_pins $pin]
+# }
+# foreach {src dst} {
+#  axi_gpio_0/gpio_io_o measurement_core_0/command
+#  axi_gpio_config/gpio_io_o measurement_core_0/phase_word
+#  axi_gpio_config/gpio2_io_o measurement_core_0/config_word
+#  measurement_core_0/status axi_gpio_0/gpio2_io_i
+#  measurement_core_0/fifo_din fifo_generator_0/din
+#  measurement_core_0/fifo_wr_en fifo_generator_0/wr_en
+#  fifo_generator_0/full measurement_core_0/fifo_full
+#  fifo_to_axis_0/stream_done measurement_core_0/stream_done
+#  measurement_core_0/frame_samples_axis fifo_to_axis_0/frame_samples
+#  measurement_core_0/phase_data cordic_sincos_0/s_axis_phase_tdata
+#  measurement_core_0/phase_valid cordic_sincos_0/s_axis_phase_tvalid
+#  measurement_core_0/cordic_reset_n cordic_sincos_0/aresetn
+#  cordic_sincos_0/m_axis_dout_tdata measurement_core_0/cordic_data
+#  cordic_sincos_0/m_axis_dout_tvalid measurement_core_0/cordic_valid
+# } {connect_bd_net [get_bd_pins $src] [get_bd_pins $dst]}
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_config/gpio_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO
+WARNING: [BD 41-1306] The connection to interface pin /axi_gpio_config/gpio2_io_o is being overridden by the user. This pin will not be connected as a part of interface connection GPIO2
+WARNING: [BD 41-1306] The connection to interface pin /cordic_sincos_0/s_axis_phase_tdata is being overridden by the user. This pin will not be connected as a part of interface connection S_AXIS_PHASE
+WARNING: [BD 41-1306] The connection to interface pin /cordic_sincos_0/s_axis_phase_tvalid is being overridden by the user. This pin will not be connected as a part of interface connection S_AXIS_PHASE
+WARNING: [BD 41-1731] Type mismatch between connected pins: /measurement_core_0/cordic_reset_n(undef) and /cordic_sincos_0/aresetn(rst)
+WARNING: [BD 41-1306] The connection to interface pin /cordic_sincos_0/m_axis_dout_tdata is being overridden by the user. This pin will not be connected as a part of interface connection M_AXIS_DOUT
+WARNING: [BD 41-1306] The connection to interface pin /cordic_sincos_0/m_axis_dout_tvalid is being overridden by the user. This pin will not be connected as a part of interface connection M_AXIS_DOUT
+# connect_bd_net [get_bd_ports adc_data_0] [get_bd_pins measurement_core_0/adc_raw]
+# connect_bd_net [get_bd_ports ad_otr_0] [get_bd_pins measurement_core_0/adc_otr]
+# foreach {target src} {fifo_generator_0/rst measurement_core_0/fifo_reset fifo_to_axis_0/rst_n measurement_core_0/axis_reset_n} {
+#  set p [get_bd_pins $target]
+#  disconnect_bd_net [get_bd_nets -of_objects $p] $p
+#  connect_bd_net [get_bd_pins $src] $p
+# }
+WARNING: [BD 41-1731] Type mismatch between connected pins: /measurement_core_0/fifo_reset(rst) and /fifo_generator_0/rst(undef)
+WARNING: [BD 41-1731] Type mismatch between connected pins: /measurement_core_0/axis_reset_n(undef) and /fifo_to_axis_0/rst_n(rst)
+# create_bd_port -dir O -from 7 -to 0 dac_data
+# connect_bd_net [get_bd_pins measurement_core_0/dac_data] [get_bd_ports dac_data]
+# assign_bd_address
+</axi_gpio_config/S_AXI/Reg> is being mapped into </processing_system7_0/Data> at <0x41210000 [ 64K ]>
+# set_property offset 0x41210000 [get_bd_addr_segs processing_system7_0/Data/SEG_axi_gpio_config_Reg]
+# validate_bd_design
+INFO: [xilinx.com:ip:cordic:6.0-7] /cordic_sincos_0 Setting Input Width to 16. S_AXIS_PHASE_TDATA input width: 16.
+INFO: [xilinx.com:ip:cordic:6.0-913] /cordic_sincos_0 Input_Width has been set to manual on the GUI. It will not be updated during validation with a propagated value.
+INFO: [xilinx.com:ip:cordic:6.0-7] /cordic_sincos_0 Setting Input Width to 16. S_AXIS_PHASE_TDATA input width: 16.
+INFO: [xilinx.com:ip:cordic:6.0-913] /cordic_sincos_0 Input_Width has been set to manual on the GUI. It will not be updated during validation with a propagated value.
+WARNING: [BD 41-927] Following properties on pin /fifo_to_axis_0/axis_clk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=capture_bd_processing_system7_0_0_FCLK_CLK0 
+WARNING: [BD 41-927] Following properties on pin /measurement_core_0/axis_clk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=capture_bd_processing_system7_0_0_FCLK_CLK0 
+WARNING: [BD 41-927] Following properties on pin /measurement_core_0/adc_clk have been updated from connected ip. They may not be synchronized with cell properties. You can set property on pin directly to confirm the value and resolve the warning.
+	CLK_DOMAIN=capture_bd_adc_clk_0 
+# save_bd_design
+WARNING: [BD 41-597] NET <start_pulse_0_1> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_busy> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_done> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_overflow> has no source
+WARNING: [BD 41-597] NET <adc_capture_pack_0_sample_count> has no source
+WARNING: [BD 41-597] NET <adc_board_control_0_capture_rst_n> has no source
+WARNING: [BD 41-597] NET <adc_board_control_0_adc_sample> has no source
+Wrote  : <E:\FPGAWork\z100_cordic_loop_20261028\bd_start.srcs\sources_1\bd\capture_bd\capture_bd.bd> 
+# generate_target all [get_files -all */capture_bd.bd]
+INFO: [BD 41-1662] The design 'capture_bd.bd' is already validated. Therefore parameter propagation will not be re-run.
+WARNING: [BD 41-166] The net:start_pulse_0_1 is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_busy is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_done is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_overflow is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_sample_count is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_board_control_0_capture_rst_n is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_board_control_0_adc_sample is not connected to a valid source.
+VHDL Output written to : E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/synth/capture_bd.v
+WARNING: [BD 41-166] The net:start_pulse_0_1 is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_busy is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_done is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_overflow is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_capture_pack_0_sample_count is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_board_control_0_capture_rst_n is not connected to a valid source.
+WARNING: [BD 41-166] The net:adc_board_control_0_adc_sample is not connected to a valid source.
+VHDL Output written to : E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/sim/capture_bd.v
+VHDL Output written to : E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/hdl/capture_bd_wrapper.v
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fifo_generator_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_vector_logic_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block fifo_to_axis_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_dma_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block util_vector_logic_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconstant_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconstant_1 .
+Exporting to file e:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/hw_handoff/capture_bd_axi_smc_0.hwh
+Generated Block Design Tcl file e:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/hw_handoff/capture_bd_axi_smc_0_bd.tcl
+Generated Hardware Definition File e:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/synth/capture_bd_axi_smc_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_smc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 'e:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/ip/capture_bd_auto_pc_0/capture_bd_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block measurement_core_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block cordic_sincos_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_config .
+Exporting to file E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/hw_handoff/capture_bd.hwh
+Generated Block Design Tcl file E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/hw_handoff/capture_bd_bd.tcl
+Generated Hardware Definition File E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/synth/capture_bd.hwdef
+# add_files -norecurse [make_wrapper -files [get_files -all */capture_bd.bd] -top]
+WARNING: [filemgmt 56-12] File 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/hdl/capture_bd_wrapper.v' cannot be added to the project because it already exists in the project, skipping this file
+# set_property top z100_adc_top [get_filesets sources_1]
+# update_compile_order -fileset sources_1
+# write_hwdef -force -file [file join $root hardware system.hdf]
+# puts {CORDIC_LOOP_CONFIGURED}
+CORDIC_LOOP_CONFIGURED
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 15:03:45 2026...

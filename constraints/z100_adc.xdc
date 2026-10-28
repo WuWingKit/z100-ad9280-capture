@@ -27,3 +27,17 @@ set_input_delay -clock ad_forward_clk -min 0.000 [get_ports {ad_data[*] ad_otr}]
 set_clock_groups -asynchronous \
     -group [get_clocks -include_generated_clocks -of_objects [get_ports sys_clk_p]] \
     -group [get_clocks -of_objects [get_pins u_bd/capture_bd_i/processing_system7_0/FCLK_CLK0]]
+
+# AD9708 setup 2ns/hold1.5ns + conservative board allowance. Validate compatible silicon on board.
+set_property -dict {PACKAGE_PIN AA13 IOSTANDARD LVCMOS33} [get_ports {da_clk}]
+set_property -dict {PACKAGE_PIN AK25 IOSTANDARD LVCMOS33} [get_ports {da_data[0]}]
+set_property -dict {PACKAGE_PIN AC22 IOSTANDARD LVCMOS33} [get_ports {da_data[1]}]
+set_property -dict {PACKAGE_PIN AJ25 IOSTANDARD LVCMOS33} [get_ports {da_data[2]}]
+set_property -dict {PACKAGE_PIN AC23 IOSTANDARD LVCMOS33} [get_ports {da_data[3]}]
+set_property -dict {PACKAGE_PIN AF17 IOSTANDARD LVCMOS33} [get_ports {da_data[4]}]
+set_property -dict {PACKAGE_PIN W23 IOSTANDARD LVCMOS33} [get_ports {da_data[5]}]
+set_property -dict {PACKAGE_PIN AF18 IOSTANDARD LVCMOS33} [get_ports {da_data[6]}]
+set_property -dict {PACKAGE_PIN AC21 IOSTANDARD LVCMOS33} [get_ports {da_data[7]}]
+create_generated_clock -name da_forward_clk -source [get_pins u_dac_clk_out/C] -invert -divide_by 1 [get_ports da_clk]
+set_output_delay -clock da_forward_clk -max 3.000 [get_ports {da_data[*]}]
+set_output_delay -clock da_forward_clk -min -2.500 [get_ports {da_data[*]}]

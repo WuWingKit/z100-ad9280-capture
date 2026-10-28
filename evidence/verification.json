@@ -1,0 +1,85 @@
+{
+  "created_local": "2026-10-28T16:02:23.032156+08:00",
+  "project": "E:\\FPGAWork\\z100_cordic_loop_20261028\\bd_start.xpr",
+  "part": "xc7z035ffg900-2",
+  "tools": "Vivado / SDK 2018.3",
+  "original_key_files_unchanged": {
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.xpr": true,
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\rtl\\adc_board_control.v": true,
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\rtl\\z100_adc_top.v": true,
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\software\\main.c": true,
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\constraints\\z100_adc.xdc": true,
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.srcs\\sources_1\\bd\\capture_bd\\capture_bd.bd": true,
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.srcs\\sources_1\\new\\adc_capture_pack.v": true,
+    "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.srcs\\sources_1\\new\\fifo_to_axis.v": true
+  },
+  "core_simulation": "PASS frames=5 checks=39707 cordic_checks=9306 stalls=1876 invalid_config=PASS overflow_recovery=PASS",
+  "bd_dma_ddr_simulation": "PASS frames=2 samples=512 DDR_bytes=512 guards=256 checks=1570",
+  "pc_analysis": "PC_ANALYSIS_PASS frequencies=4 CRC/truncation/error_rejection=PASS flat_input_rejection=PASS",
+  "web_dashboard": "WEB_DSP_PASS CRC32 / packet checks / RAMP / flat rejection / 4 frequencies / actual Xilinx-model CSV\n{\"n\":4096,\"frequency\":99992.04430657563,\"phaseDeg\":0.00013181304897664213,\"binHz\":2441.40625}",
+  "web_browser_check": "IAB demo, 4096 samples, 99.992 kHz, time-range switching verified; physical Web Serial untested",
+  "firmware": "SDK compilation PASS; not executed on board in this task",
+  "bitstream": "generated after latest measurement_core edit",
+  "timing_met": true,
+  "timing_global": {
+    "WNS_ns": 4.63,
+    "TNS_ns": 0.0,
+    "WHS_ns": 0.051,
+    "THS_ns": 0.0,
+    "WPWS_ns": 3.0,
+    "TPWS_ns": 0.0
+  },
+  "timing_checks": [
+    "Global WNS=4.630 ns, TNS=0.000 ns",
+    "Global WHS=0.051 ns, THS=0.000 ns",
+    "Global WPWS=3.000 ns, TPWS=0.000 ns"
+  ],
+  "analog_model_result": {
+    "samples": 4096,
+    "sample_rate_hz": 10000000.0,
+    "fft_bin_hz": 2441.40625,
+    "peak_bin": 41,
+    "fft_peak_bin_hz": 100097.65625,
+    "fft_interpolated_hz": 99992.04430657563,
+    "reference_hz": 100000.0,
+    "absolute_error_hz": 7.955693424373749,
+    "relative_error_percent": 0.00795569342437375,
+    "mean_code": 127.523681640625,
+    "min_code": 104,
+    "max_code": 152,
+    "phase_reference_hz": 100000.0,
+    "phase_at_first_sample_deg": 0.0001318130490328709,
+    "fitted_amplitude_codes": 23.993629395009467,
+    "fitted_dc_code": 127.5200252722475,
+    "first_sample_minus_fitted_dc": 0.4799747277525057,
+    "analog_calibration": "NOT VERIFIED by software; confirm actual board delay/gain/polarity",
+    "source": "SIMULATED digital loopback; not board measurement",
+    "metadata": {
+      "fs": "10000000",
+      "freq": "100000",
+      "mode": "REAL"
+    }
+  },
+  "hardware_operations_performed": false,
+  "flash_programmed": false,
+  "pending": [
+    "Physical DAC/ADC analog voltage/gain/polarity/delay calibration",
+    "New bit+ELF board Debug, UART commands and CRC validation",
+    "Remaining reset/FIFO CDC diagnostics reviewed in docs/CDC_REVIEW.md; physical stress tests pending",
+    "PS C software execution and q abort behavior have not been board-tested"
+  ],
+  "sha256": {
+    "bd_start.xpr": "53cef9bee2e079da003350fa58a4585e1e6ae70e2191cd1278febc422d148d4a",
+    "rtl/measurement_core.v": "c6047466516f771d43527ec53014f2607fc6f0c019f2a19821e327b14eefe64f",
+    "rtl/fifo_to_axis.v": "bac1c7563518037172326b3c1fad70327d900cdf3316e0a87580c2ac48f0b60f",
+    "rtl/z100_adc_top.v": "962e4348faaa5e0a9a3ccce7202ba8c2354eaeb90de8e537878b756306d6297e",
+    "constraints/z100_adc.xdc": "42c4a1aaca9982c384b2bef11de8fa29e3e18bc721bc9a9a2179429473d9870c",
+    "software/main.c": "01bf2b82a8b2f781dd5faac4096fd95828303b4f3c635e5c741d69ca5fb6f6f6",
+    "hardware/z100_cordic.bit": "949069e5319ee40675c46b8203b8005f346b400df22ac87aef3274798fb421c0",
+    "hardware/z100_cordic.hdf": "51e39b9e320c20e67c2c5d3f7c7bb40096e087c99a87bd1a3c1048e0493d59ea",
+    "hardware/adc_uart.elf": "fde1db12d14ece147cc2b9b148acd56f296a3d175d1ceb102838b202dbd89b16",
+    "pc/capture_analyze.py": "ff054543e77c5b127dc823b990982046977e39b3b5be6fe165da049f578690ed",
+    "evidence/measurement_result.txt": "45a040a9b21e82b7f1a8193787795f9b9133833c7ebf6f05681bfdaa9783d8ab",
+    "evidence/ddr_result.txt": "dac88b32d7ccb35535e378deeea3d7239db8ccb338df12a0892e1dd02de6ed17"
+  }
+}

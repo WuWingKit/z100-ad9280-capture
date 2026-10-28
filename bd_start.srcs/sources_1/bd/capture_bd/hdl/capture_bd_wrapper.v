@@ -1,7 +1,7 @@
 //Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-//Date        : Thu Oct 22 14:30:57 2026
+//Date        : Wed Oct 28 15:49:38 2026
 //Host        : SenIta running 64-bit major release  (build 9200)
 //Command     : generate_target capture_bd_wrapper.bd
 //Design      : capture_bd_wrapper
@@ -35,11 +35,7 @@ module capture_bd_wrapper
     adc_clk_0,
     adc_data_0,
     board_reset_n,
-    busy_0,
-    done_0,
-    overflow_0,
-    sample_count_0,
-    stream_done_0);
+    dac_data);
   inout [14:0]DDR_0_addr;
   inout [2:0]DDR_0_ba;
   inout DDR_0_cas_n;
@@ -65,11 +61,7 @@ module capture_bd_wrapper
   input adc_clk_0;
   input [7:0]adc_data_0;
   input board_reset_n;
-  output busy_0;
-  output done_0;
-  output overflow_0;
-  output [6:0]sample_count_0;
-  output stream_done_0;
+  output [7:0]dac_data;
 
   wire [14:0]DDR_0_addr;
   wire [2:0]DDR_0_ba;
@@ -96,11 +88,7 @@ module capture_bd_wrapper
   wire adc_clk_0;
   wire [7:0]adc_data_0;
   wire board_reset_n;
-  wire busy_0;
-  wire done_0;
-  wire overflow_0;
-  wire [6:0]sample_count_0;
-  wire stream_done_0;
+  wire [7:0]dac_data;
 
   capture_bd capture_bd_i
        (.DDR_0_addr(DDR_0_addr),
@@ -128,9 +116,5 @@ module capture_bd_wrapper
         .adc_clk_0(adc_clk_0),
         .adc_data_0(adc_data_0),
         .board_reset_n(board_reset_n),
-        .busy_0(busy_0),
-        .done_0(done_0),
-        .overflow_0(overflow_0),
-        .sample_count_0(sample_count_0),
-        .stream_done_0(stream_done_0));
+        .dac_data(dac_data));
 endmodule

@@ -1,0 +1,1623 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Oct 28 15:35:08 2026
+# Process ID: 41800
+# Current directory: E:/WorkSpace/Phased-array radar
+# Command line: vivado.exe -mode batch -source E:\FPGAWork\z100_cordic_loop_20261028\scripts\run_ddr_sim.tcl -log E:\FPGAWork\z100_cordic_loop_20261028\evidence\ddr_simulation.log -nojournal
+# Log file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/ddr_simulation.log
+# Journal file: 
+#-----------------------------------------------------------
+source {E:\FPGAWork\z100_cordic_loop_20261028\scripts\run_ddr_sim.tcl}
+# set root [file normalize [file join [file dirname [info script]] ..]]
+# open_project [file join $root bd_start.xpr]
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+# foreach f [get_files -of_objects [get_filesets sim_1]] {remove_files -fileset sim_1 $f}
+# add_files -fileset sim_1 -norecurse [file join $root sim tb_loop_ddr.v]
+# set_property top tb_loop_ddr [get_filesets sim_1]
+# set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
+# update_compile_order -fileset sim_1
+update_compile_order: Time (s): cpu = 00:00:00 ; elapsed = 00:00:16 . Memory (MB): peak = 410.348 ; gain = 8.906
+# launch_simulation -mode behavioral
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'E:/Xilinx/Vivado/2018.3/data/xsim/xsim.ini' copied to run dir:'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_loop_ddr' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L axi_vip_v1_1_4 -L processing_system7_vip_v1_0_6 -L smartconnect_v1_0 -L xilinx_vip -prj tb_loop_ddr_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/rtl/fifo_to_axis.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_to_axis
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/rtl/measurement_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module measurement_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_fifo_generator_0_0/sim/capture_bd_fifo_generator_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_fifo_generator_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_fifo_to_axis_0_0/sim/capture_bd_fifo_to_axis_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_fifo_to_axis_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_processing_system7_0_0/sim/capture_bd_processing_system7_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_processing_system7_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_util_vector_logic_1_0/sim/capture_bd_util_vector_logic_1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_util_vector_logic_1_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_xlconstant_0_0/sim/capture_bd_xlconstant_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_xlconstant_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_xlconstant_0_1/sim/capture_bd_xlconstant_0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_xlconstant_0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/sim/bd_2591.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591
+INFO: [VRFC 10-311] analyzing module clk_map_imp_3G27QJ
+INFO: [VRFC 10-311] analyzing module m00_exit_pipeline_imp_1VWX568
+INFO: [VRFC 10-311] analyzing module s00_entry_pipeline_imp_X9WYNN
+INFO: [VRFC 10-311] analyzing module s00_nodes_imp_RA692H
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_0/sim/bd_2591_one_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_one_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_2/sim/bd_2591_s00mmu_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_s00mmu_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_3/sim/bd_2591_s00tr_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_s00tr_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_4/sim/bd_2591_s00sic_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_s00sic_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_5/sim/bd_2591_s00a2s_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_s00a2s_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_6/sim/bd_2591_sawn_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_sawn_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_7/sim/bd_2591_swn_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_swn_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_8/sim/bd_2591_sbn_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_sbn_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_9/sim/bd_2591_m00s2a_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_m00s2a_0
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_10/sim/bd_2591_m00e_0.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bd_2591_m00e_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/sim/capture_bd_axi_smc_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_axi_smc_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/sim/capture_bd.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd
+INFO: [VRFC 10-311] analyzing module capture_bd_ps7_0_axi_periph_0
+INFO: [VRFC 10-311] analyzing module m00_couplers_imp_J9WXYT
+INFO: [VRFC 10-311] analyzing module m01_couplers_imp_8WV6PF
+INFO: [VRFC 10-311] analyzing module m02_couplers_imp_13VHXFD
+INFO: [VRFC 10-311] analyzing module s00_couplers_imp_AVYJHW
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_xbar_0/sim/capture_bd_xbar_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_xbar_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_measurement_core_0_0/sim/capture_bd_measurement_core_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_measurement_core_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_auto_pc_0/sim/capture_bd_auto_pc_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_auto_pc_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/ip/adc_clk_wiz/adc_clk_wiz_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adc_clk_wiz_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/ip/adc_clk_wiz/adc_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adc_clk_wiz
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/hdl/capture_bd_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module capture_bd_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/rtl/z100_adc_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module z100_adc_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/FPGAWork/z100_cordic_loop_20261028/sim/tb_loop_ddr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_loop_ddr
+"xvhdl --incr --relax -prj tb_loop_ddr_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/FPGAWork/z100_cordic_loop_20261028/bd_start.ip_user_files/bd/capture_bd/ip/capture_bd_axi_smc_0/bd_0/ip/ip_1/sim/bd_2591_psr_aclk_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'bd_2591_psr_aclk_0'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 102538411b04419290a00222af27a185 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L fifo_generator_v13_2_3 -L lib_pkg_v1_0_2 -L lib_fifo_v1_0_12 -L lib_srl_fifo_v1_0_2 -L lib_cdc_v1_0_2 -L axi_datamover_v5_1_20 -L axi_sg_v4_1_11 -L axi_dma_v7_1_19 -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_4 -L processing_system7_vip_v1_0_6 -L proc_sys_reset_v5_0_13 -L util_vector_logic_v2_0_1 -L xlconstant_v1_1_5 -L smartconnect_v1_0 -L generic_baseblocks_v2_1_0 -L axi_register_slice_v2_1_18 -L axi_data_fifo_v2_1_17 -L axi_crossbar_v2_1_19 -L axi_lite_ipif_v3_0_4 -L interrupt_control_v3_1_4 -L axi_gpio_v2_0_20 -L xbip_utils_v3_0_9 -L c_reg_fd_v12_0_5 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_pipe_v3_0_5 -L xbip_dsp48_addsub_v3_0_5 -L xbip_addsub_v3_0_5 -L c_addsub_v12_0_12 -L xbip_bram18k_v3_0_5 -L mult_gen_v12_0_14 -L axi_utils_v2_0_5 -L cordic_v6_0_14 -L axi_protocol_converter_v2_1_18 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_loop_ddr_behav xil_defaultlib.tb_loop_ddr xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_gp.v:208]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5463]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5481]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_gp.v:292]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:78]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:80]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:89]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10170]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10188]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:165]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:174]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10189]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:251]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:260]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:337]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/proj/xbuilds/2018.3_1207_2324/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_6_axi_hp.v:346]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_bid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7074]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_rid' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7092]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7093]
+WARNING: [VRFC 10-3027] 'ocm_wr_strb_port0' was previously declared with a different range [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:3726]
+WARNING: [VRFC 10-3283] element index 64 into 'wrp_strb' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:6051]
+WARNING: [VRFC 10-3283] element index 64 into 'wrp_strb' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10811]
+WARNING: [VRFC 10-3283] element index 128 into 'wrp_strb' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7689]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_fifo_rd_ptr' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7902]
+WARNING: [VRFC 10-3705] select index 4 into 'ar_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8041]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_rresp_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8138]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_wr_ptr' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8157]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8298]
+WARNING: [VRFC 10-3705] select index 4 into 'rresp_time_cnt' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8303]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_rd_ptr' is out of bounds [/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8308]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling package unisim.vcomponents
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package lib_pkg_v1_0_2.lib_pkg
+Compiling package axi_dma_v7_1_19.axi_dma_pkg
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package xpm.vcomponents
+Compiling package axi_lite_ipif_v3_0_4.ipif_pkg
+Compiling package cordic_v6_0_14.cordic_v6_0_14_viv_comp
+Compiling package xbip_utils_v3_0_9.xbip_utils_v3_0_9_pkg
+Compiling package xbip_pipe_v3_0_5.xbip_pipe_v3_0_5_viv_comp
+Compiling package axi_utils_v2_0_5.axi_utils_v2_0_5_pkg
+Compiling package ieee.math_real
+Compiling package axi_utils_v2_0_5.global_util_pkg
+Compiling package axi_utils_v2_0_5.axi_utils_comps
+Compiling package mult_gen_v12_0_14.mult_gen_v12_0_14_pkg
+Compiling package ieee.std_logic_signed
+Compiling package cordic_v6_0_14.cordic_pack
+Compiling package cordic_v6_0_14.cordic_hdl_comps
+Compiling package c_addsub_v12_0_12.c_addsub_v12_0_12_viv_comp
+Compiling package xbip_addsub_v3_0_5.xbip_addsub_v3_0_5_viv_comp
+Compiling package c_addsub_v12_0_12.c_addsub_v12_0_12_pkg
+Compiling package c_addsub_v12_0_12.c_addsub_v12_0_12_pkg_legacy
+Compiling package c_reg_fd_v12_0_5.c_reg_fd_v12_0_5_viv_comp
+Compiling package fifo_generator_v13_2_3.fifo_generator_v13_2_3_pkg
+Compiling package smartconnect_v1_0.sc_util_v1_0_4_pkg
+Compiling package xilinx_vip.axi_vip_pkg
+Compiling package xilinx_vip.xil_common_vip_pkg
+Compiling package std.std
+Compiling module unisims_ver.IBUFDS
+Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=10.0,...
+Compiling module unisims_ver.BUFG
+Compiling module xil_defaultlib.adc_clk_wiz_clk_wiz
+Compiling module xil_defaultlib.adc_clk_wiz
+Compiling module unisims_ver.ODDR(DDR_CLK_EDGE="SAME_EDGE")
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_smple_sm [\axi_dma_smple_sm(c_extra=1)\]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_s2mm_cmdsts_if [\axi_dma_s2mm_cmdsts_if(c_dm_sta...]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_s2mm_sts_mngr [axi_dma_s2mm_sts_mngr_default]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_s2mm_mngr [\axi_dma_s2mm_mngr(c_prmy_cmdfif...]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_sofeof_gen [axi_dma_sofeof_gen_default]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_reset [\axi_dma_reset(c_include_sg=0,c_...]
+Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]
+Compiling architecture fdr_v of entity unisim.FDR [fdr_default]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_mtbf_stages=4)\]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_rst_module [\axi_dma_rst_module(c_include_mm...]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_lite_if [\axi_dma_lite_if(c_num_ce=23,c_s...]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_register_s2mm [\axi_dma_register_s2mm(c_num_reg...]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma_reg_module [\axi_dma_reg_module(c_include_mm...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_mm2s_omit_wrap [\axi_datamover_mm2s_omit_wrap(c_...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_ibttcc [\axi_datamover_ibttcc(c_sf_xfer_...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_skid_buf [axi_datamover_skid_buf_default]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_ms_strb_set [\axi_datamover_ms_strb_set(c_str...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_mssai_skid_buf [axi_datamover_mssai_skid_buf_def...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_strb_gen2 [\axi_datamover_strb_gen2(c_strb_...]
+Compiling architecture working of entity axi_datamover_v5_1_20.axi_datamover_slice [\axi_datamover_slice(c_data_widt...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.cntr_incr_decr_addn_f [\cntr_incr_decr_addn_f(c_size=5,...]
+Compiling architecture behavioral of entity lib_srl_fifo_v1_0_2.dynshreg_f [\dynshreg_f(c_depth=16,c_dwidth=...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_rbu_f [\srl_fifo_rbu_f(c_dwidth=9,c_fam...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_f [\srl_fifo_f(c_dwidth=9,c_family=...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=9,c...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_s2mm_scatter [\axi_datamover_s2mm_scatter(c_en...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.cntr_incr_decr_addn_f [\cntr_incr_decr_addn_f(c_size=3,...]
+Compiling architecture behavioral of entity lib_srl_fifo_v1_0_2.dynshreg_f [\dynshreg_f(c_depth=4,c_dwidth=2...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_rbu_f [\srl_fifo_rbu_f(c_dwidth=25,c_de...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_f [\srl_fifo_f(c_dwidth=25,c_depth=...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=25,...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_s2mm_realign [\axi_datamover_s2mm_realign(c_en...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_stbs_set_nodre [\axi_datamover_stbs_set_nodre(c_...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_skid_buf [\axi_datamover_skid_buf(c_wdata_...]
+Compiling module xpm.xpm_fifo_rst_default
+Compiling module xpm.xpm_fifo_reg_bit
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=5...
+Compiling module xpm.xpm_counter_updn(RESET_VALUE=1)
+Compiling module xpm.xpm_counter_updn(RESET_VALUE=2)
+Compiling module xpm.xpm_counter_updn(RESET_VALUE=3)
+Compiling module xpm.xpm_memory_base(MEMORY_TYPE=1,ME...
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=2...
+Compiling module xpm.xpm_fifo_base(FIFO_WRITE_DEPTH=1...
+Compiling module xpm.xpm_fifo_sync(FIFO_MEMORY_TYPE="...
+Compiling architecture implementation of entity lib_fifo_v1_0_12.sync_fifo_fg [\sync_fifo_fg(c_family="zynq",c_...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_sfifo_autord [\axi_datamover_sfifo_autord(c_dw...]
+Compiling module xpm.xpm_fifo_rst_default_1
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=8...
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=7...
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=7...
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=7...
+Compiling module xpm.xpm_memory_base(MEMORY_TYPE=1,ME...
+Compiling module xpm.xpm_fifo_base(FIFO_MEMORY_TYPE=2...
+Compiling module xpm.xpm_fifo_sync(FIFO_MEMORY_TYPE="...
+Compiling architecture implementation of entity lib_fifo_v1_0_12.sync_fifo_fg [\sync_fifo_fg(c_family="zynq",c_...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_sfifo_autord [\axi_datamover_sfifo_autord(c_dw...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_indet_btt [\axi_datamover_indet_btt(c_ibtt_...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_reset [axi_datamover_reset_default]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=35,...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=71,...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_cmd_status [\axi_datamover_cmd_status(c_stsc...]
+Compiling architecture behavioral of entity lib_srl_fifo_v1_0_2.dynshreg_f [\dynshreg_f(c_depth=6,c_dwidth=2...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_rbu_f [\srl_fifo_rbu_f(c_dwidth=21,c_de...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_f [\srl_fifo_f(c_dwidth=21,c_depth=...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=21,...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.cntr_incr_decr_addn_f [\cntr_incr_decr_addn_f(c_size=4,...]
+Compiling architecture behavioral of entity lib_srl_fifo_v1_0_2.dynshreg_f [\dynshreg_f(c_depth=6,c_dwidth=2...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_rbu_f [\srl_fifo_rbu_f(c_dwidth=2,c_dep...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_f [\srl_fifo_f(c_dwidth=2,c_depth=6...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=2,c...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_wr_status_cntl [\axi_datamover_wr_status_cntl(c_...]
+Compiling architecture behavioral of entity lib_srl_fifo_v1_0_2.dynshreg_f [\dynshreg_f(c_depth=4,c_dwidth=5...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_rbu_f [\srl_fifo_rbu_f(c_dwidth=59,c_de...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_f [\srl_fifo_f(c_dwidth=59,c_depth=...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=59,...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_addr_cntl [\axi_datamover_addr_cntl(c_addr_...]
+Compiling architecture behavioral of entity lib_srl_fifo_v1_0_2.dynshreg_f [\dynshreg_f(c_depth=4,c_dwidth=2...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_rbu_f [\srl_fifo_rbu_f(c_dwidth=27,c_de...]
+Compiling architecture imp of entity lib_srl_fifo_v1_0_2.srl_fifo_f [\srl_fifo_f(c_dwidth=27,c_depth=...]
+Compiling architecture imp of entity axi_datamover_v5_1_20.axi_datamover_fifo [\axi_datamover_fifo(c_dwidth=27,...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_wrdata_cntl [\axi_datamover_wrdata_cntl(c_rea...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_wr_demux [\axi_datamover_wr_demux(c_sel_ad...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_skid2mm_buf [\axi_datamover_skid2mm_buf(c_add...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover_s2mm_full_wrap [\axi_datamover_s2mm_full_wrap(c_...]
+Compiling architecture implementation of entity axi_datamover_v5_1_20.axi_datamover [\axi_datamover(c_include_mm2s=0,...]
+Compiling architecture implementation of entity axi_dma_v7_1_19.axi_dma [\axi_dma(c_include_sg=0,c_sg_inc...]
+Compiling architecture capture_bd_axi_dma_0_0_arch of entity xil_defaultlib.capture_bd_axi_dma_0_0 [capture_bd_axi_dma_0_0_default]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.address_decoder [\address_decoder(c_bus_awidth=9,...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.slave_attachment [\slave_attachment(c_ard_addr_ran...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.axi_lite_ipif [\axi_lite_ipif(c_s_axi_addr_widt...]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_single_bit=0,c_mtbf_...]
+Compiling architecture imp of entity axi_gpio_v2_0_20.GPIO_Core [\GPIO_Core(c_aw=9,c_is_dual=1,c_...]
+Compiling architecture imp of entity axi_gpio_v2_0_20.axi_gpio [\axi_gpio(c_family="zynq",c_all_...]
+Compiling architecture capture_bd_axi_gpio_0_0_arch of entity xil_defaultlib.capture_bd_axi_gpio_0_0 [capture_bd_axi_gpio_0_0_default]
+Compiling architecture imp of entity axi_gpio_v2_0_20.GPIO_Core [\GPIO_Core(c_aw=9,c_is_dual=1,c_...]
+Compiling architecture imp of entity axi_gpio_v2_0_20.axi_gpio [\axi_gpio(c_family="zynq",c_all_...]
+Compiling architecture capture_bd_axi_gpio_config_0_arch of entity xil_defaultlib.capture_bd_axi_gpio_config_0 [capture_bd_axi_gpio_config_0_def...]
+Compiling module xlconstant_v1_1_5.xlconstant_v1_1_5_xlconstant(CON...
+Compiling module xil_defaultlib.bd_2591_one_0
+Compiling architecture fdre_v of entity unisim.FDRE [\FDRE(init='1')\]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_vector_width=2,c_mtb...]
+Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="1111111111111111")...]
+Compiling architecture srl16_v of entity unisim.SRL16 [\SRL16(init="1111111111111111")(...]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.lpf [\lpf(c_ext_rst_width=4,c_aux_rst...]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.upcnt_n [\upcnt_n(c_size=6)\]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.sequence_psr [sequence_psr_default]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.proc_sys_reset [\proc_sys_reset(c_family="zynq",...]
+Compiling architecture bd_2591_psr_aclk_0_arch of entity xil_defaultlib.bd_2591_psr_aclk_0 [bd_2591_psr_aclk_0_default]
+Compiling module xil_defaultlib.clk_map_imp_3G27QJ
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_srl_rtl(C_A_WIDTH...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axic_reg_srl_fifo...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axic_reg_srl_fifo...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axic_reg_srl_fifo...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axi2vector(C_ID_W...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_vector2axi(C_RDAT...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axi_reg_stall(C_R...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axi_reg_stall_def...
+Compiling module smartconnect_v1_0.sc_exit_v1_0_8_axi3_conv(C_ID_WI...
+Compiling module smartconnect_v1_0.sc_exit_v1_0_8_splitter(C_RDATA_...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axic_reg_srl_fifo...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axic_reg_srl_fifo...
+Compiling module smartconnect_v1_0.sc_exit_v1_0_8_exit(C_FAMILY="zy...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axi2vector
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_vector2axi
+Compiling module smartconnect_v1_0.sc_exit_v1_0_8_top(C_FAMILY="zyn...
+Compiling module xil_defaultlib.bd_2591_m00e_0
+Compiling module xil_defaultlib.m00_exit_pipeline_imp_1VWX568
+Compiling module smartconnect_v1_0.sc_sc2axi_v1_0_7_top(C_AXI_ID_WI...
+Compiling module xil_defaultlib.bd_2591_m00s2a_0
+Compiling module smartconnect_v1_0.sc_axi2sc_v1_0_7_top(C_AXI_ID_WI...
+Compiling module xil_defaultlib.bd_2591_s00a2s_0
+Compiling module smartconnect_v1_0.sc_mmu_v1_0_7_addr_decoder(C_FAM...
+Compiling module smartconnect_v1_0.sc_mmu_v1_0_7_decerr_slave(C_RES...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axi2vector(C_RDAT...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_vector2axi(C_RDAT...
+Compiling module smartconnect_v1_0.sc_mmu_v1_0_7_top(C_FAMILY="zynq...
+Compiling module xil_defaultlib.bd_2591_s00mmu_0
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axic_reg_srl_fifo...
+Compiling module smartconnect_v1_0.sc_si_converter_v1_0_7_splitter(...
+Compiling module smartconnect_v1_0.sc_si_converter_v1_0_7_top(C_LIM...
+Compiling module xil_defaultlib.bd_2591_s00sic_0
+Compiling module smartconnect_v1_0.sc_transaction_regulator_v1_0_8_...
+Compiling module smartconnect_v1_0.sc_transaction_regulator_v1_0_8_...
+Compiling module xil_defaultlib.bd_2591_s00tr_0
+Compiling module xil_defaultlib.s00_entry_pipeline_imp_X9WYNN
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_axic_register_sli...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_pipeline_default
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_si_handler(C_NUM...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_pipeline(C_DEPTH=...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_pipeline(C_DWIDTH...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_pipeline(C_DEPTH=...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_onehot_to_binary(...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_counter_default
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_ingress(C_PAYLD_...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_reg_slice3(C_PAY...
+Compiling module xpm.xpm_memory_base(MEMORY_TYPE=1,ME...
+Compiling module xpm.xpm_memory_sdpram(MEMORY_SIZE=49...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_counter(C_WIDTH=6...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_counter(C_WIDTH=6...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_xpm_memory_fifo(C...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_fifo(C_FAMILY="z...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_egress(C_NODE_PA...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_mi_handler(C_NUM...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_top(C_FAMILY="zy...
+Compiling module xil_defaultlib.bd_2591_sawn_0
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_si_handler(C_NUM...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_pipeline(C_DWIDTH...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_ingress(C_PAYLD_...
+Compiling module xpm.xpm_memory_base(MEMORY_TYPE=1,ME...
+Compiling module xpm.xpm_memory_sdpram(MEMORY_SIZE=73...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_xpm_memory_fifo(C...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_fifo(C_FAMILY="z...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_egress(C_NODE_PA...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_mi_handler(C_NUM...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_top(C_FAMILY="zy...
+Compiling module xil_defaultlib.bd_2591_sbn_0
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_si_handler(C_NUM...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_pipeline(C_DWIDTH...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_ingress(C_PAYLD_...
+Compiling module xpm.xpm_memory_base(MEMORY_TYPE=1,ME...
+Compiling module xpm.xpm_memory_sdpram(MEMORY_SIZE=22...
+Compiling module smartconnect_v1_0.sc_util_v1_0_4_xpm_memory_fifo(C...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_fifo(C_FAMILY="z...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_egress(C_NODE_PA...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_mi_handler(C_NUM...
+Compiling module smartconnect_v1_0.sc_node_v1_0_10_top(C_FAMILY="zy...
+Compiling module xil_defaultlib.bd_2591_swn_0
+Compiling module xil_defaultlib.s00_nodes_imp_RA692H
+Compiling module xil_defaultlib.bd_2591
+Compiling module xil_defaultlib.capture_bd_axi_smc_0
+Compiling architecture synth of entity xbip_pipe_v3_0_5.xbip_pipe_v3_0_5_viv [\xbip_pipe_v3_0_5_viv(c_latency=...]
+Compiling architecture synth of entity xbip_pipe_v3_0_5.xbip_pipe_v3_0_5_viv [\xbip_pipe_v3_0_5_viv(c_latency=...]
+Compiling architecture structural of entity c_reg_fd_v12_0_5.c_reg_fd_v12_0_5_viv [\c_reg_fd_v12_0_5_viv(c_width=21...]
+Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
+Compiling architecture xorcy_v of entity unisim.XORCY [xorcy_default]
+Compiling architecture rtl of entity c_addsub_v12_0_12.c_addsub_v12_0_12_lut6_legacy [\c_addsub_v12_0_12_lut6_legacy(c...]
+Compiling architecture synth of entity c_addsub_v12_0_12.c_addsub_v12_0_12_fabric_legacy [\c_addsub_v12_0_12_fabric_legacy...]
+Compiling architecture synth of entity c_addsub_v12_0_12.c_addsub_v12_0_12_legacy [\c_addsub_v12_0_12_legacy(c_fami...]
+Compiling architecture synth of entity c_addsub_v12_0_12.c_addsub_v12_0_12_viv [\c_addsub_v12_0_12_viv(c_xdevice...]
+Compiling architecture synth of entity cordic_v6_0_14.addsub [\addsub(family="zynq",add_mode=2...]
+Compiling architecture struct_all of entity cordic_v6_0_14.delay [\delay(delay_len=1,family="zynq"...]
+Compiling architecture struct_all of entity cordic_v6_0_14.delay [\delay(delay_len=1,family="zynq"...]
+Compiling architecture struct_all of entity cordic_v6_0_14.delay_bit [\delay_bit(delay_len=2,family="z...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_inp_config [\cordic_inp_config(p_xdevicefami...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_pha_acc_slice_par [\cordic_pha_acc_slice_par(p_xdev...]
+Compiling architecture struct_all of entity cordic_v6_0_14.delay [\delay(delay_len=1,family="zynq"...]
+Compiling architecture struct_all of entity cordic_v6_0_14.delay_bit [\delay_bit(delay_len=1,family="z...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_ctrl_slice_par [\cordic_ctrl_slice_par(p_xdevice...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_dat_acc_slice_par [\cordic_dat_acc_slice_par(p_xdev...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng_slice_par [\cordic_eng_slice_par(p_xdevicef...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_eng [\cordic_eng(p_xdevicefamily="zyn...]
+Compiling architecture struct_all of entity cordic_v6_0_14.delay [\delay(delay_len=0,family="zynq"...]
+Compiling architecture structural of entity c_reg_fd_v12_0_5.c_reg_fd_v12_0_5_viv [\c_reg_fd_v12_0_5_viv(c_width=21...]
+Compiling architecture rtl of entity c_addsub_v12_0_12.c_addsub_v12_0_12_lut6_legacy [\c_addsub_v12_0_12_lut6_legacy(c...]
+Compiling architecture synth of entity c_addsub_v12_0_12.c_addsub_v12_0_12_fabric_legacy [\c_addsub_v12_0_12_fabric_legacy...]
+Compiling architecture synth of entity c_addsub_v12_0_12.c_addsub_v12_0_12_legacy [\c_addsub_v12_0_12_legacy(c_fami...]
+Compiling architecture synth of entity c_addsub_v12_0_12.c_addsub_v12_0_12_viv [\c_addsub_v12_0_12_viv(c_xdevice...]
+Compiling architecture synth of entity cordic_v6_0_14.addsub [\addsub(family="zynq",add_mode=0...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_round [\cordic_round(p_xdevicefamily="z...]
+Compiling architecture struct_all of entity cordic_v6_0_14.delay_bit [\delay_bit(delay_len=0,family="z...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_out_config [\cordic_out_config(p_xdevicefami...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_v6_0_14_synth [\cordic_v6_0_14_synth(c_architec...]
+Compiling architecture synth of entity cordic_v6_0_14.cordic_v6_0_14_viv [\cordic_v6_0_14_viv(c_architectu...]
+Compiling architecture xilinx of entity cordic_v6_0_14.cordic_v6_0_14 [\cordic_v6_0_14(c_architecture=2...]
+Compiling architecture capture_bd_cordic_sincos_0_0_arch of entity xil_defaultlib.capture_bd_cordic_sincos_0_0 [capture_bd_cordic_sincos_0_0_def...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.reset_builtin [\reset_builtin(c_common_clock=0,...]
+Compiling architecture ff36_internal_vhdl_v of entity unisim.FF36_INTERNAL_VHDL [\FF36_INTERNAL_VHDL(almost_full_...]
+Compiling architecture fifo36e1_v of entity unisim.FIFO36E1 [\FIFO36E1(almost_full_offset="00...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.builtin_prim_v6 [\builtin_prim_v6(c_family="7SERI...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.builtin_extdepth_v6 [\builtin_extdepth_v6(c_family="7...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.builtin_top_v6 [\builtin_top_v6(c_family="7SERIE...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.input_blk [\input_blk(c_common_clock=0,c_di...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.output_blk [\output_blk(c_dout_width=32,c_pk...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.fifo_generator_v13_2_3_builtin [\fifo_generator_v13_2_3_builtin(...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.fifo_generator_top [\fifo_generator_top(c_family="vi...]
+Compiling architecture xilinx of entity fifo_generator_v13_2_3.fifo_generator_v13_2_3_synth [\fifo_generator_v13_2_3_synth(c_...]
+Compiling module fifo_generator_v13_2_3.fifo_generator_v13_2_3(C_DATA_CO...
+Compiling module xil_defaultlib.capture_bd_fifo_generator_0_0
+Compiling module xil_defaultlib.fifo_to_axis
+Compiling module xil_defaultlib.capture_bd_fifo_to_axis_0_0
+Compiling module xil_defaultlib.measurement_core
+Compiling module xil_defaultlib.capture_bd_measurement_core_0_0
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.lpf [\lpf(c_ext_rst_width=4,c_aux_rst...]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.proc_sys_reset [\proc_sys_reset(c_family="zynq",...]
+Compiling architecture capture_bd_proc_sys_reset_0_0_arch of entity xil_defaultlib.capture_bd_proc_sys_reset_0_0 [capture_bd_proc_sys_reset_0_0_de...]
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ge...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ge...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_fm...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ar...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ss...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_in...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_sp...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_dd...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_oc...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_oc...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_re...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_re...
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_in...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module xilinx_vip.axi_vip_axi4pc(PROTOCOL=1,RID_WI...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_af...
+Compiling module xilinx_vip.axi_vip_axi4pc(PROTOCOL=1,RID_WI...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_4.axi_vip_v1_1_4_top(C_AXI_PROTOCO...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6_ax...
+Compiling module processing_system7_vip_v1_0_6.processing_system7_vip_v1_0_6(C_...
+Compiling module xil_defaultlib.capture_bd_processing_system7_0_...
+Compiling module xil_defaultlib.m00_couplers_imp_J9WXYT
+Compiling module xil_defaultlib.m01_couplers_imp_8WV6PF
+Compiling module xil_defaultlib.m02_couplers_imp_13VHXFD
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_axi2ve...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_vector...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axi_r...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_axi2ve...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_vector...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axi_r...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_b...
+Compiling module axi_protocol_converter_v2_1_18.axi_protocol_converter_v2_1_18_a...
+Compiling module xil_defaultlib.capture_bd_auto_pc_0
+Compiling module xil_defaultlib.s00_couplers_imp_AVYJHW
+Compiling module axi_crossbar_v2_1_19.axi_crossbar_v2_1_19_addr_arbite...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_carry_...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_compar...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_compar...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_compar...
+Compiling module axi_crossbar_v2_1_19.axi_crossbar_v2_1_19_addr_decode...
+Compiling module axi_crossbar_v2_1_19.axi_crossbar_v2_1_19_splitter(C_...
+Compiling module axi_crossbar_v2_1_19.axi_crossbar_v2_1_19_splitter
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module axi_register_slice_v2_1_18.axi_register_slice_v2_1_18_axic_...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module axi_crossbar_v2_1_19.axi_crossbar_v2_1_19_decerr_slav...
+Compiling module axi_crossbar_v2_1_19.axi_crossbar_v2_1_19_crossbar_sa...
+Compiling module axi_crossbar_v2_1_19.axi_crossbar_v2_1_19_axi_crossba...
+Compiling module xil_defaultlib.capture_bd_xbar_0
+Compiling module xil_defaultlib.capture_bd_ps7_0_axi_periph_0
+Compiling module util_vector_logic_v2_0_1.util_vector_logic_v2_0_1_util_ve...
+Compiling module xil_defaultlib.capture_bd_util_vector_logic_1_0
+Compiling module xlconstant_v1_1_5.xlconstant_v1_1_5_xlconstant(CON...
+Compiling module xil_defaultlib.capture_bd_xlconstant_0_0
+Compiling module xil_defaultlib.capture_bd_xlconstant_0_1
+Compiling module xil_defaultlib.capture_bd
+Compiling module xil_defaultlib.capture_bd_wrapper
+Compiling module xil_defaultlib.z100_adc_top
+Compiling module xil_defaultlib.tb_loop_ddr
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_loop_ddr_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:34 . Memory (MB): peak = 430.945 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '34' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_loop_ddr_behav -key {Behavioral:sim_1:Functional:tb_loop_ddr} -tclbatch {tb_loop_ddr.tcl} -protoinst "protoinst_files/bd_2591.protoinst" -protoinst "protoinst_files/capture_bd.protoinst" -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/bd_2591.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m00_exit/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m00_exit/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m_axi
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/s_axi
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//m00_sc2axi/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_axi2sc/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/m_axi
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_mmu/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_mmu/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_si_converter/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_si_converter/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_transaction_regulator/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s00_transaction_regulator/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s_axi
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/capture_bd.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//axi_dma_0/M_AXI_S2MM
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//axi_dma_0/S_AXIS_S2MM
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//axi_dma_0/S_AXI_LITE
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//axi_gpio_0/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//axi_gpio_config/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//axi_smc/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//axi_smc/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//fifo_to_axis_0/m_axis
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//processing_system7_0/M_AXI_GP0
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//processing_system7_0/S_AXI_HP0
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/M02_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m00_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m00_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m01_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m01_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m02_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/m02_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/auto_pc/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/s00_couplers/auto_pc/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/xbar/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/xbar/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/xbar/M02_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_loop_ddr/dut/u_bd/capture_bd_i//ps7_0_axi_periph/xbar/S00_AXI
+WARNING: [Wavedata 42-559] Protocol instance "/tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/m_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+WARNING: [Wavedata 42-559] Protocol instance "/tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//m00_exit_pipeline/s_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+WARNING: [Wavedata 42-559] Protocol instance "/tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/m_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+WARNING: [Wavedata 42-559] Protocol instance "/tb_loop_ddr/dut/u_bd/capture_bd_i/axi_smc/inst//s00_entry_pipeline/s_axi" was created but is non-functional for the following reason(s):
+Required port "ACLK" is missing
+
+Time resolution is 1 ps
+source tb_loop_ddr.tcl
+## current_wave_config
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.M_AXI_GP0.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP0 : Port is ENABLED.
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.M_AXI_GP1.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.S_AXI_GP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP0 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.S_AXI_GP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.S_AXI_HP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP0 : Port is ENABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.S_AXI_HP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP1 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.S_AXI_HP2.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP2 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.S_AXI_HP3.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP3 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_loop_ddr.dut.u_bd.capture_bd_i.processing_system7_0.inst.S_AXI_ACP.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_ACP : Port is DISABLED.
+Note: Actual FIFO Depth = 1025
+Time: 0 ps  Iteration: 0
+Note:  DEPTH = 1024 WIDTH = 36 C_RD_PRIM_WIDTH = 36 C_RD_PRIM_DEPTH = 1024 DEEP = 1 WIDE = 1
+Time: 0 ps  Iteration: 0
+                   0 else checking line ......0
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_loop_ddr_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:47 . Memory (MB): peak = 457.434 ; gain = 47.086
+# run all
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_loop_ddr.dut.u_bd.capture_bd_i.axi_dma_0.U0.I_PRMRY_DATAMOVER.gen_s2mm_full.I_S2MM_FULL_WRAPPER.gen_enable_indet_btt_sf.I_INDET_BTT.I_XD_FIFO.non_blk_mem.I_SYNC_FIFOGEN_FIFO.xpm_fifo_instance.xpm_fifo_sync_inst.xpm_fifo_base_inst.gen_sdpram.xpm_memory_base_inst.config_drc
+Time: 1 ps  Iteration: 0  Process: /tb_loop_ddr/dut/u_bd/capture_bd_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/gen_s2mm_full/I_S2MM_FULL_WRAPPER/gen_enable_indet_btt_sf/I_INDET_BTT/I_XD_FIFO/non_blk_mem/I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance/xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial285_580  File: /wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv
+                1005 else checking line ......1
+[2000] : *ZYNQ_VIP_INFO : FPGA Soft Reset called for 0x0
+[12495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Write -> 4 bytes
+wr_id called with wr_size 87 
+               12495ID1 in strb task is f10
+[12715] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41200000) with Response 'OKAY'
+[14695] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Write -> 4 bytes
+wr_id called with wr_size e8c 
+               14695ID1 in strb task is 860
+[14845] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41200000) with Response 'OKAY'
+[17795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400030) -> AXI Write -> 4 bytes
+wr_id called with wr_size 245 
+               17795ID1 in strb task is 2a1
+[18025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400030) with Response 'OKAY'
+[18025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400030) -> AXI Read -> 4 bytes
+               18025ID2 in read strb task is c5e
+[18155] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400030) with Response 'OKAY'
+[18155] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400030) -> AXI Read -> 4 bytes
+               18155ID2 in read strb task is e75
+[18285] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400030) with Response 'OKAY'
+[18285] : *ZYNQ_VIP_INFO : Starting Address(0x1000000) -> Write 128 bytes of data to DDR Memory
+[18285] : *ZYNQ_VIP_INFO : Starting Address(0x1000080) -> Write 128 bytes of data to DDR Memory
+[18285] : *ZYNQ_VIP_INFO : Starting Address(0x1000100) -> Write 128 bytes of data to DDR Memory
+[18285] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210000) -> AXI Write -> 4 bytes
+wr_id called with wr_size cef 
+               18285ID1 in strb task is 6f8
+[18575] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41210000) with Response 'OKAY'
+[18575] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210008) -> AXI Write -> 4 bytes
+wr_id called with wr_size 5f2 
+               18575ID1 in strb task is 19d
+[18875] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41210008) with Response 'OKAY'
+[20795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Write -> 4 bytes
+wr_id called with wr_size d85 
+               20795ID1 in strb task is d3b
+[20945] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400034) with Response 'OKAY'
+[20945] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400030) -> AXI Write -> 4 bytes
+wr_id called with wr_size 65e 
+               20945ID1 in strb task is abc
+[21185] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400030) with Response 'OKAY'
+[21185] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400048) -> AXI Write -> 4 bytes
+wr_id called with wr_size 47e 
+               21185ID1 in strb task is 3b8
+[21495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400048) with Response 'OKAY'
+[21495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400058) -> AXI Write -> 4 bytes
+wr_id called with wr_size fca 
+               21495ID1 in strb task is e74
+[21645] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400058) with Response 'OKAY'
+[21645] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Write -> 4 bytes
+wr_id called with wr_size 35c 
+               21645ID1 in strb task is 809
+[21795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41200000) with Response 'OKAY'
+[21795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               21795ID2 in read strb task is 9db
+[21925] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[22025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               22025ID2 in read strb task is c70
+[22145] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[22245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               22245ID2 in read strb task is 9bb
+[22385] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[22485] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               22485ID2 in read strb task is 19
+[22605] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[22705] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               22705ID2 in read strb task is e5c
+[22825] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[22925] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               22925ID2 in read strb task is e3
+[23045] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[23145] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               23145ID2 in read strb task is 622
+[23265] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[23365] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               23365ID2 in read strb task is 7f5
+[23505] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[23605] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               23605ID2 in read strb task is 2cc
+[23725] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[23825] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               23825ID2 in read strb task is 62
+[23945] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[24045] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               24045ID2 in read strb task is d2
+[24165] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[24265] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               24265ID2 in read strb task is 277
+[24385] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[24485] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               24485ID2 in read strb task is 634
+[24625] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[24725] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               24725ID2 in read strb task is 22c
+[24845] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[24945] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               24945ID2 in read strb task is e54
+[25065] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[25165] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               25165ID2 in read strb task is d77
+[25285] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[25385] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               25385ID2 in read strb task is ff8
+[25505] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[25605] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               25605ID2 in read strb task is 6a9
+[25745] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[25845] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               25845ID2 in read strb task is 401
+[25965] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[26065] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               26065ID2 in read strb task is e34
+[26185] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[26285] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               26285ID2 in read strb task is 770
+[26405] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[26505] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               26505ID2 in read strb task is e07
+[26625] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[26725] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               26725ID2 in read strb task is f72
+[26865] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[26965] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               26965ID2 in read strb task is ba7
+[27085] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[27185] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               27185ID2 in read strb task is 951
+[27305] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[27405] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               27405ID2 in read strb task is c6f
+[27525] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[27625] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               27625ID2 in read strb task is 337
+[27745] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[27845] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               27845ID2 in read strb task is 519
+[27985] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[28085] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               28085ID2 in read strb task is 1b
+[28205] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[28305] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               28305ID2 in read strb task is 3b1
+[28425] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[28525] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               28525ID2 in read strb task is b81
+[28645] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[28745] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               28745ID2 in read strb task is dc
+[28865] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[28965] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               28965ID2 in read strb task is 33
+[29105] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[29205] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               29205ID2 in read strb task is cbc
+[29325] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[29425] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               29425ID2 in read strb task is b90
+[29545] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[29645] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               29645ID2 in read strb task is ccc
+[29765] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[29865] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               29865ID2 in read strb task is 41f
+[29985] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[30085] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               30085ID2 in read strb task is d0c
+[30225] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[30325] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               30325ID2 in read strb task is 86e
+[30445] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[30545] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               30545ID2 in read strb task is 678
+[30665] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[30765] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               30765ID2 in read strb task is 3e7
+[30885] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[30985] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               30985ID2 in read strb task is c4b
+[31105] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[31205] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               31205ID2 in read strb task is c70
+[31345] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[31445] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               31445ID2 in read strb task is 876
+[31565] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[31665] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               31665ID2 in read strb task is d68
+[31785] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 0 int_wr_cntr_width 4
+[31885] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               31885ID2 in read strb task is 3b4
+[32005] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[32105] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               32105ID2 in read strb task is 1d4
+[32225] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+prt_strb 6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a88878584838180 prt_strb1 6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a88878584838180
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data 6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a88878584838180 prt_data3 6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a88878584838180 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 1000000,wr_data 6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a88878584838180,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[32325] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               32325ID2 in read strb task is bae
+[32465] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[32565] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               32565ID2 in read strb task is d8e
+[32685] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[32785] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               32785ID2 in read strb task is 3e4
+[32905] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[33005] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               33005ID2 in read strb task is 727
+[33125] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[33225] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               33225ID2 in read strb task is 4bf
+[33345] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[33445] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               33445ID2 in read strb task is 5f
+[33585] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[33685] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               33685ID2 in read strb task is bdd
+[33805] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[33905] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               33905ID2 in read strb task is 2e5
+[34025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[34125] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               34125ID2 in read strb task is 307
+[34245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[34345] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               34345ID2 in read strb task is 26
+[34465] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[34565] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               34565ID2 in read strb task is 16a
+[34705] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[34805] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               34805ID2 in read strb task is b92
+[34925] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[35025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               35025ID2 in read strb task is efd
+[35145] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[35245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               35245ID2 in read strb task is 789
+[35365] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[35465] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               35465ID2 in read strb task is 81b
+[35585] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[35685] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               35685ID2 in read strb task is 3ba
+[35825] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[35925] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               35925ID2 in read strb task is a8c
+[36045] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[36145] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               36145ID2 in read strb task is dfb
+[36265] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[36365] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               36365ID2 in read strb task is 999
+[36485] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[36585] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               36585ID2 in read strb task is c64
+[36705] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[36805] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               36805ID2 in read strb task is de4
+[36945] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[37045] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               37045ID2 in read strb task is 636
+[37165] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[37265] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               37265ID2 in read strb task is 914
+[37385] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[37485] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               37485ID2 in read strb task is 10b
+[37605] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[37705] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               37705ID2 in read strb task is c15
+[37825] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[37925] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               37925ID2 in read strb task is 3cd
+[38065] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[38165] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               38165ID2 in read strb task is 497
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 1 int_wr_cntr_width 4
+[38285] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[38385] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               38385ID2 in read strb task is c56
+prt_strb 979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a787775747371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d prt_strb1 979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a787775747371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data 979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a787775747371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d prt_data3 979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a787775747371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 1000040,wr_data 979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a787775747371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[38505] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[38605] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               38605ID2 in read strb task is 142
+[38725] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[38825] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               38825ID2 in read strb task is c6f
+[38945] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[39045] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               39045ID2 in read strb task is ee8
+[39185] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[39285] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               39285ID2 in read strb task is 4c3
+[39405] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[39505] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               39505ID2 in read strb task is 1cc
+[39625] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[39725] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               39725ID2 in read strb task is a9c
+[39845] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[39945] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               39945ID2 in read strb task is b88
+[40065] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[40165] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               40165ID2 in read strb task is 5d3
+[40305] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[40405] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               40405ID2 in read strb task is 5ec
+[40525] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[40625] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               40625ID2 in read strb task is abd
+[40745] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[40845] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               40845ID2 in read strb task is 907
+[40965] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[41065] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               41065ID2 in read strb task is 298
+[41185] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[41285] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               41285ID2 in read strb task is 20c
+[41425] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[41525] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               41525ID2 in read strb task is 2ea
+[41645] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[41745] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               41745ID2 in read strb task is b05
+[41865] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[41965] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               41965ID2 in read strb task is 4b
+[42085] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[42185] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               42185ID2 in read strb task is d77
+[42305] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[42405] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               42405ID2 in read strb task is b92
+[42545] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[42645] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               42645ID2 in read strb task is d34
+[42765] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[42865] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               42865ID2 in read strb task is 469
+[42985] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[43085] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               43085ID2 in read strb task is 41b
+[43205] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[43305] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               43305ID2 in read strb task is 750
+[43425] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[43525] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               43525ID2 in read strb task is e52
+[43665] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[43765] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               43765ID2 in read strb task is 699
+[43885] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[43985] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               43985ID2 in read strb task is bb7
+[44105] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[44205] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               44205ID2 in read strb task is ae2
+[44325] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[44425] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               44425ID2 in read strb task is 882
+[44545] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 2 int_wr_cntr_width 4
+[44645] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               44645ID2 in read strb task is 8b3
+[44785] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+prt_strb 7371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797 prt_strb1 7371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data 7371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797 prt_data3 7371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 1000080,wr_data 7371706f6e6d6c6b6a6a696968686868686868686869696a6a6b6c6d6e6f707173747577787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[44885] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               44885ID2 in read strb task is 2c5
+[45005] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[45105] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               45105ID2 in read strb task is 50a
+[45225] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[45325] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               45325ID2 in read strb task is 61b
+[45445] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[45545] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               45545ID2 in read strb task is 1af
+[45665] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[45765] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               45765ID2 in read strb task is 2a9
+[45905] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[46005] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               46005ID2 in read strb task is 18b
+[46125] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[46225] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               46225ID2 in read strb task is 707
+[46345] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[46445] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               46445ID2 in read strb task is 5e2
+[46565] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[46665] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               46665ID2 in read strb task is 327
+[46785] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[46885] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               46885ID2 in read strb task is 4f1
+[47025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[47125] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               47125ID2 in read strb task is cee
+[47245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[47345] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               47345ID2 in read strb task is dc9
+[47465] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[47565] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               47565ID2 in read strb task is 90d
+[47685] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[47785] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               47785ID2 in read strb task is 5c0
+[47905] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[48005] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               48005ID2 in read strb task is 9c5
+[48145] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[48245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               48245ID2 in read strb task is 843
+[48365] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[48465] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               48465ID2 in read strb task is 62c
+[48585] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[48685] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               48685ID2 in read strb task is 6e
+[48805] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[48905] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               48905ID2 in read strb task is 4d3
+[49025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[49125] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               49125ID2 in read strb task is c67
+[49265] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[49365] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               49365ID2 in read strb task is cea
+[49485] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[49585] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               49585ID2 in read strb task is 22
+[49705] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[49805] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               49805ID2 in read strb task is e52
+[49925] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[50025] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               50025ID2 in read strb task is da7
+[50145] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[50245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               50245ID2 in read strb task is e8e
+[50385] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[50485] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               50485ID2 in read strb task is 5dc
+[50605] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[50705] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               50705ID2 in read strb task is ff6
+[50825] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[50925] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               50925ID2 in read strb task is 9c8
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 3 int_wr_cntr_width 4
+[51045] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[51145] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               51145ID2 in read strb task is 374
+prt_strb 787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a78777574 prt_strb1 787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a78777574
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data 787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a78777574 prt_data3 787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a78777574 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 10000c0,wr_data 787a7b7c7e808183848587888a8b8c8e8f9091929394959596969797979798979797979696959594939291908f8e8c8b8a888785848381807e7c7b7a78777574,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[51265] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[51365] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               51365ID2 in read strb task is b4d
+[51505] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[51605] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               51605ID2 in read strb task is ef9
+[51725] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[52795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200008) -> AXI Read -> 4 bytes
+               52795ID2 in read strb task is d07
+[52935] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41200008) with Response 'OKAY'
+[52935] : *ZYNQ_VIP_INFO : Starting Address(0x1000000) -> Read 128 bytes of data from DDR Memory
+[52935] : *ZYNQ_VIP_INFO : Starting Address(0x1000080) -> Read 128 bytes of data from DDR Memory
+[52935] : *ZYNQ_VIP_INFO : Starting Address(0x1000100) -> Read 128 bytes of data from DDR Memory
+[52935] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Write -> 4 bytes
+wr_id called with wr_size 16e 
+               52935ID1 in strb task is d80
+[53085] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41200000) with Response 'OKAY'
+DDR_FRAME_PASS mode=0 n=256
+[54995] : *ZYNQ_VIP_INFO : Starting Address(0x1000000) -> Write 128 bytes of data to DDR Memory
+[54995] : *ZYNQ_VIP_INFO : Starting Address(0x1000080) -> Write 128 bytes of data to DDR Memory
+[54995] : *ZYNQ_VIP_INFO : Starting Address(0x1000100) -> Write 128 bytes of data to DDR Memory
+[54995] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210000) -> AXI Write -> 4 bytes
+wr_id called with wr_size 5bc 
+               54995ID1 in strb task is 928
+[55235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41210000) with Response 'OKAY'
+[55235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210008) -> AXI Write -> 4 bytes
+wr_id called with wr_size e1 
+               55235ID1 in strb task is 752
+[55445] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41210008) with Response 'OKAY'
+[57395] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Write -> 4 bytes
+wr_id called with wr_size 7cc 
+               57395ID1 in strb task is dfb
+[57685] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400034) with Response 'OKAY'
+[57685] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400030) -> AXI Write -> 4 bytes
+wr_id called with wr_size a3a 
+               57685ID1 in strb task is 781
+[57855] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400030) with Response 'OKAY'
+[57855] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400048) -> AXI Write -> 4 bytes
+wr_id called with wr_size ab 
+               57855ID1 in strb task is 816
+[58005] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400048) with Response 'OKAY'
+[58005] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400058) -> AXI Write -> 4 bytes
+wr_id called with wr_size b28 
+               58005ID1 in strb task is 499
+[58245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x40400058) with Response 'OKAY'
+[58245] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Write -> 4 bytes
+wr_id called with wr_size ba8 
+               58245ID1 in strb task is 6d9
+[58545] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41200000) with Response 'OKAY'
+[58545] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               58545ID2 in read strb task is 9d3
+[58675] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[58775] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               58775ID2 in read strb task is 251
+[58895] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[58995] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               58995ID2 in read strb task is 840
+[59135] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[59235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               59235ID2 in read strb task is 6ed
+[59355] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[59455] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               59455ID2 in read strb task is d52
+[59575] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[59675] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               59675ID2 in read strb task is 876
+[59795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[59895] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               59895ID2 in read strb task is 3ab
+[60015] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[60115] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               60115ID2 in read strb task is 8c5
+[60255] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[60355] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               60355ID2 in read strb task is a15
+[60475] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[60575] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               60575ID2 in read strb task is fdb
+[60695] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[60795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               60795ID2 in read strb task is 104
+[60915] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[61015] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               61015ID2 in read strb task is ae4
+[61135] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[61235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               61235ID2 in read strb task is 5ef
+[61375] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[61475] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               61475ID2 in read strb task is 5d2
+[61595] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[61695] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               61695ID2 in read strb task is 350
+[61815] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[61915] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               61915ID2 in read strb task is 880
+[62035] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[62135] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               62135ID2 in read strb task is 53b
+[62255] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[62355] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               62355ID2 in read strb task is a87
+[62495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[62595] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               62595ID2 in read strb task is 348
+[62715] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[62815] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               62815ID2 in read strb task is 56c
+[62935] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[63035] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               63035ID2 in read strb task is 6c7
+[63155] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[63255] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               63255ID2 in read strb task is aa8
+[63375] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[63475] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               63475ID2 in read strb task is 98f
+[63615] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[63715] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               63715ID2 in read strb task is 8b9
+[63835] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[63935] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               63935ID2 in read strb task is 2ac
+[64055] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[64155] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               64155ID2 in read strb task is ab0
+[64275] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[64375] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               64375ID2 in read strb task is 633
+[64495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[64595] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               64595ID2 in read strb task is bfa
+[64735] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[64835] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               64835ID2 in read strb task is 6af
+[64955] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[65055] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               65055ID2 in read strb task is fe0
+[65175] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[65275] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               65275ID2 in read strb task is 46
+[65395] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[65495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               65495ID2 in read strb task is a8e
+[65615] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[65715] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               65715ID2 in read strb task is 968
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 4 int_wr_cntr_width 4
+[65855] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[65955] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               65955ID2 in read strb task is 307
+prt_strb 3f3e3d3c3b3a393837363534333231302f2e2d2c2b2a292827262524232221201f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100 prt_strb1 3f3e3d3c3b3a393837363534333231302f2e2d2c2b2a292827262524232221201f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data 3f3e3d3c3b3a393837363534333231302f2e2d2c2b2a292827262524232221201f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100 prt_data3 3f3e3d3c3b3a393837363534333231302f2e2d2c2b2a292827262524232221201f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 1000000,wr_data 3f3e3d3c3b3a393837363534333231302f2e2d2c2b2a292827262524232221201f1e1d1c1b1a191817161514131211100f0e0d0c0b0a09080706050403020100,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[66075] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[66175] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               66175ID2 in read strb task is 366
+[66295] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[66395] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               66395ID2 in read strb task is 133
+[66515] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[66615] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               66615ID2 in read strb task is c4e
+[66735] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[66835] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               66835ID2 in read strb task is 4ff
+[66975] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[67075] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               67075ID2 in read strb task is 5d3
+[67195] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[67295] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               67295ID2 in read strb task is 833
+[67415] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[67515] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               67515ID2 in read strb task is f26
+[67635] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[67735] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               67735ID2 in read strb task is e13
+[67855] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[67955] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               67955ID2 in read strb task is 62d
+[68095] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[68195] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               68195ID2 in read strb task is 3c1
+[68315] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[68415] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               68415ID2 in read strb task is bd0
+[68535] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[68635] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               68635ID2 in read strb task is 42b
+[68755] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[68855] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               68855ID2 in read strb task is 507
+[68975] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[69075] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               69075ID2 in read strb task is d89
+[69215] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[69315] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               69315ID2 in read strb task is bc5
+[69435] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[69535] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               69535ID2 in read strb task is 5e8
+[69655] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[69755] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               69755ID2 in read strb task is fb3
+[69875] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[69975] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               69975ID2 in read strb task is 4f7
+[70095] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[70195] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               70195ID2 in read strb task is 9df
+[70335] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[70435] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               70435ID2 in read strb task is 372
+[70555] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[70655] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               70655ID2 in read strb task is f39
+[70775] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[70875] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               70875ID2 in read strb task is 8f9
+[70995] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[71095] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               71095ID2 in read strb task is 69a
+[71215] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[71315] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               71315ID2 in read strb task is 7d0
+[71455] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[71555] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               71555ID2 in read strb task is 191
+[71675] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[71775] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               71775ID2 in read strb task is dbe
+[71895] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[71995] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               71995ID2 in read strb task is fc9
+[72115] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[72215] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               72215ID2 in read strb task is 6ec
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 5 int_wr_cntr_width 4
+[72335] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+prt_strb 7f7e7d7c7b7a797877767574737271706f6e6d6c6b6a696867666564636261605f5e5d5c5b5a595857565554535251504f4e4d4c4b4a49484746454443424140 prt_strb1 7f7e7d7c7b7a797877767574737271706f6e6d6c6b6a696867666564636261605f5e5d5c5b5a595857565554535251504f4e4d4c4b4a49484746454443424140
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data 7f7e7d7c7b7a797877767574737271706f6e6d6c6b6a696867666564636261605f5e5d5c5b5a595857565554535251504f4e4d4c4b4a49484746454443424140 prt_data3 7f7e7d7c7b7a797877767574737271706f6e6d6c6b6a696867666564636261605f5e5d5c5b5a595857565554535251504f4e4d4c4b4a49484746454443424140 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 1000040,wr_data 7f7e7d7c7b7a797877767574737271706f6e6d6c6b6a696867666564636261605f5e5d5c5b5a595857565554535251504f4e4d4c4b4a49484746454443424140,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[72435] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               72435ID2 in read strb task is c1f
+[72575] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[72675] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               72675ID2 in read strb task is 5fe
+[72795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[72895] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               72895ID2 in read strb task is c59
+[73015] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[73115] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               73115ID2 in read strb task is c0
+[73235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[73335] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               73335ID2 in read strb task is f3
+[73455] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[73555] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               73555ID2 in read strb task is cbb
+[73695] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[73795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               73795ID2 in read strb task is b04
+[73915] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[74015] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               74015ID2 in read strb task is 7ee
+[74135] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[74235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               74235ID2 in read strb task is 976
+[74355] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[74455] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               74455ID2 in read strb task is bf7
+[74575] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[74675] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               74675ID2 in read strb task is 30
+[74815] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[74915] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               74915ID2 in read strb task is 715
+[75035] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[75135] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               75135ID2 in read strb task is d61
+[75255] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[75355] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               75355ID2 in read strb task is e1a
+[75475] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[75575] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               75575ID2 in read strb task is 12c
+[75695] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[75795] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               75795ID2 in read strb task is f
+[75935] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[76035] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               76035ID2 in read strb task is 6ba
+[76155] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[76255] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               76255ID2 in read strb task is 55c
+[76375] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[76475] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               76475ID2 in read strb task is 30a
+[76595] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[76695] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               76695ID2 in read strb task is d27
+[76815] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[76915] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               76915ID2 in read strb task is 1cb
+[77055] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[77155] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               77155ID2 in read strb task is 224
+[77275] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[77375] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               77375ID2 in read strb task is e41
+[77495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[77595] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               77595ID2 in read strb task is cdc
+[77715] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[77815] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               77815ID2 in read strb task is 351
+[77935] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[78035] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               78035ID2 in read strb task is 4ab
+[78175] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[78275] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               78275ID2 in read strb task is e10
+[78395] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[78495] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               78495ID2 in read strb task is 14c
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 6 int_wr_cntr_width 4
+               78615 In if condition of AFI slave 
+[78615] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[78715] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               78715ID2 in read strb task is 83
+prt_strb bfbebdbcbbbab9b8b7b6b5b4b3b2b1b0afaeadacabaaa9a8a7a6a5a4a3a2a1a09f9e9d9c9b9a999897969594939291908f8e8d8c8b8a89888786858483828180 prt_strb1 bfbebdbcbbbab9b8b7b6b5b4b3b2b1b0afaeadacabaaa9a8a7a6a5a4a3a2a1a09f9e9d9c9b9a999897969594939291908f8e8d8c8b8a89888786858483828180
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data bfbebdbcbbbab9b8b7b6b5b4b3b2b1b0afaeadacabaaa9a8a7a6a5a4a3a2a1a09f9e9d9c9b9a999897969594939291908f8e8d8c8b8a89888786858483828180 prt_data3 bfbebdbcbbbab9b8b7b6b5b4b3b2b1b0afaeadacabaaa9a8a7a6a5a4a3a2a1a09f9e9d9c9b9a999897969594939291908f8e8d8c8b8a89888786858483828180 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 1000080,wr_data bfbebdbcbbbab9b8b7b6b5b4b3b2b1b0afaeadacabaaa9a8a7a6a5a4a3a2a1a09f9e9d9c9b9a999897969594939291908f8e8d8c8b8a89888786858483828180,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[78835] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[78935] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               78935ID2 in read strb task is 9f8
+[79055] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[79155] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               79155ID2 in read strb task is a86
+[79295] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[79395] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               79395ID2 in read strb task is 57f
+[79515] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[79615] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               79615ID2 in read strb task is f8e
+[79735] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[79835] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               79835ID2 in read strb task is 6c3
+[79955] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[80055] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               80055ID2 in read strb task is c6a
+[80175] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[80275] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               80275ID2 in read strb task is 106
+[80415] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[80515] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               80515ID2 in read strb task is e90
+[80635] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[80735] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               80735ID2 in read strb task is f8e
+[80855] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[80955] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               80955ID2 in read strb task is 97e
+[81075] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[81175] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               81175ID2 in read strb task is bee
+[81295] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[81395] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               81395ID2 in read strb task is da2
+[81535] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[81635] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               81635ID2 in read strb task is b04
+[81755] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[81855] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               81855ID2 in read strb task is 519
+[81975] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[82075] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               82075ID2 in read strb task is a73
+[82195] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[82295] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               82295ID2 in read strb task is aa0
+[82415] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[82515] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               82515ID2 in read strb task is f1d
+[82655] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[82755] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               82755ID2 in read strb task is 3d9
+[82875] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[82975] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               82975ID2 in read strb task is 676
+[83095] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[83195] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               83195ID2 in read strb task is 1f9
+[83315] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[83415] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               83415ID2 in read strb task is b7b
+[83535] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[83635] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               83635ID2 in read strb task is d70
+[83775] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[83875] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               83875ID2 in read strb task is 277
+[83995] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[84095] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               84095ID2 in read strb task is 9ad
+[84215] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[84315] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               84315ID2 in read strb task is 6ec
+[84435] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[84535] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               84535ID2 in read strb task is aa
+[84655] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[84755] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               84755ID2 in read strb task is 8e1
+[84895] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[84995] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               84995ID2 in read strb task is b0b
+ afi_slave aw_qos 0 aw_cnt[int_wr_cntr_width-2:0] 0 int_wr_cntr_width 4
+[85115] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+prt_strb fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0dfdedddcdbdad9d8d7d6d5d4d3d2d1d0cfcecdcccbcac9c8c7c6c5c4c3c2c1c0 prt_strb1 fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0dfdedddcdbdad9d8d7d6d5d4d3d2d1d0cfcecdcccbcac9c8c7c6c5c4c3c2c1c0
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb1 zzzzzzzzzzzzzzzzffffffffffffffff
+prt_data fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0dfdedddcdbdad9d8d7d6d5d4d3d2d1d0cfcecdcccbcac9c8c7c6c5c4c3c2c1c0 prt_data3 fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0dfdedddcdbdad9d8d7d6d5d4d3d2d1d0cfcecdcccbcac9c8c7c6c5c4c3c2c1c0 
+prt_strb zzzzzzzzzzzzzzzzffffffffffffffff prt_strb3 zzzzzzzzzzzzzzzzffffffffffffffff 
+wr_addr 10000c0,wr_data fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0dfdedddcdbdad9d8d7d6d5d4d3d2d1d0cfcecdcccbcac9c8c7c6c5c4c3c2c1c0,wr_bytes 40 , wr_strb zzzzzzzzzzzzzzzzffffffffffffffff 
+[85215] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               85215ID2 in read strb task is 49a
+[85335] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[85435] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               85435ID2 in read strb task is 803
+[85555] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[85655] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               85655ID2 in read strb task is ef5
+[85775] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[85875] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x40400034) -> AXI Read -> 4 bytes
+               85875ID2 in read strb task is 5c
+[86015] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x40400034) with Response 'OKAY'
+[87095] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200008) -> AXI Read -> 4 bytes
+               87095ID2 in read strb task is ce3
+[87235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41200008) with Response 'OKAY'
+[87235] : *ZYNQ_VIP_INFO : Starting Address(0x1000000) -> Read 128 bytes of data from DDR Memory
+[87235] : *ZYNQ_VIP_INFO : Starting Address(0x1000080) -> Read 128 bytes of data from DDR Memory
+[87235] : *ZYNQ_VIP_INFO : Starting Address(0x1000100) -> Read 128 bytes of data from DDR Memory
+[87235] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Write -> 4 bytes
+wr_id called with wr_size 667 
+               87235ID1 in strb task is 45b
+[87525] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Write for Starting Address(0x41200000) with Response 'OKAY'
+DDR_FRAME_PASS mode=1 n=256
+DDR_INTEGRATION_PASS checks=1570
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+$finish called at time : 89495100 ps : File "/wrk/2018.3/nightly/2018_12_06_2405991/packages/customer/vivado/data/xilinx_vip/hdl/axi_vip_axi4pc.sv" Line 3093
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:12 . Memory (MB): peak = 457.434 ; gain = 0.000
+# close_sim
+INFO: [Simtcl 6-16] Simulation closed
+# set result [file join $root bd_start.sim sim_1 behav xsim ddr_result.txt]
+# if {![file exists $result]} {error "DDR simulation did not finish"}
+# file copy -force $result [file join $root evidence ddr_result.txt]
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 15:36:29 2026...

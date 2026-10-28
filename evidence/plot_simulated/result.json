@@ -1,0 +1,26 @@
+{
+  "samples": 4096,
+  "sample_rate_hz": 10000000.0,
+  "fft_bin_hz": 2441.40625,
+  "peak_bin": 41,
+  "fft_peak_bin_hz": 100097.65625,
+  "fft_interpolated_hz": 99992.04430657563,
+  "reference_hz": 100000.0,
+  "absolute_error_hz": 7.955693424373749,
+  "relative_error_percent": 0.00795569342437375,
+  "mean_code": 127.523681640625,
+  "min_code": 104,
+  "max_code": 152,
+  "phase_reference_hz": 100000.0,
+  "phase_at_first_sample_deg": 0.0001318130490328709,
+  "fitted_amplitude_codes": 23.993629395009467,
+  "fitted_dc_code": 127.5200252722475,
+  "first_sample_minus_fitted_dc": 0.4799747277525057,
+  "analog_calibration": "NOT VERIFIED by software; confirm actual board delay/gain/polarity",
+  "source": "SIMULATED digital loopback; not board measurement",
+  "metadata": {
+    "fs": "10000000",
+    "freq": "100000",
+    "mode": "REAL"
+  }
+}

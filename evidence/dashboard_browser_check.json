@@ -1,0 +1,18 @@
+{
+  "url": "http://127.0.0.1:8765/?demo=1",
+  "source": "Xilinx IP digital simulation CSV, not board measurement",
+  "browser_check": {
+    "samples_displayed": 4096,
+    "frequency_displayed_khz": 99.992,
+    "range_displayed": "104-152",
+    "first_sample_displayed": 128,
+    "time_plot_visible": true,
+    "spectrum_plot_visible": true,
+    "full_frame_selection_verified": true,
+    "three_period_selection_restored": true,
+    "capture_disabled_without_serial": true
+  },
+  "physical_serial_accessed": false,
+  "board_programmed": false,
+  "physical_loopback_tested": false
+}

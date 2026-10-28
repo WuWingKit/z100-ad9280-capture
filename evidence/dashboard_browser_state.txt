@@ -1,0 +1,6 @@
+Browser tab: 1, Title: "Z100 · AD/DA 测量台", URL: "http://127.0.0.1:8765/?demo=1".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~			63 pop up button (collapsed, settable) Value: 前三周期, ID: timeView, Secondary Actions: Expand
+~					65 (selected) 前三周期
+~					66 完整帧
+The focused UI element is 63 pop up button (collapsed, settable) Value: 前三周期, ID: timeView, Secondary Actions: Expand

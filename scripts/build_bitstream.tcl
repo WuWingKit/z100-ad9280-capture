@@ -10,7 +10,7 @@ if {[get_property PROGRESS [get_runs impl_1]] ne "100%"} {error "Implementation 
 open_run impl_1
 report_timing_summary -report_unconstrained -file [file join $root hardware timing_routed.rpt]
 report_drc -file [file join $root hardware drc_routed.rpt]
-report_cdc -file [file join $root hardware cdc_routed.rpt]
+report_cdc -details -file [file join $root hardware cdc_routed.rpt]
 report_io -file [file join $root hardware io_routed.rpt]
 foreach typ {max min} {
     set paths [get_timing_paths -delay_type $typ -max_paths 1]
@@ -24,7 +24,8 @@ launch_runs impl_1 -to_step write_bitstream -jobs 4
 wait_on_run impl_1
 set bit [file join $root bd_start.runs impl_1 z100_adc_top.bit]
 if {![file exists $bit]} {error "Bitstream generation failed"}
-file copy -force $bit [file join $root hardware z100_adc.bit]
-write_sysdef -hwdef [file join $root hardware system.hdf] -bitfile $bit -file [file join $root hardware z100_adc.hdf] -force
+file copy -force $bit [file join $root hardware z100_cordic.bit]
+write_sysdef -hwdef [file join $root hardware system.hdf] -bitfile $bit -file [file join $root hardware z100_cordic.hdf] -force
 puts {Z100_BITSTREAM_PASS}
 close_project
+

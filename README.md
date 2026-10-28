@@ -1,70 +1,123 @@
-# Z100 / AD9280 采集测试工程
+# Z100：CORDIC 发波、同步 AD 采集、DDR 存储与 PC 频谱分析
 
-Vivado / Xilinx SDK **2018.3**，目标 **XC7Z035FFG900-2**。
+本分支：`feature/cordic-loop-20261028`。下载完整工程、bit 和 ELF：
+[v0.2.0-20261028 离线验证预发布版](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.2.0-20261028)。
 
-本项目验证8位ADC数据四点打包为32位，经异步FIFO、AXI-Stream、AXI DMA S2MM、PS HP0写入DDR，再由ARM通过PS UART0发送到电脑。
+Git 中保存源码、BD/XCI、文档和验证记录；生成的 IP、SDK 工作区及二进制位于 Release 完整工程包。源码检出后可用 Vivado 2018.3 执行 `scripts/recreate_project.tcl`，在 `_rebuild_cordic/bd_start.xpr` 重建工程。若希望直接查看本机已验证的完整工程，请解压 Release ZIP 后打开其中的 `bd_start.xpr`。
 
-- [详细飞书进度文档](https://scnk2ajxowqf.feishu.cn/docx/H72Wd9MzooIdQ8xeYZtcTJGTnPg)
-- [完整测试工程包及bit/HDF/ELF下载](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.1.0-20261022)
-- [上电前实物核对](POWER_CHECK.md)
-- [CDC和时序审查说明](hardware/REVIEW_NOTES.md)
-- [多人协作、分支与PR规则](CONTRIBUTING.md)
+本版 [测试报告](docs/TEST_REPORT.md) / [CDC 审阅](docs/CDC_REVIEW.md) / [仿真图](evidence/plot_simulated/waveform_spectrum.png)。历史 2026-10-22 的证据及模块继续保留供追溯；本版使用 `rtl/measurement_core.v`、`rtl/fifo_to_axis.v` 和新的两套 testbench。
 
-## 多人共同开发
+## HTML 波形/频谱页面与上板入口
 
-从main创建功能分支，通过PR提交；至少一位其他成员审阅并通过`Source and RTL checks`后合并。main禁止强推和删除，采用Squash merge，合并后自动删除功能分支。所有者保留紧急管理能力。
+双击 `web/start_dashboard.cmd`，用桌面 Chrome/Edge 打开 `http://127.0.0.1:8765`。通过 Web Serial 接收本版 PS 数据，显示时域波形、FFT 和频率，检查 CRC 并导出 CSV/JSON/PNG/串口日志。先离线演示，再递增码自检，最后真实回环。网页默认数字幅度 8，命令行无参数默认仍为 24；两者都不是电压值。具体 SDK Debug 和测试步骤见 [BOARD_TEST.md](docs/BOARD_TEST.md)。
 
-已为`SunXingzhi`和`Qing8889494`发送Write邀请，接受后可以推送分支；第三位成员un.待提供GitHub用户名后邀请。邀请状态以GitHub Settings → Collaborators为准。
+这是从 `E:/FPGAWork/z100_adc_hw_20261022` 创建的独立开发副本。工具为 Vivado/SDK 2018.3，器件 XC7Z035FFG900-2。当前版本用于单帧、可重复触发的 AD/DA 回环实验。
 
-CI包含可移植的BD/XCI/XDC基线检查，以及打包/AXIS轻量RTL测试。它不包含Vivado完整工程构建、实际异步FIFO、PS/DMA/DDR或ADC模拟精度验证。若项目规范有意变化，应同时更新测试基线、说明和验证证据。
+**当前输出属于离线构建和仿真结果。没有下载到开发板，没有连接串口执行指令，没有写 Flash；真实模拟回环的延迟、增益、极性与频率误差尚待实测。**
 
-## 截止2026-10-22的状态
+## 从哪里打开
 
-| 验证 | 结果 | 来源/限制 |
-|---|---|---|
-| 板上`t`计数自检 | SELFTEST PASS；100点0～99，总和4950 | 用户串口截图；代理未重新操作板卡 |
-| 板上`c`真实采集 | 100点统计：sum12503、min125、max126 | 用户提供；模拟输入未接信号源，不证明模拟精度 |
-| 历史PL集成仿真 | 两帧200点、2676项检查PASS | 数字ADC模型、PS VIP DDR模型 |
-| 本次仿真复跑 | 受阻，没有新的PASS | XSim申请536870924字节失败；无波形重试同样失败 |
-| 数据复核 | 序列/统计一致；4项校验器负向测试通过 | 截图手工转录，非新硬件采集 |
-| 产物一致性 | 7个文件SHA-256与历史验证记录一致 | bit、HDF、ELF及关键源文件 |
-| 源码重建 | SOURCE_PROJECT_RECREATED | Vivado2018.3中创建工程、验证BD、生成IP输出；未重新综合 |
-| 布局布线 | WNS3.562ns、WHS0.060ns；DRC0错误 | 历史构建；保留CDC Critical/Warning与DRC Advisory |
-| Flash | 尚未固化 | 当前用于JTAG Debug；没有本项目BOOT.BIN |
+| 内容 | 本目录内位置 |
+|---|---|
+| Vivado 工程 | `bd_start.xpr` |
+| BD | `bd_start.srcs/sources_1/bd/capture_bd/capture_bd.bd` |
+| FPGA 顶层 | `rtl/z100_adc_top.v` |
+| 发波、采集和控制核心 | `rtl/measurement_core.v` |
+| FIFO 到 AXI-Stream | `rtl/fifo_to_axis.v` |
+| 引脚和时序约束 | `constraints/z100_adc.xdc` |
+| PS C 程序 | `software/main.c` |
+| SDK 工作区 | `sdk_workspace`，Application 为 `adc_uart` |
+| bit 流 | `hardware/z100_cordic.bit` |
+| 含 bit 的硬件描述 | `hardware/z100_cordic.hdf` |
+| ARM ELF | `sdk_workspace/adc_uart/Debug/adc_uart.elf`，同时复制到 `hardware/adc_uart.elf` |
+| 数字核心仿真工程 | `sim_project/simcheck.xpr`，顶层 `tb_measurement` |
+| 全 BD 仿真 | 主工程 Simulation Sources 中的 `tb_loop_ddr` |
+| PC 采集和绘图 | `pc/capture_analyze.py` |
+| 仿真数据及示例图 | `evidence/plot_simulated/` |
+| 实现说明 | `docs/IMPLEMENTATION.md` |
 
-原始工程快照中两个RTL与BD仍一致，`.xpr`已有变化；不声称原始工程所有文件均未改变。历史`verification_summary.json`和`offline_preflight.json`是当时结果，当前状态以`evidence/20261022_progress/progress_status.json`为准。
+Vivado 使用 **Open Project** 打开本目录的 xpr。打开 BD 后可看到实际 CORDIC IP、AXI DMA、PS、GPIO 配置及 FIFO。这里保留 `z100_adc_top` / `bd_start` 等旧名称，是为了沿用已有工程结构。
 
-## 获取与打开
+本版生效的自定义 Verilog 在 `rtl/`。`bd_start.srcs/sources_1/new/` 中沿用的旧采集模块仅作为历史参考，未加入本版编译；修改本版逻辑时请编辑上表中的文件。
 
-**推荐新成员下载Release中的完整ZIP**，校验`SHA256SUMS.txt`后解压到无中文、无空格目录，例如`E:/FPGAWork/z100_capture`。打开根目录`bd_start.xpr`。顶层应为`z100_adc_top`，BD为`capture_bd`。完整包包含生成的IP输出、SDK项目、bit/HDF/ELF、报告与证据；不包含运行缓存或巨大波形。
+## 数据通路
 
-Git仓库存放源码、BD/XCI配置和证据，生成的IP及构建二进制位于Release。直接克隆后可在Vivado 2018.3 Tcl Console执行：
-
-```tcl
-source E:/your_checkout/z100-ad9280-capture/scripts/recreate_project.tcl
+```mermaid
+flowchart LR
+ PS[PS 串口命令/参数] -->|GP0 / AXI-Lite| CTRL[配置GPIO和测量状态机]
+ CTRL --> P[32位相位累加器]
+ P --> C[CORDIC Sin/Cos IP]
+ C --> SCALE[幅度缩放/极性补偿/8位码]
+ SCALE --> DA[AD9708 DA]
+ DA -->|实际回环接线，待实测| AD[AD9280 AD]
+ AD --> PACK[每4个8位点打包32位]
+ PACK --> FIFO[异步FIFO 32×1024 FWFT]
+ FIFO --> AXIS[AXI-Stream / TLAST]
+ AXIS --> DMA[AXI DMA S2MM]
+ DMA -->|SmartConnect / HP0| DDR[PS DDR]
+ DDR --> UART[PS检查/CRC/串口]
+ UART --> PC[PC CSV/FFT/频谱和波形]
 ```
 
-重建脚本创建`_rebuild/bd_start.xpr`，不会覆盖已有重建工程，也不会连接或下载板卡。IP输出需由本机Vivado重新生成。没有实机重新验证这些步骤前，不要将“源工程可重建”等同于“模拟输入已标定”。
+CORDIC 用于**产生正弦波**，FFT 用于**估计采集信号的频率**。本版 FFT 放在 PC，PS 负责配置、DMA 和数据回传。尚未加入 PL FFT、连续流、乒乓缓存或雷达距离/角度处理。
 
-## SDK与串口
+## 本版参数和使用
 
-完整包的SDK工作区为`sdk_workspace`。如项目未显示，使用SDK的Import → General → Existing Projects into Workspace，导入`z100_hw`、`adc_bsp`和`adc_uart`，不要导入旧机器的`.metadata`。
+- ADC/DAC 更新频率 10 MHz；AXI 时钟 100 MHz。
+- N：256、512、1024、2048、4096；默认 4096 个 8 位样本。
+- 发波频率 1 kHz～1 MHz；默认 100 kHz。
+- 幅度参数 0～96；默认 24。单位为理想数字幅度码，不是伏特。
+- 延迟 0～255 个采样时钟；默认 3 **仅对应本工程数字模型**，需重新标定真实模拟链路。
+- 不发波时 DAC 保持 128；不自动开始测量。
 
-- FPGA配置：`hardware/z100_adc.bit`
-- ARM应用：`sdk_workspace/adc_uart/Debug/adc_uart.elf`
-- 硬件描述：`hardware/system.hdf`，以及包含bit的`hardware/z100_adc.hdf`
-- 裸机源码：`software/main.c`
-- UART：板载PS USB串口，UART0 RX=MIO14/TX=MIO15，115200、8N1、无流控
-- `t`：内部0～99自检；`c`：真实ADC100点；`s`：状态
+将来进行 JTAG Debug 测试时，串口采用 **PS UART0、115200、8N1**，使用实际枚举的 USB 串口。每条命令需带回车：
 
-先完成断电实物核对，再使用JTAG Debug。按键没有绑定采样启动。ADC时钟持续运行，`c`只启动一帧记录。串口发送十六进制文本，不是100个原始二进制串口字节。
+```text
+h
+t 100000 4096 3 24
+m 100000 4096 3 24
+s
+r
+```
 
-若需重新生成SDK应用，先在本目录运行SDK 2018.3 XSCT的`scripts/build_software.tcl`创建全新工作区；已有SDK工作区用`scripts/rebuild_software.tcl`。原有`scripts/verify_preflight.py`含本机原始快照路径，属于原开发机检查，不适合作为其他电脑的通用入口。
+`t` 是 PL 内部递增码完整性自检，DAC 保持中点；`m`（或 `c`）是真实 AD 采样，同时开启 CORDIC DA 发波；`s` 读状态；`r` 同时复位 DMA 和采集链路。`q` 停止并复位，在采集轮询期间单独发送字符 q 也可中止；已经进入串口打印阶段则需等打印结束。无参数的 `m`、`c`、`t` 使用默认值。测量失败后必须 `r` 才允许下一次。
 
-## 关键配置
+上板前阅读 `docs/IMPLEMENTATION.md` 的接线与标定说明。尤其不要将 FPGA 数字排针当成模拟接口。
 
-ADC10MHz；采样180°；AXI100MHz；FIFO32×1024、FWFT；每帧100点/25字/100字节；末字TLAST。GPIO控制0x41200000，DMA0x40400000。数据位D0～D7：AD13、AC16、AD14、AC17、AB16、AB14、AB17、AB15；OTR=AE18；ADC时钟=AA17。必须使用配套J37连接并核实V_B10/V_B11为3V3。
+## 先离线看效果
 
-## 证据来源与许可边界
+安装 Python 依赖：
 
-截图原图、手工转录CSV、统计JSON、测试脚本及日志位于`evidence/20261022_progress`。`c`仅保留统计摘要，不补造缺失原始日志。厂家资料盘PDF及Vivado/SDK安装文件不随仓库上传；生成的AMD/Xilinx IP和SDK组件遵循其原有许可，不能据此认为整仓库都属于某个新增开源许可证。
+```powershell
+python -m pip install -r pc/requirements.txt
+python pc/capture_analyze.py --input evidence/loopback_simulated.csv --frequency 100000 --source "SIMULATED digital loopback; not board measurement" --output evidence/plot_simulated
+python pc/test_analysis.py
+```
+
+打开 `evidence/plot_simulated/waveform_spectrum.png`。这是实际 Xilinx CORDIC / FIFO IP 数字仿真导出的 4096 点，不是开发板测量：参考 100 kHz，FFT 插值结果约 99.992 kHz；完整数据和数值在同目录 CSV / JSON。
+
+也可在 Vivado 打开主工程，选择 Run Simulation → Run Behavioral Simulation，再在仿真 Tcl Console 输入 `run all`，观察 `tb_loop_ddr` 的完整 BD 测试；打开 `sim_project/simcheck.xpr` 同样操作可运行 `tb_measurement` 数字核心与异常恢复测试。
+
+后续实测使用（COM 号按电脑实际情况修改，串口助手须先关闭）：
+
+```powershell
+python pc/capture_analyze.py --port COM7 --frequency 100000 --samples 4096 --delay 3 --amplitude 24 --output measurements/run001
+```
+
+程序只在明确提供 `--port` 时访问串口；会发送测量命令并保存原始返回、CSV、CRC 校验结果、图像及频率分析。串口是单帧低速回传，不能承担 10 MSPS 连续实时输出。
+
+## 重新验证和构建
+
+在本目录运行，确保 Xilinx 2018.3 可执行文件路径正确：
+
+```powershell
+$env:PROCESSOR_ARCHITECTURE='AMD64'
+& E:/Xilinx/Vivado/2018.3/bin/vivado.bat -mode batch -source scripts/run_sim.tcl
+& E:/Xilinx/Vivado/2018.3/bin/vivado.bat -mode batch -source scripts/refresh.tcl
+& E:/Xilinx/Vivado/2018.3/bin/vivado.bat -mode batch -source scripts/run_ddr_sim.tcl
+& E:/Xilinx/Vivado/2018.3/bin/vivado.bat -mode batch -source scripts/build_bitstream.tcl
+```
+
+已有 SDK 工作区中修改 C 后可直接在 SDK 执行 Build Project。`scripts/build_software.tcl` 用于**空 SDK 工作区首次创建**，不要在已有相同名称工程的工作区重复创建。
+
+验证范围和最终状态见 `evidence/verification.json`。启动真实开发板前，需确认模块、J37 方向、3.3V 数字 IO 和模拟输出幅度。默认延迟不构成实物零相位保证。

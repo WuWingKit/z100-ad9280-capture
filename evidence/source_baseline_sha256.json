@@ -1,0 +1,10 @@
+{
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.xpr": "1c783983445acc6469559259021ed7b150e11fc34169b1ace3a6990125573e78",
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\rtl\\adc_board_control.v": "27670bbdfc902c165619c3209c1e5a2897db957ddbac50105c6654e4a687616a",
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\rtl\\z100_adc_top.v": "35658b94d251adef33d6754cfe216c52b16e170f809148cca5cb7c69593ccd22",
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\software\\main.c": "039b21e1000c3a4d7f31439e5864a4c8c29e263e0f046fb444058a5b4057f496",
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\constraints\\z100_adc.xdc": "bc1d1af4d328ac1307393027ad755da99dff02a386408459ae72ff0c7111a460",
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.srcs\\sources_1\\bd\\capture_bd\\capture_bd.bd": "4314e87ba8df2fbf7e8c9e3371fe91b73d8cf234bc78e6fca1d11eefc18667b3",
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.srcs\\sources_1\\new\\adc_capture_pack.v": "edb279676079a162d7703dda791471e4b47736be2bc7f282b761de56270c9cc4",
+  "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.srcs\\sources_1\\new\\fifo_to_axis.v": "17ac651db4c6b5b278e71d8e2c58a80fc4e4ffa82d58e1c5762b51ec0847a059"
+}
