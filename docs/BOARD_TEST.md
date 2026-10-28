@@ -21,6 +21,10 @@
 5. 停在 main 时点击 Resume（绿色继续按钮），让 ARM 进入串口命令循环。仅配置 FPGA 不会执行 ARM C 程序。
 6. 应看到 `Z100 CORDIC LOOP v1 / UART0 115200 8N1 / NO AUTO START`。若用 SDK Terminal 查看该提示，确认后关闭 Terminal 释放串口。
 
+首次在另一台电脑使用时，包内不含个人SDK `.metadata`。若Project Explorer为空，通过 **File → Import → General → Existing Projects into Workspace**，根目录选择包内`sdk_workspace`，导入`z100_hw`、`adc_bsp`、`adc_uart`，然后Build All。项目已在工作区目录中时，不要复制到同一位置。
+
+若ELF能运行但Debug找不到源码，将Source Lookup指向本机`adc_uart/src`，或在导入后的工作区重新编译。`rebuild_software.tcl`用于已经导入/注册项目的SDK工作区；仅有项目文件夹但未导入时，应先完成上述Import。
+
 命令行调试替代入口是 `scripts/debug_jtag.tcl`，它有物理检查环境变量门槛，只做 bit+DDR ELF 下载、不写 Flash；没有在本次准备工作中执行。
 
 ## 3. 打开 HTML

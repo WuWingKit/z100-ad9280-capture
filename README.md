@@ -119,6 +119,10 @@ Verilog描述并行电路：多个`always`同时工作，`<=`是时钟沿后的�
 7. 确认模拟接线和电压后勾选页面确认框，点击“采集真实AD数据”。
 8. 保存CSV、分析JSON、PNG和串口原文，随后再开始下一帧。
 
+**另一台电脑首次打开SDK时**，工程包不包含个人`.metadata`。如果Project Explorer为空：选择 **File → Import → General → Existing Projects into Workspace**，根目录选解压包中的`sdk_workspace`，导入`z100_hw`、`adc_bsp`、`adc_uart`三个项目；项目已在该目录时不要勾选复制到同一工作区。导入后执行Build All，再启动Debug。
+
+如果Debug提示找不到源文件，是ELF中的原编译路径与本机路径不同：将Source Lookup指向本机`adc_uart/src`，或在导入后的SDK中重新Build。本版源码与ELF已同步，重新编译不会要求改业务代码。
+
 只下载bit不会运行ARM程序。网页、SDK Terminal和其它串口助手不能同时占用同一串口。
 
 ## 7. 参数与串口命令
