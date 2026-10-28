@@ -12,6 +12,8 @@
 
 如果从 GitHub 下载，请从 Release 取完整工程包和附件，普通源码 ZIP 不含生成的 IP/SDK 工作区。上板时不能混用旧 `z100_adc.bit` 或旧 100 点程序。
 
+中文Windows下的完整工程包使用GBK保存Vivado/SDK手写源码；GitHub网页源码保留UTF-8。若从Git检出后中文注释乱码，先运行`python scripts/source_encoding.py --target gbk`。关闭乱码标签且不要保存，再重新打开；网页、Python和README仍使用UTF-8，不要一并转换。
+
 ## 2. 连接与运行
 
 1. 按配套示例检查 J37 方向、3.3V 数字 IO 银行供电。模拟 DA OUT 接模拟 AD IN，共地；模拟接口不得接 FPGA GPIO。DA 模块有模拟增益调节，先测电压确认 AD 输入范围。

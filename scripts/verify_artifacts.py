@@ -99,6 +99,12 @@ result = {
     "sha256": {f: sha(root / f) for f in files},
 }
 # ===== 4. 同时生成机器可读JSON和供成员阅读的TEST_REPORT.md =====
+if (root / "evidence/source_encoding.json").exists():
+    result["source_encoding"] = json.loads(read("evidence/source_encoding.json"))
+    result["source_hash_scope"] = (
+        "Byte hashes refer to the full release package with GBK IDE sources; "
+        "GitHub canonical sources use UTF-8 with the same decoded Unicode text."
+    )
 (root / "evidence/verification.json").write_text(
     json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
 )

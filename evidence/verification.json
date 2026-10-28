@@ -1,5 +1,5 @@
 {
-  "created_local": "2026-10-28T16:48:58.494883+08:00",
+  "created_local": "2026-10-28T17:53:47.727105+08:00",
   "project": "E:\\FPGAWork\\z100_cordic_loop_20261028\\bd_start.xpr",
   "part": "xc7z035ffg900-2",
   "tools": "Vivado / SDK 2018.3",
@@ -14,7 +14,7 @@
     "E:\\FPGAWork\\z100_adc_hw_20261022\\bd_start.srcs\\sources_1\\new\\fifo_to_axis.v": true
   },
   "core_simulation": "PASS frames=5 checks=39707 cordic_checks=9306 stalls=1876 invalid_config=PASS overflow_recovery=PASS",
-  "bd_dma_ddr_simulation": "PASS frames=2 samples=512 DDR_bytes=512 guards=256 checks=1570",
+  "bd_dma_ddr_simulation": "PASS frames=2 samples=512 DDR_bytes=512 guards=256 checks=1572",
   "pc_analysis": "PC_ANALYSIS_PASS frequencies=4 CRC/truncation/error_rejection=PASS flat_input_rejection=PASS",
   "web_dashboard": "WEB_DSP_PASS CRC32 / packet checks / RAMP / flat rejection / 4 frequencies / actual Xilinx-model CSV\n{\"n\":4096,\"frequency\":99992.04430657563,\"phaseDeg\":0.00013181304897664213,\"binHz\":2441.40625}",
   "web_browser_check": "IAB demo, 4096 samples, 99.992 kHz, time-range switching verified; physical Web Serial untested",
@@ -69,17 +69,173 @@
     "PS C software execution and q abort behavior have not been board-tested"
   ],
   "sha256": {
-    "bd_start.xpr": "10e014b2eda519066a0961af1d87cbe499b0bd4fc85cec86aab1df2b398682ee",
-    "rtl/measurement_core.v": "9c8898066abe23484cf28b65eeeb6038151739f33d6259ab434e26c26ee2070a",
-    "rtl/fifo_to_axis.v": "7cf0581fa60ea64d3c7c17b0daf31216113b3dc86445b3f474fb69d3b4b13c23",
-    "rtl/z100_adc_top.v": "d696e7c4dc283261531d4b351ef79da19c57372e968c2c7624fe5a074f2c8b7d",
-    "constraints/z100_adc.xdc": "32d3a87ab573bdc1a7c3945d202ad34a7eb6fd3c8d4baa07e0aaaba8b1f05cfd",
-    "software/main.c": "082f864099972f31cbb5aabd3feb710c17d4658525faf41f27df3c7867023605",
-    "hardware/z100_cordic.bit": "52a4f667c45f7c453a342a64c34bcbb8a05854c111099aa5a4e57f129d6c5f5c",
-    "hardware/z100_cordic.hdf": "8162b3ab073c72d0128a3868f94bcef6428ea40fa9780ef404f0d08e0ddc5d83",
+    "bd_start.xpr": "c4657d75ceb71767c46f79b54c8fc4177ce4e7e45ad087e66ea88812a3a11937",
+    "rtl/measurement_core.v": "bbc6833097dcff8c9b4f44a08a7a30b5d717cf2e4c78c560ab33e7e57cc0fd19",
+    "rtl/fifo_to_axis.v": "9e722b1f52377a6e58a27cc0ef32865b9bc5ee78fbb0816bf4ef9c43ef1d2827",
+    "rtl/z100_adc_top.v": "76dd66d9fe9eb020cca991fecc46d55fdf65700c655bbedac5dd87adde6f219e",
+    "constraints/z100_adc.xdc": "915ffd712adb5869f8cd1dcdde8d1087d8a80ea91c31f2ff2e33f4b3a2bde830",
+    "software/main.c": "6e642683fb29aba661d04e8b88723b4a279d9c605813fb0fa3dba6615c929425",
+    "hardware/z100_cordic.bit": "8b2e9ae23ff75ee881b6ea264e7e168736f2dc28a895a9e8f0421d4545f2c3c6",
+    "hardware/z100_cordic.hdf": "9e102fd67fc7b43d31a99f4c592cd5a32ce48b2a78ebf18a798431356dfc0717",
     "hardware/adc_uart.elf": "0ccac48409a1ef65b949b8d13d2fd85327b105e9c60a8ab7d27c97a922ea186d",
     "pc/capture_analyze.py": "84e10814aed94c99703a2ae80179be297a23a19afa034fdbc67c7449dc020673",
     "evidence/measurement_result.txt": "45a040a9b21e82b7f1a8193787795f9b9133833c7ebf6f05681bfdaa9783d8ab",
-    "evidence/ddr_result.txt": "dac88b32d7ccb35535e378deeea3d7239db8ccb338df12a0892e1dd02de6ed17"
-  }
+    "evidence/ddr_result.txt": "709c5b4a67fb695e82bfeb1533e9e93603ff4d5b3e5a5d786ba7818fb92db63e"
+  },
+  "source_encoding": {
+    "target_encoding": "gbk",
+    "backup": "E:\\FPGAWork\\z100_cordic_loop_20261028_encoding_backup_20261028_174212_737497.zip",
+    "changed_files": [
+      {
+        "path": "rtl/adc_board_control.v",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "a7c2558c3375410d6ee1f988ce1691362f755ea281f424d1b4d703def3ce9bb2"
+      },
+      {
+        "path": "rtl/fifo_to_axis.v",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "7cf0581fa60ea64d3c7c17b0daf31216113b3dc86445b3f474fb69d3b4b13c23"
+      },
+      {
+        "path": "rtl/measurement_core.v",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "9c8898066abe23484cf28b65eeeb6038151739f33d6259ab434e26c26ee2070a"
+      },
+      {
+        "path": "rtl/z100_adc_top.v",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "d696e7c4dc283261531d4b351ef79da19c57372e968c2c7624fe5a074f2c8b7d"
+      },
+      {
+        "path": "sim/tb_loop_ddr.v",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "9d21d45e5a155f8ca740b3d9158d9fbe03b1beca671e73f2b6e2606455d1c3ee"
+      },
+      {
+        "path": "sim/tb_measurement.v",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "d108e09e145369da2f1fa8943a7bb7d603eebc1c0bca6b85e710304523fb69e6"
+      },
+      {
+        "path": "software/main.c",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "082f864099972f31cbb5aabd3feb710c17d4658525faf41f27df3c7867023605"
+      },
+      {
+        "path": "scripts/build_bitstream.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "849a723aee8b9953ec6478c97660a5e33d438a0b1010895b9392a2f3b7c0937e"
+      },
+      {
+        "path": "scripts/build_software.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "7a94a46af3120ac0907a451dedd5379a2592d8f4ca59567068a2526ae1aefe82"
+      },
+      {
+        "path": "scripts/configure.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "dd85bde48e14a2eebc5d3960af31289f2e92bee7a589b83b5c9a9f5c558ca748"
+      },
+      {
+        "path": "scripts/debug_jtag.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "7c1802b6501de2080af2cc29b252f4804ed60ea48901a1ab3ea763d2dd98cb7d"
+      },
+      {
+        "path": "scripts/finalize.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "fad89016a0074c8999efd7934d92ed3c5cdf25286ea2875d3e8f6ac0238e39d6"
+      },
+      {
+        "path": "scripts/probe_cordic.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "145a5c9b0d0daf4c152f78663476b90b57bdbf54729d82b694e97081286c74e1"
+      },
+      {
+        "path": "scripts/rebuild_software.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "fe26d95293b86582e3a4c04e65d4b3af63ba202307e15a51b8dd95c3338b69d2"
+      },
+      {
+        "path": "scripts/recreate_project.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "3f60ebecd81fbaa9930cdcd670e0b7cd5c1c6dd7b95907602716b93079d96c9a"
+      },
+      {
+        "path": "scripts/refresh.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "d4dbee557a504a0883a9ea83031c7d697fa178e522f7189e9a6c17115d33449d"
+      },
+      {
+        "path": "scripts/run_ddr_sim.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "6bd5235c502cc1c5d66e1600c7970e40a8d1acf2f5751ebff4bd0428ef775184"
+      },
+      {
+        "path": "scripts/run_sim.tcl",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "a380fd5f390daa11768ababebaaa57b0ca28520a6cea1091fcc42d89b843e925"
+      },
+      {
+        "path": "constraints/z100_adc.xdc",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "32d3a87ab573bdc1a7c3945d202ad34a7eb6fd3c8d4baa07e0aaaba8b1f05cfd"
+      },
+      {
+        "path": "web/start_dashboard.cmd",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "28e95cf5f09354d97177da4c5abdd0a52f21fa0f2d9ac83b56598018bc49d273"
+      },
+      {
+        "path": "sdk_workspace/adc_uart/src/main.c",
+        "from": "utf-8",
+        "to": "gbk",
+        "unicode_content_unchanged": true,
+        "unicode_utf8_sha256": "082f864099972f31cbb5aabd3feb710c17d4658525faf41f27df3c7867023605"
+      }
+    ],
+    "web_python_markdown": "left as UTF-8",
+    "hardware_operations": false
+  },
+  "source_hash_scope": "Byte hashes refer to the full release package with GBK IDE sources; GitHub canonical sources use UTF-8 with the same decoded Unicode text."
 }

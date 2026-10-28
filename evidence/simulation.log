@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Oct 28 16:36:41 2026
-# Process ID: 56124
+# Start of session at: Wed Oct 28 17:45:19 2026
+# Process ID: 57868
 # Current directory: E:/FPGAWork/z100_cordic_loop_20261028
 # Command line: vivado.exe -mode batch -source scripts/run_sim.tcl -log evidence/simulation.log -nojournal
 # Log file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/simulation.log
@@ -40,7 +40,7 @@ INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'sim_fifo'...
 # set_property top tb_measurement [get_filesets sim_1]
 # set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
 # update_compile_order -fileset sim_1
-update_compile_order: Time (s): cpu = 00:00:00 ; elapsed = 00:00:16 . Memory (MB): peak = 381.410 ; gain = 0.195
+update_compile_order: Time (s): cpu = 00:00:00 ; elapsed = 00:00:16 . Memory (MB): peak = 381.969 ; gain = 0.203
 # set dir [file join $root sim_project simcheck.sim sim_1 behav xsim]
 # foreach f {measurement_result.txt loopback_simulated.csv} {
 #  if {[file exists [file join $dir $f]]} {file delete [file join $dir $f]}
@@ -76,7 +76,7 @@ INFO: [USF-XSim-3] XSim::Elaborate design
 INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/FPGAWork/z100_cordic_loop_20261028/sim_project/simcheck.sim/sim_1/behav/xsim'
 Vivado Simulator 2018.3
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: E:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 86997220050a4650930815afc06f940e --incr --debug typical --relax --mt 2 -L fifo_generator_v13_2_3 -L xil_defaultlib -L xbip_utils_v3_0_9 -L c_reg_fd_v12_0_5 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_pipe_v3_0_5 -L xbip_dsp48_addsub_v3_0_5 -L xbip_addsub_v3_0_5 -L c_addsub_v12_0_12 -L xbip_bram18k_v3_0_5 -L mult_gen_v12_0_14 -L axi_utils_v2_0_5 -L cordic_v6_0_14 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_measurement_behav xil_defaultlib.tb_measurement xil_defaultlib.glbl -log elaborate.log 
+Running: E:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 3f1fd96824e5419fac7b5ee647a1411b --incr --debug typical --relax --mt 2 -L fifo_generator_v13_2_3 -L xil_defaultlib -L xbip_utils_v3_0_9 -L c_reg_fd_v12_0_5 -L xbip_dsp48_wrapper_v3_0_4 -L xbip_pipe_v3_0_5 -L xbip_dsp48_addsub_v3_0_5 -L xbip_addsub_v3_0_5 -L c_addsub_v12_0_12 -L xbip_bram18k_v3_0_5 -L mult_gen_v12_0_14 -L axi_utils_v2_0_5 -L cordic_v6_0_14 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_measurement_behav xil_defaultlib.tb_measurement xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -199,9 +199,9 @@ Built simulation snapshot tb_measurement_behav
     ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 
 source E:/FPGAWork/z100_cordic_loop_20261028/sim_project/simcheck.sim/sim_1/behav/xsim/xsim.dir/tb_measurement_behav/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-206] Exiting Webtalk at Wed Oct 28 16:37:24 2026...
-run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:14 . Memory (MB): peak = 390.625 ; gain = 0.000
-INFO: [USF-XSim-69] 'elaborate' step finished in '14' seconds
+INFO: [Common 17-206] Exiting Webtalk at Wed Oct 28 17:45:59 2026...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:11 . Memory (MB): peak = 391.414 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '11' seconds
 INFO: [USF-XSim-4] XSim::Simulate design
 INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/FPGAWork/z100_cordic_loop_20261028/sim_project/simcheck.sim/sim_1/behav/xsim'
 INFO: [USF-XSim-98] *** Running xsim
@@ -218,7 +218,7 @@ Note:  DEPTH = 1024 WIDTH = 36 C_RD_PRIM_WIDTH = 36 C_RD_PRIM_DEPTH = 1024 DEEP 
 Time: 0 ps  Iteration: 0
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_measurement_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 0ns
-launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:19 . Memory (MB): peak = 397.305 ; gain = 15.895
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:17 . Memory (MB): peak = 398.102 ; gain = 16.133
 # run all
 FRAME_PASS job=0 n=4096 freq=100000 first=128
 FRAME_PASS job=1 n=4096 freq=100000 first=128
@@ -237,4 +237,4 @@ INFO: [Simtcl 6-16] Simulation closed
 # puts {MEASUREMENT_SIMULATION_COMPLETE}
 MEASUREMENT_SIMULATION_COMPLETE
 # close_project
-INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 16:37:32 2026...
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 17:46:07 2026...

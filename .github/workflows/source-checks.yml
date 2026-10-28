@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Validate portable source baseline
         run: python3 scripts/check_repository.py
+      - name: Test lossless IDE source encoding conversion
+        run: python3 scripts/test_source_encoding.py
       - name: Test PC FFT and packet validation
         run: |
           python3 -m pip install numpy

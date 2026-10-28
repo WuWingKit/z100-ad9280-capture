@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Oct 28 16:36:41 2026
-# Process ID: 47748
+# Start of session at: Wed Oct 28 17:45:19 2026
+# Process ID: 59204
 # Current directory: E:/FPGAWork/z100_cordic_loop_20261028
 # Command line: vivado.exe -mode batch -source scripts/refresh.tcl -log evidence/refresh.log -nojournal
 # Log file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/refresh.log
@@ -17,7 +17,7 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
-open_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 402.102 ; gain = 143.281
+open_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 400.707 ; gain = 150.938
 # open_bd_design [get_files -all */capture_bd.bd]
 Adding cell -- xilinx.com:ip:fifo_generator:13.2 - fifo_generator_0
 INFO: [xilinx.com:ip:fifo_generator:13.2-5968] /fifo_generator_0Executing the post_config_ip from bd
@@ -32,10 +32,10 @@ Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
 Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
 Adding cell -- xilinx.com:ip:smartconnect:1.0 - axi_smc
 Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
-Adding cell -- xilinx.com:module_ref:fifo_to_axis:1.0 - fifo_to_axis_0
 Adding cell -- xilinx.com:ip:cordic:6.0 - cordic_sincos_0
 Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_config
 Adding cell -- xilinx.com:module_ref:measurement_core:1.0 - measurement_core_0
+Adding cell -- xilinx.com:module_ref:fifo_to_axis:1.0 - fifo_to_axis_0
 WARNING: [BD 41-1731] Type mismatch between connected pins: /measurement_core_0/cordic_reset_n(undef) and /cordic_sincos_0/aresetn(rst)
 WARNING: [BD 41-1731] Type mismatch between connected pins: /measurement_core_0/fifo_reset(rst) and /fifo_generator_0/rst(undef)
 WARNING: [BD 41-1731] Type mismatch between connected pins: /measurement_core_0/axis_reset_n(undef) and /fifo_to_axis_0/rst_n(rst)
@@ -56,6 +56,9 @@ WARNING: [IP_Flow 19-3153] Bus Interface 'axis_clk': ASSOCIATED_BUSIF bus parame
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 Upgrading 'E:/FPGAWork/z100_cordic_loop_20261028/bd_start.srcs/sources_1/bd/capture_bd/capture_bd.bd'
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory E:/FPGAWork/z100_cordic_loop_20261028/bd_start.runs/capture_bd_measurement_core_0_0_synth_1
+
 INFO: [IP_Flow 19-1972] Upgraded capture_bd_measurement_core_0_0 from measurement_core_v1_0 1.0 to measurement_core_v1_0 1.0
 WARNING: [BD 41-1731] Type mismatch between connected pins: /cordic_sincos_0/aresetn(rst) and /measurement_core_0_upgraded_ipi/cordic_reset_n(undef)
 WARNING: [BD 41-1731] Type mismatch between connected pins: /fifo_generator_0/rst(undef) and /measurement_core_0_upgraded_ipi/fifo_reset(rst)
@@ -105,4 +108,4 @@ Generated Hardware Definition File E:/FPGAWork/z100_cordic_loop_20261028/bd_star
 # export_ip_user_files -of_objects [get_files -all */capture_bd.bd] -no_script -sync -force
 # write_hwdef -force -file [file join $root hardware system.hdf]
 # close_project
-INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 16:37:07 2026...
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 17:45:46 2026...

@@ -6,7 +6,7 @@
 |---|---|
 | 原工程关键文件 | 8/8 SHA256 未变化 |
 | 实际 CORDIC/FIFO IP 数字核心测试 | PASS frames=5 checks=39707 cordic_checks=9306 stalls=1876 invalid_config=PASS overflow_recovery=PASS |
-| 全 BD / PS VIP / AXI DMA / DDR 测试 | PASS frames=2 samples=512 DDR_bytes=512 guards=256 checks=1570 |
+| 全 BD / PS VIP / AXI DMA / DDR 测试 | PASS frames=2 samples=512 DDR_bytes=512 guards=256 checks=1572 |
 | PC FFT、CRC 和错误拒绝测试 | PC_ANALYSIS_PASS frequencies=4 CRC/truncation/error_rejection=PASS flat_input_rejection=PASS |
 | ARM C 程序 | SDK 编译通过，尚未执行本版实物测试 |
 | FPGA | 已生成 bit，全部用户时序约束满足 |

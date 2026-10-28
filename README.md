@@ -5,7 +5,7 @@
 本版已为手写 Verilog、ARM C、Python、HTML/JavaScript 和 Tcl 脚本补充中文分段注释。厂商 IP、Vivado 自动生成的包装和网表保持由工具管理。
 
 - 开发分支：[feature/cordic-loop-20261028](https://github.com/WuWingKit/z100-ad9280-capture/tree/feature/cordic-loop-20261028)
-- 注释阅读版下载：[v0.2.1-20261028](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.2.1-20261028)
+- 编码兼容阅读版下载：[v0.2.2-20261028](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.2.2-20261028)
 - 深入阅读：[代码阅读指南](docs/CODE_GUIDE.md) · [实现原理](docs/IMPLEMENTATION.md) · [上板步骤](docs/BOARD_TEST.md)
 
 **验证边界：本工程已通过数字仿真、离线构建和算法测试，尚未完成本版真实 DA→AD 模拟回环实测。真实输出电压、增益、极性和零相位延迟需要上板标定。**
@@ -60,7 +60,7 @@ python web/serve.py --open
 | `BOARD_TEST.md` / `TEST_REPORT.md` | 上板操作说明 / 验证记录 |
 | `SHA256SUMS.txt` | 核对附件完整性 |
 
-Git仓库保存手写源码、BD/XCI、文档与证据，生成缓存和二进制通过Release分发。`v0.2.0`是前一版本；`v0.2.1`补注释/排版/文档，并重新验证和构建。
+Git仓库保存手写源码、BD/XCI、文档与证据，生成缓存和二进制通过Release分发。`v0.2.1`补注释/排版/文档；`v0.2.2`修正中文Windows旧版IDE的源码编码适配，GitHub网页源码仍为UTF-8。
 
 ## 4. 工程入口与文件结构
 
@@ -92,6 +92,23 @@ evidence/                            原始仿真CSV、图像、日志、校验�
 `rtl/adc_board_control.v`、`bd_start.srcs/sources_1/new/`的旧模块是历史参考，不是本版生效逻辑。Vivado的`ip/`、`ipshared/`、`sim/`、`synth/`等自动生成文件无需逐行学习，也不要在里面改业务逻辑。
 
 ## 5. 建议按这个顺序读代码
+
+### 中文注释编码
+
+Windows中文版Vivado 2018.3读取UTF-8源码时，可能把中文显示成“缁勫悎杩愮畻”。这是编码不匹配，不是中文原文已丢失。
+
+- **Release完整工程包**：供Vivado/SDK打开的手写`.v/.c/.tcl/.xdc/.cmd`采用GBK，SDK主程序另设GBK文件属性；直接打开即可。
+- **GitHub网页上的源码**：保留UTF-8，便于浏览、差异比较和跨平台协作。Git源码检出后，在中文Windows下先运行：
+
+```powershell
+python scripts/source_encoding.py --target gbk
+```
+
+此脚本只转换手写IDE源码，先备份再严格检查往返文本一致，不处理厂商生成文件。Python、JS、HTML和Markdown继续保持UTF-8。向GitHub提交前可用`--target utf8`恢复源码编码；恢复后本地Vivado可能再次需要按GBK转换。
+
+如果文件已在Vivado中打开，先关闭该标签，**不要把乱码保存回文件**，再从Sources双击重新打开。SDK中可在文件Properties → Resource → Text file encoding确认GBK。不要对所有文件盲目“另存为ANSI”，尤其不要转换网页和Python源码。
+
+`evidence/source_encoding.json`记录本地转换和UTF-8规范文本哈希；`verification.json`中的源码字节哈希对应Release完整工程包，GitHub的UTF-8文件字节哈希可以不同，文字与代码内容一致。
 
 | 顺序 | 文件 | 先理解的内容 |
 |---|---|---|
@@ -185,6 +202,7 @@ $env:PROCESSOR_ARCHITECTURE='AMD64'
 ```powershell
 git clone --branch feature/cordic-loop-20261028 https://github.com/WuWingKit/z100-ad9280-capture.git
 cd z100-ad9280-capture
+python scripts/source_encoding.py --target gbk
 & E:/Xilinx/Vivado/2018.3/bin/vivado.bat -mode batch -source scripts/recreate_project.tcl
 ```
 

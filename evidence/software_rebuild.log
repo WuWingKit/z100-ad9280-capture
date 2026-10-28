@@ -1,7 +1,7 @@
 Starting xsdk.bat. This could take few seconds... done
 Building '/adc_bsp'
 Invoking Make Builder...adc_bsp
-16:47:06 **** Build of project adc_bsp ****
+17:45:23 **** Build of project adc_bsp ****
 make -k all 
 "Running Make include in ps7_cortexa9_0/libsrc/axidma_v9_8/src"
 make -C ps7_cortexa9_0/libsrc/axidma_v9_8/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
@@ -86,10 +86,10 @@ make -C ps7_cortexa9_0/libsrc/xadcps_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm
 "Compiling xadcps"
 'Finished building libraries'
 
-16:47:20 Build Finished (took 13s.886ms)
+17:45:39 Build Finished (took 16s.388ms)
 
 Building '/adc_uart'
-16:47:20 **** Build of configuration Debug for project adc_uart ****
+17:45:39 **** Build of configuration Debug for project adc_uart ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
@@ -114,7 +114,7 @@ arm-none-eabi-size adc_uart.elf  |tee "adc_uart.elf.size"
 'Finished building: adc_uart.elf.size'
 ' '
 
-16:47:21 Build Finished (took 1s.54ms)
+17:45:40 Build Finished (took 1s.264ms)
 
 Invoking scanner config builder on project 
 Building '/z100_hw'

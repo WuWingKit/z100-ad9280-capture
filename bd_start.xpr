@@ -31,7 +31,7 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSAVendor" Val="xilinx"/>
     <Option Name="DSANumComputeUnits" Val="60"/>
-    <Option Name="WTXSimLaunchSim" Val="9"/>
+    <Option Name="WTXSimLaunchSim" Val="10"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -75,17 +75,20 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_fifo_generator_0_0/capture_bd_fifo_generator_0_0.xci">
+          <Proxy FileSetName="capture_bd_fifo_generator_0_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_axi_dma_0_0/capture_bd_axi_dma_0_0.xci">
           <Proxy FileSetName="capture_bd_axi_dma_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_fifo_generator_0_0/capture_bd_fifo_generator_0_0.xci">
-          <Proxy FileSetName="capture_bd_fifo_generator_0_0"/>
+        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_processing_system7_0_0/capture_bd_processing_system7_0_0.xci">
+          <Proxy FileSetName="capture_bd_processing_system7_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_fifo_to_axis_0_0/capture_bd_fifo_to_axis_0_0.xci">
           <Proxy FileSetName="capture_bd_fifo_to_axis_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_processing_system7_0_0/capture_bd_processing_system7_0_0.xci">
-          <Proxy FileSetName="capture_bd_processing_system7_0_0"/>
+        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_util_vector_logic_1_0/capture_bd_util_vector_logic_1_0.xci">
+          <Proxy FileSetName="capture_bd_util_vector_logic_1_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_proc_sys_reset_0_0/capture_bd_proc_sys_reset_0_0.xci">
           <Proxy FileSetName="capture_bd_proc_sys_reset_0_0"/>
@@ -93,23 +96,20 @@
         <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_axi_smc_0/capture_bd_axi_smc_0.xci">
           <Proxy FileSetName="capture_bd_axi_smc_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_util_vector_logic_1_0/capture_bd_util_vector_logic_1_0.xci">
-          <Proxy FileSetName="capture_bd_util_vector_logic_1_0"/>
+        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_xbar_0/capture_bd_xbar_0.xci">
+          <Proxy FileSetName="capture_bd_xbar_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_axi_gpio_0_0/capture_bd_axi_gpio_0_0.xci">
           <Proxy FileSetName="capture_bd_axi_gpio_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_measurement_core_0_0/capture_bd_measurement_core_0_0.xci">
+          <Proxy FileSetName="capture_bd_measurement_core_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_cordic_sincos_0_0/capture_bd_cordic_sincos_0_0.xci">
           <Proxy FileSetName="capture_bd_cordic_sincos_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_axi_gpio_config_0/capture_bd_axi_gpio_config_0.xci">
           <Proxy FileSetName="capture_bd_axi_gpio_config_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_xbar_0/capture_bd_xbar_0.xci">
-          <Proxy FileSetName="capture_bd_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="capture_bd.bd" FileRelPathName="ip/capture_bd_measurement_core_0_0/capture_bd_measurement_core_0_0.xci">
-          <Proxy FileSetName="capture_bd_measurement_core_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/capture_bd/hdl/capture_bd_wrapper.v">
@@ -228,12 +228,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="capture_bd_fifo_to_axis_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/capture_bd_fifo_to_axis_0_0">
-      <Config>
-        <Option Name="TopModule" Val="capture_bd_fifo_to_axis_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="capture_bd_cordic_sincos_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/capture_bd_cordic_sincos_0_0">
       <Config>
         <Option Name="TopModule" Val="capture_bd_cordic_sincos_0_0"/>
@@ -243,6 +237,12 @@
     <FileSet Name="capture_bd_axi_gpio_config_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/capture_bd_axi_gpio_config_0">
       <Config>
         <Option Name="TopModule" Val="capture_bd_axi_gpio_config_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="capture_bd_fifo_to_axis_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/capture_bd_fifo_to_axis_0_0">
+      <Config>
+        <Option Name="TopModule" Val="capture_bd_fifo_to_axis_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -362,15 +362,6 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="capture_bd_fifo_to_axis_0_0_synth_1" Type="Ft3:Synth" SrcSet="capture_bd_fifo_to_axis_0_0" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_fifo_to_axis_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/capture_bd_fifo_to_axis_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="capture_bd_cordic_sincos_0_0_synth_1" Type="Ft3:Synth" SrcSet="capture_bd_cordic_sincos_0_0" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_cordic_sincos_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/capture_bd_cordic_sincos_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
@@ -383,6 +374,17 @@
     <Run Id="capture_bd_axi_gpio_config_0_synth_1" Type="Ft3:Synth" SrcSet="capture_bd_axi_gpio_config_0" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_axi_gpio_config_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/capture_bd_axi_gpio_config_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="capture_bd_fifo_to_axis_0_0_synth_1" Type="Ft3:Synth" SrcSet="capture_bd_fifo_to_axis_0_0" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_fifo_to_axis_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/capture_bd_fifo_to_axis_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -561,22 +563,6 @@
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="capture_bd_fifo_to_axis_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_fifo_to_axis_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="capture_bd_fifo_to_axis_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="capture_bd_cordic_sincos_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_cordic_sincos_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="capture_bd_cordic_sincos_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
@@ -596,6 +582,24 @@
     <Run Id="capture_bd_axi_gpio_config_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_axi_gpio_config_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="capture_bd_axi_gpio_config_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="capture_bd_fifo_to_axis_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z035ffg900-2" ConstrsSet="capture_bd_fifo_to_axis_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="capture_bd_fifo_to_axis_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

@@ -1,0 +1,155 @@
+{
+  "target_encoding": "gbk",
+  "backup": "E:\\FPGAWork\\z100_cordic_loop_20261028_encoding_backup_20261028_174212_737497.zip",
+  "changed_files": [
+    {
+      "path": "rtl/adc_board_control.v",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "a7c2558c3375410d6ee1f988ce1691362f755ea281f424d1b4d703def3ce9bb2"
+    },
+    {
+      "path": "rtl/fifo_to_axis.v",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "7cf0581fa60ea64d3c7c17b0daf31216113b3dc86445b3f474fb69d3b4b13c23"
+    },
+    {
+      "path": "rtl/measurement_core.v",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "9c8898066abe23484cf28b65eeeb6038151739f33d6259ab434e26c26ee2070a"
+    },
+    {
+      "path": "rtl/z100_adc_top.v",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "d696e7c4dc283261531d4b351ef79da19c57372e968c2c7624fe5a074f2c8b7d"
+    },
+    {
+      "path": "sim/tb_loop_ddr.v",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "9d21d45e5a155f8ca740b3d9158d9fbe03b1beca671e73f2b6e2606455d1c3ee"
+    },
+    {
+      "path": "sim/tb_measurement.v",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "d108e09e145369da2f1fa8943a7bb7d603eebc1c0bca6b85e710304523fb69e6"
+    },
+    {
+      "path": "software/main.c",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "082f864099972f31cbb5aabd3feb710c17d4658525faf41f27df3c7867023605"
+    },
+    {
+      "path": "scripts/build_bitstream.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "849a723aee8b9953ec6478c97660a5e33d438a0b1010895b9392a2f3b7c0937e"
+    },
+    {
+      "path": "scripts/build_software.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "7a94a46af3120ac0907a451dedd5379a2592d8f4ca59567068a2526ae1aefe82"
+    },
+    {
+      "path": "scripts/configure.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "dd85bde48e14a2eebc5d3960af31289f2e92bee7a589b83b5c9a9f5c558ca748"
+    },
+    {
+      "path": "scripts/debug_jtag.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "7c1802b6501de2080af2cc29b252f4804ed60ea48901a1ab3ea763d2dd98cb7d"
+    },
+    {
+      "path": "scripts/finalize.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "fad89016a0074c8999efd7934d92ed3c5cdf25286ea2875d3e8f6ac0238e39d6"
+    },
+    {
+      "path": "scripts/probe_cordic.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "145a5c9b0d0daf4c152f78663476b90b57bdbf54729d82b694e97081286c74e1"
+    },
+    {
+      "path": "scripts/rebuild_software.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "fe26d95293b86582e3a4c04e65d4b3af63ba202307e15a51b8dd95c3338b69d2"
+    },
+    {
+      "path": "scripts/recreate_project.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "3f60ebecd81fbaa9930cdcd670e0b7cd5c1c6dd7b95907602716b93079d96c9a"
+    },
+    {
+      "path": "scripts/refresh.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "d4dbee557a504a0883a9ea83031c7d697fa178e522f7189e9a6c17115d33449d"
+    },
+    {
+      "path": "scripts/run_ddr_sim.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "6bd5235c502cc1c5d66e1600c7970e40a8d1acf2f5751ebff4bd0428ef775184"
+    },
+    {
+      "path": "scripts/run_sim.tcl",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "a380fd5f390daa11768ababebaaa57b0ca28520a6cea1091fcc42d89b843e925"
+    },
+    {
+      "path": "constraints/z100_adc.xdc",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "32d3a87ab573bdc1a7c3945d202ad34a7eb6fd3c8d4baa07e0aaaba8b1f05cfd"
+    },
+    {
+      "path": "web/start_dashboard.cmd",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "28e95cf5f09354d97177da4c5abdd0a52f21fa0f2d9ac83b56598018bc49d273"
+    },
+    {
+      "path": "sdk_workspace/adc_uart/src/main.c",
+      "from": "utf-8",
+      "to": "gbk",
+      "unicode_content_unchanged": true,
+      "unicode_utf8_sha256": "082f864099972f31cbb5aabd3feb710c17d4658525faf41f27df3c7867023605"
+    }
+  ],
+  "web_python_markdown": "left as UTF-8",
+  "hardware_operations": false
+}

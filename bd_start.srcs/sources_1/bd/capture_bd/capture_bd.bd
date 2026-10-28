@@ -27,9 +27,9 @@
       },
       "axi_smc": "",
       "axi_gpio_0": "",
-      "fifo_to_axis_0": "",
       "cordic_sincos_0": "",
       "axi_gpio_config": "",
+      "fifo_to_axis_0": "",
       "measurement_core_0": ""
     },
     "interface_ports": {
@@ -905,16 +905,10 @@
           }
         },
         "interface_nets": {
-          "xbar_to_m00_couplers": {
+          "xbar_to_m02_couplers": {
             "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
-            ]
-          },
-          "m01_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
             ]
           },
           "m00_couplers_to_ps7_0_axi_periph": {
@@ -929,10 +923,22 @@
               "xbar/S00_AXI"
             ]
           },
-          "xbar_to_m02_couplers": {
+          "ps7_0_axi_periph_to_s00_couplers": {
             "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
+              "S00_AXI",
+              "s00_couplers/S_AXI"
+            ]
+          },
+          "m01_couplers_to_ps7_0_axi_periph": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
             ]
           },
           "m02_couplers_to_ps7_0_axi_periph": {
@@ -945,12 +951,6 @@
             "interface_ports": [
               "xbar/M01_AXI",
               "m01_couplers/S_AXI"
-            ]
-          },
-          "ps7_0_axi_periph_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
             ]
           }
         },
@@ -1015,6 +1015,63 @@
             "value": "1"
           },
           "C_ALL_OUTPUTS": {
+            "value": "1"
+          },
+          "C_GPIO2_WIDTH": {
+            "value": "32"
+          },
+          "C_GPIO_WIDTH": {
+            "value": "32"
+          },
+          "C_IS_DUAL": {
+            "value": "1"
+          }
+        }
+      },
+      "cordic_sincos_0": {
+        "vlnv": "xilinx.com:ip:cordic:6.0",
+        "xci_name": "capture_bd_cordic_sincos_0_0",
+        "parameters": {
+          "ARESETN": {
+            "value": "true"
+          },
+          "Architectural_Configuration": {
+            "value": "Parallel"
+          },
+          "Coarse_Rotation": {
+            "value": "true"
+          },
+          "Functional_Selection": {
+            "value": "Sin_and_Cos"
+          },
+          "Input_Width": {
+            "value": "16"
+          },
+          "Output_Width": {
+            "value": "16"
+          },
+          "Phase_Format": {
+            "value": "Scaled_Radians"
+          },
+          "Pipelining_Mode": {
+            "value": "Maximum"
+          },
+          "Round_Mode": {
+            "value": "Nearest_Even"
+          },
+          "flow_control": {
+            "value": "NonBlocking"
+          }
+        }
+      },
+      "axi_gpio_config": {
+        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
+        "xci_name": "capture_bd_axi_gpio_config_0",
+        "parameters": {
+          "C_ALL_OUTPUTS": {
+            "value": "1"
+          },
+          "C_ALL_OUTPUTS_2": {
             "value": "1"
           },
           "C_GPIO2_WIDTH": {
@@ -1160,63 +1217,6 @@
           }
         }
       },
-      "cordic_sincos_0": {
-        "vlnv": "xilinx.com:ip:cordic:6.0",
-        "xci_name": "capture_bd_cordic_sincos_0_0",
-        "parameters": {
-          "ARESETN": {
-            "value": "true"
-          },
-          "Architectural_Configuration": {
-            "value": "Parallel"
-          },
-          "Coarse_Rotation": {
-            "value": "true"
-          },
-          "Functional_Selection": {
-            "value": "Sin_and_Cos"
-          },
-          "Input_Width": {
-            "value": "16"
-          },
-          "Output_Width": {
-            "value": "16"
-          },
-          "Phase_Format": {
-            "value": "Scaled_Radians"
-          },
-          "Pipelining_Mode": {
-            "value": "Maximum"
-          },
-          "Round_Mode": {
-            "value": "Nearest_Even"
-          },
-          "flow_control": {
-            "value": "NonBlocking"
-          }
-        }
-      },
-      "axi_gpio_config": {
-        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "xci_name": "capture_bd_axi_gpio_config_0",
-        "parameters": {
-          "C_ALL_OUTPUTS": {
-            "value": "1"
-          },
-          "C_ALL_OUTPUTS_2": {
-            "value": "1"
-          },
-          "C_GPIO2_WIDTH": {
-            "value": "32"
-          },
-          "C_GPIO_WIDTH": {
-            "value": "32"
-          },
-          "C_IS_DUAL": {
-            "value": "1"
-          }
-        }
-      },
       "measurement_core_0": {
         "vlnv": "xilinx.com:module_ref:measurement_core:1.0",
         "xci_name": "capture_bd_measurement_core_0_0",
@@ -1352,22 +1352,10 @@
           "processing_system7_0/DDR"
         ]
       },
-      "processing_system7_0_M_AXI_GP0": {
+      "axi_dma_0_M_AXI_S2MM": {
         "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "ps7_0_axi_periph/S00_AXI"
-        ]
-      },
-      "ps7_0_axi_periph_M02_AXI": {
-        "interface_ports": [
-          "ps7_0_axi_periph/M02_AXI",
-          "axi_gpio_config/S_AXI"
-        ]
-      },
-      "fifo_to_axis_0_m_axis": {
-        "interface_ports": [
-          "fifo_to_axis_0/m_axis",
-          "axi_dma_0/S_AXIS_S2MM"
+          "axi_dma_0/M_AXI_S2MM",
+          "axi_smc/S00_AXI"
         ]
       },
       "processing_system7_0_FIXED_IO": {
@@ -1376,16 +1364,28 @@
           "processing_system7_0/FIXED_IO"
         ]
       },
+      "ps7_0_axi_periph_M02_AXI": {
+        "interface_ports": [
+          "ps7_0_axi_periph/M02_AXI",
+          "axi_gpio_config/S_AXI"
+        ]
+      },
+      "processing_system7_0_M_AXI_GP0": {
+        "interface_ports": [
+          "processing_system7_0/M_AXI_GP0",
+          "ps7_0_axi_periph/S00_AXI"
+        ]
+      },
+      "axi_smc_M00_AXI": {
+        "interface_ports": [
+          "axi_smc/M00_AXI",
+          "processing_system7_0/S_AXI_HP0"
+        ]
+      },
       "ps7_0_axi_periph_M00_AXI": {
         "interface_ports": [
           "ps7_0_axi_periph/M00_AXI",
           "axi_dma_0/S_AXI_LITE"
-        ]
-      },
-      "axi_dma_0_M_AXI_S2MM": {
-        "interface_ports": [
-          "axi_dma_0/M_AXI_S2MM",
-          "axi_smc/S00_AXI"
         ]
       },
       "ps7_0_axi_periph_M01_AXI": {
@@ -1394,10 +1394,10 @@
           "axi_gpio_0/S_AXI"
         ]
       },
-      "axi_smc_M00_AXI": {
+      "fifo_to_axis_0_m_axis": {
         "interface_ports": [
-          "axi_smc/M00_AXI",
-          "processing_system7_0/S_AXI_HP0"
+          "fifo_to_axis_0/m_axis",
+          "axi_dma_0/S_AXIS_S2MM"
         ]
       }
     },
@@ -1467,9 +1467,9 @@
           "axi_smc/aclk",
           "axi_gpio_0/s_axi_aclk",
           "ps7_0_axi_periph/M01_ACLK",
-          "fifo_to_axis_0/axis_clk",
           "axi_gpio_config/s_axi_aclk",
           "ps7_0_axi_periph/M02_ACLK",
+          "fifo_to_axis_0/axis_clk",
           "measurement_core_0/axis_clk"
         ]
       },
