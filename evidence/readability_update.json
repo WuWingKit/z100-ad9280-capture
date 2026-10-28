@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-28",
+  "version": "v0.2.1-20261028",
+  "baseline_version": "v0.2.0-20261028",
+  "baseline_commit": "68d8f1be937f1a9c5b57d2ed0529145cd4d0bcc4",
+  "scope": "Handwritten active RTL/C/JS/Python/Tcl/CMD/XDC plus HTML; generated vendor IP and archived baseline logic are not rewritten",
+  "source_files_annotated": 29,
+  "logic_comparison_files": 28,
+  "logic_comparisons_all_unchanged": true,
+  "html_demo_browser_checked": true,
+  "hardware_operations_performed": false
+}

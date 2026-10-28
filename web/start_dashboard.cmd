@@ -1,3 +1,4 @@
+@rem 本入口只启动127.0.0.1静态网页服务并打开浏览器，不访问串口或下载FPGA。
 @echo off
 cd /d "%~dp0"
 where py >nul 2>nul

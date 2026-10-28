@@ -1,5 +1,5 @@
 {
-  "created_local": "2026-10-28T16:02:23.032156+08:00",
+  "created_local": "2026-10-28T16:48:58.494883+08:00",
   "project": "E:\\FPGAWork\\z100_cordic_loop_20261028\\bd_start.xpr",
   "part": "xc7z035ffg900-2",
   "tools": "Vivado / SDK 2018.3",
@@ -69,16 +69,16 @@
     "PS C software execution and q abort behavior have not been board-tested"
   ],
   "sha256": {
-    "bd_start.xpr": "53cef9bee2e079da003350fa58a4585e1e6ae70e2191cd1278febc422d148d4a",
-    "rtl/measurement_core.v": "c6047466516f771d43527ec53014f2607fc6f0c019f2a19821e327b14eefe64f",
-    "rtl/fifo_to_axis.v": "bac1c7563518037172326b3c1fad70327d900cdf3316e0a87580c2ac48f0b60f",
-    "rtl/z100_adc_top.v": "962e4348faaa5e0a9a3ccce7202ba8c2354eaeb90de8e537878b756306d6297e",
-    "constraints/z100_adc.xdc": "42c4a1aaca9982c384b2bef11de8fa29e3e18bc721bc9a9a2179429473d9870c",
-    "software/main.c": "01bf2b82a8b2f781dd5faac4096fd95828303b4f3c635e5c741d69ca5fb6f6f6",
-    "hardware/z100_cordic.bit": "949069e5319ee40675c46b8203b8005f346b400df22ac87aef3274798fb421c0",
-    "hardware/z100_cordic.hdf": "51e39b9e320c20e67c2c5d3f7c7bb40096e087c99a87bd1a3c1048e0493d59ea",
-    "hardware/adc_uart.elf": "fde1db12d14ece147cc2b9b148acd56f296a3d175d1ceb102838b202dbd89b16",
-    "pc/capture_analyze.py": "ff054543e77c5b127dc823b990982046977e39b3b5be6fe165da049f578690ed",
+    "bd_start.xpr": "10e014b2eda519066a0961af1d87cbe499b0bd4fc85cec86aab1df2b398682ee",
+    "rtl/measurement_core.v": "9c8898066abe23484cf28b65eeeb6038151739f33d6259ab434e26c26ee2070a",
+    "rtl/fifo_to_axis.v": "7cf0581fa60ea64d3c7c17b0daf31216113b3dc86445b3f474fb69d3b4b13c23",
+    "rtl/z100_adc_top.v": "d696e7c4dc283261531d4b351ef79da19c57372e968c2c7624fe5a074f2c8b7d",
+    "constraints/z100_adc.xdc": "32d3a87ab573bdc1a7c3945d202ad34a7eb6fd3c8d4baa07e0aaaba8b1f05cfd",
+    "software/main.c": "082f864099972f31cbb5aabd3feb710c17d4658525faf41f27df3c7867023605",
+    "hardware/z100_cordic.bit": "52a4f667c45f7c453a342a64c34bcbb8a05854c111099aa5a4e57f129d6c5f5c",
+    "hardware/z100_cordic.hdf": "8162b3ab073c72d0128a3868f94bcef6428ea40fa9780ef404f0d08e0ddc5d83",
+    "hardware/adc_uart.elf": "0ccac48409a1ef65b949b8d13d2fd85327b105e9c60a8ab7d27c97a922ea186d",
+    "pc/capture_analyze.py": "84e10814aed94c99703a2ae80179be297a23a19afa034fdbc67c7449dc020673",
     "evidence/measurement_result.txt": "45a040a9b21e82b7f1a8193787795f9b9133833c7ebf6f05681bfdaa9783d8ab",
     "evidence/ddr_result.txt": "dac88b32d7ccb35535e378deeea3d7239db8ccb338df12a0892e1dd02de6ed17"
   }

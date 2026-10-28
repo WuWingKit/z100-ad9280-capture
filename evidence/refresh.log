@@ -2,14 +2,14 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Wed Oct 28 15:34:48 2026
-# Process ID: 45032
-# Current directory: E:/WorkSpace/Phased-array radar
-# Command line: vivado.exe -mode batch -source E:\FPGAWork\z100_cordic_loop_20261028\scripts\refresh.tcl -log E:\FPGAWork\z100_cordic_loop_20261028\evidence\refresh.log -nojournal
+# Start of session at: Wed Oct 28 16:36:41 2026
+# Process ID: 47748
+# Current directory: E:/FPGAWork/z100_cordic_loop_20261028
+# Command line: vivado.exe -mode batch -source scripts/refresh.tcl -log evidence/refresh.log -nojournal
 # Log file: E:/FPGAWork/z100_cordic_loop_20261028/evidence/refresh.log
 # Journal file: 
 #-----------------------------------------------------------
-source {E:\FPGAWork\z100_cordic_loop_20261028\scripts\refresh.tcl}
+source scripts/refresh.tcl
 # set root [file normalize [file join [file dirname [info script]] ..]]
 # open_project [file join $root bd_start.xpr]
 Scanning sources...
@@ -17,6 +17,7 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 402.102 ; gain = 143.281
 # open_bd_design [get_files -all */capture_bd.bd]
 Adding cell -- xilinx.com:ip:fifo_generator:13.2 - fifo_generator_0
 INFO: [xilinx.com:ip:fifo_generator:13.2-5968] /fifo_generator_0Executing the post_config_ip from bd
@@ -104,4 +105,4 @@ Generated Hardware Definition File E:/FPGAWork/z100_cordic_loop_20261028/bd_star
 # export_ip_user_files -of_objects [get_files -all */capture_bd.bd] -no_script -sync -force
 # write_hwdef -force -file [file join $root hardware system.hdf]
 # close_project
-INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 15:35:07 2026...
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 28 16:37:07 2026...

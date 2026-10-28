@@ -1,60 +1,109 @@
+# 本文件的执行方式、输入输出及与其它模块的关系见 docs/CODE_GUIDE.md。
 """Offline artifact inventory and source-preservation audit. No board access."""
+
 from pathlib import Path
-import hashlib,json,re,datetime
-root=Path(__file__).resolve().parent.parent
-def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-def read(p):return (root/p).read_text(encoding='utf-8-sig',errors='replace')
-baseline=json.loads(read('evidence/source_baseline_sha256.json'))
-preserved={p:sha(Path(p))==h for p,h in baseline.items()}
-assert all(preserved.values()),'Original project changed'
-assert 'Z100_BITSTREAM_PASS' in read('evidence/build.log')
-assert 'Z100_SOFTWARE_REBUILD_PASS' in read('evidence/software_rebuild.log')
-assert 'PASS frames=5' in read('evidence/measurement_result.txt')
-assert 'PASS frames=2' in read('evidence/ddr_result.txt')
-assert 'MEASUREMENT_SIM_PASS checks=' in read('evidence/simulation.log')
-assert 'DDR_INTEGRATION_PASS checks=' in read('evidence/ddr_simulation.log')
-assert 'PC_ANALYSIS_PASS' in read('evidence/pc_analysis_test.txt')
-assert 'WEB_DSP_PASS' in read('evidence/web_test_result.txt')
-timing=read('hardware/timing_routed.rpt')
-assert 'All user specified timing constraints are met.' in timing
-timing_lines=timing.splitlines()
-summary_index=next(i for i,line in enumerate(timing_lines) if line.strip().startswith('WNS(ns)'))
-summary_values=timing_lines[summary_index+2].split()
-timing_global={k:float(summary_values[i]) for k,i in [('WNS_ns',0),('TNS_ns',1),('WHS_ns',4),('THS_ns',5),('WPWS_ns',8),('TPWS_ns',9)]}
-bit=root/'hardware/z100_cordic.bit'
-assert bit.stat().st_mtime>(root/'rtl/measurement_core.v').stat().st_mtime,'Stale bitstream'
-elf=root/'hardware/adc_uart.elf'
-assert elf.stat().st_mtime>(root/'software/main.c').stat().st_mtime,'Stale ELF'
-files=['bd_start.xpr','rtl/measurement_core.v','rtl/fifo_to_axis.v','rtl/z100_adc_top.v',
-       'constraints/z100_adc.xdc','software/main.c','hardware/z100_cordic.bit',
-       'hardware/z100_cordic.hdf','hardware/adc_uart.elf','pc/capture_analyze.py',
-       'evidence/measurement_result.txt','evidence/ddr_result.txt']
-result={
- 'created_local':datetime.datetime.now().astimezone().isoformat(),
- 'project':str(root/'bd_start.xpr'),'part':'xc7z035ffg900-2','tools':'Vivado / SDK 2018.3',
- 'original_key_files_unchanged':preserved,
- 'core_simulation':read('evidence/measurement_result.txt').strip(),
- 'bd_dma_ddr_simulation':read('evidence/ddr_result.txt').strip(),
- 'pc_analysis':read('evidence/pc_analysis_test.txt').strip(),
- 'web_dashboard':read('evidence/web_test_result.txt').strip(),
- 'web_browser_check':'IAB demo, 4096 samples, 99.992 kHz, time-range switching verified; physical Web Serial untested',
- 'firmware':'SDK compilation PASS; not executed on board in this task',
- 'bitstream':'generated after latest measurement_core edit',
- 'timing_met':True,
- 'timing_global':timing_global,
- 'timing_checks':[f'Global WNS={summary_values[0]} ns, TNS={summary_values[1]} ns',
-                  f'Global WHS={summary_values[4]} ns, THS={summary_values[5]} ns',
-                  f'Global WPWS={summary_values[8]} ns, TPWS={summary_values[9]} ns'],
- 'analog_model_result':json.loads(read('evidence/plot_simulated/result.json')),
- 'hardware_operations_performed':False,'flash_programmed':False,
- 'pending':['Physical DAC/ADC analog voltage/gain/polarity/delay calibration',
-            'New bit+ELF board Debug, UART commands and CRC validation',
-            'Remaining reset/FIFO CDC diagnostics reviewed in docs/CDC_REVIEW.md; physical stress tests pending',
-            'PS C software execution and q abort behavior have not been board-tested'],
- 'sha256':{f:sha(root/f) for f in files}}
-(root/'evidence/verification.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
-plot=result['analog_model_result']
-report=f'''# 离线验证记录
+import hashlib, json, re, datetime
+
+root = Path(__file__).resolve().parent.parent
+
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def read(p):
+    return (root / p).read_text(encoding="utf-8-sig", errors="replace")
+
+
+# ===== 1. 核对旧基线未改动、本次仿真/编译日志通过 =====
+baseline = json.loads(read("evidence/source_baseline_sha256.json"))
+preserved = {p: sha(Path(p)) == h for p, h in baseline.items()}
+assert all(preserved.values()), "Original project changed"
+assert "Z100_BITSTREAM_PASS" in read("evidence/build.log")
+assert "Z100_SOFTWARE_REBUILD_PASS" in read("evidence/software_rebuild.log")
+assert "PASS frames=5" in read("evidence/measurement_result.txt")
+assert "PASS frames=2" in read("evidence/ddr_result.txt")
+assert "MEASUREMENT_SIM_PASS checks=" in read("evidence/simulation.log")
+assert "DDR_INTEGRATION_PASS checks=" in read("evidence/ddr_simulation.log")
+assert "PC_ANALYSIS_PASS" in read("evidence/pc_analysis_test.txt")
+assert "WEB_DSP_PASS" in read("evidence/web_test_result.txt")
+# ===== 2. 提取全设计时序汇总，确认bit/ELF比对应源码更新 =====
+timing = read("hardware/timing_routed.rpt")
+assert "All user specified timing constraints are met." in timing
+timing_lines = timing.splitlines()
+summary_index = next(
+    i for i, line in enumerate(timing_lines) if line.strip().startswith("WNS(ns)")
+)
+summary_values = timing_lines[summary_index + 2].split()
+timing_global = {
+    k: float(summary_values[i])
+    for k, i in [
+        ("WNS_ns", 0),
+        ("TNS_ns", 1),
+        ("WHS_ns", 4),
+        ("THS_ns", 5),
+        ("WPWS_ns", 8),
+        ("TPWS_ns", 9),
+    ]
+}
+bit = root / "hardware/z100_cordic.bit"
+assert (
+    bit.stat().st_mtime > (root / "rtl/measurement_core.v").stat().st_mtime
+), "Stale bitstream"
+elf = root / "hardware/adc_uart.elf"
+assert elf.stat().st_mtime > (root / "software/main.c").stat().st_mtime, "Stale ELF"
+# ===== 3. 记录代码与二进制的SHA256、验证范围和待实测项目 =====
+files = [
+    "bd_start.xpr",
+    "rtl/measurement_core.v",
+    "rtl/fifo_to_axis.v",
+    "rtl/z100_adc_top.v",
+    "constraints/z100_adc.xdc",
+    "software/main.c",
+    "hardware/z100_cordic.bit",
+    "hardware/z100_cordic.hdf",
+    "hardware/adc_uart.elf",
+    "pc/capture_analyze.py",
+    "evidence/measurement_result.txt",
+    "evidence/ddr_result.txt",
+]
+result = {
+    "created_local": datetime.datetime.now().astimezone().isoformat(),
+    "project": str(root / "bd_start.xpr"),
+    "part": "xc7z035ffg900-2",
+    "tools": "Vivado / SDK 2018.3",
+    "original_key_files_unchanged": preserved,
+    "core_simulation": read("evidence/measurement_result.txt").strip(),
+    "bd_dma_ddr_simulation": read("evidence/ddr_result.txt").strip(),
+    "pc_analysis": read("evidence/pc_analysis_test.txt").strip(),
+    "web_dashboard": read("evidence/web_test_result.txt").strip(),
+    "web_browser_check": "IAB demo, 4096 samples, 99.992 kHz, time-range switching verified; physical Web Serial untested",
+    "firmware": "SDK compilation PASS; not executed on board in this task",
+    "bitstream": "generated after latest measurement_core edit",
+    "timing_met": True,
+    "timing_global": timing_global,
+    "timing_checks": [
+        f"Global WNS={summary_values[0]} ns, TNS={summary_values[1]} ns",
+        f"Global WHS={summary_values[4]} ns, THS={summary_values[5]} ns",
+        f"Global WPWS={summary_values[8]} ns, TPWS={summary_values[9]} ns",
+    ],
+    "analog_model_result": json.loads(read("evidence/plot_simulated/result.json")),
+    "hardware_operations_performed": False,
+    "flash_programmed": False,
+    "pending": [
+        "Physical DAC/ADC analog voltage/gain/polarity/delay calibration",
+        "New bit+ELF board Debug, UART commands and CRC validation",
+        "Remaining reset/FIFO CDC diagnostics reviewed in docs/CDC_REVIEW.md; physical stress tests pending",
+        "PS C software execution and q abort behavior have not been board-tested",
+    ],
+    "sha256": {f: sha(root / f) for f in files},
+}
+# ===== 4. 同时生成机器可读JSON和供成员阅读的TEST_REPORT.md =====
+(root / "evidence/verification.json").write_text(
+    json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
+)
+plot = result["analog_model_result"]
+report = f"""# 离线验证记录
 
 项目：`{root.name}`；器件 XC7Z035FFG900-2；Vivado/SDK 2018.3。
 
@@ -84,6 +133,8 @@ report=f'''# 离线验证记录
 ## 尚需实测
 
 没有进行本版 JTAG 下载、串口访问、板上程序运行或 Flash 写入。真实 DA 电压、模拟增益、极性、整数/小数延迟补偿、实际频率误差和重复采集稳定性均需实测。默认 delay=3 只在数字模型中对齐。先验证接线/供电/输出电压，再进行易失 JTAG Debug。
-'''
-(root/'docs/TEST_REPORT.md').write_text(report,encoding='utf-8')
-print('OFFLINE_VERIFICATION_PASS original_files=8 preserved, artifacts current, simulations PASS')
+"""
+(root / "docs/TEST_REPORT.md").write_text(report, encoding="utf-8")
+print(
+    "OFFLINE_VERIFICATION_PASS original_files=8 preserved, artifacts current, simulations PASS"
+)

@@ -1,0 +1,17 @@
+127.0.0.1 - - [28/Oct/2026 15:58:48] "GET /?demo=1 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 15:58:48] "GET /signal.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 15:58:48] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 15:58:48] "GET /demo_samples.csv HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 15:58:48] code 404, message File not found
+127.0.0.1 - - [28/Oct/2026 15:58:48] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [28/Oct/2026 16:00:41] "GET /?demo=1 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:00:41] "GET /signal.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:00:41] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:00:41] "GET /demo_samples.csv HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:00:41] code 404, message File not found
+127.0.0.1 - - [28/Oct/2026 16:00:41] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [28/Oct/2026 16:37:10] "GET /demo_samples.csv HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:49:27] "GET /?demo=1 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:49:27] "GET /signal.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:49:27] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 16:49:27] "GET /demo_samples.csv HTTP/1.1" 200 -

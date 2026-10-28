@@ -1,4 +1,9 @@
+# ===== 用途与执行边界 =====
+# 历史的一次性迁移脚本：从旧ADC工程增加CORDIC/GPIO/新核心；不要对现成新BD重复执行。
+# 在Vivado Tcl/SDK XSCT中执行，具体命令见README；普通打开文件不会执行脚本。
+
 set root [file normalize [file join [file dirname [info script]] ..]]
+# 1. 打开现有副本工程
 open_project [file join $root bd_start.xpr]
 foreach f [get_files -quiet *adc_board_control.v] {remove_files $f}
 foreach f [get_files -quiet *adc_capture_pack.v] {remove_files $f}
@@ -56,8 +61,10 @@ create_bd_port -dir O -from 7 -to 0 dac_data
 connect_bd_net [get_bd_pins measurement_core_0/dac_data] [get_bd_ports dac_data]
 assign_bd_address
 set_property offset 0x41210000 [get_bd_addr_segs processing_system7_0/Data/SEG_axi_gpio_config_Reg]
+# 检查BD接口/地址/时钟连接；不代表真实模拟电路已验证
 validate_bd_design
 save_bd_design
+# 再生成厂商IP仿真/综合文件，不手工修改这些自动生成文件
 generate_target all [get_files -all */capture_bd.bd]
 add_files -norecurse [make_wrapper -files [get_files -all */capture_bd.bd] -top]
 set_property top z100_adc_top [get_filesets sources_1]

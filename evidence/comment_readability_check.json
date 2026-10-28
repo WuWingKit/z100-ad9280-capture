@@ -1,0 +1,121 @@
+{
+  "rtl/adc_board_control.v": {
+    "check": "lexical tokens excluding comments/whitespace",
+    "unchanged": true,
+    "tokens": 557
+  },
+  "rtl/fifo_to_axis.v": {
+    "check": "lexical tokens excluding comments/whitespace",
+    "unchanged": true,
+    "tokens": 179
+  },
+  "rtl/measurement_core.v": {
+    "check": "lexical tokens excluding comments/whitespace",
+    "unchanged": true,
+    "tokens": 1519
+  },
+  "rtl/z100_adc_top.v": {
+    "check": "lexical tokens excluding comments/whitespace",
+    "unchanged": true,
+    "tokens": 513
+  },
+  "software/main.c": {
+    "check": "lexical tokens excluding comments/whitespace",
+    "unchanged": true,
+    "tokens": 1682
+  },
+  "pc/capture_analyze.py": {
+    "check": "Python AST",
+    "unchanged": true
+  },
+  "pc/test_analysis.py": {
+    "check": "Python AST",
+    "unchanged": true
+  },
+  "web/app.js": {
+    "check": "Acorn AST ignoring locations/literal formatting",
+    "unchanged": true
+  },
+  "web/serve.py": {
+    "check": "Python AST",
+    "unchanged": true
+  },
+  "web/signal.js": {
+    "check": "Acorn AST ignoring locations/literal formatting",
+    "unchanged": true
+  },
+  "web/start_dashboard.cmd": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "web/test_signal.cjs": {
+    "check": "Acorn AST ignoring locations/literal formatting",
+    "unchanged": true
+  },
+  "sim/tb_loop_ddr.v": {
+    "check": "lexical tokens excluding comments/whitespace",
+    "unchanged": true,
+    "tokens": 1141
+  },
+  "sim/tb_measurement.v": {
+    "check": "lexical tokens excluding comments/whitespace",
+    "unchanged": true,
+    "tokens": 1639
+  },
+  "scripts/build_bitstream.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/build_software.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/configure.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/debug_jtag.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/finalize.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/package_project.py": {
+    "check": "Python AST",
+    "unchanged": true
+  },
+  "scripts/probe_cordic.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/rebuild_software.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/recreate_project.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/refresh.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/run_ddr_sim.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/run_sim.tcl": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  },
+  "scripts/verify_artifacts.py": {
+    "check": "Python AST",
+    "unchanged": true
+  },
+  "constraints/z100_adc.xdc": {
+    "check": "commands unchanged after full-line comments/blanks removed",
+    "unchanged": true
+  }
+}

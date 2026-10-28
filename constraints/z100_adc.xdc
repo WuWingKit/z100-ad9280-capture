@@ -1,3 +1,5 @@
+# 阅读顺序：1.时钟/复位引脚 2.AD输入映射与输入时序 3.异步时钟域 4.DA输出映射与输出时序。
+# 本次仅补注释，封装引脚、电平和时序数值保持不变。
 # Official 27_hs_ad_da example / J37 AD input mapping, LVCMOS33.
 set_property PACKAGE_PIN D9 [get_ports sys_clk_p]
 set_property PACKAGE_PIN D8 [get_ports sys_clk_n]

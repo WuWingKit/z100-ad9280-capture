@@ -1,4 +1,9 @@
+# ===== 用途与执行边界 =====
+# 独立核心仿真：创建实际CORDIC/FIFO IP，不实例化PS，检查相位/打包/握手/恢复。
+# 在Vivado Tcl/SDK XSCT中执行，具体命令见README；普通打开文件不会执行脚本。
+
 set root [file normalize [file join [file dirname [info script]] ..]]
+# 1. 创建独立工程目录
 create_project simcheck [file join $root sim_project] -part xc7z035ffg900-2 -force
 add_files -norecurse [list [file join $root rtl measurement_core.v] [file join $root rtl fifo_to_axis.v]]
 create_ip -name cordic -vendor xilinx.com -library ip -version 6.0 -module_name sim_cordic
@@ -10,6 +15,7 @@ create_ip -name fifo_generator -vendor xilinx.com -library ip -version 13.2 -mod
 set_property -dict [list CONFIG.Fifo_Implementation Independent_Clocks_Builtin_FIFO \
  CONFIG.Input_Data_Width 32 CONFIG.Output_Data_Width 32 CONFIG.Input_Depth 1024 \
  CONFIG.Performance_Options First_Word_Fall_Through] [get_ips sim_fifo]
+# 再生成厂商IP仿真/综合文件，不手工修改这些自动生成文件
 generate_target all [get_ips]
 add_files -fileset sim_1 -norecurse [file join $root sim tb_measurement.v]
 set_property top tb_measurement [get_filesets sim_1]
@@ -19,6 +25,7 @@ set dir [file join $root sim_project simcheck.sim sim_1 behav xsim]
 foreach f {measurement_result.txt loopback_simulated.csv} {
  if {[file exists [file join $dir $f]]} {file delete [file join $dir $f]}
 }
+# 启动XSim；run all执行testbench直至完成或失败
 launch_simulation -mode behavioral
 run all
 close_sim

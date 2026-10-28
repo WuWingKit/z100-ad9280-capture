@@ -1,8 +1,10 @@
+# CI入口：只核对源码配置和已存证据，不运行Vivado、不连接开发板。
 """Portable source baseline checks; no original-machine paths or hardware access."""
 from pathlib import Path
 import json,re,xml.etree.ElementTree as ET
 
 root=Path(__file__).resolve().parents[1]
+# ===== 1. 核对器件、FIFO、DMA和引脚参数 =====
 bd=json.loads((root/'bd_start.srcs/sources_1/bd/capture_bd/capture_bd.bd').read_text())['design']
 assert bd['design_info']['device']=='xc7z035ffg900-2', 'Review device changes explicitly'
 fifo=bd['components']['fifo_generator_0']['parameters']
@@ -18,12 +20,14 @@ assert 'PACKAGE_PIN AA17 IOSTANDARD LVCMOS33' in xdc
 ET.parse(root/'bd_start.srcs/sources_1/ip/adc_clk_wiz/adc_clk_wiz.xci')
 for path in ['rtl/z100_adc_top.v','rtl/adc_board_control.v','software/main.c','sim/tb_z100_hw.v','POWER_CHECK.md','CONTRIBUTING.md']:
     assert (root/path).is_file(), path
+# ===== 2. 历史板上递增码证据，用于追溯原版本 =====
 data=(root/'evidence/20261022_progress/ramp_screenshot_transcript.txt').read_text()
 samples=[int(v,16) for line in data.splitlines() if re.fullmatch(r'[0-9A-F]{2}( [0-9A-F]{2})*',line) for v in line.split()]
 assert samples==list(range(100)) and sum(samples)==4950
 print('REPOSITORY_BASELINE_PASS: BD/XCI/XDC inputs and archived evidence consistent')
 print('Not a Vivado build, physical ADC test, or electrical safety certification.')
 
+# ===== 3. 当前CORDIC版本配置、关键文件和离线验证记录 =====
 cordic=bd['components']['cordic_sincos_0']['parameters']
 for k,v in {'Functional_Selection':'Sin_and_Cos','Phase_Format':'Scaled_Radians',
             'Input_Width':'16','Output_Width':'16','ARESETN':'true'}.items():
