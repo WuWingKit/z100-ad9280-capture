@@ -1,0 +1,6 @@
+<hr/><h2>3.5 关键代码与实现逻辑</h2><h3>3.5.1 四个 8 位采样打包为一个 32 位 FIFO 字</h3><p>首个采样放最低字节，第四个点参与组合拼接；仅第四点且 FIFO 未满时写入。N=4096 对应 1024 个 32 位字。</p><p>源码定位：rtl/measurement_core.v，第68～73行；以下代码及截图均来自当前工程。</p><pre lang="verilog" caption="rtl/measurement_core.v"><code>    // 本拍是第 4 点时，{当前点, 前三点} 同时被 FIFO 在时钟沿接收。
+    // 首点占最低字节，四点组成一个 32 位字：{s3,s2,s1,s0}。
+    // 写使能是组合条件；时序块中清 pack 不影响本沿已被 FIFO 接收的数据。
+    assign fifo_din = {sample, pack};
+    assign fifo_wr_en =
+               adc_reset_n &amp;&amp; state == CAPTURE &amp;&amp; count &lt; length &amp;&amp; !fifo_full &amp;&amp; count[1 : 0] == 3;</code></pre>

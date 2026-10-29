@@ -200,7 +200,13 @@
   }
   // ===== 7. 同一算法供浏览器和Node测试复用 =====
   // 浏览器通过window.Z100DSP读取；Node通过module.exports加载。
-  const api = { crc32, parsePacket, parseCSV, fft, fitPhase, analyze };
+  // 正交展示只旋转拟合基波，不移动原始采样、不假称第二路实测。
+  function quadratureReference(count, fs, f, fit) {
+    const phase = fit.phaseDeg * Math.PI / 180;
+    return Array.from({ length: count }, (_, i) =>
+      fit.dc + fit.amplitude * Math.sin(2 * Math.PI * f * i / fs + phase + Math.PI / 2));
+  }
+  const api = { crc32, parsePacket, parseCSV, fft, fitPhase, analyze, quadratureReference };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.Z100DSP = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

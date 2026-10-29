@@ -29,8 +29,8 @@
       "axi_gpio_0": "",
       "cordic_sincos_0": "",
       "axi_gpio_config": "",
-      "fifo_to_axis_0": "",
-      "measurement_core_0": ""
+      "measurement_core_0": "",
+      "fifo_to_axis_0": ""
     },
     "interface_ports": {
       "DDR_0": {
@@ -713,16 +713,16 @@
               }
             },
             "interface_nets": {
-              "s00_couplers_to_auto_pc": {
-                "interface_ports": [
-                  "S_AXI",
-                  "auto_pc/S_AXI"
-                ]
-              },
               "auto_pc_to_s00_couplers": {
                 "interface_ports": [
                   "M_AXI",
                   "auto_pc/M_AXI"
+                ]
+              },
+              "s00_couplers_to_auto_pc": {
+                "interface_ports": [
+                  "S_AXI",
+                  "auto_pc/S_AXI"
                 ]
               }
             },
@@ -905,10 +905,10 @@
           }
         },
         "interface_nets": {
-          "xbar_to_m02_couplers": {
+          "ps7_0_axi_periph_to_s00_couplers": {
             "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
+              "S00_AXI",
+              "s00_couplers/S_AXI"
             ]
           },
           "m00_couplers_to_ps7_0_axi_periph": {
@@ -923,22 +923,10 @@
               "xbar/S00_AXI"
             ]
           },
-          "ps7_0_axi_periph_to_s00_couplers": {
+          "xbar_to_m01_couplers": {
             "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
-            ]
-          },
-          "m01_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           },
           "m02_couplers_to_ps7_0_axi_periph": {
@@ -947,10 +935,22 @@
               "m02_couplers/M_AXI"
             ]
           },
-          "xbar_to_m01_couplers": {
+          "xbar_to_m02_couplers": {
             "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
+            ]
+          },
+          "m01_couplers_to_ps7_0_axi_periph": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
             ]
           }
         },
@@ -1085,6 +1085,133 @@
           }
         }
       },
+      "measurement_core_0": {
+        "vlnv": "xilinx.com:module_ref:measurement_core:1.0",
+        "xci_name": "capture_bd_measurement_core_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "measurement_core",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "axis_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "capture_bd_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "adc_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "capture_bd_adc_clk_0",
+                "value_src": "user_prop"
+              },
+              "FREQ_HZ": {
+                "value": "10000000",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "rst_n": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "constant"
+              }
+            }
+          },
+          "fifo_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "command": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "phase_word": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "config_word": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "adc_raw": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "adc_otr": {
+            "direction": "I"
+          },
+          "fifo_full": {
+            "direction": "I"
+          },
+          "stream_done": {
+            "direction": "I"
+          },
+          "cordic_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "cordic_valid": {
+            "direction": "I"
+          },
+          "phase_data": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "phase_valid": {
+            "direction": "O"
+          },
+          "cordic_reset_n": {
+            "direction": "O"
+          },
+          "dac_data": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "fifo_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "fifo_wr_en": {
+            "direction": "O"
+          },
+          "axis_reset_n": {
+            "direction": "O"
+          },
+          "frame_samples_axis": {
+            "direction": "O",
+            "left": "12",
+            "right": "0"
+          },
+          "status": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
       "fifo_to_axis_0": {
         "vlnv": "xilinx.com:module_ref:fifo_to_axis:1.0",
         "xci_name": "capture_bd_fifo_to_axis_0_0",
@@ -1216,140 +1343,13 @@
             "right": "0"
           }
         }
-      },
-      "measurement_core_0": {
-        "vlnv": "xilinx.com:module_ref:measurement_core:1.0",
-        "xci_name": "capture_bd_measurement_core_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "measurement_core",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "axis_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "CLK_DOMAIN": {
-                "value": "capture_bd_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              },
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              }
-            }
-          },
-          "adc_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "CLK_DOMAIN": {
-                "value": "capture_bd_adc_clk_0",
-                "value_src": "user_prop"
-              },
-              "FREQ_HZ": {
-                "value": "10000000",
-                "value_src": "user_prop"
-              }
-            }
-          },
-          "rst_n": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "constant"
-              }
-            }
-          },
-          "fifo_reset": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "command": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "phase_word": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "config_word": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "adc_raw": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "adc_otr": {
-            "direction": "I"
-          },
-          "fifo_full": {
-            "direction": "I"
-          },
-          "stream_done": {
-            "direction": "I"
-          },
-          "cordic_data": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "cordic_valid": {
-            "direction": "I"
-          },
-          "phase_data": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
-          },
-          "phase_valid": {
-            "direction": "O"
-          },
-          "cordic_reset_n": {
-            "direction": "O"
-          },
-          "dac_data": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "fifo_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "fifo_wr_en": {
-            "direction": "O"
-          },
-          "axis_reset_n": {
-            "direction": "O"
-          },
-          "frame_samples_axis": {
-            "direction": "O",
-            "left": "12",
-            "right": "0"
-          },
-          "status": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          }
-        }
       }
     },
     "interface_nets": {
-      "processing_system7_0_DDR": {
+      "ps7_0_axi_periph_M02_AXI": {
         "interface_ports": [
-          "DDR_0",
-          "processing_system7_0/DDR"
+          "ps7_0_axi_periph/M02_AXI",
+          "axi_gpio_config/S_AXI"
         ]
       },
       "axi_dma_0_M_AXI_S2MM": {
@@ -1358,22 +1358,16 @@
           "axi_smc/S00_AXI"
         ]
       },
-      "processing_system7_0_FIXED_IO": {
+      "ps7_0_axi_periph_M01_AXI": {
         "interface_ports": [
-          "FIXED_IO_0",
-          "processing_system7_0/FIXED_IO"
+          "ps7_0_axi_periph/M01_AXI",
+          "axi_gpio_0/S_AXI"
         ]
       },
-      "ps7_0_axi_periph_M02_AXI": {
+      "fifo_to_axis_0_m_axis": {
         "interface_ports": [
-          "ps7_0_axi_periph/M02_AXI",
-          "axi_gpio_config/S_AXI"
-        ]
-      },
-      "processing_system7_0_M_AXI_GP0": {
-        "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "ps7_0_axi_periph/S00_AXI"
+          "fifo_to_axis_0/m_axis",
+          "axi_dma_0/S_AXIS_S2MM"
         ]
       },
       "axi_smc_M00_AXI": {
@@ -1388,16 +1382,22 @@
           "axi_dma_0/S_AXI_LITE"
         ]
       },
-      "ps7_0_axi_periph_M01_AXI": {
+      "processing_system7_0_M_AXI_GP0": {
         "interface_ports": [
-          "ps7_0_axi_periph/M01_AXI",
-          "axi_gpio_0/S_AXI"
+          "processing_system7_0/M_AXI_GP0",
+          "ps7_0_axi_periph/S00_AXI"
         ]
       },
-      "fifo_to_axis_0_m_axis": {
+      "processing_system7_0_FIXED_IO": {
         "interface_ports": [
-          "fifo_to_axis_0/m_axis",
-          "axi_dma_0/S_AXIS_S2MM"
+          "FIXED_IO_0",
+          "processing_system7_0/FIXED_IO"
+        ]
+      },
+      "processing_system7_0_DDR": {
+        "interface_ports": [
+          "DDR_0",
+          "processing_system7_0/DDR"
         ]
       }
     },
@@ -1469,8 +1469,8 @@
           "ps7_0_axi_periph/M01_ACLK",
           "axi_gpio_config/s_axi_aclk",
           "ps7_0_axi_periph/M02_ACLK",
-          "fifo_to_axis_0/axis_clk",
-          "measurement_core_0/axis_clk"
+          "measurement_core_0/axis_clk",
+          "fifo_to_axis_0/axis_clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {

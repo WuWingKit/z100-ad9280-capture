@@ -1,0 +1,17 @@
+<h3>3.5.3 先准备 DMA，再启动采集</h3><p>PS 参数稳定后先 flush CPU cache、提交 S2MM N 字节目标缓冲，再翻转 START。完成条件额外核验 IOC、不忙、采样数和 stream_done；随后 invalidate cache 才读取。</p><p>源码定位：software/main.c，第111～127行；以下代码及截图均来自当前工程。</p><pre lang="c" caption="software/main.c"><code>    k = (u32)((((u64)freq &lt;&lt; 32) + FS / 2) / FS);
+    params = n | (delay &lt;&lt; 13) | (amp &lt;&lt; 21);
+    XGpio_DiscreteWrite(&amp;config, 1, k);
+    XGpio_DiscreteWrite(&amp;config, 2, params);
+    usleep(1000); /* bundled parameters settle before request-toggle crossing */
+    /* 5.3 填保护字节，并把CPU Cache中的缓存内容写回DDR。
+     * DMA访问物理DDR，不能只依靠CPU Cache中的新值。
+     */
+    memset(buffer, 0xa5, sizeof(buffer));
+    Xil_DCacheFlushRange((UINTPTR)buffer, sizeof(buffer));
+    XAxiDma_IntrAckIrq(&amp;dma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+    if (XAxiDma_SimpleTransfer(&amp;dma, (UINTPTR)buffer, n, XAXIDMA_DEVICE_TO_DMA) != XST_SUCCESS)
+        goto fail;
+    /* 5.4 DMA提交成功后才START：17保留bit0/bit4，8设置dma_armed，异或1翻转START。 */
+    cmd = (cmd &amp; 17U) | (ramp ? 2U : 0U) | 8U;
+    cmd ^= 1;
+    XGpio_DiscreteWrite(&amp;control, 1, cmd);</code></pre>

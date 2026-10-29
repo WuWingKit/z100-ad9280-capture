@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Z100 · AD/DA 测量台</title>
+    <title>SWU24级学行班信号处理第三组</title>
     <!-- ===== 1. 页面样式：桌面左右分栏，窄屏自动上下排列 ===== -->
     <style>
       :root {
@@ -23,6 +23,9 @@
         margin: 0;
       }
       header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
         background: #12263f;
         color: white;
         padding: 25px max(24px, calc((100vw - 1400px) / 2));
@@ -281,12 +284,93 @@
           display: none;
         }
       }
+      /* 班级主题：本地背景图、轻遮罩与半透明面板，保留图表对比度。 */
+      body {
+        min-height: 100vh;
+        background: linear-gradient(rgba(22, 25, 44, .24), rgba(22, 25, 44, .38)),
+          url('assets/swu-background.jpg') center top / cover fixed no-repeat;
+      }
+      header {
+        min-height: 155px;
+        background: linear-gradient(90deg, rgba(18, 28, 49, .88), rgba(18, 28, 49, .32));
+        border-bottom: 1px solid rgba(255, 255, 255, .35);
+        gap: 20px;
+      }
+      .class-name {
+        color: #fff2df;
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 12px #17243a;
+      }
+      .card, .stat {
+        background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(247,250,255,.62));
+        -webkit-backdrop-filter: blur(18px) saturate(135%);
+        backdrop-filter: blur(18px) saturate(135%);
+        border: 1px solid rgba(255,255,255,.76);
+        border-radius: 20px;
+        box-shadow: 0 12px 36px rgba(15,25,44,.18),
+          inset 0 1px 0 rgba(255,255,255,.95),
+          inset 0 -1px 0 rgba(255,255,255,.28);
+      }
+      :root { --muted: #3e526b; }
+      .card h2, .stat strong { color: #12263f; }
+      label, .check { color: #344b65; }
+      header {
+        -webkit-backdrop-filter: blur(12px) saturate(125%);
+        backdrop-filter: blur(12px) saturate(125%);
+      }
+      input, select, button {
+        background: rgba(255,255,255,.84);
+        border-color: rgba(120,143,172,.55);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+        border-radius: 10px;
+      }
+      button.primary { background: #2258ce; color: white; }
+      button:disabled { opacity: .65; cursor: not-allowed; }
+      input:focus-visible, select:focus-visible, button:focus-visible {
+        outline: 3px solid #2258ce;
+        outline-offset: 2px;
+      }
+      .banner {
+        background: rgba(233,240,255,.92);
+        border: 1px solid rgba(255,255,255,.8);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 6px 22px rgba(15,25,44,.12);
+        border-radius: 14px;
+      }
+      /* 科学绘图区保留不透明底色，背景不会穿透坐标和数据曲线。 */
+      canvas {
+        background: white;
+        border-radius: 12px;
+        border: 1px solid rgba(164,180,201,.5);
+      }
+      pre {
+        background: rgba(14,29,49,.94);
+        color: #e4eeff;
+        border: 1px solid rgba(255,255,255,.25);
+        border-radius: 12px;
+      }
+      @supports not (backdrop-filter: blur(1px)) {
+        .card, .stat { background: rgba(255,255,255,.95); }
+      }
+      .footer {
+        color: white;
+        text-shadow: 0 1px 4px #12263f;
+      }
+      @media (max-width: 580px) {
+        .class-name { font-size: 25px; }
+        header h1 { font-size: 20px; }
+        body { background-attachment: scroll; }
+      }
     </style>
   </head>
   <body>
     <!-- ===== 2. 页头：系统数据流与数据来源标签 ===== -->
     <header>
       <div>
+        <div class="class-name">SWU24级学行班信号处理第三组</div>
         <h1>Z100 · AD/DA 测量台</h1>
         <p>CORDIC 发波 → AD9280 → FIFO / DMA → DDR → UART → FFT</p>
       </div>
@@ -308,7 +392,7 @@
             <p id="portInfo" class="sub">由浏览器弹窗选择 Z100 的 PS USB 串口。</p>
           </section>
           <section class="card">
-            <h2>02 / 单帧测量参数</h2>
+            <h2>02 / 采集与实时刷新</h2>
             <label for="frequency">DA 目标频率 / Hz</label
             ><input id="frequency" type="number" min="1000" max="1000000" value="100000" />
             <div class="row">
@@ -333,6 +417,8 @@
                 >已确认 DA 模拟输出接到 AD 模拟输入，且输出电压在 AD 允许范围内。</span
               ></label
             ><button id="capture" class="primary wide" disabled>采集真实 AD 数据</button>
+            <button id="live" class="primary wide" style="margin-top:8px" disabled>开始连续采集</button>
+            <p id="liveInfo" class="sub" aria-live="polite">尚未开始连续采集</p>
             <div class="row" style="margin-top: 8px">
               <button id="ramp" disabled>递增码自检</button
               ><button id="stop" class="danger" disabled>停止 / 复位</button
@@ -340,7 +426,7 @@
             </div>
             <p class="sub">
               采样率固定 10 MHz。delay=3
-              仅在数字模型中对齐；真实模拟延迟须标定。每次任务结束后手动触发下一帧。
+              仅在数字模型中对齐；真实模拟延迟须标定。连续模式会在完整帧校验成功后自动请求下一帧，并更新波形和频谱；点“停止 / 复位”结束。115200 串口下 4096 点通常每秒更新约一帧，帧间存在间隔。
             </p>
           </section>
           <section class="card">
@@ -388,6 +474,8 @@
                 <option value="all">完整帧</option>
               </select>
             </div>
+            <label class="check"><input id="quadrature" type="checkbox" checked />显示 +90° 正交参考（由单音拟合计算，非第二路 AD 实测）</label>
+            <p class="sub">蓝线：原始 AD 数据；橙色虚线：同幅度、同直流偏置的 +90° 拟合参考。</p>
             <canvas id="timeCanvas"></canvas>
             <div id="hover" class="sub">移动鼠标可查看采样点。</div>
           </section>
@@ -397,6 +485,10 @@
                 <h2>幅度频谱</h2>
                 <p id="spectrumNote" class="sub">去直流 · Hann 窗 · 单边 FFT · 对数峰值插值</p>
               </div>
+              <select id="freqScale" aria-label="频谱纵轴刻度">
+                <option value="linear">线性幅度 / code</option>
+                <option value="db">对数幅度 / dB</option>
+              </select>
               <select id="freqView">
                 <option value="focus">主频附近</option>
                 <option value="all">0–5 MHz</option>
@@ -417,12 +509,12 @@
             <h2>串口 / 事件日志</h2>
             <pre id="log" aria-live="polite"></pre>
             <p class="note">
-              只接受完整帧：点数、CRC32、sum/min/max、板端错误数和成功标志均须通过。错误日志会保留，页面不会自动重新启动或反复采集。
+              只接受完整帧：点数、CRC32、sum/min/max、板端错误数和成功标志均须通过。错误日志会保留；超时、校验失败或串口断开会停止连续采集，需手动重新开始。
             </p>
           </section>
         </section>
       </div>
-      <p class="footer">本地运行，无外部 CDN、无云端上传 · 单帧分析，不是 10 MSPS 连续串口流</p>
+      <p class="footer">本地运行，无外部 CDN、无云端上传 · 串口逐帧实时刷新 · 10 MSPS 为帧内采样率，帧间存在采集与传输间隔</p>
     </main>
     <!-- ===== 6. 加载顺序：先纯算法signal.js，再界面/串口逻辑app.js ===== -->
     <script src="signal.js"></script>

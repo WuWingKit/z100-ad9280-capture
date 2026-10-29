@@ -16,6 +16,13 @@ let current = null,
   packet = [],
   lineBuffer = '',
   timeWindow = 0;
+// 连续模式每次只允许一帧在途；完整校验成功后才安排下一帧。
+let continuous = false, nextFrameTimer = null, liveFrames = 0;
+function stopContinuous() {
+  continuous = false;
+  clearTimeout(nextFrameTimer);
+  nextFrameTimer = null;
+}
 const stamp = () => new Date().toISOString().replace(/[:.]/g, '-');
 // ===== 2. 提示、日志与按钮互锁 =====
 // DOM文字全部用textContent写入，不把串口数据当HTML执行。
@@ -24,22 +31,24 @@ function message(text, kind = '') {
   $('message').className = 'banner ' + kind;
 }
 function log(text) {
-  rawLog += text + '\n';
+  rawLog = (rawLog + text + '\n').slice(-2000000); // 连续运行限制日志内存，保留最近约2MB。
   $('log').textContent = rawLog.slice(-18000);
   $('log').scrollTop = $('log').scrollHeight;
 }
 // 真实采集需要串口已连接、当前空闲，并勾选模拟接线/电压确认。
-// 忙时禁止修改本次参数，页面不会自动循环触发测量。
+// 连续采集期间固定参数；仅用户点击开始后自动逐帧测量。
 function buttons() {
   const active = !!port && readActive;
   $('connect').disabled = !!port;
   $('disconnect').disabled = !port;
-  $('capture').disabled = !active || busy || !$('physicalReady').checked;
-  $('ramp').disabled = !active || busy;
+  $('capture').disabled = !active || busy || continuous || !$('physicalReady').checked;
+  $('ramp').disabled = !active || busy || continuous;
+  $('live').disabled = !active || busy || continuous || !$('physicalReady').checked;
+  $('live').textContent = continuous ? '连续采集中…' : '开始连续采集';
   $('stop').disabled = !active;
-  $('status').disabled = !active || busy;
+  $('status').disabled = !active || busy || continuous;
   for (const id of ['frequency', 'samples', 'delay', 'amplitude', 'file', 'demo'])
-    $(id).disabled = busy;
+    $(id).disabled = busy || continuous;
 }
 // 无论成功、错误或中止，都需清前端计时器并恢复参数编辑。
 function endJob() {
@@ -49,6 +58,8 @@ function endJob() {
   buttons();
 }
 function fail(error) {
+  stopContinuous();
+  $('liveInfo').textContent = '连续采集已停止：' + error.message;
   log('! ' + error.message);
   message(error.message, 'error');
   endJob();
@@ -128,6 +139,7 @@ function receive(line) {
     line.startsWith('RESET OK')
   ) {
     packet = [];
+    stopContinuous();
     endJob();
     message('采集路径已复位；DAC 保持名义中点。', 'warn');
     return;
@@ -150,6 +162,14 @@ function receive(line) {
       render(frame, `串口实测 · ${frame.meta.mode}`, 'live');
       endJob();
       packet = [];
+      if (continuous) {
+        liveFrames++;
+        $('liveInfo').textContent = `已更新 ${liveFrames} 帧 · ${new Date().toLocaleTimeString()} · 等待下一帧`;
+        nextFrameTimer = setTimeout(() => {
+          nextFrameTimer = null;
+          if (continuous && readActive && port) start(false);
+        }, 150);
+      }
     } catch (e) {
       packet = [];
       fail(e);
@@ -181,6 +201,9 @@ async function readLoop() {
     reader.releaseLock();
     reader = null;
     readActive = false;
+    stopContinuous();
+    endJob();
+    $('liveInfo').textContent = '串口读取已结束，连续采集已停止';
     buttons();
   }
 }
@@ -222,6 +245,7 @@ $('connect').onclick = async () => {
   }
 };
 $('disconnect').onclick = async () => {
+  stopContinuous();
   try {
     readActive = false;
     if (reader) await reader.cancel();
@@ -241,8 +265,18 @@ $('disconnect').onclick = async () => {
 // ===== 8. 控件事件：测量、自检、停止、状态 =====
 // q由PS处理整条路径复位；关闭网页/串口本身不是硬件停止命令。
 $('capture').onclick = () => start(false);
+$('live').onclick = () => {
+  if (busy || continuous || !readActive || !$('physicalReady').checked) return;
+  continuous = true;
+  liveFrames = 0;
+  $('liveInfo').textContent = '正在接收第1帧；每帧校验成功后自动刷新波形和频谱';
+  start(false);
+};
 $('ramp').onclick = () => start(true);
 $('stop').onclick = async () => {
+  stopContinuous();
+  buttons();
+  $('liveInfo').textContent = '已停止自动请求，等待板端完成停止/复位';
   try {
     await send('q');
     message('已发送 q，等待板端停止/复位响应；串口打印阶段会在打印结束后处理。', 'warn');
@@ -251,7 +285,10 @@ $('stop').onclick = async () => {
   }
 };
 $('status').onclick = () => send('s').catch(fail);
-$('physicalReady').onchange = buttons;
+$('physicalReady').onchange = () => {
+  if (!$('physicalReady').checked && continuous) $('stop').onclick();
+  buttons();
+};
 // 优先用K*fs/2^32计算实际设置频率，减少频率控制字量化造成的参考误差。
 function reference(meta) {
   return Number(meta.k) > 0 ? (Number(meta.k) * Number(meta.fs)) / 4294967296 : Number(meta.freq);
@@ -378,7 +415,7 @@ $('file').onchange = async (e) => {
 // ===== 11. Canvas通用绘图 =====
 // 使用devicePixelRatio匹配高分辨率屏幕；sx/sy将实际坐标映射为像素。
 // 裁剪绘图区，先画网格/轴，再画曲线；红点标记第0个样本。
-function drawPlot(canvas, points, xMax, yMin, yMax, xLabel, yLabel, color, marker) {
+function drawPlot(canvas, points, xMax, yMin, yMax, xLabel, yLabel, color, marker, overlay = []) {
   const w = canvas.clientWidth || 800,
     h = canvas.clientHeight || 265,
     dpr = window.devicePixelRatio || 1;
@@ -409,7 +446,7 @@ function drawPlot(canvas, points, xMax, yMin, yMax, xLabel, yLabel, color, marke
     ctx.textAlign = 'center';
     ctx.fillText(((i * xMax) / 5).toFixed(xMax < 10 ? 2 : 1), x, h - 22);
     ctx.textAlign = 'right';
-    ctx.fillText((yMax - (i * (yMax - yMin)) / 5).toFixed(0), m.l - 8, y + 4);
+    ctx.fillText((yMax - (i * (yMax - yMin)) / 5).toFixed(yMax - yMin < 10 ? 2 : 0), m.l - 8, y + 4);
   }
   ctx.strokeStyle = '#9aaac0';
   ctx.beginPath();
@@ -433,6 +470,17 @@ function drawPlot(canvas, points, xMax, yMin, yMax, xLabel, yLabel, color, marke
     } else ctx.lineTo(sx(x), sy(y));
   }
   ctx.stroke();
+  if (overlay.length) {
+    ctx.strokeStyle = '#d77b16';
+    ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    overlay.forEach(([x, y], i) => {
+      if (i === 0) ctx.moveTo(sx(x), sy(y));
+      else ctx.lineTo(sx(x), sy(y));
+    });
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
   if (marker) {
     ctx.fillStyle = '#d74a47';
     ctx.beginPath();
@@ -460,6 +508,11 @@ function draw() {
   timeWindow = count;
   const low = Math.max(0, Math.min(...x) - 5),
     high = Math.min(255, Math.max(...x) + 5);
+  const q = result?.fit && result.reliable && $('quadrature').checked
+    ? D.quadratureReference(count, fs, ref, result.fit)
+    : [];
+  $('timeNote').textContent = '纵轴为原始 ADC code，非电压。' +
+    (q.length ? '橙线超前拟合基波 90°（四分之一周期），仅作正交参考。' : '正交参考仅对具有足够周期的有效单音显示。');
   drawPlot(
     $('timeCanvas'),
     Array.from(x.slice(0, count), (y, i) => [(i / fs) * 1e6, y]),
@@ -469,9 +522,14 @@ function draw() {
     '时间 / μs',
     'ADC code',
     '#2258ce',
-    [0, x[0]]
+    [0, x[0]],
+    q.map((y, i) => [(i / fs) * 1e6, y])
   );
   if (result) {
+    const linear = $('freqScale').value === 'linear';
+    const peak = Math.max(...result.magnitude);
+    $('spectrumNote').textContent = `去直流 · Hann · 格点 ${result.binHz.toFixed(3)} Hz · ` +
+      (linear ? '线性幅度突出主峰；小幅杂散仍保留在数据中' : '对数刻度可看见较弱的噪声与谐波');
     const maxHz =
       $('freqView').value === 'all'
         ? fs / 2
@@ -480,13 +538,13 @@ function draw() {
       $('freqCanvas'),
       Array.from(result.magnitude, (v, i) => [
         (i * fs) / x.length / 1000,
-        20 * Math.log10(Math.max(v, 1e-9))
+        linear ? v : 20 * Math.log10(Math.max(v, 1e-9))
       ]),
       maxHz / 1000,
-      -120,
-      Math.max(10, 20 * Math.log10(Math.max(...result.magnitude)) + 8),
+      linear ? 0 : -120,
+      linear ? Math.max(.1, peak * 1.15) : Math.max(10, 20 * Math.log10(peak) + 8),
       '频率 / kHz',
-      'dB re 1 code',
+      linear ? '幅度 / code' : 'dB re 1 code',
       '#0a968e'
     );
   } else
@@ -503,6 +561,8 @@ function draw() {
 }
 $('timeView').onchange = draw;
 $('freqView').onchange = draw;
+$('freqScale').onchange = draw;
+$('quadrature').onchange = draw;
 window.addEventListener('resize', draw);
 $('timeCanvas').onmousemove = (e) => {
   if (!current) return;

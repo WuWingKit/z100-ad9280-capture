@@ -25,7 +25,9 @@ jobs:
           python3 -m pip install numpy
           python3 pc/test_analysis.py
       - name: Test HTML FFT and serial-frame parser
-        run: node web/test_signal.cjs
+        run: |
+          node web/test_signal.cjs
+          node web/test_live.cjs
       - name: Install Icarus Verilog
         run: sudo apt-get update -qq && sudo apt-get install -y iverilog
       - name: Run archived packing and AXIS compatibility smoke test

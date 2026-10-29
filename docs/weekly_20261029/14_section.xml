@@ -1,0 +1,19 @@
+<h3>3.5.4 去直流、Hann 窗与单边幅度谱</h3><p>FFT 在电脑网页 JavaScript 运行；Hann 窗和去直流减少泄漏与 DC 干扰，按窗系数和归一化，单边谱非 DC/Nyquist 乘 2。后续对数抛物线峰值插值不改变 fs/N 分辨网格。</p><p>源码定位：web/signal.js，第154～172行；以下代码及截图均来自当前工程。</p><pre lang="javascript" caption="web/signal.js"><code>    const min = Math.min(...samples),
+      max = Math.max(...samples),
+      mean = samples.reduce((a, b) =&gt; a + b, 0) / n;
+    if (max - min &lt; 2) throw Error(&#x27;交流变化不足，不能可靠测频；检查回环接线和幅度&#x27;);
+    const re = new Float64Array(n),
+      im = new Float64Array(n);
+    let sum = 0;
+    for (let i = 0; i &lt; n; i++) {
+      const w = 0.5 * (1 - Math.cos((2 * Math.PI * i) / (n - 1)));
+      sum += w;
+      re[i] = (samples[i] - mean) * w;
+    }
+    // Hann窗的幅度衰减用窗系数总和补偿；单边谱除DC/Nyquist外乘2。
+    fft(re, im);
+    const magnitude = new Float64Array(n / 2 + 1);
+    let peak = 1;
+    for (let i = 0; i &lt;= n / 2; i++) {
+      magnitude[i] = (Math.hypot(re[i], im[i]) / sum) * (i &gt; 0 &amp;&amp; i &lt; n / 2 ? 2 : 1);
+      if (i &gt; 0 &amp;&amp; i &lt; n / 2 &amp;&amp; magnitude[i] &gt; magnitude[peak]) peak = i;</code></pre>

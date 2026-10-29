@@ -1,0 +1,22 @@
+<h3>3.5.2 FWFT FIFO 转 AXI-Stream：握手与包尾</h3><p>只有 TVALID 与 TREADY 同时为 1 时消费 FIFO 并推进字计数；TLAST 为第 N/4 个字。stream_done 只表示 AXIS 末字被接收，不代表 DDR 写入完成。</p><p>源码定位：rtl/fifo_to_axis.v，第17～38行；以下代码及截图均来自当前工程。</p><pre lang="verilog" caption="rtl/fifo_to_axis.v"><code>    // ===== 2. 当前字序号与握手 =====
+    // 4096 个字节最多 1024 个 32 位字，10 位计数器计 0..1023。
+    // word_count 只在 TVALID &amp;&amp; TREADY 时前进，停顿不消耗 FIFO 数据。
+    reg [9 : 0] word_count;
+    assign m_axis_tdata = fifo_dout;
+    assign m_axis_tkeep = 4&#x27;hf;
+    assign m_axis_tvalid = rst_n &amp;&amp; !fifo_empty;
+    assign fifo_rd_en = m_axis_tvalid &amp;&amp; m_axis_tready;
+    // ===== 3. 包尾与完成 =====
+    // N/4 - 1 是最后一个字序号；等待 TREADY 时，TLAST 与 TDATA 一起保持。
+    // stream_done 仅表示 AXIS 包尾已被下游接收，不能代替 DMA DDR 完成标志。
+    assign m_axis_tlast = m_axis_tvalid &amp;&amp; ({1&#x27;b0, word_count} == ((frame_samples &gt;&gt; 2) - 1&#x27;b1));
+    assign stream_done = fifo_rd_en &amp;&amp; m_axis_tlast;
+    // ===== 4. 时序计数：仅按实际成功传输的字数计数 =====
+    always @(posedge axis_clk or negedge rst_n)
+        if (!rst_n)
+            word_count &lt;= 0;
+        else if (fifo_rd_en) begin
+            if (m_axis_tlast)
+                word_count &lt;= 0;
+            else
+                word_count &lt;= word_count + 1&#x27;b1;</code></pre>

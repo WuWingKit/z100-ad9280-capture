@@ -1,6 +1,6 @@
 # Z100 Debug 与 HTML 串口测量步骤
 
-适用：本工程 Z100 XC7Z035FFG900-2、J37 配套 AD/DA 模块，Vivado/SDK 2018.3。本版尚未执行真实 DA→AD 模拟回环测试。沿用配套示例引脚，不需要更改 J37 定义。
+适用：本工程 Z100 XC7Z035FFG900-2、J37 配套 AD/DA 模块，Vivado/SDK 2018.3。2026-10-29组员已提供真实DA→AD回环和RAMP实测截图，见weekly_20261029；电压/时钟绝对精度与长期运行仍需独立标定。沿用配套示例引脚，不需要更改 J37 定义。
 
 ## 1. 用哪几个文件
 
@@ -64,3 +64,10 @@ python web/serve.py --open
 - 导入 CSV 没有板端 CRC 来源证明；导入串口 TXT 会检查完整帧、CRC、统计与成功标志。
 
 浏览器测试仅验证页面、数据解析及数字算法，不等同于串口物理链路和开发板硬件验收。
+
+
+## 2026-10-29 连续采集与SDK入口补充
+
+从Windows开始菜单独立启动Xilinx SDK 2018.3，Workspace选择包内sdk_workspace。Vivado的Launch SDK可能因硬件导出命名匹配失败而提示Exported System File Not Found；不需要因此重新综合。Program FPGA中用Browse手动选择hardware/z100_cordic.bit，再启动adc_uart的System Debugger并Resume。
+
+网页在勾选接线确认后可点击“开始连续采集”。每帧完整校验后自动请求下一帧；停止/复位、错误、超时或串口断开取消循环。网页布局修改需刷新时，应先停止并断开串口。橙色+90°参考由拟合计算，不是第二路AD；线性/dB切换只改显示刻度。

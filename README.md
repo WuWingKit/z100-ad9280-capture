@@ -4,11 +4,12 @@
 
 本版已为手写 Verilog、ARM C、Python、HTML/JavaScript 和 Tcl 脚本补充中文分段注释。厂商 IP、Vivado 自动生成的包装和网表保持由工具管理。
 
-- 开发分支：[feature/cordic-loop-20261028](https://github.com/WuWingKit/z100-ad9280-capture/tree/feature/cordic-loop-20261028)
-- 编码兼容阅读版下载：[v0.2.2-20261028](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.2.2-20261028)
+- 当前交付基线：`main`（2026-10-29周报版）；旧开发分支保留历史。
+- 完整工程及网页下载：[v0.3.0-20261029](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.3.0-20261029)
+- 本周汇报：[飞书可编辑文档](https://scnk2ajxowqf.feishu.cn/docx/Vmuidzhnsok7vGx0fiYc629Ongc) · [本地完整图文版](docs/weekly_20261029/report.html) · [实测截图读数](docs/weekly_20261029/observations.json)
 - 深入阅读：[代码阅读指南](docs/CODE_GUIDE.md) · [实现原理](docs/IMPLEMENTATION.md) · [上板步骤](docs/BOARD_TEST.md)
 
-**验证边界：本工程已通过数字仿真、离线构建和算法测试，尚未完成本版真实 DA→AD 模拟回环实测。真实输出电压、增益、极性和零相位延迟需要上板标定。**
+**当前进度（2026-10-29）：组员已提供板端RAMP自检通过、10kHz/100kHz/1MHz真实DA→AD回环、CRC通过及连续刷新截图。本工程用于第三组第三部分的前期数据链路验证，尚未接入雷达数据。FFT在PC执行，+90°曲线为拟合参考。绝对测频精度、模拟标定、长期稳定性仍待专门测量；本次未取得匹配的原始REAL数据导出，不能据截图计算SNR/THD。**
 
 ## 1. 这个工程做什么
 
@@ -176,7 +177,7 @@ h                    # 帮助
 - `delay=3`只在数字模型中对齐；实物首点不一定为128，模拟滤波/线缆/器件延迟需要标定。
 - 窗口不足3个参考周期时网页会警告，变化小于2 code时不报告主频。
 - CRC通过证明数字数据完整性，不证明模拟信号质量；RAMP通过也不代表ADC模拟链路已正常。
-- ASCII回传4096点需约1秒以上，采集本身仅409.6 μs。本版不是10 MSPS连续串口输出。
+- ASCII回传4096点需约1秒以上，采集本身仅409.6 μs。本版不是10 MSPS连续串口输出，连续按钮只自动逐帧请求。
 
 ## 9. 修改后怎样重新验证和构建
 
@@ -240,3 +241,12 @@ Node.js只用于开发者运行网页算法测试，普通打开网页不需要�
 注释版另外保存`evidence/comment_readability_check.json`：比较C/Verilog有效token、Python AST和JavaScript AST，检查注释/排版没有改变执行逻辑。之后仍重新编译、仿真并运行算法测试。
 
 组员修改建议从功能分支开发并提交PR，说明改了哪段数据路径、如何验证；不要直接编辑厂商生成文件，不要把一次仿真PASS写成真实硬件验收通过。
+
+
+## 2026-10-29 网页连续采集更新
+
+连接 PS USB 串口并确认模拟接线后，点击“开始连续采集”。网页等待当前帧完整回传并通过 CRC/点数/参数检查，刷新波形和频谱，间隔 150 ms 后再发下一条采集命令；任何时候最多一帧在途。点“停止 / 复位”取消后续请求并发送 q；串口断开、超时或校验失败自动结束循环。
+
+此功能使用现有 bit/ELF，无需重新下载。4096 点的 ASCII 串口回传约需 1.1 秒，加上帧间等待，实际刷新率低于每秒一帧；256/512 点可提高刷新速度，但减少 FFT 频率分辨率。每帧内部采样率仍为 10 MSPS，帧间不是连续采样。日志只保留最近约 2 MB，长期测试请及时导出。
+
+离线验证：`node web/test_live.cjs` 检查连续请求、防重复启动、停止后迟到帧和板端错误；`node web/test_signal.cjs` 检查解析与 FFT。尚未据此宣称完成真实板端连续测试。

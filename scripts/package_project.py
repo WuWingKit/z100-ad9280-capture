@@ -32,6 +32,9 @@ with zipfile.ZipFile(dest, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
             continue
         if p.name == "package_result.json":
             continue
+        # 云文档上传回执属于本机工作记录，不作为工程源码/测试数据分发。
+        if p.name == "upload_state.json" or p.name.startswith("response_"):
+            continue
         if ".backup." in p.name:
             continue
         z.write(p, root.name + "/" + rel.as_posix())

@@ -1,0 +1,95 @@
+{
+  "snippets": [
+    {
+      "id": "01_pack",
+      "title": "四个 8 位采样打包为一个 32 位 FIFO 字",
+      "file": "rtl/measurement_core.v",
+      "absolute_file": "E:\\FPGAWork\\z100_cordic_loop_20261028\\rtl\\measurement_core.v",
+      "line_start": 68,
+      "line_end": 73,
+      "code": "    // 本拍是第 4 点时，{当前点, 前三点} 同时被 FIFO 在时钟沿接收。\n    // 首点占最低字节，四点组成一个 32 位字：{s3,s2,s1,s0}。\n    // 写使能是组合条件；时序块中清 pack 不影响本沿已被 FIFO 接收的数据。\n    assign fifo_din = {sample, pack};\n    assign fifo_wr_en =\n               adc_reset_n && state == CAPTURE && count < length && !fifo_full && count[1 : 0] == 3;",
+      "explanation": "首个采样放最低字节，第四个点参与组合拼接；仅第四点且 FIFO 未满时写入。N=4096 对应 1024 个 32 位字。",
+      "image": "E:\\FPGAWork\\z100_cordic_loop_20261028\\docs\\weekly_20261029\\assets\\01_pack.png"
+    },
+    {
+      "id": "02_axis",
+      "title": "FWFT FIFO 转 AXI-Stream：握手与包尾",
+      "file": "rtl/fifo_to_axis.v",
+      "absolute_file": "E:\\FPGAWork\\z100_cordic_loop_20261028\\rtl\\fifo_to_axis.v",
+      "line_start": 17,
+      "line_end": 38,
+      "code": "    // ===== 2. 当前字序号与握手 =====\n    // 4096 个字节最多 1024 个 32 位字，10 位计数器计 0..1023。\n    // word_count 只在 TVALID && TREADY 时前进，停顿不消耗 FIFO 数据。\n    reg [9 : 0] word_count;\n    assign m_axis_tdata = fifo_dout;\n    assign m_axis_tkeep = 4'hf;\n    assign m_axis_tvalid = rst_n && !fifo_empty;\n    assign fifo_rd_en = m_axis_tvalid && m_axis_tready;\n    // ===== 3. 包尾与完成 =====\n    // N/4 - 1 是最后一个字序号；等待 TREADY 时，TLAST 与 TDATA 一起保持。\n    // stream_done 仅表示 AXIS 包尾已被下游接收，不能代替 DMA DDR 完成标志。\n    assign m_axis_tlast = m_axis_tvalid && ({1'b0, word_count} == ((frame_samples >> 2) - 1'b1));\n    assign stream_done = fifo_rd_en && m_axis_tlast;\n    // ===== 4. 时序计数：仅按实际成功传输的字数计数 =====\n    always @(posedge axis_clk or negedge rst_n)\n        if (!rst_n)\n            word_count <= 0;\n        else if (fifo_rd_en) begin\n            if (m_axis_tlast)\n                word_count <= 0;\n            else\n                word_count <= word_count + 1'b1;",
+      "explanation": "只有 TVALID 与 TREADY 同时为 1 时消费 FIFO 并推进字计数；TLAST 为第 N/4 个字。stream_done 只表示 AXIS 末字被接收，不代表 DDR 写入完成。",
+      "image": "E:\\FPGAWork\\z100_cordic_loop_20261028\\docs\\weekly_20261029\\assets\\02_axis.png"
+    },
+    {
+      "id": "03_dma",
+      "title": "先准备 DMA，再启动采集",
+      "file": "software/main.c",
+      "absolute_file": "E:\\FPGAWork\\z100_cordic_loop_20261028\\software\\main.c",
+      "line_start": 111,
+      "line_end": 127,
+      "code": "    k = (u32)((((u64)freq << 32) + FS / 2) / FS);\n    params = n | (delay << 13) | (amp << 21);\n    XGpio_DiscreteWrite(&config, 1, k);\n    XGpio_DiscreteWrite(&config, 2, params);\n    usleep(1000); /* bundled parameters settle before request-toggle crossing */\n    /* 5.3 填保护字节，并把CPU Cache中的缓存内容写回DDR。\n     * DMA访问物理DDR，不能只依靠CPU Cache中的新值。\n     */\n    memset(buffer, 0xa5, sizeof(buffer));\n    Xil_DCacheFlushRange((UINTPTR)buffer, sizeof(buffer));\n    XAxiDma_IntrAckIrq(&dma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);\n    if (XAxiDma_SimpleTransfer(&dma, (UINTPTR)buffer, n, XAXIDMA_DEVICE_TO_DMA) != XST_SUCCESS)\n        goto fail;\n    /* 5.4 DMA提交成功后才START：17保留bit0/bit4，8设置dma_armed，异或1翻转START。 */\n    cmd = (cmd & 17U) | (ramp ? 2U : 0U) | 8U;\n    cmd ^= 1;\n    XGpio_DiscreteWrite(&control, 1, cmd);",
+      "explanation": "PS 参数稳定后先 flush CPU cache、提交 S2MM N 字节目标缓冲，再翻转 START。完成条件额外核验 IOC、不忙、采样数和 stream_done；随后 invalidate cache 才读取。",
+      "image": "E:\\FPGAWork\\z100_cordic_loop_20261028\\docs\\weekly_20261029\\assets\\03_dma.png"
+    },
+    {
+      "id": "04_fft",
+      "title": "去直流、Hann 窗与单边幅度谱",
+      "file": "web/signal.js",
+      "absolute_file": "E:\\FPGAWork\\z100_cordic_loop_20261028\\web\\signal.js",
+      "line_start": 154,
+      "line_end": 172,
+      "code": "    const min = Math.min(...samples),\n      max = Math.max(...samples),\n      mean = samples.reduce((a, b) => a + b, 0) / n;\n    if (max - min < 2) throw Error('交流变化不足，不能可靠测频；检查回环接线和幅度');\n    const re = new Float64Array(n),\n      im = new Float64Array(n);\n    let sum = 0;\n    for (let i = 0; i < n; i++) {\n      const w = 0.5 * (1 - Math.cos((2 * Math.PI * i) / (n - 1)));\n      sum += w;\n      re[i] = (samples[i] - mean) * w;\n    }\n    // Hann窗的幅度衰减用窗系数总和补偿；单边谱除DC/Nyquist外乘2。\n    fft(re, im);\n    const magnitude = new Float64Array(n / 2 + 1);\n    let peak = 1;\n    for (let i = 0; i <= n / 2; i++) {\n      magnitude[i] = (Math.hypot(re[i], im[i]) / sum) * (i > 0 && i < n / 2 ? 2 : 1);\n      if (i > 0 && i < n / 2 && magnitude[i] > magnitude[peak]) peak = i;",
+      "explanation": "FFT 在电脑网页 JavaScript 运行；Hann 窗和去直流减少泄漏与 DC 干扰，按窗系数和归一化，单边谱非 DC/Nyquist 乘 2。后续对数抛物线峰值插值不改变 fs/N 分辨网格。",
+      "image": "E:\\FPGAWork\\z100_cordic_loop_20261028\\docs\\weekly_20261029\\assets\\04_fft.png"
+    }
+  ],
+  "facts": {
+    "scope": "第三组第三部分：在雷达数据尚未接入前，用配套 AD/DA 实物回环和板内 RAMP 学习验证数据读取、FIFO、DMA、DDR、串口、电脑端 FFT；不是完整相控阵雷达系统。",
+    "algorithms": [
+      "PL 32 位相位累加器：K=round(fout*2^32/fs)，fs=10 MHz；高位经 Q3.13 pi-unit 格式送真实 Xilinx CORDIC IP。CORDIC 用于正弦发波，不是 FFT 测频。",
+      "ADC 每点 8 bit；{s3,s2,s1,s0} 组成 32 bit；异步 FWFT FIFO 读写均 32 bit、深度 1024；采样域 10 MHz，AXI 域 100 MHz。",
+      "Simple AXI DMA S2MM 经 AXI SmartConnect、PS S_AXI_HP0 写入 PS DDR；PS M_AXI_GP0 负责 GPIO/DMA 寄存器控制。PSR 负责同步释放复位。",
+      "电脑 FFT：去均值、Hann、radix-2 FFT、窗增益补偿的单边幅度谱、三点对数抛物线插值。4096 点/10 MHz 给出 409.6 us 观测窗与 2441.40625 Hz 格点。",
+      "橙色 +90° 曲线：以已知参考频率拟合 A sin(wt)+B cos(wt)+DC，旋转拟合基波相位 pi/2；不修改原始采样，不是独立第二路 ADC 或已完成硬件 I/Q。",
+      "浏览器连续模式每次完整 CRC 帧成功后等待 150 ms 再请求下一帧；115200 波特 ASCII 回传有帧间空隙，不是连续 10 MSPS 数据流。"
+    ],
+    "resolved_issues": [
+      {
+        "problem": "CORDIC 复位释放同拍送入 valid 时首个零相位可能漏接",
+        "solution": "加入 cordic_warm 启动等待，保持首相位为 0，仿真逐点核对。"
+      },
+      {
+        "problem": "采集结束或 AXIS TLAST 不能证明 DDR 实际写完",
+        "solution": "PS 先 arm DMA 再启动；同时等待请求确认、采集完成、DMA IOC、不忙，检查样本数及流末字，再 ACK 回空闲。"
+      },
+      {
+        "problem": "CPU 缓存可能与 DMA 写入 DDR 不一致",
+        "solution": "提交前 flush，完成后 invalidate；检查尾部 0xA5 guard。"
+      },
+      {
+        "problem": "下游背压可能导致丢字/错误包尾",
+        "solution": "FWFT FIFO 保持头部数据，rd_en 只由有效握手生成，字计数仅按成功握手前进。"
+      },
+      {
+        "problem": "UTF-8 注释在中文 Windows Vivado 中显示乱码",
+        "solution": "本机 IDE 源码严格转为 GBK，GitHub 规范源码为 UTF-8，并提供可逆编码转换脚本；不是业务逻辑修复。"
+      },
+      {
+        "problem": "只生成 bit 无法进行串口测试",
+        "solution": "SDK 配置 PL 后还要下载 ARM ELF 并 Resume；使用 PS UART0 115200 8N1。"
+      },
+      {
+        "problem": "频谱看似平坦、难以观察主峰",
+        "solution": "提供线性/dB 显示选择；保持 FFT 原数据，线性突出主峰，dB 保留弱噪声/谐波可见性。"
+      }
+    ],
+    "limitations": [
+      "截图提供的是代表帧而非重复性统计，不将约数 Hz 的插值偏差宣称为系统精度。",
+      "截图 CRC 表明接收帧完整，不能独立证明模拟精度、外部时钟准确度或雷达算法正确。",
+      "尚无本轮 CSV/串口原文，不能从截图重建全部4096点或计算SNR/THD。",
+      "原始雷达多通道数据接口、同步、乒乓缓存、持续吞吐、PL FFT和目标检测/定位尚不在当前已完成验证范围。"
+    ]
+  }
+}

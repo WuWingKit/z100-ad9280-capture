@@ -1,0 +1,11 @@
+{
+  "web_dsp": "WEB_DSP_PASS CRC32 / packet checks / RAMP / flat rejection / 4 frequencies / actual Xilinx-model CSV\n{\"n\":4096,\"frequency\":99992.04430657563,\"phaseDeg\":0.00013181304897664213,\"binHz\":2441.40625}",
+  "web_live": "WEB_LIVE_PASS double-start / sequential frames / stop / late frame / device error",
+  "encoding": "SOURCE_ENCODING_TEST_PASS GBK/UTF8 round-trip, SDK preference, HTML unchanged, strict no-loss preflight",
+  "ramp_independent": "4096 bytes, sum=522240, min=0, max=255, CRC32=A2912082: PASS",
+  "artifact_hashes": {
+    "hardware\\z100_cordic.bit": "8b2e9ae23ff75ee881b6ea264e7e168736f2dc28a895a9e8f0421d4545f2c3c6",
+    "hardware\\adc_uart.elf": "0ccac48409a1ef65b949b8d13d2fd85327b105e9c60a8ab7d27c97a922ea186d",
+    "hardware\\z100_cordic.hdf": "9e102fd67fc7b43d31a99f4c592cd5a32ce48b2a78ebf18a798431356dfc0717"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-29",
+  "source": "User-supplied physical-board screenshots; not independently recaptured serial raw data",
+  "sampling_hz": 10000000,
+  "samples_per_frame": 4096,
+  "frame_us": 409.6,
+  "fft_bin_hz": 2441.40625,
+  "cases": [
+    {
+      "set_hz": 10000,
+      "display_khz": 10.019,
+      "display_error_hz": 19.48,
+      "min": 118,
+      "max": 131,
+      "mean": 124.525,
+      "crc32": "4DB10ADD",
+      "screenshot": "10khz_real.png"
+    },
+    {
+      "set_hz": 100000,
+      "display_khz": 99.991,
+      "display_error_hz": -8.97,
+      "min": 118,
+      "max": 131,
+      "mean": 124.504,
+      "crc32": "7B4FC76F",
+      "screenshot": "100khz_real.png",
+      "continuous_frame_counter": 14
+    },
+    {
+      "set_hz": 1000000,
+      "display_khz": 999.97,
+      "display_error_hz": -29.95,
+      "min": 118,
+      "max": 130,
+      "mean": 124.603,
+      "crc32": "FB5456F7",
+      "screenshot": "1mhz_real.png",
+      "continuous_frame_counter": 6
+    }
+  ],
+  "ramp": {
+    "sum": 522240,
+    "min": 0,
+    "max": 255,
+    "errors": 0,
+    "crc32": "A2912082",
+    "result": "SELFTEST PASS"
+  },
+  "limitations": [
+    "Screenshot rounded kHz and displayed Hz deviation differ in precision; retain both as displayed.",
+    "No matching raw REAL CSV/JSON/UART export supplied; no repeated-trial statistics, SNR, THD or absolute accuracy claim.",
+    "No live hardware I/O performed by report-generation scripts. FFT on PC; CORDIC on PL; +90 curve is fitted reference."
+  ]
+}

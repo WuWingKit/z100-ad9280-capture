@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="930" viewBox="0 0 1440 930">
+<rect width="1440" height="930" rx="24" fill="#f4f7fc"/>
+<path d="M0 0H1440V105H0Z" fill="#142940"/>
+<text x="40" y="47" fill="white" font-size="28" font-weight="bold">第三部分｜雷达数据接入前的采集与存储验证</text>
+<text x="40" y="80" fill="#c2d6ed" font-size="18">已打通：本地测试信号 → AD采集 → DDR → 串口 → PC频谱；未接入真实雷达</text>
+<rect x="24" y="125" width="1392" height="190" rx="20" fill="#e4effa"/>
+<text x="44" y="156" font-size="22" fill="#17314d" font-family="Noto Sans SC">① PL：同步发波与前端采集（10 MHz）</text>
+<rect x="48" y="178" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="72" cy="204" r="12" fill="#e2edfa"/>
+<text x="67" y="210" font-size="16" fill="#17314d" font-family="Noto Sans SC">1</text>
+<text x="94" y="209" font-size="21" fill="#17314d" font-family="Noto Sans SC">相位累加 + CORDIC</text>
+<text x="66" y="242" font-size="18" fill="#17314d" font-family="Noto Sans SC">32位频率控制字 K</text>
+<text x="66" y="270" font-size="16" fill="#4b627d" font-family="Noto Sans SC">PS配置频率 / N / delay / amp</text>
+<polyline points="360,233 377,233 377,233 389,233" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="389,233 379,227 379,239" fill="#2873b4"/>
+<rect x="393" y="178" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="417" cy="204" r="12" fill="#e2edfa"/>
+<text x="412" y="210" font-size="16" fill="#17314d" font-family="Noto Sans SC">2</text>
+<text x="439" y="209" font-size="21" fill="#17314d" font-family="Noto Sans SC">8位 DA 输出</text>
+<text x="411" y="242" font-size="18" fill="#17314d" font-family="Noto Sans SC">数字正弦 → 模拟信号</text>
+<text x="411" y="270" font-size="16" fill="#4b627d" font-family="Noto Sans SC">模拟回环仅作前期测试源</text>
+<polyline points="705,233 722,233 722,233 734,233" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="734,233 724,227 724,239" fill="#2873b4"/>
+<rect x="738" y="178" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="762" cy="204" r="12" fill="#e2edfa"/>
+<text x="757" y="210" font-size="16" fill="#17314d" font-family="Noto Sans SC">3</text>
+<text x="784" y="209" font-size="21" fill="#17314d" font-family="Noto Sans SC">AD9280 · 8位</text>
+<text x="756" y="242" font-size="18" fill="#17314d" font-family="Noto Sans SC">模拟输入 → 并行采样</text>
+<text x="756" y="270" font-size="16" fill="#4b627d" font-family="Noto Sans SC">外部雷达数据将在后续替换输入</text>
+<polyline points="1050,233 1067,233 1067,233 1079,233" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="1079,233 1069,227 1069,239" fill="#2873b4"/>
+<rect x="1083" y="178" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="1107" cy="204" r="12" fill="#e2edfa"/>
+<text x="1102" y="210" font-size="16" fill="#17314d" font-family="Noto Sans SC">4</text>
+<text x="1129" y="209" font-size="21" fill="#17314d" font-family="Noto Sans SC">4点打包 · 32位</text>
+<text x="1101" y="242" font-size="18" fill="#17314d" font-family="Noto Sans SC">首点放低8位</text>
+<text x="1101" y="270" font-size="16" fill="#4b627d" font-family="Noto Sans SC">N点 → N/4个32位字</text>
+<rect x="24" y="345" width="1392" height="190" rx="20" fill="#e4f3ef"/>
+<text x="44" y="376" font-size="22" fill="#17314d" font-family="Noto Sans SC">② PL → PS：流接口搬运到 DDR</text>
+<rect x="48" y="398" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="72" cy="424" r="12" fill="#e2edfa"/>
+<text x="67" y="430" font-size="16" fill="#17314d" font-family="Noto Sans SC">1</text>
+<text x="94" y="429" font-size="21" fill="#17314d" font-family="Noto Sans SC">异步 FIFO</text>
+<text x="66" y="462" font-size="18" fill="#17314d" font-family="Noto Sans SC">1024 × 32 · FWFT</text>
+<text x="66" y="490" font-size="16" fill="#4b627d" font-family="Noto Sans SC">隔离采样时钟与AXI时钟</text>
+<polyline points="360,453 377,453 377,453 389,453" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="389,453 379,447 379,459" fill="#2873b4"/>
+<rect x="393" y="398" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="417" cy="424" r="12" fill="#e2edfa"/>
+<text x="412" y="430" font-size="16" fill="#17314d" font-family="Noto Sans SC">2</text>
+<text x="439" y="429" font-size="21" fill="#17314d" font-family="Noto Sans SC">FIFO → AXI-Stream</text>
+<text x="411" y="462" font-size="18" fill="#17314d" font-family="Noto Sans SC">TVALID / TREADY / TLAST</text>
+<text x="411" y="490" font-size="16" fill="#4b627d" font-family="Noto Sans SC">仅握手成功才推进读指针</text>
+<polyline points="705,453 722,453 722,453 734,453" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="734,453 724,447 724,459" fill="#2873b4"/>
+<rect x="738" y="398" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="762" cy="424" r="12" fill="#e2edfa"/>
+<text x="757" y="430" font-size="16" fill="#17314d" font-family="Noto Sans SC">3</text>
+<text x="784" y="429" font-size="21" fill="#17314d" font-family="Noto Sans SC">AXI DMA · S2MM</text>
+<text x="756" y="462" font-size="18" fill="#17314d" font-family="Noto Sans SC">Simple DMA写内存</text>
+<text x="756" y="490" font-size="16" fill="#4b627d" font-family="Noto Sans SC">SmartConnect → PS HP0</text>
+<polyline points="1050,453 1067,453 1067,453 1079,453" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="1079,453 1069,447 1069,459" fill="#2873b4"/>
+<rect x="1083" y="398" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="1107" cy="424" r="12" fill="#e2edfa"/>
+<text x="1102" y="430" font-size="16" fill="#17314d" font-family="Noto Sans SC">4</text>
+<text x="1129" y="429" font-size="21" fill="#17314d" font-family="Noto Sans SC">PS DDR</text>
+<text x="1101" y="462" font-size="18" fill="#17314d" font-family="Noto Sans SC">按目标地址保存完整帧</text>
+<text x="1101" y="490" font-size="16" fill="#4b627d" font-family="Noto Sans SC">DMA完成后再由ARM读取</text>
+<rect x="24" y="565" width="1392" height="190" rx="20" fill="#f3eafa"/>
+<text x="44" y="596" font-size="22" fill="#17314d" font-family="Noto Sans SC">③ PS → PC：数据检查、传输与分析</text>
+<rect x="48" y="618" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="72" cy="644" r="12" fill="#e2edfa"/>
+<text x="67" y="650" font-size="16" fill="#17314d" font-family="Noto Sans SC">1</text>
+<text x="94" y="649" font-size="21" fill="#17314d" font-family="Noto Sans SC">ARM 裸机程序</text>
+<text x="66" y="682" font-size="18" fill="#17314d" font-family="Noto Sans SC">缓存维护 / 完成检查</text>
+<text x="66" y="710" font-size="16" fill="#4b627d" font-family="Noto Sans SC">校验统计与CRC32</text>
+<polyline points="360,673 377,673 377,673 389,673" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="389,673 379,667 379,679" fill="#2873b4"/>
+<rect x="393" y="618" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="417" cy="644" r="12" fill="#e2edfa"/>
+<text x="412" y="650" font-size="16" fill="#17314d" font-family="Noto Sans SC">2</text>
+<text x="439" y="649" font-size="21" fill="#17314d" font-family="Noto Sans SC">PS UART0</text>
+<text x="411" y="682" font-size="18" fill="#17314d" font-family="Noto Sans SC">115200 · 8N1</text>
+<text x="411" y="710" font-size="16" fill="#4b627d" font-family="Noto Sans SC">ASCII逐帧回传，非连续满速流</text>
+<polyline points="705,673 722,673 722,673 734,673" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="734,673 724,667 724,679" fill="#2873b4"/>
+<rect x="738" y="618" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="762" cy="644" r="12" fill="#e2edfa"/>
+<text x="757" y="650" font-size="16" fill="#17314d" font-family="Noto Sans SC">3</text>
+<text x="784" y="649" font-size="21" fill="#17314d" font-family="Noto Sans SC">PC HTML / JavaScript</text>
+<text x="756" y="682" font-size="18" fill="#17314d" font-family="Noto Sans SC">去直流 → Hann → FFT</text>
+<text x="756" y="710" font-size="16" fill="#4b627d" font-family="Noto Sans SC">主峰插值、线性/dB频谱</text>
+<polyline points="1050,673 1067,673 1067,673 1079,673" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="1079,673 1069,667 1069,679" fill="#2873b4"/>
+<rect x="1083" y="618" width="310" height="111" rx="16" fill="white" stroke="#bccde0"/>
+<circle cx="1107" cy="644" r="12" fill="#e2edfa"/>
+<text x="1102" y="650" font-size="16" fill="#17314d" font-family="Noto Sans SC">4</text>
+<text x="1129" y="649" font-size="21" fill="#17314d" font-family="Noto Sans SC">时域与正交参考</text>
+<text x="1101" y="682" font-size="18" fill="#17314d" font-family="Noto Sans SC">原始AD + 拟合90°曲线</text>
+<text x="1101" y="710" font-size="16" fill="#4b627d" font-family="Noto Sans SC">橙线非第二路AD实测</text>
+<polyline points="1393,233 1404,233 1404,329 32,329 32,453 44,453" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="44,453 34,447 34,459" fill="#2873b4"/>
+<polyline points="1393,453 1404,453 1404,549 32,549 32,673 44,673" fill="none" stroke="#2873b4" stroke-width="3"/>
+<polygon points="44,673 34,667 34,679" fill="#2873b4"/>
+<rect x="34" y="785" width="1372" height="112" rx="18" fill="#fff4da" stroke="#e8c781"/>
+<text x="56" y="818" font-size="21" fill="#17314d" font-family="Noto Sans SC">阶段边界：FFT在电脑端执行；FPGA侧已实现采集、打包、缓冲和DMA数据流。</text>
+<text x="56" y="850" font-size="19" fill="#17314d" font-family="Noto Sans SC">验证证据：板内RAMP自检 + 真实DA/AD回环截图 + 离线仿真与时序报告。</text>
+<text x="56" y="880" font-size="19" fill="#17314d" font-family="Noto Sans SC">后续：接入真实雷达数据、确认接口/帧结构/吞吐率，再扩展连续缓存及板端算法。</text>
+</svg>
