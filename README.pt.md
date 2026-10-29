@@ -16,7 +16,7 @@ Projeto didático da parte 3 do Grupo 3 de Processamento de Sinais, turma Xuexin
 
 ## Funcionalidades
 
-O PL gera seno com CORDIC, captura amostras AD de 8 bits e agrupa quatro amostras em 32 bits. Caminho: FIFO assíncrona FWFT→AXI-Stream→DMA S 2 MM→PS HP 0→DDR. O PS controla a aquisição, o cache e a UART 0; a FFT é executada no PC. A curva laranja +90° é uma referência calculada por ajuste, não um segundo canal AD medido.
+O PL gera seno com CORDIC, captura amostras AD de 8 bits e agrupa quatro amostras em 32 bits. Caminho: FIFO assíncrona FWFT→AXI-Stream→DMA S2MM→PS HP0→DDR. O PS controla a aquisição, o cache e a UART0; a FFT é executada no PC. A curva laranja +90° é uma referência calculada por ajuste, não um segundo canal AD medido.
 
 ## Dependências e versões
 
@@ -39,8 +39,8 @@ http://127.0.0.1:8765/
 ## Teste com Debug
 
 1. Confira orientação J 37, tensão dos bancos IO e faixa analógica permitida. Conecte a saída DA à entrada AD. Conecte JTAG e a **USB-UART do PS**.
-2. Abra o SDK 2018.3 separadamente e selecione sdk_workspace extraído. Importe z 100_hw, adc_bsp e adc_uart se necessário.
-3. Em Program FPGA, escolha hardware/z 100_cordic.bit. Execute o ELF adc_uart no System Debugger e pressione Resume quando parar em main.
+2. Abra o SDK 2018.3 separadamente e selecione sdk_workspace extraído. Importe z100_hw, adc_bsp e adc_uart se necessário.
+3. Em Program FPGA, escolha hardware/z100_cordic.bit. Execute o ELF adc_uart no System Debugger e pressione Resume quando parar em main.
 4. Feche outros programas seriais e conecte a página em 115200/8 N 1. Execute primeiro RAMP e depois aquisição real. O modo repetido pede um novo quadro somente após validar o anterior. Pare e desconecte antes de atualizar a página.
 
 ## Parâmetros e resultados

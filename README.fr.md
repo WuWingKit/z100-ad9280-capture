@@ -16,7 +16,7 @@ Projet pédagogique de la troisième partie du groupe 3 de traitement du signal,
 
 ## Fonctions réalisées
 
-Le PL génère une sinusoïde par CORDIC, acquiert les échantillons AD 8 bits et regroupe quatre échantillons en 32 bits. Chaîne : FIFO asynchrone FWFT→AXI-Stream→DMA S 2 MM→PS HP 0→DDR. Le PS assure commande, gestion du cache et UART 0 ; la FFT est exécutée sur le PC. La courbe orange +90° est une référence calculée par ajustement, pas une seconde voie AD mesurée.
+Le PL génère une sinusoïde par CORDIC, acquiert les échantillons AD 8 bits et regroupe quatre échantillons en 32 bits. Chaîne : FIFO asynchrone FWFT→AXI-Stream→DMA S2MM→PS HP0→DDR. Le PS assure commande, gestion du cache et UART0 ; la FFT est exécutée sur le PC. La courbe orange +90° est une référence calculée par ajustement, pas une seconde voie AD mesurée.
 
 ## Dépendances et versions
 
@@ -39,8 +39,8 @@ http://127.0.0.1:8765/
 ## Essai avec Debug
 
 1. Vérifiez orientation J 37, tensions IO et plage analogique autorisée. Reliez la sortie DA à l’entrée AD. Branchez JTAG et **USB-UART côté PS**.
-2. Lancez SDK 2018.3 séparément et choisissez le dossier sdk_workspace extrait. Importez z 100_hw, adc_bsp et adc_uart au besoin.
-3. Dans Program FPGA, sélectionnez hardware/z 100_cordic.bit. Lancez ELF adc_uart avec System Debugger ; à l’arrêt dans main, cliquez sur Resume.
+2. Lancez SDK 2018.3 séparément et choisissez le dossier sdk_workspace extrait. Importez z100_hw, adc_bsp et adc_uart au besoin.
+3. Dans Program FPGA, sélectionnez hardware/z100_cordic.bit. Lancez ELF adc_uart avec System Debugger ; à l’arrêt dans main, cliquez sur Resume.
 4. Fermez les autres applications série et connectez la page en 115200/8 N 1. Testez RAMP avant l’acquisition réelle. Le mode répété attend la validation complète d’une trame avant la suivante. Arrêtez et déconnectez avant de recharger la page.
 
 ## Paramètres et résultats

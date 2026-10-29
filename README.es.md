@@ -16,7 +16,7 @@ Proyecto educativo de la parte 3 del Grupo 3 de Procesamiento de Señales, clase
 
 ## Funciones implementadas
 
-El PL genera una senoide con CORDIC, captura muestras AD de 8 bits y empaqueta cuatro muestras en 32 bits. Ruta: FIFO asíncrona FWFT→AXI-Stream→DMA S 2 MM→PS HP 0→DDR. El PS gestiona control, caché y UART 0; la FFT se calcula en el PC. La curva naranja +90° es una referencia obtenida mediante ajuste, no otro canal AD medido.
+El PL genera una senoide con CORDIC, captura muestras AD de 8 bits y empaqueta cuatro muestras en 32 bits. Ruta: FIFO asíncrona FWFT→AXI-Stream→DMA S2MM→PS HP0→DDR. El PS gestiona control, caché y UART0; la FFT se calcula en el PC. La curva naranja +90° es una referencia obtenida mediante ajuste, no otro canal AD medido.
 
 ## Dependencias y versiones
 
@@ -39,8 +39,8 @@ http://127.0.0.1:8765/
 ## Prueba con Debug
 
 1. Compruebe orientación J 37, tensión IO y rango analógico permitido. Conecte la salida DA a la entrada AD. Conecte JTAG y la **USB-UART del PS**.
-2. Abra SDK 2018.3 por separado y seleccione sdk_workspace extraído. Importe z 100_hw, adc_bsp y adc_uart si hace falta.
-3. En Program FPGA seleccione hardware/z 100_cordic.bit. Ejecute el ELF adc_uart con System Debugger; si se detiene en main, pulse Resume.
+2. Abra SDK 2018.3 por separado y seleccione sdk_workspace extraído. Importe z100_hw, adc_bsp y adc_uart si hace falta.
+3. En Program FPGA seleccione hardware/z100_cordic.bit. Ejecute el ELF adc_uart con System Debugger; si se detiene en main, pulse Resume.
 4. Cierre otros programas serie y conecte la página a 115200/8 N 1. Primero ejecute RAMP, después adquisición real. El modo repetido solicita el siguiente cuadro solo tras validar el anterior. Detenga y desconecte antes de actualizar.
 
 ## Parámetros y resultados
