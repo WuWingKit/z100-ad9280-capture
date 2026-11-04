@@ -9,13 +9,13 @@ import tempfile
 script = Path(__file__).with_name("source_encoding.py")
 with tempfile.TemporaryDirectory(prefix="z100_encoding_test_") as temporary:
     root = Path(temporary) / "project"
-    for folder in ["rtl", "software", "web", "sdk_workspace/adc_uart/src"]:
+    for folder in ["rtl", "software", "web", "sdk_spi_workspace/spi_uart/src"]:
         (root / folder).mkdir(parents=True, exist_ok=True)
     rtl = "// 组合运算：取样来源、定点正弦、DA码值\nmodule sample; endmodule\n"
     c = "// 主程序：复位与采集\nint main(void) { return 0; }\n"
     (root / "rtl/sample.v").write_bytes(rtl.encode("utf-8"))
     (root / "software/main.c").write_bytes(c.encode("utf-8"))
-    (root / "sdk_workspace/adc_uart/src/main.c").write_bytes(c.encode("utf-8"))
+    (root / "sdk_spi_workspace/spi_uart/src/main.c").write_bytes(c.encode("utf-8"))
     page = "<!doctype html><meta charset='utf-8'>波形与频谱"
     (root / "web/index.html").write_bytes(page.encode("utf-8"))
 
@@ -29,7 +29,7 @@ with tempfile.TemporaryDirectory(prefix="z100_encoding_test_") as temporary:
     assert (root / "rtl/sample.v").read_bytes().decode("gbk") == rtl
     assert (root / "software/main.c").read_bytes().decode("gbk") == c
     assert (root / "web/index.html").read_bytes() == page.encode("utf-8")
-    prefs = root / "sdk_workspace/adc_uart/.settings/org.eclipse.core.resources.prefs"
+    prefs = root / "sdk_spi_workspace/spi_uart/.settings/org.eclipse.core.resources.prefs"
     assert "encoding/src/main.c=GBK" in prefs.read_text(encoding="ascii")
     report = json.loads((root / "evidence/source_encoding.json").read_text(encoding="utf-8"))
     assert len(report["changed_files"]) == 3

@@ -1,0 +1,52 @@
+[2026-11-04 16:34:38:616] TX t 100000 8 3 8 [CR]
+BEGIN MEAS job=7 mode=RAMP samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+00 01 02 03 04 05 06 07 END MEAS sum=28 min=0 max=7 errors=0 crc=88AA689F
+SELFTEST PASS
+
+[2026-11-04 16:34:49:548] TX m 100000 8 3 8 [CR]
+BEGIN MEAS job=8 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+80 84 87 87 84 80 7C 79 END MEAS sum=1035 min=121 max=135 errors=0 crc=636E193E
+MEASUREMENT OK (PS SPI simulated source)
+
+[2026-11-04 16:34:54:881] TX t 100000 8 3 8 [CR]
+BEGIN MEAS job=9 mode=RAMP samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+00 01 02 03 04 05 06 07 END MEAS sum=28 min=0 max=7 errors=0 crc=88AA689F
+SELFTEST PASS
+
+[2026-11-04 16:35:00:848] TX m 100000 8 3 8 [CR]
+BEGIN MEAS job=10 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+80 84 87 87 84 80 7C 79 END MEAS sum=1035 min=121 max=135 errors=0 crc=636E193E
+MEASUREMENT OK (PS SPI simulated source)
+
+[2026-11-04 16:35:11:848] TX q [CR]
+STOPPED / RESET OK
+
+[2026-11-04 16:35:17:315] TX s [CR]
+STATUS raw=00000040 busy=0 overflow=0 done=0 ack=0 reject=0 ready=1 otr=0 count=0 state=0 streamed=0
+
+[2026-11-04 16:35:28:281] TX t 100000 8 3 8 [CR]
+BEGIN MEAS job=11 mode=RAMP samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+00 01 02 03 04 05 06 07 END MEAS sum=28 min=0 max=7 errors=0 crc=88AA689F
+SELFTEST PASS
+
+[2026-11-04 16:35:37:081] TX m 100000 16 3 8 [CR]
+ERROR parameters: Hz 1000..400000, N 8 only, delay 0..255, amp 0..96
+
+[2026-11-04 16:35:56:481] TX m 100000 8 3 8 [CR]
+BEGIN MEAS job=12 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+80 84 87 87 84 80 7C 79 END MEAS sum=1035 min=121 max=135 errors=0 crc=636E193E
+MEASUREMENT OK (PS SPI simulated source)
+
+[2026-11-04 16:36:08:198] TX m 200000 8 3 8 [CR]
+BEGIN MEAS job=13 mode=SPI_SIM samples=8 fs=1000000 freq=200000 k=858993459 delay=3 amp=8 otr=0
+80 87 84 7C 79 80 87 84 END MEAS sum=1035 min=121 max=135 errors=0 crc=ABBE68EC
+MEASUREMENT OK (PS SPI simulated source)
+
+[2026-11-04 16:36:20:598] TX m 100000 8 3 16 [CR]
+BEGIN MEAS job=14 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=16 otr=0
+80 89 8F 8F 89 80 77 71 END MEAS sum=1048 min=113 max=143 errors=0 crc=C1DF3876
+MEASUREMENT OK (PS SPI simulated source)
+
+[2026-11-04 16:36:27:414] TX q [CR]
+STOPPED / RESET OK
+

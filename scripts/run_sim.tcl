@@ -1,36 +1,28 @@
-# ===== 用途与执行边界 =====
-# 独立核心仿真：创建实际CORDIC/FIFO IP，不实例化PS，检查相位/打包/握手/恢复。
-# 在Vivado Tcl/SDK XSCT中执行，具体命令见README；普通打开文件不会执行脚本。
+# SPI-only simulation entry; no board access.
 
 set root [file normalize [file join [file dirname [info script]] ..]]
-# 1. 创建独立工程目录
 create_project simcheck [file join $root sim_project] -part xc7z035ffg900-2 -force
-add_files -norecurse [list [file join $root rtl measurement_core.v] [file join $root rtl fifo_to_axis.v]]
-create_ip -name cordic -vendor xilinx.com -library ip -version 6.0 -module_name sim_cordic
-set_property -dict [list CONFIG.Functional_Selection Sin_and_Cos CONFIG.Phase_Format Scaled_Radians \
- CONFIG.Input_Width 16 CONFIG.Output_Width 16 CONFIG.ARESETN true CONFIG.Coarse_Rotation true \
- CONFIG.Architectural_Configuration Parallel CONFIG.Pipelining_Mode Maximum \
- CONFIG.flow_control NonBlocking CONFIG.Round_Mode Nearest_Even] [get_ips sim_cordic]
+add_files -norecurse [list [file join $root rtl spi_capture_core.v] [file join $root rtl fifo_to_axis.v] [file join $root rtl spi_master_burst8.v]]
 create_ip -name fifo_generator -vendor xilinx.com -library ip -version 13.2 -module_name sim_fifo
 set_property -dict [list CONFIG.Fifo_Implementation Independent_Clocks_Builtin_FIFO \
  CONFIG.Input_Data_Width 32 CONFIG.Output_Data_Width 32 CONFIG.Input_Depth 1024 \
  CONFIG.Performance_Options First_Word_Fall_Through] [get_ips sim_fifo]
-# 再生成厂商IP仿真/综合文件，不手工修改这些自动生成文件
 generate_target all [get_ips]
-add_files -fileset sim_1 -norecurse [file join $root sim tb_measurement.v]
-set_property top tb_measurement [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse [list [file join $root sim tb_spi_capture.v] [file join $root sim spi_slave_model.v]]
+set_property top tb_spi_capture [get_filesets sim_1]
 set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
 update_compile_order -fileset sim_1
 set dir [file join $root sim_project simcheck.sim sim_1 behav xsim]
-foreach f {measurement_result.txt loopback_simulated.csv} {
+foreach f {spi_capture_result.txt loopback_simulated.csv} {
  if {[file exists [file join $dir $f]]} {file delete [file join $dir $f]}
 }
-# 启动XSim；run all执行testbench直至完成或失败
+file mkdir $dir
+file copy -force [file join $root sim sine_lut.hex] [file join $dir sine_lut.hex]
 launch_simulation -mode behavioral
 run all
 close_sim
 set dir [file join $root sim_project simcheck.sim sim_1 behav xsim]
-foreach f {measurement_result.txt loopback_simulated.csv} {
+foreach f {spi_capture_result.txt loopback_simulated.csv} {
  if {![file exists [file join $dir $f]]} {error "Simulation missing $f"}
  file copy -force [file join $dir $f] [file join $root evidence $f]
 }

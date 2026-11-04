@@ -1,0 +1,7 @@
+User-provided serial transcript, hardware test; not captured independently by agent.
+16:22:29:559 ~ 16:22:29:576
+Command: m 100000 8 3 8 [CR]
+BEGIN MEAS job=2 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+80 84 87 87 84 80 7C 79
+END MEAS sum=1035 min=121 max=135 errors=0 crc=636E193E
+MEASUREMENT OK (PS SPI simulated source)

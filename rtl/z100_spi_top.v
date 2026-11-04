@@ -1,0 +1,56 @@
+`timescale 1ns/1ps
+// SPI-only top: differential board clock, reset and PS DDR/FIXED_IO.
+module z100_spi_top
+    (inout wire [14 : 0] DDR_0_addr,
+     inout wire [2 : 0] DDR_0_ba,
+     inout wire DDR_0_cas_n,
+     inout wire DDR_0_ck_n,
+     inout wire DDR_0_ck_p,
+     inout wire DDR_0_cke,
+     inout wire DDR_0_cs_n,
+     inout wire [3 : 0] DDR_0_dm,
+     inout wire [31 : 0] DDR_0_dq,
+     inout wire [3 : 0] DDR_0_dqs_n,
+     inout wire [3 : 0] DDR_0_dqs_p,
+     inout wire DDR_0_odt,
+     inout wire DDR_0_ras_n,
+     inout wire DDR_0_reset_n,
+     inout wire DDR_0_we_n,
+     inout wire FIXED_IO_0_ddr_vrn,
+     inout wire FIXED_IO_0_ddr_vrp,
+     inout wire [53 : 0] FIXED_IO_0_mio,
+     inout wire FIXED_IO_0_ps_clk,
+     inout wire FIXED_IO_0_ps_porb,
+     inout wire FIXED_IO_0_ps_srstb,
+     input wire sys_clk_p,
+     input wire sys_clk_n,
+     input wire sys_rst_n);
+    wire spi_clk16,spi_locked;
+    wire board_reset_n=sys_rst_n && spi_locked;
+    spi_clk_wiz u_spi_clocking(.clk_in1_p(sys_clk_p),.clk_in1_n(sys_clk_n),
+        .clk_out1(spi_clk16),.locked(spi_locked));
+    capture_bd_wrapper u_bd(
+                            .DDR_0_addr(DDR_0_addr),
+                            .DDR_0_ba(DDR_0_ba),
+                            .DDR_0_cas_n(DDR_0_cas_n),
+                            .DDR_0_ck_n(DDR_0_ck_n),
+                            .DDR_0_ck_p(DDR_0_ck_p),
+                            .DDR_0_cke(DDR_0_cke),
+                            .DDR_0_cs_n(DDR_0_cs_n),
+                            .DDR_0_dm(DDR_0_dm),
+                            .DDR_0_dq(DDR_0_dq),
+                            .DDR_0_dqs_n(DDR_0_dqs_n),
+                            .DDR_0_dqs_p(DDR_0_dqs_p),
+                            .DDR_0_odt(DDR_0_odt),
+                            .DDR_0_ras_n(DDR_0_ras_n),
+                            .DDR_0_reset_n(DDR_0_reset_n),
+                            .DDR_0_we_n(DDR_0_we_n),
+                            .FIXED_IO_0_ddr_vrn(FIXED_IO_0_ddr_vrn),
+                            .FIXED_IO_0_ddr_vrp(FIXED_IO_0_ddr_vrp),
+                            .FIXED_IO_0_mio(FIXED_IO_0_mio),
+                            .FIXED_IO_0_ps_clk(FIXED_IO_0_ps_clk),
+                            .FIXED_IO_0_ps_porb(FIXED_IO_0_ps_porb),
+                            .FIXED_IO_0_ps_srstb(FIXED_IO_0_ps_srstb),
+                            .spi_clk16(spi_clk16),
+                            .board_reset_n(board_reset_n));
+endmodule

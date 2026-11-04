@@ -25,7 +25,7 @@ assert.throws(() => D.parsePacket(text.replace(/crc=[0-9a-f]+/, 'crc=00000000'))
 assert.throws(() => D.parsePacket(text.replace('errors=0', 'errors=1')), /板端/);
 assert.throws(() => D.parsePacket(text.replace('SELFTEST PASS', '')), /成功/);
 assert.throws(() => D.parsePacket(text.replace('00 01 02', '00 01')), /样本数/);
-assert.throws(() => D.parseCSV('sample_index,adc_code\n0,999'), /点数|范围/);
+assert.throws(() => D.parseCSV('sample_index,sample_code\n0,999'), /点数|范围/);
 assert.throws(() => D.analyze(new Uint8Array(256).fill(125), 1e7, 1e5), /交流/);
 // 四组非整格点正弦：同时验证FFT频率和已知参考频率下的相位。
 for (const f of [50000, 100000, 250000, 700000]) {
@@ -37,14 +37,8 @@ for (const f of [50000, 100000, 250000, 700000]) {
   assert.ok(Math.abs(a.fit.phaseDeg - (0.2 * 180) / Math.PI) < 1);
 }
 // 再读实际Xilinx IP仿真CSV，与Python分析的数值结果交叉核对。
-const x = D.parseCSV(fs.readFileSync(path.join(__dirname, 'demo_samples.csv'), 'utf8')),
-  r = D.analyze(x, 1e7, 1e5);
-assert.equal(x.length, 4096);
-assert.equal(x[0], 128);
-assert.ok(Math.abs(r.frequency - 99992.04430657563) < 0.001);
-console.log(
-  'WEB_DSP_PASS CRC32 / packet checks / RAMP / flat rejection / 4 frequencies / actual Xilinx-model CSV'
-);
-console.log(
-  JSON.stringify({ n: r.n, frequency: r.frequency, phaseDeg: r.fit.phaseDeg, binHz: r.binHz })
-);
+const x = D.parseCSV(fs.readFileSync(path.join(__dirname,'demo_samples.csv'),'utf8'));
+assert.equal(x.length,8);
+assert.throws(()=>D.analyze(x,1000000,100000),/8/);
+assert.equal(D.parsePacket(packet(Uint8Array.from([0,1,2,3,4,5,6,7]),'RAMP')).samples.length,8);
+console.log('SPI_WEB_PASS CRC/frame checks, 8-byte payload, short-frame FFT rejection');

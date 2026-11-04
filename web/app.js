@@ -85,8 +85,8 @@ function config() {
   if (
     !Number.isInteger(f) ||
     f < 1000 ||
-    f > 1000000 ||
-    ![256, 512, 1024, 2048, 4096].includes(n) ||
+    f > 400000 ||
+    n !== 8 ||
     !Number.isInteger(d) ||
     d < 0 ||
     d > 255 ||
@@ -102,16 +102,16 @@ function config() {
 async function start(ramp) {
   try {
     if (busy) return;
-    if (!ramp && !$('physicalReady').checked) throw Error('真实采集前请确认模拟回环和电压');
+    if (!ramp && !$('physicalReady').checked) throw Error('开始前请确认运行SPI副本的配套bit与ELF');
     const c = config();
     busy = true;
-    pending = { ...c, mode: ramp ? 'RAMP' : 'REAL' };
+    pending = { ...c, mode: ramp ? 'RAMP' : 'SPI_SIM' };
     packet = [];
     buttons();
     message(
       ramp
         ? '正在执行板内递增码自检，DA 保持中点。'
-        : '正在发波并采集；等待 DMA 完成和完整串口数据帧。'
+        : '正在读取PS SPI从机的8字节数据，等待DDR与串口帧。'
     );
     timer = setTimeout(
       () => fail(Error('12 秒未收到完整帧；保留日志，检查 Debug 程序/串口，必要时点击停止/复位。')),
@@ -141,7 +141,7 @@ function receive(line) {
     packet = [];
     stopContinuous();
     endJob();
-    message('采集路径已复位；DAC 保持名义中点。', 'warn');
+    message('采集路径已复位；CS保持空闲高电平。', 'warn');
     return;
   }
   if (line.startsWith('BEGIN MEAS ')) packet = [line];
@@ -158,8 +158,8 @@ function receive(line) {
           frame.meta.mode !== pending.mode)
       )
         throw Error('返回参数与本次命令不符，请确认板上运行的是本版 ELF');
-      if (Number(frame.meta.fs) !== 10000000) throw Error('返回采样率与本版 10 MHz 时钟配置不符');
-      render(frame, `串口实测 · ${frame.meta.mode}`, 'live');
+      if (Number(frame.meta.fs) !== 1000000) throw Error('返回字节率与本版1MHz CS时序不符');
+      render(frame, `PS SPI模拟源 · ${frame.meta.mode}`, 'live');
       endJob();
       packet = [];
       if (continuous) {
@@ -333,13 +333,13 @@ function render(frame, source, kind) {
       : '没有可用交流信号';
   $('spectrumNote').textContent = result
     ? `去直流 · Hann · 格点 ${result.binHz.toFixed(3)} Hz · 插值不代表同等频率分辨率`
-    : 'RAMP/平坦信号不报告单音频率';
+    : '8字节调试模式不报告可靠FFT主频';
   $('phaseNote').textContent = result?.fit
-    ? `已知参考频率下拟合首点相位 ${result.fit.phaseDeg.toFixed(3)}°，幅度 ${result.fit.amplitude.toFixed(3)} code，DC ${result.fit.dc.toFixed(3)}。真实模拟延迟尚需标定；首点标红。`
-    : '参考相位拟合只适用于具有足够幅度的真实正弦采样。';
+    ? `已知参考频率下拟合首点相位 ${result.fit.phaseDeg.toFixed(3)}°，幅度 ${result.fit.amplitude.toFixed(3)} code，DC ${result.fit.dc.toFixed(3)}。本副本使用PS SPI模拟数据；首点标红。`
+    : '当前仅8字节，用于SPI移位、并行锁存和DDR核对。';
   const origin =
     kind === 'demo'
-      ? '这是 Xilinx IP 数字模型的仿真数据，未访问开发板。'
+      ? '这是 SPI测试模型的演示数据，未访问开发板。'
       : kind === 'live'
         ? '已收到完整串口帧，点数/CRC/统计/成功标志均通过。'
         : '已导入文件；请自行确认数据来源及采样率。';
@@ -372,19 +372,19 @@ async function demo() {
       {
         samples: D.parseCSV(await r.text()),
         meta: {
-          fs: '10000000',
+          fs: '1000000',
           freq: '100000',
-          samples: '4096',
+          samples: '8',
           delay: '3',
           amp: '24',
-          mode: 'REAL'
+          mode: 'SPI_SIM'
         },
         verified: false
       },
       '数字仿真演示 · 非板上实测',
       'demo'
     );
-    log('[已载入已验证的 Xilinx CORDIC 数字回环数据]');
+    log('[已载入8字节SPI模拟源演示]');
   } catch (e) {
     fail(Error(e.message + '；请使用 start_dashboard.ps1 启动本地 HTTP 服务。'));
   }
@@ -400,7 +400,7 @@ $('file').onchange = async (e) => {
       render(
         {
           samples: D.parseCSV(text),
-          meta: { fs: '10000000', freq: String(c.f), mode: 'REAL' },
+          meta: { fs: '1000000', freq: String(c.f), mode: 'SPI_SIM' },
           verified: false
         },
         '导入 CSV · 来源由操作者确认',
@@ -511,7 +511,7 @@ function draw() {
   const q = result?.fit && result.reliable && $('quadrature').checked
     ? D.quadratureReference(count, fs, ref, result.fit)
     : [];
-  $('timeNote').textContent = '纵轴为原始 ADC code，非电压。' +
+  $('timeNote').textContent = '纵轴为原始 SPI byte，非电压。' +
     (q.length ? '橙线超前拟合基波 90°（四分之一周期），仅作正交参考。' : '正交参考仅对具有足够周期的有效单音显示。');
   drawPlot(
     $('timeCanvas'),
@@ -520,7 +520,7 @@ function draw() {
     low,
     Math.max(low + 1, high),
     '时间 / μs',
-    'ADC code',
+    'SPI byte',
     '#2258ce',
     [0, x[0]],
     q.map((y, i) => [(i / fs) * 1e6, y])
@@ -555,7 +555,7 @@ function draw() {
       -120,
       20,
       '频率 / kHz',
-      '不作单音测频',
+      '8字节调试：不测频',
       '#0a968e'
     );
 }
@@ -586,7 +586,7 @@ $('csv').onclick = () => {
   if (current)
     save(
       'z100_' + stamp() + '.csv',
-      'sample_index,adc_code,time_us\n' +
+      'sample_index,sample_code,time_us\n' +
         Array.from(
           current.samples,
           (v, i) => `${i},${v},${(i / Number(current.meta.fs)) * 1e6}`

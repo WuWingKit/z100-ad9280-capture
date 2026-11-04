@@ -1,1 +1,1 @@
-PASS frames=2 samples=512 DDR_bytes=512 guards=256 checks=1572
+PASS frames=2 samples=16 DDR_bytes=16 guards=752 checks=966

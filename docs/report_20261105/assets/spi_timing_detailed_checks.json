@@ -1,0 +1,164 @@
+{
+  "source": "evidence\\spi_burst8_timing.vcd",
+  "source_sha256": "5d45b71577dbcd0e6e6ff1ec45bad35c3ce52eeda8b440527a4f56bb1c38c601",
+  "timescale": "1ps",
+  "scope": "First simulated burst from real XSim VCD; not hardware ILA",
+  "first_cs_fall_ps": 281250,
+  "busy_fall_ps": 7781250,
+  "cs_windows_ps": [
+    [
+      281250,
+      781250
+    ],
+    [
+      1281250,
+      1781250
+    ],
+    [
+      2281250,
+      2781250
+    ],
+    [
+      3281250,
+      3781250
+    ],
+    [
+      4281250,
+      4781250
+    ],
+    [
+      5281250,
+      5781250
+    ],
+    [
+      6281250,
+      6781250
+    ],
+    [
+      7281250,
+      7781250
+    ]
+  ],
+  "falling_edges_ps": [
+    [
+      312500,
+      375000,
+      437500,
+      500000,
+      562500,
+      625000,
+      687500,
+      750000
+    ],
+    [
+      1312500,
+      1375000,
+      1437500,
+      1500000,
+      1562500,
+      1625000,
+      1687500,
+      1750000
+    ],
+    [
+      2312500,
+      2375000,
+      2437500,
+      2500000,
+      2562500,
+      2625000,
+      2687500,
+      2750000
+    ],
+    [
+      3312500,
+      3375000,
+      3437500,
+      3500000,
+      3562500,
+      3625000,
+      3687500,
+      3750000
+    ],
+    [
+      4312500,
+      4375000,
+      4437500,
+      4500000,
+      4562500,
+      4625000,
+      4687500,
+      4750000
+    ],
+    [
+      5312500,
+      5375000,
+      5437500,
+      5500000,
+      5562500,
+      5625000,
+      5687500,
+      5750000
+    ],
+    [
+      6312500,
+      6375000,
+      6437500,
+      6500000,
+      6562500,
+      6625000,
+      6687500,
+      6750000
+    ],
+    [
+      7312500,
+      7375000,
+      7437500,
+      7500000,
+      7562500,
+      7625000,
+      7687500,
+      7750000
+    ]
+  ],
+  "payload_hex": [
+    "00",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07"
+  ],
+  "frame_parallel64": "0706050403020100",
+  "assertions": {
+    "eight_cs_low_windows": true,
+    "CS_low_500ns": true,
+    "CS_period_1us_during_burst": true,
+    "eight_falling_edges_per_byte": true,
+    "SCLK_period_62_5ns": true,
+    "rx_data_matches_sampled_MISO": true,
+    "frame_done_after_eighth_byte": true,
+    "no_extra_CS_or_sampling_after_capture": true
+  },
+  "detail_byte": {
+    "zero_based_index": 5,
+    "ordinal": 6,
+    "value_hex": "05",
+    "sampled_bits_MSB_first": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  "figures": [
+    "spi_timing_burst_detail.png",
+    "spi_timing_byte_detail.png"
+  ]
+}

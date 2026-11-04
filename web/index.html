@@ -371,8 +371,8 @@
     <header>
       <div>
         <div class="class-name">SWU24级学行班信号处理第三组</div>
-        <h1>Z100 · AD/DA 测量台</h1>
-        <p>CORDIC 发波 → AD9280 → FIFO / DMA → DDR → UART → FFT</p>
+        <h1>Z100 · PS SPI从机 / PL主机测试台</h1>
+        <p>PS SPI0 从机 → 内部EMIO → PL SPI主机 → FIFO / DMA → DDR → UART</p>
       </div>
       <span id="sourceBadge" class="pill">未连接 · 等待数据</span>
     </header>
@@ -393,30 +393,24 @@
           </section>
           <section class="card">
             <h2>02 / 采集与实时刷新</h2>
-            <label for="frequency">DA 目标频率 / Hz</label
-            ><input id="frequency" type="number" min="1000" max="1000000" value="100000" />
+            <label for="frequency">模拟正弦频率 / Hz</label
+            ><input id="frequency" type="number" min="1000" max="400000" value="100000" />
             <div class="row">
               <div>
                 <label for="samples">采样点数</label
-                ><select id="samples">
-                  <option>256</option>
-                  <option>512</option>
-                  <option>1024</option>
-                  <option>2048</option>
-                  <option selected>4096</option>
-                </select>
+                ><select id="samples"><option selected>8</option></select>
               </div>
               <div>
                 <label for="delay">延迟 / 采样周期</label
                 ><input id="delay" type="number" min="0" max="255" value="3" />
               </div>
             </div>
-            <label for="amplitude">DA 数字幅度 / code（不是伏特）</label
+            <label for="amplitude">模拟数据幅度 / code（不是伏特）</label
             ><input id="amplitude" type="number" min="0" max="96" value="8" /><label class="check"
               ><input id="physicalReady" type="checkbox" /><span
-                >已确认 DA 模拟输出接到 AD 模拟输入，且输出电压在 AD 允许范围内。</span
+                >已确认使用SPI副本的配套硬件与软件；数据来自PS模拟SPI从机，无需外接设备。</span
               ></label
-            ><button id="capture" class="primary wide" disabled>采集真实 AD 数据</button>
+            ><button id="capture" class="primary wide" disabled>采集8字节SPI数据</button>
             <button id="live" class="primary wide" style="margin-top:8px" disabled>开始连续采集</button>
             <p id="liveInfo" class="sub" aria-live="polite">尚未开始连续采集</p>
             <div class="row" style="margin-top: 8px">
@@ -425,8 +419,8 @@
               ><button id="status" disabled>读状态</button>
             </div>
             <p class="sub">
-              采样率固定 10 MHz。delay=3
-              仅在数字模型中对齐；真实模拟延迟须标定。连续模式会在完整帧校验成功后自动请求下一帧，并更新波形和频谱；点“停止 / 复位”结束。115200 串口下 4096 点通常每秒更新约一帧，帧间存在间隔。
+              SCLK=16MHz、CS=1MHz，下降沿读bit，每次8字节。delay=3
+              仅在数字模型中对齐；SPI使用Mode 2、MSB先发。连续模式会在完整帧校验成功后自动请求下一帧，并更新波形和频谱；点“停止 / 复位”结束。本副本只接收8字节，额外数据不采集；8点不足以沿用4096点的FFT分析效果。
             </p>
           </section>
           <section class="card">
@@ -435,7 +429,7 @@
             ><label for="file">导入 CSV 或原始串口 TXT</label
             ><input id="file" type="file" accept=".csv,.txt,.log" />
             <p class="sub">
-              CSV 需包含 adc_code 列，使用上方频率和 10 MHz 解释。CSV 导入不具备串口 CRC
+              CSV 需包含 sample_code 列，采样字节率为1MHz。CSV 导入不具备串口 CRC
               的来源证明。
             </p>
           </section>
@@ -443,7 +437,7 @@
         <section>
           <!-- ===== 4. 右侧结果区：来源提示、数值统计与两幅Canvas曲线 ===== -->
           <div id="message" class="banner">
-            先载入仿真数据查看效果；上板时先执行递增码自检，再执行真实回环采集。
+            SPI副本：PS从机模拟数据；可先加载8点演示，上板后先递增码自检。
           </div>
           <div class="stats">
             <div class="stat">
@@ -455,7 +449,7 @@
               ><small id="duration">单帧采集</small>
             </div>
             <div class="stat">
-              <label>ADC 码值范围</label><strong id="range">—</strong
+              <label>SPI字节范围</label><strong id="range">—</strong
               ><small id="mean">均值 / DC</small>
             </div>
             <div class="stat">
@@ -467,7 +461,7 @@
             <div class="chartHead">
               <div>
                 <h2>时域波形</h2>
-                <p id="timeNote" class="sub">纵轴为原始 ADC code，128 为名义中点；不是电压刻度。</p>
+                <p id="timeNote" class="sub">纵轴为原始 SPI byte，128 为名义中点；不是电压刻度。</p>
               </div>
               <select id="timeView">
                 <option value="cycles">前三周期</option>
@@ -491,12 +485,12 @@
               </select>
               <select id="freqView">
                 <option value="focus">主频附近</option>
-                <option value="all">0–5 MHz</option>
+                <option value="all">0–500 kHz</option>
               </select>
             </div>
             <canvas id="freqCanvas"></canvas>
             <p id="phaseNote" class="note">
-              参考相位拟合与独立 FFT 频率估计分别计算。这里不构成真实模拟零相位校准。
+              当前采集固定8字节；本阶段用于SPI与DDR验证，不报告可靠FFT主频。
             </p>
           </section>
           <!-- ===== 5. 导出与日志：原始串口文本不作为HTML执行 ===== -->
@@ -514,7 +508,7 @@
           </section>
         </section>
       </div>
-      <p class="footer">本地运行，无外部 CDN、无云端上传 · 串口逐帧实时刷新 · 10 MSPS 为帧内采样率，帧间存在采集与传输间隔</p>
+      <p class="footer">本地运行，无外部 CDN、无云端上传 · 串口逐帧实时刷新 · 1MHz 为CS重复频率，帧间存在采集与传输间隔</p>
     </main>
     <!-- ===== 6. 加载顺序：先纯算法signal.js，再界面/串口逻辑app.js ===== -->
     <script src="signal.js"></script>

@@ -11,7 +11,7 @@ const context = vm.createContext({
     return elements.get(id);
   } },
   window: { Z100DSP: { parsePacket() { return {
-    meta: { samples: 256, freq: 100000, delay: 3, amp: 8, mode: 'REAL', fs: 10000000 }
+    meta: { samples: 8, freq: 100000, delay: 3, amp: 8, mode: 'SPI_SIM', fs: 1000000 }
   }; } } },
   navigator: { serial: {} }, location: { search: '' },
   URLSearchParams, TextEncoder, TextDecoder, Date,
@@ -28,7 +28,7 @@ vm.runInContext(`
   send = async command => { sent.push(command); };
   render = () => { renders++; };
   port = {}; readActive = true;
-  $('frequency').value = '100000'; $('samples').value = '256';
+  $('frequency').value = '100000'; $('samples').value = '8';
   $('delay').value = '3'; $('amplitude').value = '8';
   $('live').onclick();
 `, context);

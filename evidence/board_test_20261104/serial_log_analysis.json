@@ -1,0 +1,261 @@
+{
+  "source_file": "records-2026-11-04-16-36-31.json",
+  "source_sha256": "2dd9b3bcac7d6acbed8de76bbef7228c0098612af08fa0c046453e9c4e2100b3",
+  "source_kind": "User-exported serial log from physical board test; no independent agent hardware operation",
+  "time_start": "2026-11-04 16:34:38:616",
+  "time_end": "2026-11-04 16:36:27:518",
+  "raw_record_count": 30,
+  "command_count": 12,
+  "successful_capture_frames": 8,
+  "mode_counts": {
+    "RAMP": 3,
+    "SPI_SIM": 5
+  },
+  "total_payload_bytes": 64,
+  "independent_checks": "Reassembled split RX records before parsing; sample length, statistics and CRC32 independently recalculated for every capture. All passed.",
+  "stop_reset_ok_count": 2,
+  "reset_idle_state_pass": true,
+  "invalid_length_rejected_and_next_capture_pass": true,
+  "frequency_200kHz_pass": true,
+  "amplitude_16_pass": true,
+  "limits": [
+    "Initial alternation in this export contains two ramp and two sine captures; not ten captures each.",
+    "UART timestamps include transmission/UI buffering; not a direct measurement of SPI capture latency.",
+    "No hardware ILA timing trace is present."
+  ],
+  "frames": [
+    {
+      "time": "2026-11-04 16:34:38:616",
+      "job": 7,
+      "mode": "RAMP",
+      "frequency_Hz": 100000,
+      "amplitude_code": 8,
+      "payload_hex": "00 01 02 03 04 05 06 07",
+      "sum": 28,
+      "min": 0,
+      "max": 7,
+      "crc32": "88AA689F",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true,
+        "ramp_sequence": true
+      }
+    },
+    {
+      "time": "2026-11-04 16:34:49:548",
+      "job": 8,
+      "mode": "SPI_SIM",
+      "frequency_Hz": 100000,
+      "amplitude_code": 8,
+      "payload_hex": "80 84 87 87 84 80 7C 79",
+      "sum": 1035,
+      "min": 121,
+      "max": 135,
+      "crc32": "636E193E",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true
+      }
+    },
+    {
+      "time": "2026-11-04 16:34:54:881",
+      "job": 9,
+      "mode": "RAMP",
+      "frequency_Hz": 100000,
+      "amplitude_code": 8,
+      "payload_hex": "00 01 02 03 04 05 06 07",
+      "sum": 28,
+      "min": 0,
+      "max": 7,
+      "crc32": "88AA689F",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true,
+        "ramp_sequence": true
+      }
+    },
+    {
+      "time": "2026-11-04 16:35:00:848",
+      "job": 10,
+      "mode": "SPI_SIM",
+      "frequency_Hz": 100000,
+      "amplitude_code": 8,
+      "payload_hex": "80 84 87 87 84 80 7C 79",
+      "sum": 1035,
+      "min": 121,
+      "max": 135,
+      "crc32": "636E193E",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true
+      }
+    },
+    {
+      "time": "2026-11-04 16:35:28:281",
+      "job": 11,
+      "mode": "RAMP",
+      "frequency_Hz": 100000,
+      "amplitude_code": 8,
+      "payload_hex": "00 01 02 03 04 05 06 07",
+      "sum": 28,
+      "min": 0,
+      "max": 7,
+      "crc32": "88AA689F",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true,
+        "ramp_sequence": true
+      }
+    },
+    {
+      "time": "2026-11-04 16:35:56:481",
+      "job": 12,
+      "mode": "SPI_SIM",
+      "frequency_Hz": 100000,
+      "amplitude_code": 8,
+      "payload_hex": "80 84 87 87 84 80 7C 79",
+      "sum": 1035,
+      "min": 121,
+      "max": 135,
+      "crc32": "636E193E",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true
+      }
+    },
+    {
+      "time": "2026-11-04 16:36:08:198",
+      "job": 13,
+      "mode": "SPI_SIM",
+      "frequency_Hz": 200000,
+      "amplitude_code": 8,
+      "payload_hex": "80 87 84 7C 79 80 87 84",
+      "sum": 1035,
+      "min": 121,
+      "max": 135,
+      "crc32": "ABBE68EC",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true
+      }
+    },
+    {
+      "time": "2026-11-04 16:36:20:598",
+      "job": 14,
+      "mode": "SPI_SIM",
+      "frequency_Hz": 100000,
+      "amplitude_code": 16,
+      "payload_hex": "80 89 8F 8F 89 80 77 71",
+      "sum": 1048,
+      "min": 113,
+      "max": 143,
+      "crc32": "C1DF3876",
+      "checks": {
+        "sample_count": true,
+        "sum": true,
+        "min": true,
+        "max": true,
+        "errors_zero": true,
+        "crc32": true,
+        "success_marker": true
+      }
+    }
+  ],
+  "transactions": [
+    {
+      "time": "2026-11-04 16:34:38:616",
+      "command": "t 100000 8 3 8",
+      "response": "BEGIN MEAS job=7 mode=RAMP samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0\r\n00 01 02 03 04 05 06 07 END MEAS sum=28 min=0 max=7 errors=0 crc=88AA689F\r\nSELFTEST PASS\r\n"
+    },
+    {
+      "time": "2026-11-04 16:34:49:548",
+      "command": "m 100000 8 3 8",
+      "response": "BEGIN MEAS job=8 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0\r\n80 84 87 87 84 80 7C 79 END MEAS sum=1035 min=121 max=135 errors=0 crc=636E193E\r\nMEASUREMENT OK (PS SPI simulated source)\r\n"
+    },
+    {
+      "time": "2026-11-04 16:34:54:881",
+      "command": "t 100000 8 3 8",
+      "response": "BEGIN MEAS job=9 mode=RAMP samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0\r\n00 01 02 03 04 05 06 07 END MEAS sum=28 min=0 max=7 errors=0 crc=88AA689F\r\nSELFTEST PASS\r\n"
+    },
+    {
+      "time": "2026-11-04 16:35:00:848",
+      "command": "m 100000 8 3 8",
+      "response": "BEGIN MEAS job=10 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0\r\n80 84 87 87 84 80 7C 79 END MEAS sum=1035 min=121 max=135 errors=0 crc=636E193E\r\nMEASUREMENT OK (PS SPI simulated source)\r\n"
+    },
+    {
+      "time": "2026-11-04 16:35:11:848",
+      "command": "q",
+      "response": "STOPPED / RESET OK\r\n"
+    },
+    {
+      "time": "2026-11-04 16:35:17:315",
+      "command": "s",
+      "response": "STATUS raw=00000040 busy=0 overflow=0 done=0 ack=0 reject=0 ready=1 otr=0 count=0 state=0 streamed=0\r\n"
+    },
+    {
+      "time": "2026-11-04 16:35:28:281",
+      "command": "t 100000 8 3 8",
+      "response": "BEGIN MEAS job=11 mode=RAMP samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0\r\n00 01 02 03 04 05 06 07 END MEAS sum=28 min=0 max=7 errors=0 crc=88AA689F\r\nSELFTEST PASS\r\n"
+    },
+    {
+      "time": "2026-11-04 16:35:37:081",
+      "command": "m 100000 16 3 8",
+      "response": "ERROR parameters: Hz 1000..400000, N 8 only, delay 0..255, amp 0..96\r\n"
+    },
+    {
+      "time": "2026-11-04 16:35:56:481",
+      "command": "m 100000 8 3 8",
+      "response": "BEGIN MEAS job=12 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0\r\n80 84 87 87 84 80 7C 79 END MEAS sum=1035 min=121 max=135 errors=0 crc=636E193E\r\nMEASUREMENT OK (PS SPI simulated source)\r\n"
+    },
+    {
+      "time": "2026-11-04 16:36:08:198",
+      "command": "m 200000 8 3 8",
+      "response": "BEGIN MEAS job=13 mode=SPI_SIM samples=8 fs=1000000 freq=200000 k=858993459 delay=3 amp=8 otr=0\r\n80 87 84 7C 79 80 87 84 END MEAS sum=1035 min=121 max=135 errors=0 crc=ABBE68EC\r\nMEASUREMENT OK (PS SPI simulated source)\r\n"
+    },
+    {
+      "time": "2026-11-04 16:36:20:598",
+      "command": "m 100000 8 3 16",
+      "response": "BEGIN MEAS job=14 mode=SPI_SIM samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=16 otr=0\r\n80 89 8F 8F 89 80 77 71 END MEAS sum=1048 min=113 max=143 errors=0 crc=C1DF3876\r\nMEASUREMENT OK (PS SPI simulated source)\r\n"
+    },
+    {
+      "time": "2026-11-04 16:36:27:414",
+      "command": "q",
+      "response": "STOPPED / RESET OK\r\n"
+    }
+  ]
+}

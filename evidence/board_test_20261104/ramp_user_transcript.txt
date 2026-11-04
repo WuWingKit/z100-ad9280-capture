@@ -1,0 +1,7 @@
+User-provided serial transcript, hardware test; not captured independently by agent.
+16:21:20:259 ~ 16:21:20:274
+Command: t 100000 8 3 8 [CR]
+BEGIN MEAS job=1 mode=RAMP samples=8 fs=1000000 freq=100000 k=429496730 delay=3 amp=8 otr=0
+00 01 02 03 04 05 06 07
+END MEAS sum=28 min=0 max=7 errors=0 crc=88AA689F
+SELFTEST PASS

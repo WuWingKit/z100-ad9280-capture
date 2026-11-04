@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="940" viewBox="0 0 1440 940">
+<rect width="1440" height="940" fill="#f8fafc"/>
+<text x="40" y="48" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="30" fill="#1e293b" font-weight="bold">SPI 接收 → DDR 存储：板内闭环架构</text>
+<text x="40" y="80" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="19" fill="#64748b" font-weight="normal">Z100 / XC7Z035 · PS 硬 SPI0 从机 + PL SPI 主机 · 每次 START 只接收 8 字节</text>
+<rect x="30" y="108" width="295" height="600" rx="20" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="48" y="140" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="22" fill="#1d4ed8" font-weight="bold">PS：数据源与控制</text>
+<rect x="350" y="108" width="760" height="600" rx="20" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="370" y="140" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="22" fill="#0f766e" font-weight="bold">PL：固定时序接收与数据流</text>
+<rect x="1135" y="108" width="275" height="600" rx="20" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+<text x="1153" y="140" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="22" fill="#6d28d9" font-weight="bold">PS 内存与上位机</text>
+<rect x="50" y="170" width="255" height="105" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="50" y="170" width="5" height="105" rx="2" fill="#2563eb" stroke="none" stroke-width="1.5"/>
+<text x="68" y="201" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">ARM 准备 8 字节</text>
+<text x="68" y="230" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">递增码 / 查表正弦</text>
+<text x="68" y="255" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">提前装入 SPI TX FIFO</text>
+<polyline points="177,275 177,315" fill="none" stroke="#2563eb" stroke-width="3"/>
+<polygon points="177,315 171,305 183,305" fill="#2563eb"/>
+<rect x="50" y="315" width="255" height="110" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="50" y="315" width="5" height="110" rx="2" fill="#2563eb" stroke="none" stroke-width="1.5"/>
+<text x="68" y="346" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">PS SPI0 从机</text>
+<text x="68" y="375" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">硬件串行移出 MISO</text>
+<text x="68" y="400" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">MOSI 接收 A5 校验字节</text>
+<polyline points="305,369 378,369" fill="none" stroke="#2563eb" stroke-width="3"/>
+<polygon points="378,369 368,363 368,375" fill="#2563eb"/>
+<text x="313" y="346" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="15" fill="#1d4ed8" font-weight="normal">EMIO</text>
+<rect x="378" y="310" width="210" height="115" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="378" y="310" width="5" height="115" rx="2" fill="#0f766e" stroke="none" stroke-width="1.5"/>
+<text x="396" y="341" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">SPI 主机</text>
+<text x="396" y="370" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">Mode 2 / MSB first</text>
+<text x="396" y="395" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">SCLK 下降沿取 1 bit</text>
+<polyline points="588,368 620,368" fill="none" stroke="#0f766e" stroke-width="3"/>
+<polygon points="620,368 610,362 610,374" fill="#0f766e"/>
+<rect x="620" y="310" width="215" height="115" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="620" y="310" width="5" height="115" rx="2" fill="#0f766e" stroke="none" stroke-width="1.5"/>
+<text x="638" y="341" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">移位与并行锁存</text>
+<text x="638" y="370" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">CS 上升锁存 8 bit</text>
+<text x="638" y="395" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">第 8 字节锁存 64 bit</text>
+<polyline points="835,368 867,368" fill="none" stroke="#0f766e" stroke-width="3"/>
+<polygon points="867,368 857,362 857,374" fill="#0f766e"/>
+<rect x="867" y="310" width="215" height="115" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="867" y="310" width="5" height="115" rx="2" fill="#0f766e" stroke="none" stroke-width="1.5"/>
+<text x="885" y="341" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">字节打包</text>
+<text x="885" y="370" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">每 4 字节拼成 32 bit</text>
+<text x="885" y="395" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">首字节放低 8 位</text>
+<polyline points="975,425 975,475" fill="none" stroke="#0f766e" stroke-width="3"/>
+<polygon points="975,475 969,465 981,465" fill="#0f766e"/>
+<rect x="867" y="475" width="215" height="110" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="867" y="475" width="5" height="110" rx="2" fill="#0f766e" stroke="none" stroke-width="1.5"/>
+<text x="885" y="506" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">异步 FIFO / FWFT</text>
+<text x="885" y="535" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">32 位写入 / 32 位读出</text>
+<text x="885" y="560" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">接收时钟域 → AXIS域</text>
+<polyline points="867,530 835,530" fill="none" stroke="#0f766e" stroke-width="3"/>
+<polygon points="835,530 845,524 845,536" fill="#0f766e"/>
+<rect x="620" y="475" width="215" height="110" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="620" y="475" width="5" height="110" rx="2" fill="#0f766e" stroke="none" stroke-width="1.5"/>
+<text x="638" y="506" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">AXI-Stream 适配</text>
+<text x="638" y="535" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">TVALID &amp; TREADY 才读</text>
+<text x="638" y="560" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">第 2 个 32位字 TLAST</text>
+<polyline points="620,530 588,530" fill="none" stroke="#0f766e" stroke-width="3"/>
+<polygon points="588,530 598,524 598,536" fill="#0f766e"/>
+<rect x="378" y="475" width="210" height="110" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="378" y="475" width="5" height="110" rx="2" fill="#0f766e" stroke="none" stroke-width="1.5"/>
+<text x="396" y="506" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">AXI DMA / S2MM</text>
+<text x="396" y="535" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">流数据 → 带地址写入</text>
+<text x="396" y="560" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">Simple DMA 长度 8 B</text>
+<polyline points="483,585 483,650 1160,650 1160,535" fill="none" stroke="#7c3aed" stroke-width="3"/>
+<polygon points="1160,535 1154,545 1166,545" fill="#7c3aed"/>
+<text x="680" y="638" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="18" fill="#6d28d9" font-weight="normal">SmartConnect → PS S_AXI_HP0</text>
+<rect x="1180" y="475" width="210" height="110" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="1180" y="475" width="5" height="110" rx="2" fill="#7c3aed" stroke="none" stroke-width="1.5"/>
+<text x="1198" y="506" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">DDR 缓冲区</text>
+<text x="1198" y="535" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">2 个 32 位有效字</text>
+<text x="1198" y="560" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">保留尾部保护字节</text>
+<polyline points="1160,535 1180,535" fill="none" stroke="#7c3aed" stroke-width="3"/>
+<polygon points="1180,535 1170,529 1170,541" fill="#7c3aed"/>
+<rect x="1180" y="190" width="210" height="140" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="1180" y="190" width="5" height="140" rx="2" fill="#7c3aed" stroke="none" stroke-width="1.5"/>
+<text x="1198" y="221" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">PS 回读与校验</text>
+<text x="1198" y="250" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">等待 DMA 真正完成</text>
+<text x="1198" y="275" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">缓存失效后逐字节比较</text>
+<text x="1198" y="300" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">统计 / CRC32 / 保护区</text>
+<polyline points="1285,475 1285,330" fill="none" stroke="#7c3aed" stroke-width="3"/>
+<polygon points="1285,330 1279,340 1291,340" fill="#7c3aed"/>
+<polyline points="1285,190 1285,165 1120,165 1120,680 1285,680" fill="none" stroke="#7c3aed" stroke-width="3"/>
+<polygon points="1285,680 1275,674 1275,686" fill="#7c3aed"/>
+<text x="1160" y="691" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="19" fill="#6d28d9" font-weight="bold">UART 115200 → PC</text>
+<rect x="378" y="185" width="400" height="85" rx="14" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<rect x="378" y="185" width="5" height="85" rx="2" fill="#ea580c" stroke="none" stroke-width="1.5"/>
+<text x="396" y="216" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#1e293b" font-weight="bold">控制通路：GP0 / AXI-Lite</text>
+<text x="396" y="245" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#475569" font-weight="normal">GPIO 发 START / 参数；配置 DMA 地址和长度</text>
+<polyline points="305,220 378,220" fill="none" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 6"/>
+<polygon points="378,220 368,214 368,226" fill="#ea580c"/>
+<polyline points="778,226 846,226 846,290 483,290 483,310" fill="none" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 6"/>
+<polygon points="483,310 477,300 489,300" fill="#ea580c"/>
+<polyline points="405,270 405,450 483,450 483,475" fill="none" stroke="#ea580c" stroke-width="3" stroke-dasharray="8 6"/>
+<polygon points="483,475 477,465 489,465" fill="#ea580c"/>
+<polyline points="483,310 483,286 330,286 330,300 177,300 177,315" fill="none" stroke="#0f766e" stroke-width="2" stroke-dasharray="8 6"/>
+<polygon points="177,315 171,305 183,305" fill="#0f766e"/>
+<text x="58" y="294" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="15" fill="#0f766e" font-weight="normal">PL 提供 SCLK / CS_n / MOSI</text>
+<rect x="30" y="735" width="1380" height="110" rx="18" fill="#0f172a" stroke="none" stroke-width="1.5"/>
+<text x="53" y="771" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="21" fill="#ffffff" font-weight="bold">时钟与片选：100 MHz 差分 → MMCM 16 MHz → 同步 ÷16 生成采集期间 1 MHz CS 节拍</text>
+<text x="53" y="803" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="19" fill="#cbd5e1" font-weight="normal">每个 CS 低 500 ns，含 8 个 SCLK 下降沿 = 1 字节；每次 START 共 8 个 CS 事务，结束后 CS 保持高。</text>
+<text x="53" y="829" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="17" fill="#cbd5e1" font-weight="normal">图示为设计架构：功能已上板验证；16 MHz / 500 ns 的实际时序仍待 ILA 留样。</text>
+<rect x="30" y="865" width="1380" height="52" rx="12" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="52" y="898" font-family="Noto Sans SC, Microsoft YaHei, sans-serif" font-size="20" fill="#9a3412" font-weight="bold">范围：内部 EMIO，无外部 SPI 接线；当前输入不是 ADC / 真实雷达数据；本 SPI 副本不执行 FFT。</text>
+</svg>

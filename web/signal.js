@@ -31,8 +31,8 @@
     const meta = fields(lines[begin]),
       tail = fields(lines[end]);
     const n = Number(meta.samples);
-    if (![256, 512, 1024, 2048, 4096].includes(n)) throw Error('采样点数非法');
-    if (!['REAL', 'RAMP'].includes(meta.mode)) throw Error('未知采集模式');
+    if (![8, 256, 512, 1024, 2048, 4096].includes(n)) throw Error('采样点数非法');
+    if (!['REAL', 'RAMP', 'SPI_SIM'].includes(meta.mode)) throw Error('未知采集模式');
     const bytes = [];
     for (const line of lines.slice(begin + 1, end)) {
       if (!/^[0-9a-f]{2}(\s+[0-9a-f]{2})*$/i.test(line))
@@ -62,11 +62,11 @@
         .shift()
         .replace(/^\uFEFF/, '')
         .split(','),
-      at = cols.indexOf('adc_code');
-    if (at < 0) throw Error('CSV 需要 adc_code 列');
+      at = cols.indexOf('sample_code');
+    if (at < 0) throw Error('CSV 需要 sample_code 列');
     const values = rows.filter((s) => s.trim()).map((s) => Number(s.split(',')[at]));
     if (
-      ![256, 512, 1024, 2048, 4096].includes(values.length) ||
+      ![8, 256, 512, 1024, 2048, 4096].includes(values.length) ||
       values.some((v) => !Number.isInteger(v) || v < 0 || v > 255)
     )
       throw Error('CSV 点数或码值范围错误');
@@ -146,10 +146,11 @@
   }
   // ===== 6. 单帧频谱分析入口 =====
   // 去均值 → Hann窗 → FFT → 单边幅度归一化 → 峰值插值 → 参考相位拟合。
-  // 幅度单位是ADC code，频率单位Hz；没有电压标定，不输出伏特/dBm。
+  // 幅度单位是SPI byte，频率单位Hz；没有电压标定，不输出伏特/dBm。
   function analyze(samples, fs, ref) {
     const n = samples.length;
-    if (![256, 512, 1024, 2048, 4096].includes(n) || !(fs > 0) || !(ref > 0 && ref < fs / 2))
+    if (n === 8) throw Error("当前仅8字节：用于SPI与DDR调试，不报告可靠FFT主频");
+    if (![8, 256, 512, 1024, 2048, 4096].includes(n) || !(fs > 0) || !(ref > 0 && ref < fs / 2))
       throw Error('FFT 参数非法');
     const min = Math.min(...samples),
       max = Math.max(...samples),

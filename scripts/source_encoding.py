@@ -32,7 +32,7 @@ def files_for_ide(root):
         ("scripts", "*.tcl"),
         ("constraints", "*.xdc"),
         ("web", "*.cmd"),
-        ("sdk_workspace/adc_uart/src", "*.c"),
+        ("sdk_spi_workspace/spi_uart/src", "*.c"),
     ]:
         yield from sorted((root / directory).glob(pattern))
 
@@ -69,7 +69,7 @@ def main():
 
     # Eclipse/SDK stores an explicit per-file charset independently of Windows.
     # SDK另有文件级编码设置，单改字节而不改属性仍可能显示乱码。
-    sdk_project = root / "sdk_workspace/adc_uart"
+    sdk_project = root / "sdk_spi_workspace/spi_uart"
     if sdk_project.exists():
         settings = sdk_project / ".settings"
         settings.mkdir(exist_ok=True)

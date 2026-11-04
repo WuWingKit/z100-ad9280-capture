@@ -1,0 +1,1 @@
+PASS mode=2 SCLK=16MHz CS=1MHz low=500ns bytes_per_capture=8 bursts=32 all_256_values parallel64=PASS extra_ignored=PASS MOSI_A5=PASS

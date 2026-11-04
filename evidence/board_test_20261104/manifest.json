@@ -1,0 +1,55 @@
+{
+  "recorded_local": "2026-11-04T16:29:02",
+  "evidence_source": "User-provided screenshots and pasted board serial output. Images copied byte-for-byte; transcripts reformatted for readability.",
+  "reported_board_tests": [
+    {
+      "mode": "RAMP",
+      "samples": 8,
+      "sum": 28,
+      "min": 0,
+      "max": 7,
+      "CRC32": "88AA689F",
+      "crc_matches_user_output": true
+    },
+    {
+      "mode": "SPI_SIM",
+      "samples": 8,
+      "sum": 1035,
+      "min": 121,
+      "max": 135,
+      "CRC32": "636E193E",
+      "crc_matches_user_output": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01_uart_ramp_and_sine_pass.png",
+      "original": "C:/Users/small/AppData/Local/Temp/codex-clipboard-13c7b609-5962-4056-be54-58a3302d9181.png",
+      "sha256": "6ccd9d45f253b52031fa61cb40e0c339dd79ea89b0393e45d803bbcb73cc99e6",
+      "bytes": 111299
+    },
+    {
+      "file": "02_spi_block_design.png",
+      "original": "C:/Users/small/AppData/Local/Temp/codex-clipboard-36fb38c8-65c1-456d-8cbb-c4bc91044ad3.png",
+      "sha256": "c0690dfafee8bc2ea6cdbfea8bcd540791215a7807def324c10c07899e934475",
+      "bytes": 132168
+    },
+    {
+      "file": "03_spi_capture_core_ports.png",
+      "original": "C:/Users/small/AppData/Local/Temp/codex-clipboard-fb8eb7d8-d793-42bd-a35e-e0260e73864c.png",
+      "sha256": "7962e1b9508f95a4c7dbc4259884b8db61c1a66f766cc85031dc7628926c76ce",
+      "bytes": 49927
+    }
+  ],
+  "limits": [
+    "One provided ramp capture and one sine capture; repeated-run reliability not yet documented.",
+    "No ILA/oscilloscope hardware timing trace provided.",
+    "Independent host checks verify byte count, sum, min, max and CRC, not physical SCLK timing.",
+    "Prior SPI_VERIFICATION.json is a pre-board local verification snapshot. These records add subsequent user-reported board results without rewriting history."
+  ],
+  "firmware_files_current_host": {
+    "hardware/z100_spi_sim.bit": "5220b52e6d026bd6e59899962d7686f7409cb707f39913469dc635a7951aa003",
+    "hardware/spi_uart.elf": "cc66b0a69cf74d9c755c1839687d6d40693cfd2247383e22af0e2b33d3748276"
+  },
+  "firmware_identity_note": "Hashes identify the current host artifacts; the screenshots alone do not prove which files were downloaded."
+}
