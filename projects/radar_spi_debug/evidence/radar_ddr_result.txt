@@ -1,0 +1,1 @@
+PASS frames=3 frame_bytes=160 DDR_bytes=480 synthesizable_source=PASS no_forcing=PASS serial_SPI=PASS actual_FIFO_DMA_HP0_DDR=PASS previous_header_payload_sequence_beam=PASS guards=PASS checks=1211

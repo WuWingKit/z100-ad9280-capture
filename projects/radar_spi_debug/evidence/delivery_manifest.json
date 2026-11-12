@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-12",
+  "checks": {
+    "original_unchanged:radar_sync.xpr": true,
+    "original_unchanged:rtl/z100_radar_top.v": true,
+    "original_unchanged:rtl/radar_frame_capture.v": true,
+    "original_unchanged:software/main.c": true,
+    "original_unchanged:hardware/radar_sync.bit": true,
+    "original_unchanged:hardware/radar_uart.elf": true,
+    "receiver_copy_unchanged:spi_slave_rx16.v": true,
+    "receiver_copy_unchanged:radar_frame_capture.v": true,
+    "receiver_copy_unchanged:radar_fifo_to_axis.v": true,
+    "unit_result.txt": true,
+    "full_wire_result.txt": true,
+    "radar_ddr_result.txt": true,
+    "hardware_build": true,
+    "software_build": true,
+    "actual_board_tests": true,
+    "actual_board_ILA": true,
+    "tested_hash:radar_debug.bit": true,
+    "tested_hash:radar_debug_uart.elf": true,
+    "tested_hash:radar_debug.ltx": true,
+    "no_flash_write": true,
+    "timing_pass": true
+  },
+  "files": {
+    "radar_debug.xpr": {
+      "bytes": 18086,
+      "sha256": "acd7e3f018b833593c6cf2c6c93a0f34637f2ed2075ab1955fc25d4c51a0ad03"
+    },
+    "rtl/radar_frontend_sim.v": {
+      "bytes": 7851,
+      "sha256": "6292072b563572b41cd930fb32dcfdb90fd3f2defae5cbd3ee04febb5144a861"
+    },
+    "software/main.c": {
+      "bytes": 8645,
+      "sha256": "0fe813db0f0d81f9aedec111945ee3db70661b61c054fdd88afc5cd68b045315"
+    },
+    "hardware/radar_debug.bit": {
+      "bytes": 13321520,
+      "sha256": "3c223c946c67c7e75367f725df59f8e1f0a687011266d944b1a61b563321c880"
+    },
+    "hardware/radar_debug.ltx": {
+      "bytes": 32042,
+      "sha256": "14a140e1f8da8ca1a30c229901037fa14d58ff52cd4d1dd3eaaf3f15836c97a2"
+    },
+    "hardware/radar_debug.hdf": {
+      "bytes": 372983,
+      "sha256": "9006c45f130687fb8d9f43a48d9ee95b712785056c506205afaad3806b44e4aa"
+    },
+    "hardware/radar_debug_uart.elf": {
+      "bytes": 379860,
+      "sha256": "daf689f9c9294ff4505dbd3d1f9048185f17d88ce17082b45f97b9ce0caa3a91"
+    },
+    "evidence/board_spi_ila.csv": {
+      "bytes": 248282,
+      "sha256": "92fb6923ee26e75d3c476ab650605b610c3ba9daf04919573a9ddc0615dc9d5a"
+    },
+    "evidence/board_20261112_170218/frame_seq0021.bin": {
+      "bytes": 47136,
+      "sha256": "31e91f015d22a468d04b9f9506598a0317a9211f532a93d51069d1b34b4b8e41"
+    }
+  },
+  "pass": true
+}

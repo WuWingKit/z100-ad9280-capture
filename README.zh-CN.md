@@ -1,5 +1,18 @@
 # Z100：CORDIC 发波、AD 采集与串口波形/频谱测量台
 
+## 最新版本：FPGA内部模拟前端 SPI/DDR 调试（2026-11-13）
+
+新增独立工程，通过FPGA真实A/B BRAM模拟前端，走SPI接收、完整帧检查、FIFO、DMA、HP0和DDR。已完成22帧连续板测、三类故障及恢复和PC独立核对。数据为合成测试码，不代表真实雷达或雷达FFT已经验证。
+
+- [Release and complete Vivado/SDK download](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.5.0-radar-debug-20261113)
+- [Source project](projects/radar_spi_debug/) · [Board-test report](projects/radar_spi_debug/docs/BOARD_TEST_REPORT.md) · [Debug guide](projects/radar_spi_debug/docs/DEBUG_GUIDE.md)
+- [Progress report / 飞书文档](https://scnk2ajxowqf.feishu.cn/docx/MV2mddtdKoKEj6x27l0cpVtenee)
+
+The root-level AD/DA/FFT testbed below is the historical v0.3 project. The new debug project is under `projects/radar_spi_debug/`.
+
+---
+
+
 [![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.3.0-20261029)
 [![Source checks](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml/badge.svg?branch=main)](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml)
 ![Vivado](https://img.shields.io/badge/Vivado-2018.3-904cab)

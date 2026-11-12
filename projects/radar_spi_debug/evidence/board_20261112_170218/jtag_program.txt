@@ -1,0 +1,50 @@
+attempting to launch hw_server
+
+****** Xilinx hw_server v2018.3
+  **** Build date : Dec  7 2018-00:40:27
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+INFO: hw_server application started
+INFO: Use Ctrl-C to exit hw_server application
+
+
+
+****** Xilinx hw_server v2018.3
+
+  **** Build date : Dec  7 2018-00:40:27
+
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+
+INFO: hw_server application started
+
+INFO: Use Ctrl-C to exit hw_server application
+
+
+
+
+INFO: To connect to this hw_server instance use url: TCP:127.0.0.1:3121
+
+
+
+error deleting "C:/Users/small/AppData/Local/Temp/tcfjKrETaieC7": permission denied
+initializing  0%    0MB   0.0MB/s  ??:?? ETA  6%    0MB   1.6MB/s  ??:?? ETA 11%    1MB   1.4MB/s  ??:?? ETA 15%    1MB   1.3MB/s  ??:?? ETA 20%    2MB   1.3MB/s  ??:?? ETA 24%    3MB   1.2MB/s  ??:?? ETA 29%    3MB   1.2MB/s  00:07 ETA 34%    4MB   1.2MB/s  00:06 ETA 39%    5MB   1.2MB/s  00:06 ETA 44%    5MB   1.2MB/s  00:06 ETA 49%    6MB   1.2MB/s  00:05 ETA 53%    6MB   1.2MB/s  00:05 ETA 58%    7MB   1.2MB/s  00:04 ETA 62%    7MB   1.2MB/s  00:04 ETA 67%    8MB   1.2MB/s  00:03 ETA 72%    9MB   1.2MB/s  00:02 ETA 77%    9MB   1.2MB/s  00:02 ETA 82%   10MB   1.2MB/s  00:01 ETA 87%   11MB   1.2MB/s  00:01 ETA 92%   11MB   1.2MB/s  00:00 ETA 96%   12MB   1.2MB/s  00:00 ETA100%   12MB   1.2MB/s  00:10    
+Downloading Program -- E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_debug_20261112/hardware/radar_debug_uart.elf
+	section, .text: 0x00100000 - 0x00106b0f
+	section, .init: 0x00106b10 - 0x00106b27
+	section, .fini: 0x00106b28 - 0x00106b3f
+	section, .rodata: 0x00106b40 - 0x001072ff
+	section, .data: 0x00107300 - 0x00107bf7
+	section, .eh_frame: 0x00107bf8 - 0x00107bfb
+	section, .mmu_tbl: 0x00108000 - 0x0010bfff
+	section, .ARM.exidx: 0x0010c000 - 0x0010c007
+	section, .init_array: 0x0010c008 - 0x0010c00b
+	section, .fini_array: 0x0010c00c - 0x0010c00f
+	section, .bss: 0x0010c040 - 0x0011816b
+	section, .heap: 0x0011816c - 0x0011a16f
+	section, .stack: 0x0011a170 - 0x0011d96f
+  0%    0MB   0.0MB/s  ??:?? ETA100%    0MB   0.4MB/s  00:00    
+Setting PC to Program Start Address 0x00100000
+Successfully downloaded E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_debug_20261112/hardware/radar_debug_uart.elf
+DEBUG_PROGRAM_RUNNING_NO_FLASH

@@ -1,0 +1,19 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Thu Nov 12 16:57:54 2026
+| Host         : SenIta running 64-bit major release  (build 9200)
+| Command      : report_cdc -file {E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_debug_20261112/hardware/implemented_cdc.rpt}
+| Design       : z100_radar_debug_top
+| Device       : 7z035-ffg900
+| Speed File   : -2  PRODUCTION 1.11 2014-09-11
+----------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+Severity  Source Clock                                                                                Destination Clock                                                                           CDC Type                 Exceptions               Endpoints  Safe  Unsafe  Unknown  No ASYNC_REG  
+--------  ------------------------------------------------------------------------------------------  ------------------------------------------------------------------------------------------  -----------------------  -----------------------  ---------  ----  ------  -------  ------------  
+Warning   dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/TCK  clk_fpga_0                                                                                  No Common Primary Clock  Max Delay Datapath Only         85    85       0        0             0  
+Warning   clk_fpga_0                                                                                  dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/TCK  No Common Primary Clock  Max Delay Datapath Only        101   101       0        0             0  
+Info      input port clock                                                                            clk_fpga_0                                                                                  No Common Primary Clock  False Path                       1     1       0        0             0  
+

@@ -1,0 +1,1 @@
+PASS full=0 frame_bytes=160 good_frames=22 checks=3090 real_synthesizable_source_SPI=PASS previous_header_payload_beam=PASS AXIS_backpressure=PASS

@@ -1,0 +1,1 @@
+STATUS raw=905C10EC busy=0 error=0 ready=1 primed=1 mcu_ready=1 state=0 words_or_fault_low8=23568 fault_code=00

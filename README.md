@@ -1,5 +1,18 @@
 # Z100 FPGA Acquisition, DDR Storage & FFT Testbed
 
+## Latest: FPGA-only radar SPI debug (2026-11-13)
+
+A separate, board-tested Z100 project now simulates the radar front end in PL. Actual SPI reception, frame validation, FIFO, AXI DMA, HP0, DDR and PS UART are exercised without an external MCU. **22 consecutive full frames, three fault/recovery cases and an independent PC frame check passed.** This is synthetic test data; external radar acquisition and radar FFT are not qualified by this release.
+
+- [Release and complete Vivado/SDK download](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.5.0-radar-debug-20261113)
+- [Source project](projects/radar_spi_debug/) · [Board-test report](projects/radar_spi_debug/docs/BOARD_TEST_REPORT.md) · [Debug guide](projects/radar_spi_debug/docs/DEBUG_GUIDE.md)
+- [Progress report / 飞书文档](https://scnk2ajxowqf.feishu.cn/docx/MV2mddtdKoKEj6x27l0cpVtenee)
+
+The root-level AD/DA/FFT testbed below is the historical v0.3 project. The new debug project is under `projects/radar_spi_debug/`.
+
+---
+
+
 [![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.3.0-20261029)
 [![Source checks](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml/badge.svg?branch=main)](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml)
 ![Vivado](https://img.shields.io/badge/Vivado-2018.3-904cab)
@@ -12,7 +25,7 @@
 
 An educational acquisition and storage testbed for **SWU Class of 2024, Xuexing Class, Signal Processing Group 3 — Part 3**. It prepares an FPGA data path for future phased-array radar work using a known DAC-to-ADC loopback signal before radar data is available.
 
-**Current release: [v0.3.0-20261029](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.3.0-20261029).** The default branch is `main`. This is a preliminary data-path validation project, not a complete radar implementation.
+**Historical AD/DA release: [v0.3.0-20261029](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.3.0-20261029).** The default branch is `main`. This is a preliminary data-path validation project, not a complete radar implementation.
 
 ## What is implemented
 

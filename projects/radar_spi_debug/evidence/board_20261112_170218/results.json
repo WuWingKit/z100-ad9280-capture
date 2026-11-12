@@ -1,0 +1,224 @@
+{
+  "started": "2026-11-12T17:02:18.540549",
+  "port": "COM11",
+  "baud": 115200,
+  "synthetic_data_only": true,
+  "flash_written": false,
+  "tests": [
+    {
+      "name": "positive",
+      "seq": 0,
+      "beam": 9,
+      "bytes": 47136,
+      "payload_crc": "2CD300FC",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 1,
+      "beam": 10,
+      "bytes": 47136,
+      "payload_crc": "E9505502",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 2,
+      "beam": 11,
+      "bytes": 47136,
+      "payload_crc": "7CA4AD41",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 3,
+      "beam": 12,
+      "bytes": 47136,
+      "payload_crc": "B927F8BF",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 4,
+      "beam": 13,
+      "bytes": 47136,
+      "payload_crc": "8C3C5B86",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 5,
+      "beam": 14,
+      "bytes": 47136,
+      "payload_crc": "49BF0E78",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 6,
+      "beam": 15,
+      "bytes": 47136,
+      "payload_crc": "DC4BF63B",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 7,
+      "beam": 16,
+      "bytes": 47136,
+      "payload_crc": "19C8A3C5",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 8,
+      "beam": 17,
+      "bytes": 47136,
+      "payload_crc": "B67CB049",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 9,
+      "beam": 18,
+      "bytes": 47136,
+      "payload_crc": "73FFE5B7",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 10,
+      "beam": 0,
+      "bytes": 47136,
+      "payload_crc": "E60B1DF4",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 11,
+      "beam": 1,
+      "bytes": 47136,
+      "payload_crc": "2388480A",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 12,
+      "beam": 2,
+      "bytes": 47136,
+      "payload_crc": "1693EB33",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 13,
+      "beam": 3,
+      "bytes": 47136,
+      "payload_crc": "D310BECD",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 14,
+      "beam": 4,
+      "bytes": 47136,
+      "payload_crc": "46E4468E",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 15,
+      "beam": 5,
+      "bytes": 47136,
+      "payload_crc": "83671370",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 16,
+      "beam": 6,
+      "bytes": 47136,
+      "payload_crc": "C2FD67D7",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 17,
+      "beam": 7,
+      "bytes": 47136,
+      "payload_crc": "077E3229",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 18,
+      "beam": 8,
+      "bytes": 47136,
+      "payload_crc": "928ACA6A",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 19,
+      "beam": 9,
+      "bytes": 47136,
+      "payload_crc": "57099F94",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 20,
+      "beam": 10,
+      "bytes": 47136,
+      "payload_crc": "62123CAD",
+      "pass": true
+    },
+    {
+      "name": "positive",
+      "seq": 21,
+      "beam": 11,
+      "bytes": 47136,
+      "payload_crc": "A7916953",
+      "pass": true
+    },
+    {
+      "name": "independent_PC_full_frame",
+      "pass": true,
+      "bytes": 47136,
+      "errors": 0,
+      "payload_crc": "a7916953"
+    },
+    {
+      "name": "fault_b",
+      "pass": true,
+      "fault_code": 2
+    },
+    {
+      "name": "recovery_b",
+      "pass": true
+    },
+    {
+      "name": "fault_l",
+      "pass": true,
+      "fault_code": 16
+    },
+    {
+      "name": "recovery_l",
+      "pass": true
+    },
+    {
+      "name": "fault_n",
+      "pass": true,
+      "fault_code": 64
+    },
+    {
+      "name": "recovery_n",
+      "pass": true
+    }
+  ],
+  "radar_debug.bit_sha256": "3c223c946c67c7e75367f725df59f8e1f0a687011266d944b1a61b563321c880",
+  "radar_debug_uart.elf_sha256": "daf689f9c9294ff4505dbd3d1f9048185f17d88ce17082b45f97b9ce0caa3a91",
+  "radar_debug.ltx_sha256": "14a140e1f8da8ca1a30c229901037fa14d58ff52cd4d1dd3eaaf3f15836c97a2",
+  "pass": true,
+  "finished": "2026-11-12T17:02:49.923936"
+}

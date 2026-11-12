@@ -1,0 +1,95 @@
+{
+  "source": "E:\\用户\\download\\records-2026-11-12-18-05-42.json",
+  "sha256": "3212a3778d27a1adda41821a8914f9f6a779dfce52c3c8941e68c1cae51dbad3",
+  "first_event": "2026-11-12 18:00:49:862",
+  "last_event": "2026-11-12 18:05:34:342",
+  "records": 167,
+  "commands": 20,
+  "normal_frames": [
+    {
+      "sequence": 0,
+      "beam": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "crc32": "2CD300FC"
+    },
+    {
+      "sequence": 1,
+      "beam": 10,
+      "angle_cdeg": 500,
+      "bytes": 47136,
+      "crc32": "E9505502"
+    },
+    {
+      "sequence": 2,
+      "beam": 11,
+      "angle_cdeg": 1000,
+      "bytes": 47136,
+      "crc32": "7CA4AD41"
+    },
+    {
+      "sequence": 3,
+      "beam": 12,
+      "angle_cdeg": 1500,
+      "bytes": 47136,
+      "crc32": "B927F8BF"
+    },
+    {
+      "sequence": 0,
+      "beam": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "crc32": "2CD300FC"
+    }
+  ],
+  "faults": [
+    {
+      "command": "b",
+      "time": "2026-11-12 18:03:39:066",
+      "expected_code": "02",
+      "pass": true,
+      "final_status": "STATUS raw=A70210A3 busy=1 error=1 ready=0 primed=1 mcu_ready=1 state=7 words_or_fault_low8=16 fault_code=02"
+    },
+    {
+      "command": "l",
+      "time": "2026-11-12 18:04:12:519",
+      "expected_code": "10",
+      "pass": true,
+      "final_status": "STATUS raw=A7100E83 busy=1 error=1 ready=0 primed=1 mcu_ready=1 state=7 words_or_fault_low8=14 fault_code=10"
+    },
+    {
+      "command": "n",
+      "time": "2026-11-12 18:04:40:255",
+      "expected_code": "40",
+      "pass": true,
+      "final_status": "STATUS raw=A74000A3 busy=1 error=1 ready=0 primed=1 mcu_ready=1 state=7 words_or_fault_low8=0 fault_code=40"
+    }
+  ],
+  "raw_frame_bytes": 47136,
+  "independent_payload_errors": 0,
+  "payload_crc32": "2CD300FC",
+  "checks": {
+    "frame_metadata_1": true,
+    "frame_metadata_2": true,
+    "frame_metadata_3": true,
+    "frame_metadata_4": true,
+    "frame_metadata_5": true,
+    "three_frame_selftest": true,
+    "first_session_sequence": true,
+    "all_five_pattern_checks": true,
+    "fault_b": true,
+    "fault_l": true,
+    "fault_n": true,
+    "recovery_after_faults": true,
+    "dump_length": true,
+    "dump_header": true,
+    "dump_payload_independent": true,
+    "dump_crc_match": true
+  },
+  "all_recorded_checks_pass": true,
+  "not_covered_by_this_record": [
+    "beam_index_18_to_0_wrap",
+    "valid_capture_after_each_individual_fault",
+    "ILA_waveforms"
+  ]
+}

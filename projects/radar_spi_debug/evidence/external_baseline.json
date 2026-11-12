@@ -1,0 +1,11 @@
+{
+  "source": "E:\\WorkSpace\\Phased-array radar\\fpga-learning\\radar_spi_sync_20261111",
+  "sha256": {
+    "radar_sync.xpr": "da017a75eceea189adaade9c170e2b8ccbdb377265bc6510049da8558bfd0430",
+    "rtl/z100_radar_top.v": "0071f4f5807879fbdea3a01cfd5f63a3131d41a47142f5f102b3665d812073f3",
+    "rtl/radar_frame_capture.v": "82e7770b89ff1177f73e2d946450a1e1706899a777e8bd736e62d5da92d868bf",
+    "software/main.c": "88016168c820f5117848f8bcefceccf6a0cb63b20b791f77f694b894c72252c6",
+    "hardware/radar_sync.bit": "d0c7d1872980cbb18e2bbf0ed5013a6e0261b867faad07aa6a955a1fc5288db8",
+    "hardware/radar_uart.elf": "f65d19620332d0ddb9bb468dc2fa5fb37b86d4c4610a3c24c627d560f5b1d863"
+  }
+}
