@@ -15,7 +15,7 @@ The complete radar MCU project, shared ping-pong logic, vendor libraries, SP328 
 
 A separate, board-tested Z100 project now simulates the radar front end in PL. Actual SPI reception, frame validation, FIFO, AXI DMA, HP0, DDR and PS UART are exercised without an external MCU. **22 consecutive full frames, three fault/recovery cases and an independent PC frame check passed.** This is synthetic test data; external radar acquisition and radar FFT are not qualified by this release.
 
-- [Release and complete Vivado/SDK download](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118)
+- [Release and complete Vivado/SDK download](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.5.0-radar-debug-20261113)
 - [Source project](projects/radar_spi_debug/) · [Board-test report](projects/radar_spi_debug/docs/BOARD_TEST_REPORT.md) · [Debug guide](projects/radar_spi_debug/docs/DEBUG_GUIDE.md)
 - [Progress report / 飞书文档](https://scnk2ajxowqf.feishu.cn/docx/MV2mddtdKoKEj6x27l0cpVtenee)
 
@@ -24,7 +24,7 @@ The root-level AD/DA/FFT testbed below is the historical v0.3 project. The new d
 ---
 
 
-[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.5.0-radar-debug-20261113)
+[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118)
 [![Source checks](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml/badge.svg?branch=main)](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml)
 ![Vivado](https://img.shields.io/badge/Vivado-2018.3-904cab)
 ![SDK](https://img.shields.io/badge/Xilinx_SDK-2018.3-904cab)
