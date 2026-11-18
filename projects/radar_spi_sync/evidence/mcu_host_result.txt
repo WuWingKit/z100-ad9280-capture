@@ -1,0 +1,1 @@
+PASS actual_portable_MCU_C checks=188508 captures=6 sent=4 previous_frame_header_payload=PASS alternating_ownership=PASS ISR_busy_reject=PASS send_fault_latch=PASS; mocked hardware only

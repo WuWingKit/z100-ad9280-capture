@@ -1,0 +1,7 @@
+{
+  "bit_source": "fpga-learning\\radar_spi_sync_20261111\\hardware\\radar_sync.bit",
+  "bit_sha256": "d0c7d1872980cbb18e2bbf0ed5013a6e0261b867faad07aa6a955a1fc5288db8",
+  "rtl_unchanged": true,
+  "external_spi_only": true,
+  "new_external_board_test_performed": false
+}

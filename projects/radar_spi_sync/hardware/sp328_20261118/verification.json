@@ -1,0 +1,39 @@
+{
+  "original_image_header_valid": true,
+  "original_image": {
+    "payload_bytes": 22572,
+    "image_bytes": 22588,
+    "payload_crc32": "0D87C93D",
+    "vector_sp": "20004168",
+    "reset_handler": "000080D1"
+  },
+  "hardware_boot_tested": false,
+  "images": [
+    {
+      "payload_bytes": 23064,
+      "image_bytes": 23080,
+      "payload_crc32": "945215AA",
+      "vector_sp": "200041C8",
+      "reset_handler": "000080D5",
+      "name": "radar_sync_selftest",
+      "compact_file": "radar_sync_selftest_andar_flash.bin",
+      "whole_flash_file": "radar_sync_selftest_W25X40CL_512KiB.bin",
+      "padding": "FF",
+      "flash_offset": 0,
+      "app_execution_address": "0x8000"
+    },
+    {
+      "payload_bytes": 25500,
+      "image_bytes": 25516,
+      "payload_crc32": "F23D6D6F",
+      "vector_sp": "200041D8",
+      "reset_handler": "000080D5",
+      "name": "radar_sync_mcu",
+      "compact_file": "radar_sync_mcu_andar_flash.bin",
+      "whole_flash_file": "radar_sync_mcu_W25X40CL_512KiB.bin",
+      "padding": "FF",
+      "flash_offset": 0,
+      "app_execution_address": "0x8000"
+    }
+  ]
+}

@@ -1,5 +1,14 @@
 # Z100：CORDIC 发波、AD 采集与串口波形/频谱测量台
 
+## 当前版本：雷达MCU＋Z100外部SPI串口联调候选版（2026-11-18）
+
+[完整发布与下载](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118) · [MCU Keil源码](projects/radar_spi_sync/mcu_frontend/) · [最新Z100程序](projects/radar_spi_live/)
+
+已提供完整MCU源码和库、公共乒乓模块、SP328/W25X40CL烧录镜像，以及外部SPI接收和PS串口自动输出。Release同时提供MCU独立包与完整联调包。MCU已编译并检查启动镜像，PS新程序已编译及解析验证；真实MCU启动、外部SPI和RF联调尚未实测。此前22帧板测仅属于FPGA内部模拟版。
+
+---
+
+
 ## 最新版本：FPGA内部模拟前端 SPI/DDR 调试（2026-11-13）
 
 新增独立工程，通过FPGA真实A/B BRAM模拟前端，走SPI接收、完整帧检查、FIFO、DMA、HP0和DDR。已完成22帧连续板测、三类故障及恢复和PC独立核对。数据为合成测试码，不代表真实雷达或雷达FFT已经验证。

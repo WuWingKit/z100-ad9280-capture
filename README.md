@@ -1,10 +1,21 @@
 # Z100 FPGA Acquisition, DDR Storage & FFT Testbed
 
-## Latest: FPGA-only radar SPI debug (2026-11-13)
+## Current: external radar MCU + Z100 SPI/UART integration candidate (2026-11-18)
+
+[Release / complete downloads](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118) · [MCU + Keil source](projects/radar_spi_sync/mcu_frontend/) · [Current Z100 program](projects/radar_spi_live/)
+
+The complete radar MCU project, shared ping-pong logic, vendor libraries, SP328 / W25X40CL boot images, external SPI PL design and PS UART source are now available. The MCU-only ZIP and complete MCU/Z100 ZIP include compiled programming artifacts. Start with the MCU selftest Flash image; then use the real-acquisition image after validating the external link. The Z100 `c` command now automatically emits IQ statistics and the full received frame.
+
+**Validation boundary:** MCU builds and Boot V3 image checks passed; the new PS ELF builds and its PC export format is checked. Actual MCU Flash boot, external SPI/RF acquisition and end-to-end integration remain to be verified. The earlier 22-frame board test used a PL-internal simulated source, not this external MCU path. No new radar FFT/target-detection completion is claimed.
+
+---
+
+
+## Previous: FPGA-only radar SPI debug (2026-11-13)
 
 A separate, board-tested Z100 project now simulates the radar front end in PL. Actual SPI reception, frame validation, FIFO, AXI DMA, HP0, DDR and PS UART are exercised without an external MCU. **22 consecutive full frames, three fault/recovery cases and an independent PC frame check passed.** This is synthetic test data; external radar acquisition and radar FFT are not qualified by this release.
 
-- [Release and complete Vivado/SDK download](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.5.0-radar-debug-20261113)
+- [Release and complete Vivado/SDK download](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118)
 - [Source project](projects/radar_spi_debug/) · [Board-test report](projects/radar_spi_debug/docs/BOARD_TEST_REPORT.md) · [Debug guide](projects/radar_spi_debug/docs/DEBUG_GUIDE.md)
 - [Progress report / 飞书文档](https://scnk2ajxowqf.feishu.cn/docx/MV2mddtdKoKEj6x27l0cpVtenee)
 

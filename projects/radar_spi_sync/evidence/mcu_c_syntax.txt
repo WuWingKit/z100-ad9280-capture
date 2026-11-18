@@ -1,0 +1,1 @@
+PASS Cortex-M3 C99 syntax -Wall -Wextra -Werror; no MCU hardware execution

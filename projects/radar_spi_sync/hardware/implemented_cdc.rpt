@@ -1,0 +1,17 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Thu Nov 12 15:52:06 2026
+| Host         : SenIta running 64-bit major release  (build 9200)
+| Command      : report_cdc -file {E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_sync_20261111/hardware/implemented_cdc.rpt}
+| Design       : z100_radar_top
+| Device       : 7z035-ffg900
+| Speed File   : -2  PRODUCTION 1.11 2014-09-11
+---------------------------------------------------------------------------------------------------------------------------------------
+
+CDC Report
+
+Severity  Source Clock      Destination Clock  CDC Type                 Exceptions  Endpoints  Safe  Unsafe  Unknown  No ASYNC_REG  
+--------  ----------------  -----------------  -----------------------  ----------  ---------  ----  ------  -------  ------------  
+Info      input port clock  clk_fpga_0         No Common Primary Clock  False Path          5     5       0        0             0  
+

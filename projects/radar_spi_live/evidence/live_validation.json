@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "validation": "PC parses the same BEGIN/END wire-text format produced automatically by c; not a new board run",
+  "fixture_frame_bytes": 47136,
+  "fixture_samples": 11776,
+  "expected_fixture_stats": {
+    "i_min": 512,
+    "i_max": 12287,
+    "i_sum": 75360512,
+    "q_min": -32768,
+    "q_max": -32768,
+    "q_sum": -385875968
+  },
+  "no_internal_source_in_bd": true,
+  "bit_reused_unchanged": true,
+  "files": {
+    "software/main.c": "7618f894e9548560f91cba7aa6198d8f44930c5c3f7412961b1d008e87b20867",
+    "hardware/radar_live_uart.elf": "fbfcab3004647ee4dafa08981873ac2c13cd60dd0f67c612bf826530ff224ddf",
+    "hardware/radar_sync.bit": "d0c7d1872980cbb18e2bbf0ed5013a6e0261b867faad07aa6a955a1fc5288db8",
+    "hardware/radar_sync.hdf": "5debc862ff7f73c2084416c19ec63f48af94596201e6371627824170b7c1e254"
+  }
+}
