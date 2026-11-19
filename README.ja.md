@@ -1,6 +1,6 @@
 # Z100 FPGA：データ収集・DDR保存・FFTテスト環境
 
-[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.3.0-20261029)
+[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/latest)
 [![Source checks](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml/badge.svg?branch=main)](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml)
 ![Vivado](https://img.shields.io/badge/Vivado-2018.3-904cab)
 ![SDK](https://img.shields.io/badge/Xilinx_SDK-2018.3-904cab)
