@@ -1,0 +1,42 @@
+{
+  "flash_written": false,
+  "status_queries": [
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n"
+  ],
+  "frames": [
+    {
+      "sequence": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "pattern_errors_first8": [],
+      "sha256": "689d8dc086a2d571e0547d93acd32f27070cb4c9f92adb19bae7b2ac361afbd2",
+      "chunk_crc": "PASS"
+    },
+    {
+      "sequence": 1,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "pattern_errors_first8": [],
+      "sha256": "254cf60b1efea495ba3d6cac12eedaf0f02aef6fc31a1e3a11f2baea1a327aec",
+      "chunk_crc": "PASS"
+    },
+    {
+      "sequence": 2,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "pattern_errors_first8": [],
+      "sha256": "c94249122226632a85dbd96d0e5112c29cfecbdc467171cbf5ba1b872d9f4f88",
+      "chunk_crc": "PASS"
+    }
+  ],
+  "passed": true,
+  "source": "MCU selftest; not radar measurement",
+  "prime": "SPI PRIME COMPLETE flags=0000\r\n"
+}

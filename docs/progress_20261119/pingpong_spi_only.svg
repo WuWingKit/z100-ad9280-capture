@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1640" height="1120" viewBox="0 0 1640 1120">
+<rect width="1640" height="1120" fill="#f4f7fb"/>
+<path d="M0 0 H1640 V126 H0Z" fill="#142940"/>
+<text x="48" y="58" font-family="Noto Sans SC" font-size="34" font-weight="700" fill="white">乒乓缓存与 SPI 命令｜先采集，再读取上一帧</text>
+<text x="48" y="96" font-family="Noto Sans SC" font-size="19" fill="#c8d8e8">顺序示意（不按实际时间比例）；首轮预热、上一帧序号关联、ACK 释放三项必须一致</text>
+<circle cx="155" cy="174" r="11" fill="#1876ba"/>
+<text x="77" y="211" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#17334b">FPGA / PS 主机</text>
+<line x1="155" y1="232" x2="155" y2="945" stroke="#b5c6d4" stroke-width="2" stroke-dasharray="6 8"/>
+<circle cx="620" cy="174" r="11" fill="#1876ba"/>
+<text x="542" y="211" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#17334b">MCU 主循环</text>
+<line x1="620" y1="232" x2="620" y2="945" stroke="#b5c6d4" stroke-width="2" stroke-dasharray="6 8"/>
+<circle cx="1050" cy="174" r="11" fill="#1876ba"/>
+<text x="972" y="211" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#17334b">缓存 A</text>
+<line x1="1050" y1="232" x2="1050" y2="945" stroke="#b5c6d4" stroke-width="2" stroke-dasharray="6 8"/>
+<circle cx="1430" cy="174" r="11" fill="#1876ba"/>
+<text x="1352" y="211" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#17334b">缓存 B</text>
+<line x1="1430" y1="232" x2="1430" y2="945" stroke="#b5c6d4" stroke-width="2" stroke-dasharray="6 8"/>
+<line x1="160" y1="275" x2="613" y2="275" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="613,275 600,268 600,282" fill="#1b79ae"/>
+<text x="190" y="262" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">TRIGGER #1（首次预热）</text>
+<rect x="935" y="297" width="230" height="60" rx="15" fill="#e9ddf5"/>
+<text x="952" y="334" font-family="Noto Sans SC" font-size="21" font-weight="700" fill="#17334b">采 A：seq 0</text>
+<text x="548" y="364" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">完成后 STATUS 空闲；没有上一帧可读</text>
+<path d="M1028 385 H1510" stroke="#d7e0e8" stroke-width="2"/>
+<line x1="160" y1="423" x2="613" y2="423" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="613,423 600,416 600,430" fill="#1b79ae"/>
+<text x="190" y="410" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">TRIGGER #2</text>
+<rect x="1315" y="441" width="230" height="60" rx="15" fill="#dceef8"/>
+<text x="1332" y="478" font-family="Noto Sans SC" font-size="21" font-weight="700" fill="#17334b">采 B：seq 1</text>
+<rect x="935" y="511" width="230" height="60" rx="15" fill="#d8f0e6"/>
+<text x="952" y="548" font-family="Noto Sans SC" font-size="21" font-weight="700" fill="#17334b">发布 A：seq 0</text>
+<text x="677" y="506" font-family="Noto Sans SC" font-size="19" font-weight="400" fill="#5a6f80">本轮采集完成后，才发布上一帧</text>
+<line x1="160" y1="591" x2="613" y2="591" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="613,591 600,584 600,598" fill="#1b79ae"/>
+<text x="190" y="578" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">STATUS → READ 分块读取</text>
+<line x1="1043" y1="638" x2="162" y2="638" stroke="#258d70" stroke-width="4"/>
+<polygon points="162,638 175,631 175,645" fill="#258d70"/>
+<text x="224" y="624" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#258d70">A 的帧头 + 载荷：47136 B / 737 块</text>
+<line x1="160" y1="696" x2="613" y2="696" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="613,696 600,689 600,703" fill="#1b79ae"/>
+<text x="190" y="683" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">ACK（seq 0）</text>
+<rect x="935" y="671" width="230" height="60" rx="15" fill="#f5ead6"/>
+<text x="952" y="708" font-family="Noto Sans SC" font-size="21" font-weight="700" fill="#17334b">A 释放，可复用</text>
+<line x1="160" y1="775" x2="613" y2="775" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="613,775 600,768 600,782" fill="#1b79ae"/>
+<text x="190" y="762" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">TRIGGER #3</text>
+<rect x="935" y="793" width="230" height="60" rx="15" fill="#e9ddf5"/>
+<text x="952" y="830" font-family="Noto Sans SC" font-size="21" font-weight="700" fill="#17334b">采 A：seq 2</text>
+<rect x="1315" y="859" width="230" height="60" rx="15" fill="#d8f0e6"/>
+<text x="1332" y="896" font-family="Noto Sans SC" font-size="21" font-weight="700" fill="#17334b">发布 B：seq 1</text>
+<text x="185" y="937" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#17334b">继续 READ B → ACK seq 1 → 下一轮 TRIGGER；未 ACK 前禁止覆盖旧缓存。</text>
+<rect x="48" y="975" width="750" height="105" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="48" y="975" width="8" height="105" rx="4" fill="#8252ac"/>
+<text x="72" y="1015" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#8252ac">两个状态不能混淆</text>
+<text x="72" y="1053" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">采集轮次 seq 2 正在使用 A；读出的仍是上一帧 B / seq 1。</text>
+<rect x="838" y="975" width="750" height="105" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="838" y="975" width="8" height="105" rx="4" fill="#c2811d"/>
+<text x="862" y="1015" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#c2811d">当前实现的边界</text>
+<text x="862" y="1053" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">未实现 ADC 与 SPI 同时采传；示意图不代表已测得真实时延。</text>
+</svg>

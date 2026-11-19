@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-19",
+  "images": [
+    {
+      "file": "radar_sync_selftest_SPI_SLAVE_W25X40CL_512KiB.bin",
+      "length": 524288,
+      "payload_crc32": "A90262B1",
+      "sha256": "8d307c09a84659c18b2366f2b6480daa2f89d6da0062e65359ac4933829338b8"
+    },
+    {
+      "file": "radar_sync_mcu_SPI_SLAVE_W25X40CL_512KiB.bin",
+      "length": 524288,
+      "payload_crc32": "BE8594EF",
+      "sha256": "102350d679c206371809761321c1957287e0d50d35d7d5e6edac8fe0c325881e"
+    }
+  ],
+  "hardware_flashed": false,
+  "hardware_tested": false
+}

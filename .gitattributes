@@ -1,0 +1,12 @@
+
+# Preserve exact source and hardware evidence bytes from the tested release.
+projects/radar_spi_four_wire/** -text
+projects/radar_spi_raw/** -text
+projects/radar_spi_four_wire/evidence/** -diff
+projects/radar_spi_raw/evidence/** -diff
+*.png binary
+*.jpg binary
+*.bin binary
+*.a binary
+*.lib binary
+*.FLM binary

@@ -1,0 +1,5 @@
+In file included from E:\WorkSpace\Phased-array radar\fpga-learning\radar_spi_header_only_20261119\software\main.c:8:0:
+E:\WorkSpace\Phased-array radar\fpga-learning\radar_spi_header_only_20261119\bsp\include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+RADAR_SPI_LIVE_SOFTWARE_BUILT

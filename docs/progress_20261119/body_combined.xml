@@ -1,0 +1,120 @@
+<hr/><h2>3.3 本部分任务、阶段目标与当前成果</h2>
+<p>本组第三部分的长期任务是利用FPGA完成相控阵雷达数据的接收、处理和存储，为后续距离、速度和角度计算提供可靠数据。本期首先解决“前端怎样把一帧数据交给FPGA、怎样证明它没有混帧或丢失、怎样完整存到DDR并送到电脑”这三个基础问题。本报告不替代前两部分，也不作为完整雷达系统验收。</p>
+<table><thead><tr><th background-color="light-gray">层次</th><th background-color="light-gray">本期工作</th><th background-color="light-gray">状态与证据</th></tr></thead><tbody><tr><td>学习基础</td><td>AD/DA已知信号、FIFO、AXI握手、DMA、DDR与PC频谱分析</td><td>作为前期学习路径，不能挪用为本期真实雷达FFT验收</td></tr><tr><td>接口适配</td><td>将旧MCU主机/独立SYNC、READY改为FPGA主机/MCU从机四线SPI</td><td>仅CS、SCK、MOSI、MISO和GND，已完成两端源码及上板联调</td></tr><tr><td>可靠传输</td><td>状态查询、命令编号、分块CRC、缓存租约与ACK</td><td>自检3帧固定样本逐点一致，真实采集10帧正常读取</td></tr><tr><td>存储与导出</td><td>SPI响应经AXI GPIO进入PS DDR，UART保存到PC</td><td>真实采集471360字节；最后一帧通过独立JTAG读回比较</td></tr><tr><td>后续处理</td><td>已知目标验证、距离FFT、DMA吞吐优化</td><td>待完成，不能写为已实现的雷达测量能力</td></tr></tbody></table>
+<callout emoji="✅" background-color="light-green"><p>本期形成的是可复现的数据链路基线：主从职责明确、帧归属可追踪、缓存有释放条件、数据与日志可下载核对。当前通过的是有限轮数功能测试，不是长期稳定性或最大速率测试。</p></callout>
+
+<hr/><h2>3.4 研究过程：从接收失败到四线SPI联调通过</h2>
+<p>调试没有把串口上的“PASS”当作唯一依据，而是沿着“控制握手—线上接收—帧格式—DDR—PC文件”逐层增加证据。在切换协议前，先保留旧现场和原始数据，避免直接改动后丢失定位线索。</p>
+<table><thead><tr><th background-color="light-gray">阶段</th><th background-color="light-gray">观察与问题</th><th background-color="light-gray">处理方案及判断边界</th></tr></thead><tbody><tr><td>旧主从方案</td><td>MCU为主机，TX0作CS，RX0作SYNC，TX1作READY；首次握手能完成但整帧接收失败</td><td>先保存状态，不把失败直接归因于雷达未接或数据为空</td></tr><tr><td>首故障保留</td><td>最终0x20表示非接收态出现片选开始，但FAULT中后续CS事件可覆盖更早故障</td><td>修改诊断逻辑保留首故障，并通过Vivado仿真确认；上板首先保留下0x10</td></tr><tr><td>完整性定位</td><td>0x10指帧结束时字数、末尾位或帧头完成条件不满足</td><td>暂时取消雷达协议过滤，按原始字节接收并统计CS和不足8位片段</td></tr><tr><td>原始透传</td><td>三批分别保存40268、40052、39911字节；CS下降沿18376、19229、19345次</td><td>旧协议要求一整帧保持CS低，实际观测明显不符；第二批仍抓到合法A610帧头</td></tr><tr><td>角色与接口重构</td><td>用户要求只使用板上SPI丝印接口，不再借用TX/RX引脚</td><td>采用FPGA主机、MCU从机，用SPI命令替代SYNC和READY；两端需配套升级</td></tr><tr><td>分层验证</td><td>先自检固定数据，再换真实采集固件</td><td>自检证明字节与帧归属；真实10帧证明实际采集路径可读，最后增加DDR独立比较</td></tr></tbody></table>
+<blockquote>旧版本CS大量分段是接收端实测事实；它不能单独证明MCU物理引脚、板级映射或信号质量中的哪一项是最终根因。新方案通过也不能反推旧问题已被电气测量完全解释。</blockquote>
+<p>字节序也作了区分：16位标识A610在线上MSB先发时是A6 10，写入小端内存后导出的两个字节可表现为10 A6。这是表示层次不同，不应只凭显示顺序认定传输位翻转。</p>
+
+<hr/><h2>3.5 四线SPI协议与控制逻辑</h2>
+<p>FPGA产生SCLK和CS，通过MOSI下发命令；MCU从机经MISO返回状态或数据。SPI只规定电气交互和位传输，本工程在其上增加请求、响应和CRC帧，使“触发哪一轮、读哪一块、何时释放”有明确含义。</p>
+<table><thead><tr><th background-color="light-gray">项目</th><th background-color="light-gray">当前配置</th></tr></thead><tbody><tr><td>物理模式</td><td>Mode 0，时钟空闲低，上升沿采样，16位、MSB先发</td></tr><tr><td>起始调试速率</td><td>100MHz PL时钟，半周期分频500，SCLK名义100kHz；PS字间额外等待100µs</td></tr><tr><td>片选规则</td><td>每个16位字是一次CS事务；完整命令和响应由魔数、长度及CRC定界，可跨多个CS</td></tr><tr><td>请求格式</td><td>8个16位字：D5A0、opcode、request_id、offset低16、offset高16、length_bytes、reserved=0、CRC16</td></tr><tr><td>响应格式</td><td>5AD0、opcode、request_id、flags、length_bytes、offset低16、offset高16、payload、CRC16</td></tr><tr><td>CRC算法</td><td>CRC16/CCITT-FALSE，初值FFFF，多项式1021；按每字高字节、低字节顺序覆盖CRC前的内容</td></tr><tr><td>FIFO延迟</td><td>空闲输出FFFF；主机发完请求后继续送FFFF时钟寻找5AD0，不能假定请求末尾立即出现应答</td></tr><tr><td>请求串行化</td><td>一条请求收到完整响应且CRC通过后再开始下一条；当前PS遇错误停止，不跳过错误继续解释数据</td></tr></tbody></table>
+<callout emoji="💡" background-color="light-blue"><p>新协议主动允许每16位字一次CS，与旧方案“整个47136字节帧期间CS保持低”的要求不同。不能把旧版CS次数判据直接套到新版。</p></callout>
+<table><thead><tr><th background-color="light-gray">opcode</th><th background-color="light-gray">命令</th><th background-color="light-gray">实现含义</th></tr></thead><tbody><tr><td>1</td><td>STATUS</td><td>flags bit0=忙，bit1=上一帧可读，bit2=故障，bit15=请求错误</td></tr><tr><td>2</td><td>TRIGGER</td><td>启动一轮主循环采集；重复最后同一request_id不重复启动，忙或旧帧未释放时拒绝</td></tr><tr><td>3</td><td>READ</td><td>以offset和length读取已发布上一帧；每块最多64字节，允许重读，不释放缓存</td></tr><tr><td>4</td><td>ACK</td><td>offset填写已读帧序号；匹配后释放该发布缓存，允许下一轮触发</td></tr></tbody></table>
+<p>READ载荷按MCU内存的原始字节顺序打包，再以高字节优先在16位SPI字中传输；奇数字节块末尾补零只用于字对齐，不计入length。当前47136字节帧由736个64字节块和最后1个32字节块组成，共737个READ块。</p>
+
+<hr/><h2>3.6 关键实现：SPI字交换、CRC与缓存租约</h2>
+<h3>FPGA负责确定的16位时序</h3>
+<p>PL模块检测AXI GPIO命令位翻转后锁存发送字，拉低CS，按分频计数交替产生SCLK上升沿和下降沿。上升沿采样同步后的MISO，下降沿推进MOSI；完成16位后拉高CS并回传完成标记。旧BD内部保留了mcu_ready等兼容名称，但该输入现在实际承载MISO，不再是READY引脚。</p>
+<pre lang="verilog" caption="PL主机实际源码：上升沿采样、下降沿推进"><code>    seen&lt;=command[0];tx&lt;=command[31:16];rx&lt;=0;spi_mosi&lt;=command[31];
+    spi_cs_n&lt;=0;spi_sclk&lt;=0;busy&lt;=1;divider&lt;=HALF_DIV-1;edge_count&lt;=0;
+   end
+  end else if(divider!=0)divider&lt;=divider-1;
+  else begin
+   divider&lt;=HALF_DIV-1;edge_count&lt;=edge_count+1;
+   if(!spi_sclk)begin spi_sclk&lt;=1;rx&lt;={rx[14:0],miso_pipe[1]};end
+   else begin
+    spi_sclk&lt;=0;tx&lt;={tx[14:0],1&#x27;b0};spi_mosi&lt;=tx[14];
+    if(edge_count==31)begin busy&lt;=0;done&lt;=seen;spi_cs_n&lt;=1;end
+   end
+  end</code></pre>
+<p><a href="https://github.com/WuWingKit/z100-ad9280-capture/blob/main/projects/radar_spi_four_wire/rtl/radar_frame_capture.v">对应FPGA源码</a></p>
+<h3>MCU把SPI服务与真实采集分开</h3>
+<p>MCU中断只收集命令、服务状态及小块应答；RF配置与ADC采集继续在主循环运行。TRIGGER只先登记pending，随后由主循环执行原采集管线。这样避免在SPI中断里等待ADC完成，也让主机可以在适当时机查询状态。</p>
+<pre lang="c" caption="MCU实际源码：发布旧缓存但不立刻回收"><code>    return (uint16_t)((g_radarSync.busy||g_radarSync.pending||trigger_pending?1u:0u)|
+        (published_bytes?2u:0u)|(g_radarSync.fault||link_fault?4u:0u));
+}
+static int port_send(void *context, uintptr_t address, uint32_t bytes) {
+    (void)context;
+    /* Lease the old bank until ACK. No GPIO/SPI-master operation here. */
+    if(published_bytes) return 0;
+    published_address=address;published_seq=*(volatile uint16_t *)(address+28u);
+    published_bytes=bytes;return 1;</code></pre>
+<p>乒乓不是把同一块内存一边写一边读。首轮采A；第二轮采B并在采完后发布A；主机读完A后ACK释放；下一轮才允许再次触发。帧头在采集结束时与同一缓存绑定，因此序号、波束信息和载荷属于同一轮，避免“下一轮波束标记上一轮数据”的一拍错位。</p>
+<pre lang="c" caption="MCU实际源码：触发去重、读取边界与ACK释放"><code>    if(reply_read!=reply_count){link_fault=1;return;}
+    if(op==2u){
+        if(have_trigger_id&amp;&amp;id==last_trigger_id){} /* Retry is idempotent. */
+        else if(flags()&amp;7u)error=1;
+        else {trigger_pending=1;last_trigger_id=id;have_trigger_id=1;}
+    } else if(op==3u){
+        len=request_words[5];
+        if(!published_bytes||len&gt;64u||off&gt;published_bytes||len&gt;published_bytes-off){error=1;len=0;}
+    } else if(op==4u){
+        if(published_bytes&amp;&amp;off==published_seq)published_bytes=0;
+        else error=1;
+    } else if(op!=1u)error=1;
+    reply_words[0]=0x5ad0u;reply_words[1]=op;reply_words[2]=id;
+    reply_words[3]=(uint16_t)(flags()|(error?0x8000u:0));reply_words[4]=len;</code></pre>
+<p><a href="https://github.com/WuWingKit/z100-ad9280-capture/blob/main/projects/radar_spi_four_wire/mcu_frontend/05_application/firmware_app/source/src/app_sync_frontend.c">对应MCU从机邮箱源码</a></p>
+<h3>PS负责应答校验、DDR缓冲与串口导出</h3>
+<p>PS先核对返回opcode、request_id、length和offset，再对响应头及载荷计算CRC16。全部块通过后才发ACK，并打印完整UART HEX帧；接收数据保存在PS DDR数组。当前路径刻意简化为AXI GPIO字交换，没有通过AXI DMA，所以本期的“DDR存储通过”不等于“新雷达路径DMA通过”。</p>
+<pre lang="c" caption="PS实际源码：响应字段及CRC16检查"><code> for(i=0;i&lt;64;i++){if(!word(0xffff,&amp;w))return 0;if(w==0x5ad0)break;}
+ if(i==64){return 0;}
+ h[0]=w;
+ for(i=1;i&lt;7;i++)if(!word(0xffff,&amp;h[i]))return 0;
+ if(h[1]!=op||h[2]!=id||h[4]!=length||h[5]!=(uint16_t)offset||h[6]!=(uint16_t)(offset&gt;&gt;16))return 0;
+ c=0xffff;for(i=0;i&lt;7;i++)c=crcword(c,h[i]);n=(length+1)/2;
+ for(i=0;i&lt;n;i++){if(!word(0xffff,&amp;w))return 0;c=crcword(c,w);payload[2*i]=(uint8_t)(w&gt;&gt;8);if(2*i+1&lt;length)payload[2*i+1]=(uint8_t)w;}
+ if(!word(0xffff,&amp;w)||w!=c)return 0;
+ *flags=h[3];return !(h[3]&amp;0x8000);</code></pre>
+<p><a href="https://github.com/WuWingKit/z100-ad9280-capture/blob/main/projects/radar_spi_four_wire/software/main.c">对应PS控制与串口源码</a></p>
+
+<hr/><h2>3.7 雷达帧布局与数据解释</h2>
+<p>本期没有把雷达载荷当作原先8位ADC演示数据。实际导出是一帧32字节元数据加23×512个I/Q复数点，每个点为I16和Q16，共47136字节。采集24个chirp、丢弃首个后保留23个，是沿用前端采集管线的处理规则。</p>
+<table><thead><tr><th background-color="light-gray">字段或布局</th><th background-color="light-gray">实测/配置值</th><th background-color="light-gray">解释边界</th></tr></thead><tbody><tr><td>标识/版本/头长</td><td>A610 / 3 / 16个16位字</td><td>本次帧格式，头部16字异或为0</td></tr><tr><td>波束编号/角度</td><td>9 / 0 centidegree</td><td>当前固定波束元数据，不证明实物波束方向已标定</td></tr><tr><td>样点与chirp</td><td>每chirp512点，采24保23</td><td>每帧11776个复数点</td></tr><tr><td>载荷偏移/总长度</td><td>32 / 47136字节</td><td>分块READ读取完整帧，包含帧头</td></tr><tr><td>序号</td><td>自检0～2，真实0～9</td><td>序号递增支持上一帧关联检查</td></tr><tr><td>分辨率字段</td><td>107142µm</td><td>固件按带宽配置写入的名义字段，不是本次量测分辨率</td></tr><tr><td>FIFO布局</td><td>低16位I，高16位Q</td><td>HAL明确定义FIFO0={Q16,I16}；PC按小端内存解包</td></tr><tr><td>前端配置</td><td>ADC_CLOCK_7P14M、FIR_ENABLE、DOWNSAMPLE_NO、ADC_WINDOW_BYPASS、SAMPLE_ADC0</td><td>来自代码而非仪器测量；不能把导出称为完全绕过FIR的ADC引脚位流</td></tr></tbody></table>
+<callout emoji="⚠️" background-color="light-yellow"><p>虽然前端代码有两个RX使能，本次保存的是ADC0 FIFO中的一组I/Q，不声称完成双路接收验证。CSV同时保存u16原始编码与s16补码解释；码值不是电压，横轴样点也不是已标定距离。</p></callout>
+
+<hr/><h2>3.8 验证方法与两阶段上板结果</h2>
+<p>先用确定数据证明传输，再用真实采集数据验证整条采集读帧流程，避免在真实回波不可预测时把内容变化误认为传输错误。编译、仿真、真实SPI读帧和DDR交叉核对分别留存，各自只支持对应层次的结论。</p>
+<table><thead><tr><th background-color="light-gray">验证层次</th><th background-color="light-gray">检查内容</th><th background-color="light-gray">结果</th></tr></thead><tbody><tr><td>MCU构建</td><td>radar_sync_selftest和radar_sync_mcu，Keil ARM Compiler 5.06u7</td><td>两目标0错误、0警告</td></tr><tr><td>PS构建</td><td>SPI命令、CRC和UART程序</td><td>编译通过，无编译器警告</td></tr><tr><td>FPGA仿真与实现</td><td>Mode0、16次上升沿、MSB先发、双向环回；setup/hold与DRC</td><td>仿真通过，最终bit通过时序和DRC门禁</td></tr><tr><td>MCU自检板测</td><td>3帧141408字节、35328个复数点；I递增、Q标记采集序号</td><td>逐点零错误，2211个READ块CRC通过</td></tr><tr><td>真实采集板测</td><td>10帧471360字节、117760个复数点；序号0～9</td><td>7370个READ块CRC通过，头部与长度检查通过</td></tr><tr><td>真实载荷检查</td><td>全零、自检模式、载荷哈希、原始码值统计</td><td>10份不同载荷；非全零，均未匹配自检模式</td></tr><tr><td>缓存与保护</td><td>每帧ACK后状态、重复p保护</td><td>释放后busy=0/frame=0/fault=0；重复p被拒绝</td></tr><tr><td>独立DDR核对</td><td>最后seq9：JTAG读取0x00108100处47136字节，与UART BIN比较</td><td>逐字节一致，CPU读回后恢复运行</td></tr></tbody></table>
+<h3>真实10帧统计</h3><p>以下范围与均值按16位补码解释，来自每帧11776个样本；其作用是描述数据，不作为射频质量、目标运动或信噪比结论。</p>
+<table><thead><tr><th background-color="light-gray">序号</th><th background-color="light-gray">字节数</th><th background-color="light-gray">I范围</th><th background-color="light-gray">Q范围</th><th background-color="light-gray">I均值 / Q均值</th><th background-color="light-gray">块CRC</th></tr></thead><tbody><tr><td>0</td><td>47136</td><td>-1152～2063</td><td>-3456～1311</td><td>353.83 / 165.55</td><td>PASS</td></tr><tr><td>1</td><td>47136</td><td>-1136～1647</td><td>-3344～1343</td><td>343.20 / 171.27</td><td>PASS</td></tr><tr><td>2</td><td>47136</td><td>-1648～3535</td><td>-4367～2127</td><td>324.74 / 176.84</td><td>PASS</td></tr><tr><td>3</td><td>47136</td><td>-1856～3855</td><td>-2656～1583</td><td>323.09 / 171.54</td><td>PASS</td></tr><tr><td>4</td><td>47136</td><td>-1376～3775</td><td>-2992～1503</td><td>328.65 / 171.22</td><td>PASS</td></tr><tr><td>5</td><td>47136</td><td>-1488～3679</td><td>-2640～1519</td><td>326.14 / 175.54</td><td>PASS</td></tr><tr><td>6</td><td>47136</td><td>-1712～3679</td><td>-2416～1535</td><td>327.57 / 168.49</td><td>PASS</td></tr><tr><td>7</td><td>47136</td><td>-1568～3663</td><td>-2592～1535</td><td>317.22 / 174.23</td><td>PASS</td></tr><tr><td>8</td><td>47136</td><td>-1520～3615</td><td>-2496～1535</td><td>323.01 / 172.01</td><td>PASS</td></tr><tr><td>9</td><td>47136</td><td>-1648～3679</td><td>-2464～1519</td><td>322.72 / 167.84</td><td>PASS</td></tr></tbody></table>
+<p>最后一帧DDR和UART文件SHA256均为c7912d0f22f2ef82d02bfd39141023812f49d0982dc90a19332920ffe3597989。这里只对最后一帧做了额外JTAG交叉比较，不能扩大表述为10帧都做过JTAG逐字节读回。</p>
+<pre lang="text" caption="真实日志关键结果"><code>SPI PRIME COMPLETE flags=0000
+SPI FRAME DDR STORED bytes=47136 seq=9 CRC16_PER_CHUNK=PASS
+BEGIN RADAR_RAW bytes=47136
+... 完整字节另存frame_9.bin与capture_9.txt ...
+END RADAR_RAW
+SPI STATUS flags=0000 busy=0 frame=0 fault=0</code></pre>
+
+<hr/><h2>3.9 接线、实验硬件与版本配套</h2>
+<p>本次板间通信只用丝印SPI接口和共地，不再借用TX0、RX0、TX1。FPGA负责时钟和片选，MCU必须运行从机版；旧MCU主机程序不能与新FPGA主机程序混用。两板独立供电，接线时断电，不跨接3V3。</p>
+<table><thead><tr><th background-color="light-gray">区控板接口</th><th background-color="light-gray">Z100 J37</th><th background-color="light-gray">封装脚丝印</th><th background-color="light-gray">方向</th></tr></thead><tbody><tr><td>SCK / P3</td><td>31</td><td>AC24</td><td>FPGA → MCU</td></tr><tr><td>CS / P4</td><td>29</td><td>AD24</td><td>FPGA → MCU</td></tr><tr><td>MOSI / P6</td><td>32</td><td>AG24</td><td>FPGA → MCU</td></tr><tr><td>MISO / P5</td><td>27</td><td>AA24</td><td>MCU → FPGA</td></tr><tr><td>GND</td><td>2或4</td><td>GND</td><td>共地</td></tr></tbody></table>
+<ul><li>原SYNC的J37-30/AG25不再连接；TX0、RX0、TX1跨板线全部断开。</li><li>J37-1是5V，J37-28不是地；根据排针标号和丝印确认，不根据照片左右或线色判断。</li><li>用户确认这组SPI用于数据传输并与启动Flash独立；本次未依据原理图或通断仪器独立验证板级网络，不能把用户确认写成实测电路结论。</li></ul>
+<callout emoji="📷" background-color="light-blue"><p>下方保留的是用户此前提供的区控板接口照片，用于说明实物和丝印。它不是本轮四线接线全景，也不能证明本次实验场景；正式提交时可由成员补充两板、接线及测试环境同框的新照片。</p></callout>
+
+<hr/><h2>3.10 构建、烧录与复现实验步骤</h2>
+<p>先选MCU自检镜像、再换真实采集镜像；两种镜像共用配套FPGA主机bit和PS ELF。源码、构建日志和文件哈希应与同一发布版本对应，避免旧文件被同名覆盖后误用。</p>
+<table><thead><tr><th background-color="light-gray">组件</th><th background-color="light-gray">工具/依赖</th><th background-color="light-gray">本期文件或配置</th></tr></thead><tbody><tr><td>FPGA PL</td><td>Vivado 2018.3；XC7Z035FFG900-2</td><td>spi_only_master.bit；radar_sync.xpr与rtl源码</td></tr><tr><td>Z100 PS</td><td>Xilinx SDK 2018.3，Cortex-A9 #0，匹配ps7_init.tcl</td><td>spi_only_ps.elf；software/main.c</td></tr><tr><td>MCU</td><td>Keil ARM Compiler 5.06 update7 build960</td><td>firmware_app.uvprojx；radar_sync_selftest / radar_sync_mcu</td></tr><tr><td>外置Flash烧录</td><td>硕飞SP32官方软件，W25X40CL / 4Mbit</td><td>SPI_SLAVE_W25X40CL_512KiB.bin，包含BootV3启动头</td></tr><tr><td>PC测试</td><td>Python 3、pyserial；串口115200/8N1</td><td>test_spi_only_board.py及test_spi_only_real.py，端口按实际枚举</td></tr><tr><td>证据绘图</td><td>Python、matplotlib、numpy、Pillow</td><td>报告素材生成脚本；依赖不作为固件发布内容</td></tr></tbody></table>
+<ol><li>两板断电并断开跨板线，用SP32读取当前Flash留备份。加载自检版512KiB镜像，缓冲区及Flash起始地址均为0；区域选整个Flash，不写Status Register，自动擦除、编程、校验。</li><li>恢复原Flash启动方式，断电按四线表接线。先确认MCU从机版已烧入，再连接并加载FPGA主机版。</li><li>SDK Program FPGA选择spi_only_master.bit；System Debugger选择Cortex-A9 #0、spi_only_ps.elf并执行匹配的PS初始化；停在main后Resume。</li><li>打开PS串口115200/8N1；先s，再p，再c。每次等到END RADAR_RAW后才发下一条；不要在SDK Terminal和串口助手中同时占用端口。</li><li>自检应逐点匹配I从512～12287、Q=0x8000|seq；通过后换真实采集镜像，双方重新起始会话，再重复s→p→c。</li></ol>
+<table><thead><tr><th background-color="light-gray">操作</th><th background-color="light-gray">ASCII加回车</th><th background-color="light-gray">HEX</th><th background-color="light-gray">预期</th></tr></thead><tbody><tr><td>查询</td><td>s</td><td>73 0D</td><td>flags=0000，空闲且无故障</td></tr><tr><td>首次采集</td><td>p</td><td>70 0D</td><td>SPI PRIME COMPLETE，不读取上一帧</td></tr><tr><td>采集并读取上一帧</td><td>c</td><td>63 0D</td><td>DDR存储提示、CRC通过、BEGIN/END完整数据</td></tr><tr><td>继续下一帧</td><td>c</td><td>63 0D</td><td>序号递增；当前无自动连续采集</td></tr></tbody></table>
+<p>根目录裸应用.bin没有完整Flash启动封装，不能替代带W25X40CL_512KiB后缀的镜像。测试脚本应保留commands.jsonl、UART原文、每帧BIN/CSV和结果JSON，而不只截取成功提示。</p>
+
+<hr/><h2>3.11 结果可信度、已知限制与证据组织</h2>
+<p>当前证据支持“数据链路基线已跑通”，并不覆盖所有雷达性能。对于未验证部分明确保留边界，便于后续成员接续测试，而不是将未知项写成已完成。</p>
+<table><thead><tr><th background-color="light-gray">已验证</th><th background-color="light-gray">尚未验证/不能据此推断</th></tr></thead><tbody><tr><td>真实区控板SPI从机可响应，FPGA主机字时序可工作</td><td>未用示波器/逻辑分析仪测量本轮电气波形与信号裕量</td></tr><tr><td>10帧长度、头部、序号、分块CRC和缓存释放正确</td><td>不是长期稳定性、最大吞吐或异常恢复测试</td></tr><tr><td>最后一帧DDR与PC文件一致</td><td>其余9帧未逐帧做JTAG交叉读回；UART完整性证据不能越界扩大</td></tr><tr><td>载荷变化且不同于固定自检模式</td><td>不能凭变化断言检测到目标、目标移动或信噪比合格</td></tr><tr><td>元数据为固定波束9/0度</td><td>未独立测量波束方向、角度精度或目标距离</td></tr><tr><td>本版PS DDR路径通过</td><td>本版不经过AXI DMA，不声称DMA吞吐已验证</td></tr><tr><td>前期学习过PC FFT和AD/DA回环</td><td>本轮没有完成FPGA雷达FFT、距离/速度/角度解算</td></tr><tr><td>用户报告烧入真实采集版，并观察到非自检载荷</td><td>未读回MCU Flash校验固件版本；没有本轮已知目标/场景标定照片</td></tr></tbody></table>
+<p>证据包按照层次保存：下载日志和bit/ELF哈希说明装载对象；命令与UART日志说明执行过程；BIN保留完整字节；CSV便于复算；JSON记录自动检查与统计；最后帧DDR读回文件形成独立交叉核对。图像只是入口，原始记录才是复核依据。</p>
+<table><thead><tr><th background-color="light-gray">证据</th><th background-color="light-gray">用途</th></tr></thead><tbody><tr><td>uart_rx.txt、commands.jsonl</td><td>完整串口接收与发送时间</td></tr><tr><td>capture_N.txt、frame_N.bin</td><td>每帧完整文本和47136字节二进制</td></tr><tr><td>frame_N_iq.csv、frame_summary.csv</td><td>样点/chirp索引及原始编码、补码解释和统计</td></tr><tr><td>result.json、SHA256SUMS.txt</td><td>自动判定、文件标识与后续完整性检查</td></tr><tr><td>last_frame_ddr.bin、ddr_uart_comparison.json</td><td>最后seq9的独立DDR/PC比较</td></tr><tr><td>final_state_and_guard.json</td><td>最终空闲与重复预热保护</td></tr><tr><td>构建/仿真/时序/DRC报告</td><td>证明软件与PL构建检查通过，不等于雷达性能认证</td></tr></tbody></table>
+
+<hr/><h2>3.12 下一阶段工作与协作交接</h2>
+<p>接下来以当前可复现基线为起点，先补齐受控实验条件，再增加算法和吞吐能力。这样每次改动都能与保存的基线数据对照，避免把通信、采集和算法问题混在一起。</p>
+<checkbox done="false">补充本轮两板及四线接线同框照片、环境和已知目标信息，记录摆放距离与方向。</checkbox>
+<checkbox done="false">在已知静态目标上核对采样时钟、FIR及数据编码解释，建立I/Q幅度和直流偏置处理规则。</checkbox>
+<checkbox done="false">离线对保存的真实BIN/CSV开展距离FFT，说明窗函数、采样率、chirp参数及频率到距离映射，再与实测距离比较。</checkbox>
+<checkbox done="false">保留当前四线协议，评估更大READ块、SPI速率及PL批量缓存；之后再恢复或新增AXI DMA→DDR路径，并单独验证吞吐。</checkbox>
+<checkbox done="false">增加长时间连续帧、CRC故障注入、断线/超时恢复和MCU/FPGA任一端重启后的会话重建测试。</checkbox>
+<checkbox done="false">需要波束扫描时开启并验证扫描表，使用帧内序号和波束快照核对一拍延迟，而不只看当前配置值。</checkbox>
+<callout emoji="📝" background-color="light-blue"><p>协作交接建议：每次更改标明MCU/FPGA/PS是否需要同时升级；在提交中附带测试触发条件、文件哈希和原始证据。正式汇报中第一、第二部分由对应成员补充，本部分的“通过”仅限上述已验证数据链路。</p></callout>

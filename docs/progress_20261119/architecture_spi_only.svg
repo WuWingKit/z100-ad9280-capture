@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1640" height="1000" viewBox="0 0 1640 1000">
+<rect width="1640" height="1000" fill="#f4f7fb"/>
+<path d="M0 0 H1640 V126 H0Z" fill="#142940"/>
+<text x="48" y="58" font-family="Noto Sans SC" font-size="34" font-weight="700" fill="white">四线 SPI 主从链路｜当前已上板版本</text>
+<text x="48" y="96" font-family="Noto Sans SC" font-size="19" fill="#c8d8e8">SWU24级学行班信号处理第三组 · 第三部分 · 2026-11-19</text>
+<rect x="45" y="175" width="375" height="260" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="45" y="175" width="8" height="260" rx="4" fill="#8252ac"/>
+<text x="69" y="215" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#8252ac">区控板 MCU｜SPI 从机</text>
+<text x="69" y="253" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">真实采集：RF / ADC / 原 FIR 配置</text>
+<text x="69" y="284" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">A / B 双缓存 + 同源帧头</text>
+<text x="69" y="315" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">STATUS / TRIGGER / READ / ACK</text>
+<text x="69" y="346" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">SPI0：P3 / P4 / P5 / P6</text>
+<text x="69" y="377" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">不再使用 TX / RX 握手</text>
+<rect x="650" y="175" width="340" height="260" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="650" y="175" width="8" height="260" rx="4" fill="#1876ba"/>
+<text x="674" y="215" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#1876ba">Z100 PL｜SPI 主机</text>
+<text x="674" y="253" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">Mode 0 · MSB 先发 · 16 bit</text>
+<text x="674" y="284" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">初始 SCLK：100 kHz</text>
+<text x="674" y="315" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">每个 16 bit 字单独一次 CS</text>
+<text x="674" y="346" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">MISO 返回应答与数据</text>
+<line x1="645" y1="255" x2="430" y2="255" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="430,255 443,248 443,262" fill="#1b79ae"/>
+<text x="452" y="232" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">CS / SCK / MOSI</text>
+<line x1="430" y1="370" x2="645" y2="370" stroke="#258d70" stroke-width="4"/>
+<polygon points="645,370 632,363 632,377" fill="#258d70"/>
+<text x="468" y="347" font-family="Noto Sans SC" font-size="21" font-weight="400" fill="#258d70">MISO</text>
+<rect x="1040" y="175" width="550" height="260" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="1040" y="175" width="8" height="260" rx="4" fill="#258d70"/>
+<text x="1064" y="215" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#258d70">Z100 PS｜控制与存储</text>
+<text x="1064" y="253" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">AXI GPIO 读写 PL 主机寄存器</text>
+<text x="1064" y="284" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">SPI 命令应答及每块 CRC16 校验</text>
+<text x="1064" y="315" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">64 字节分块读取 → DDR 数组</text>
+<text x="1064" y="346" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">47136 字节完整帧 → UART 导出</text>
+<line x1="990" y1="285" x2="1035" y2="285" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="1035,285 1022,278 1022,292" fill="#1b79ae"/>
+<text x="990" y="325" font-family="Noto Sans SC" font-size="18" font-weight="400" fill="#17334b">AXI</text>
+<circle cx="140" cy="565" r="64" fill="#e9ddf5" stroke="#8252ac" stroke-width="3"/>
+<text x="114" y="574" font-family="Noto Sans SC" font-size="38" font-weight="700" fill="#8252ac">A</text>
+<circle cx="325" cy="565" r="64" fill="#dceef8" stroke="#1876ba" stroke-width="3"/>
+<text x="299" y="574" font-family="Noto Sans SC" font-size="38" font-weight="700" fill="#1876ba">B</text>
+<line x1="210" y1="565" x2="251" y2="565" stroke="#1b79ae" stroke-width="4"/>
+<polygon points="251,565 238,558 238,572" fill="#1b79ae"/>
+<text x="69" y="668" font-family="Noto Sans SC" font-size="21" font-weight="400" fill="#17334b">帧头与载荷保留在同一缓存</text>
+<rect x="475" y="490" width="515" height="200" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="475" y="490" width="8" height="200" rx="4" fill="#c2811d"/>
+<text x="499" y="530" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#c2811d">缓存所有权规则</text>
+<text x="499" y="568" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">首轮只采集；下一轮发布上一帧</text>
+<text x="499" y="599" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">READ 可分块重读；ACK 才释放</text>
+<text x="499" y="630" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">未 ACK 时拒绝下一次 TRIGGER</text>
+<rect x="1040" y="490" width="550" height="200" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="1040" y="490" width="8" height="200" rx="4" fill="#258d70"/>
+<text x="1064" y="530" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#258d70">PC｜证据留存</text>
+<text x="1064" y="568" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">UART 115200 / 8N1 → HEX 文本</text>
+<text x="1064" y="599" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">完整 BIN / I-Q CSV / 统计 JSON</text>
+<text x="1064" y="630" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">最后一帧：JTAG DDR 与 UART 相同</text>
+<polyline points="1315,435 1315,485" fill="none" stroke="#258d70" stroke-width="4"/>
+<polygon points="1315,485 1308,472 1322,472" fill="#258d70"/>
+<text x="47" y="748" font-family="Noto Sans SC" font-size="27" font-weight="700" fill="#17334b">验证结果</text>
+<rect x="45" y="775" width="480" height="140" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="45" y="775" width="8" height="140" rx="4" fill="#258d70"/>
+<text x="69" y="815" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#258d70">自检数据｜3 帧</text>
+<text x="69" y="853" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">141408 字节 · 35328 个 I/Q 点</text>
+<text x="69" y="884" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">逐点参考模式一致，零样本错误</text>
+<rect x="565" y="775" width="505" height="140" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="565" y="775" width="8" height="140" rx="4" fill="#258d70"/>
+<text x="589" y="815" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#258d70">真实采集｜10 帧</text>
+<text x="589" y="853" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">471360 字节 · 7370 块 CRC 通过</text>
+<text x="589" y="884" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">序号 0～9 连续，载荷互不相同</text>
+<rect x="1110" y="775" width="480" height="140" rx="18" fill="white" stroke="#d0dce8" stroke-width="2"/>
+<rect x="1110" y="775" width="8" height="140" rx="4" fill="#c2811d"/>
+<text x="1134" y="815" font-family="Noto Sans SC" font-size="26" font-weight="700" fill="#c2811d">验证边界</text>
+<text x="1134" y="853" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">本版不经 AXI DMA，不做 FPGA FFT</text>
+<text x="1134" y="884" font-family="Noto Sans SC" font-size="20" font-weight="400" fill="#17334b">未完成距离 / 角度 / 射频质量标定</text>
+<text x="48" y="963" font-family="Noto Sans SC" font-size="18" font-weight="400" fill="#5a6f80">说明：本图为实现架构示意，不是逻辑分析仪实测波形；数据内容以证据包内原始记录为准。</text>
+</svg>

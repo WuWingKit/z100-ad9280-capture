@@ -1,0 +1,14 @@
+_deps/
+__pycache__/
+*.uvguix.*
+*.uvoptx
+mcu_frontend/output/
+radar_sync.srcs/sources_1/bd/capture_bd/ip/
+radar_sync.srcs/sources_1/bd/capture_bd/ipshared/
+radar_sync.srcs/sources_1/bd/capture_bd/sim/
+radar_sync.srcs/sources_1/bd/capture_bd/synth/
+radar_sync.srcs/sources_1/bd/capture_bd/hw_handoff/
+radar_sync.srcs/sources_1/bd/capture_bd/ui/
+radar_sync.srcs/sources_1/bd/capture_bd/*.bxml
+radar_sync.srcs/sources_1/bd/capture_bd/*_ooc.xdc
+ip_cache/

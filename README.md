@@ -1,6 +1,17 @@
 # Z100 FPGA Acquisition, DDR Storage & FFT Testbed
 
-## Current: external radar MCU + Z100 SPI/UART integration candidate (2026-11-18)
+## Current: four-wire SPI master/slave — board tested (2026-11-19)
+
+[Release / complete downloads](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.7.0-spi-four-wire-20261119) · [MCU + FPGA + PS source](projects/radar_spi_four_wire/) · [Progress report / 飞书文档](https://scnk2ajxowqf.feishu.cn/docx/KmGMdcwLgoUDa8x2wbrckl13nxb)
+
+Z100 FPGA master and external MCU slave now communicate using only CS/SCK/MOSI/MISO/GND. SPI commands replace the old SYNC/READY GPIOs. Three physical-link selftest frames match all 35,328 reference samples; ten real-acquisition frames (471,360 bytes, sequences 0–9) passed 7,370 chunk CRC checks. Last-frame JTAG DDR and UART files match byte for byte.
+
+**Current route:** SPI → AXI GPIO → PS DDR → UART. This release does not use AXI DMA or perform FPGA FFT/target detection. Real-acquisition transport is verified; distance/angle/SNR calibration and sustained-rate qualification remain open. See the project README for matching MCU/PL/PS programming files and new wiring. Older master/slave firmware is incompatible.
+
+---
+
+
+## Previous: external radar MCU + Z100 SPI/UART integration candidate (2026-11-18)
 
 [Release / complete downloads](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118) · [MCU + Keil source](projects/radar_spi_sync/mcu_frontend/) · [Current Z100 program](projects/radar_spi_live/)
 
@@ -24,7 +35,7 @@ The root-level AD/DA/FFT testbed below is the historical v0.3 project. The new d
 ---
 
 
-[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118)
+[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/latest)
 [![Source checks](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml/badge.svg?branch=main)](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml)
 ![Vivado](https://img.shields.io/badge/Vivado-2018.3-904cab)
 ![SDK](https://img.shields.io/badge/Xilinx_SDK-2018.3-904cab)

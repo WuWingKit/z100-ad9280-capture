@@ -1,0 +1,41 @@
+{
+  "source_data": "E:\\WorkSpace\\Phased-array radar\\fpga-learning\\radar_spi_header_only_20261119\\evidence\\spi_only_real_20261119_154059",
+  "figure_generator": "make_figures.py; matplotlib standard plotting; no fabricated measurements",
+  "images": [
+    {
+      "file": "01_real_iq_first_chirp.png",
+      "sha256": "d656a8fc1ae38a810ba3cb37c03454ed5b2022264c05ffeef27c15a19c3dcdbb",
+      "caption": "真实采集第0帧的第一条保留chirp。按16位补码解释I/Q；横轴为样点，纵轴为码值，未经电压或距离标定。"
+    },
+    {
+      "file": "02_ten_frame_statistics.png",
+      "sha256": "7d5d647ec8d7b411535facd52518687a8a6e9eeb4d927c61ddfaba1a3a35778e",
+      "caption": "10帧I/Q均值与标准差趋势，来自每帧11,776点统计；不据此推断目标运动、信噪比或射频质量。"
+    },
+    {
+      "file": "03_board_test_summary.png",
+      "sha256": "bec73a7ca4cc24c49a4264c4ed57f306a1964dfdcfc76f073872afa6f213c744",
+      "caption": "本轮四线SPI真实采集、DDR保存及UART导出的验证指标；最后一帧另经JTAG逐字节核对。"
+    },
+    {
+      "file": "04_ps_crc_read_source.png",
+      "sha256": "5c0cf96177043d279bc7b53178bdc96fee191f4a3952e0632a0da16e9468ac87",
+      "caption": "PS真实源码的带行号节录，展示请求、响应与CRC16校验；不是IDE屏幕截图。"
+    },
+    {
+      "file": "05_mcu_lease_source.png",
+      "sha256": "90d68ef88b320ff12e5b90c62b5ea0ad55dde89225fbd07a3f2f5713ee9bc352",
+      "caption": "MCU真实源码的带行号节录，展示缓存租约、触发拒绝、块读取与ACK释放；不是IDE屏幕截图。"
+    },
+    {
+      "file": "06_log_evidence_excerpt.png",
+      "sha256": "3e41c436f6cf9027d2d76771cabad28d8865f31a3f58cb4b1e00f818d41f3151",
+      "caption": "从保存日志及JSON生成的证据节录图；完整原文和载荷保存在证据包，不是串口软件屏幕截图。"
+    },
+    {
+      "file": "07_historical_radar_board_photo.jpg",
+      "sha256": "40d6f1f0715ec315b4d824beb5db3dfa0787e475578ffba15614af7a42121f8a",
+      "caption": "用户此前提供的区控板接口照片，原样复制；仅说明实物接口，不能证明本次接线或测试场景。"
+    }
+  ]
+}

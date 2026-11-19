@@ -1,0 +1,12 @@
+[
+  {
+    "command": "p",
+    "hex": "700d",
+    "response": "ERROR already primed; reset both sessions before p\r\n"
+  },
+  {
+    "command": "s",
+    "hex": "730d",
+    "response": "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n"
+  }
+]

@@ -1,0 +1,80 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Nov 19 15:08:09 2026
+# Process ID: 44848
+# Current directory: E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119
+# Command line: vivado.exe -mode batch -source scripts/test_spi_master.tcl -log evidence/diagnostic_20261119/master_sim.log -journal evidence/diagnostic_20261119/master_sim.jou
+# Log file: E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/evidence/diagnostic_20261119/master_sim.log
+# Journal file: E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119\evidence/diagnostic_20261119/master_sim.jou
+#-----------------------------------------------------------
+source scripts/test_spi_master.tcl
+# set root [file normalize [file join [file dirname [info script]] ..]]
+# create_project spi_master [file join $root evidence diagnostic_20261119 sim_project] -part xc7z035ffg900-2 -force
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/evidence/diagnostic_20261119/sim_project'
+# add_files [list [file join $root rtl radar_frame_capture.v] [file join $root rtl spi_slave_rx16.v]]
+# add_files -fileset sim_1 [list [file join $root sim tb_spi_master.v]]
+# set_property top tb_spi_master [get_filesets sim_1]
+# set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
+# launch_simulation -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/evidence/diagnostic_20261119/sim_project/spi_master.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_spi_master' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/evidence/diagnostic_20261119/sim_project/spi_master.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_spi_master_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/rtl/radar_frame_capture.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module radar_frame_capture
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/sim/tb_spi_master.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_spi_master
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/evidence/diagnostic_20261119/sim_project/spi_master.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/evidence/diagnostic_20261119/sim_project/spi_master.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 4b11c3388d654b0085568581585f3f9b --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_spi_master_behav xil_defaultlib.tb_spi_master xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.radar_frame_capture(HALF_DIV=5)
+Compiling module xil_defaultlib.tb_spi_master
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_spi_master_behav
+
+****** Webtalk v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source E:/WorkSpace/Phased-array -notrace
+couldn't read file "E:/WorkSpace/Phased-array": permission denied
+INFO: [Common 17-206] Exiting Webtalk at Thu Nov 19 15:08:18 2026...
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/evidence/diagnostic_20261119/sim_project/spi_master.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_spi_master_behav -key {Behavioral:sim_1:Functional:tb_spi_master} -tclbatch {tb_spi_master.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source tb_spi_master.tcl
+## current_wave_config
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_spi_master_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 336.188 ; gain = 15.270
+# run all
+SPI_MASTER_MODE0_PASS edges=16 msb_first=1 full_duplex=1
+$finish called at time : 2200 ns : File "E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/sim/tb_spi_master.v" Line 11
+# close_sim
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 19 15:08:21 2026...

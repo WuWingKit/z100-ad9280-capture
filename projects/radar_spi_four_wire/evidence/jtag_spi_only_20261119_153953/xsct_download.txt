@@ -1,0 +1,49 @@
+attempting to launch hw_server
+
+****** Xilinx hw_server v2018.3
+  **** Build date : Dec  7 2018-00:40:27
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+INFO: hw_server application started
+INFO: Use Ctrl-C to exit hw_server application
+
+
+
+****** Xilinx hw_server v2018.3
+
+  **** Build date : Dec  7 2018-00:40:27
+
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+
+INFO: hw_server application started
+
+INFO: Use Ctrl-C to exit hw_server application
+
+
+
+
+INFO: To connect to this hw_server instance use url: TCP:127.0.0.1:3121
+
+
+
+initializing  0%    0MB   0.0MB/s  ??:?? ETA  6%    0MB   1.6MB/s  ??:?? ETA 11%    1MB   1.4MB/s  ??:?? ETA 15%    1MB   1.3MB/s  ??:?? ETA 20%    2MB   1.3MB/s  ??:?? ETA 24%    3MB   1.2MB/s  ??:?? ETA 27%    3MB   1.1MB/s  00:08 ETA 31%    4MB   1.1MB/s  00:07 ETA 35%    4MB   1.1MB/s  00:07 ETA 39%    5MB   1.1MB/s  00:07 ETA 44%    5MB   1.1MB/s  00:06 ETA 47%    6MB   1.0MB/s  00:06 ETA 52%    6MB   1.0MB/s  00:05 ETA 55%    7MB   1.0MB/s  00:05 ETA 60%    7MB   1.0MB/s  00:04 ETA 63%    8MB   1.0MB/s  00:04 ETA 67%    8MB   1.0MB/s  00:04 ETA 71%    9MB   1.0MB/s  00:03 ETA 76%    9MB   1.0MB/s  00:03 ETA 80%   10MB   1.0MB/s  00:02 ETA 84%   10MB   1.0MB/s  00:02 ETA 87%   11MB   1.0MB/s  00:01 ETA 90%   11MB   1.0MB/s  00:01 ETA 95%   12MB   1.0MB/s  00:00 ETA 99%   12MB   1.0MB/s  00:00 ETA100%   12MB   1.0MB/s  00:13    
+Downloading Program -- E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/hardware/spi_only_ps.elf
+	section, .text: 0x00100000 - 0x00103683
+	section, .init: 0x00103684 - 0x0010369b
+	section, .fini: 0x0010369c - 0x001036b3
+	section, .rodata: 0x001036b4 - 0x00103a7b
+	section, .data: 0x00103a80 - 0x00103f27
+	section, .eh_frame: 0x00103f28 - 0x00103f2b
+	section, .mmu_tbl: 0x00104000 - 0x00107fff
+	section, .ARM.exidx: 0x00108000 - 0x00108007
+	section, .init_array: 0x00108008 - 0x0010800b
+	section, .fini_array: 0x0010800c - 0x0010800f
+	section, .bss: 0x00108040 - 0x00113937
+	section, .heap: 0x00113938 - 0x0011593f
+	section, .stack: 0x00115940 - 0x0011913f
+  0%    0MB   0.0MB/s  ??:?? ETA100%    0MB   0.3MB/s  00:00    
+Setting PC to Program Start Address 0x00100000
+Successfully downloaded E:/WorkSpace/Phased-array radar/fpga-learning/radar_spi_header_only_20261119/hardware/spi_only_ps.elf
+SPI_ONLY_MASTER_RUNNING_NO_AUTO_TRANSFER

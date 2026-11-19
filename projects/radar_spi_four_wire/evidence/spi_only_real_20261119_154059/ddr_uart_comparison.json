@@ -1,0 +1,10 @@
+{
+  "symbol": "data",
+  "address": "0x00108100",
+  "bytes_uart": 47136,
+  "bytes_jtag": 47136,
+  "identical": true,
+  "sha256_uart": "c7912d0f22f2ef82d02bfd39141023812f49d0982dc90a19332920ffe3597989",
+  "sha256_jtag": "c7912d0f22f2ef82d02bfd39141023812f49d0982dc90a19332920ffe3597989",
+  "cpu_resumed": true
+}

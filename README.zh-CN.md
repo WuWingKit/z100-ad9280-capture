@@ -1,5 +1,16 @@
 # Z100：CORDIC 发波、AD 采集与串口波形/频谱测量台
 
+## 最新：四线SPI主从改版，已完成真实采集联调（2026-11-19）
+
+[Release及完整下载](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.7.0-spi-four-wire-20261119) · [MCU、FPGA与PS源码](projects/radar_spi_four_wire/) · [飞书进度报告](https://scnk2ajxowqf.feishu.cn/docx/KmGMdcwLgoUDa8x2wbrckl13nxb)
+
+FPGA主机、区控板MCU从机，仅CS/SCK/MOSI/MISO/GND；SPI命令替代旧SYNC/READY。自检3帧35328点逐点一致；真实采集10帧471360字节、7370块CRC通过，最后一帧DDR与UART逐字节一致。
+
+当前路线SPI→AXI GPIO→PS DDR→UART，本版不经过DMA，不做FPGA FFT或目标解算。已验证数据链路，不代表距离、角度或信号质量标定通过。请按新项目说明同时更换MCU、bit与ELF，不能混用旧版。
+
+---
+
+
 ## 当前版本：雷达MCU＋Z100外部SPI串口联调候选版（2026-11-18）
 
 [完整发布与下载](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.6.0-external-radar-20261118) · [MCU Keil源码](projects/radar_spi_sync/mcu_frontend/) · [最新Z100程序](projects/radar_spi_live/)
@@ -22,7 +33,7 @@ The root-level AD/DA/FFT testbed below is the historical v0.3 project. The new d
 ---
 
 
-[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/tag/v0.3.0-20261029)
+[![Release](https://img.shields.io/github/v/release/WuWingKit/z100-ad9280-capture)](https://github.com/WuWingKit/z100-ad9280-capture/releases/latest)
 [![Source checks](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml/badge.svg?branch=main)](https://github.com/WuWingKit/z100-ad9280-capture/actions/workflows/source-checks.yml)
 ![Vivado](https://img.shields.io/badge/Vivado-2018.3-904cab)
 ![SDK](https://img.shields.io/badge/Xilinx_SDK-2018.3-904cab)

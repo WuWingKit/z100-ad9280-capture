@@ -1,0 +1,433 @@
+{
+  "flash_written": false,
+  "status_queries": [
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n",
+    "SPI STATUS flags=0000 busy=0 frame=0 fault=0\r\n"
+  ],
+  "frames": [
+    {
+      "sequence": 0,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "b03f1d0c3976cca331d60328cb34f4d50b05f43301e7e1a17be43adf5dbd0b16",
+      "payload_sha256": "f48843192d936f70048038e4ca52f7da0d9b3db79bdf927b9166f5fe7cc95573",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1152,
+        "max": 2063,
+        "mean": 353.82973845108694,
+        "stddev": 322.20029726535006,
+        "unique_codes": 172
+      },
+      "q_signed16_interpretation": {
+        "min": -3456,
+        "max": 1311,
+        "mean": 165.5464504076087,
+        "stddev": 314.2391673489541,
+        "unique_codes": 171
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 7087.742781929348,
+        "stddev": 19699.883226060116,
+        "unique_codes": 172
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 15909.546450407608,
+        "stddev": 27797.3544091088,
+        "unique_codes": 171
+      }
+    },
+    {
+      "sequence": 1,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "66faa9e72d1f3338ddbd36d5f33032f6ba7fee707cce3bc4998ff1cc8aae8a3f",
+      "payload_sha256": "255b7de673d368b75adde3885f3953370e62b1c1f12edde7da09b8d63b01553b",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1136,
+        "max": 1647,
+        "mean": 343.19930366847825,
+        "stddev": 320.14634360062064,
+        "unique_codes": 167
+      },
+      "q_signed16_interpretation": {
+        "min": -3344,
+        "max": 1343,
+        "mean": 171.2738620923913,
+        "stddev": 313.98168490222173,
+        "unique_codes": 171
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 7483.373216711957,
+        "stddev": 20218.847484768332,
+        "unique_codes": 167
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 15230.752122961956,
+        "stddev": 27370.33113735377,
+        "unique_codes": 171
+      }
+    },
+    {
+      "sequence": 2,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "cfaa52afa14b9ff2179f71ecbc4a4fca1e574019c26646edf17bdae55fb1a5e8",
+      "payload_sha256": "86630566f65a22755236692462ce3c9dfdf7b09c3efceb63bc5b16ad548113b4",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1648,
+        "max": 3535,
+        "mean": 324.73972486413044,
+        "stddev": 338.2131762961117,
+        "unique_codes": 189
+      },
+      "q_signed16_interpretation": {
+        "min": -4367,
+        "max": 2127,
+        "mean": 176.83890964673913,
+        "stddev": 354.2084889616278,
+        "unique_codes": 213
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 8544.565811820652,
+        "stddev": 21492.9140476443,
+        "unique_codes": 189
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 14646.404127038044,
+        "stddev": 26974.671415515215,
+        "unique_codes": 213
+      }
+    },
+    {
+      "sequence": 3,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "de9557324120e8a127e50c9c50769e73f7f2cae5b57f0e6e200049d9e4842177",
+      "payload_sha256": "141c8e5798cdb0ae699210e3e3c33462ec4ee09dc65a23071d70d22fb36b80da",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1856,
+        "max": 3855,
+        "mean": 323.0890794836956,
+        "stddev": 363.4527401515596,
+        "unique_codes": 213
+      },
+      "q_signed16_interpretation": {
+        "min": -2656,
+        "max": 1583,
+        "mean": 171.5443274456522,
+        "stddev": 323.45108232102547,
+        "unique_codes": 189
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 8798.915166440218,
+        "stddev": 21765.61102514504,
+        "unique_codes": 213
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 14735.71824048913,
+        "stddev": 27042.996991027434,
+        "unique_codes": 189
+      }
+    },
+    {
+      "sequence": 4,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "6cd656c8920edd87cb53fda03f77e00b92759602e4389050de5cf2c089cf8c0f",
+      "payload_sha256": "ea8ee729da2d7f995e54d71adbb34702f798cde4586cc6974a6e446e6bce2738",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1376,
+        "max": 3775,
+        "mean": 328.64504076086956,
+        "stddev": 345.0369211042989,
+        "unique_codes": 190
+      },
+      "q_signed16_interpretation": {
+        "min": -2992,
+        "max": 1503,
+        "mean": 171.2211277173913,
+        "stddev": 326.45391295648125,
+        "unique_codes": 187
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 8743.253736413044,
+        "stddev": 21706.23446328782,
+        "unique_codes": 190
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 14779.916779891304,
+        "stddev": 27073.70008815793,
+        "unique_codes": 187
+      }
+    },
+    {
+      "sequence": 5,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "3cbd8fd84715e181d04f3c65fd220e517265c19bc11d39866a38358c8b07050c",
+      "payload_sha256": "c136775d9929511ac8062f369b957fac1e23adae4274b08f979bff742b9fc92d",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1488,
+        "max": 3679,
+        "mean": 326.1403702445652,
+        "stddev": 352.26488156976836,
+        "unique_codes": 197
+      },
+      "q_signed16_interpretation": {
+        "min": -2640,
+        "max": 1519,
+        "mean": 175.53880774456522,
+        "stddev": 322.73613677908673,
+        "unique_codes": 184
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 8902.140370244566,
+        "stddev": 21878.96036306402,
+        "unique_codes": 197
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 13982.843155570652,
+        "stddev": 26524.945578598865,
+        "unique_codes": 184
+      }
+    },
+    {
+      "sequence": 6,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "89bd5a4a6c9e3dcde1efbd7203348c339350e5239ab76453ca9ffa183c9a42c5",
+      "payload_sha256": "f60d8a059db38268ecd3bf02a7780f6b53edb5fff89a8b914ecdc5b5760b547c",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1712,
+        "max": 3679,
+        "mean": 327.57421875,
+        "stddev": 360.5118661471235,
+        "unique_codes": 204
+      },
+      "q_signed16_interpretation": {
+        "min": -2416,
+        "max": 1535,
+        "mean": 168.49184782608697,
+        "stddev": 325.7744534164081,
+        "unique_codes": 183
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 8892.443783967392,
+        "stddev": 21863.38433579547,
+        "unique_codes": 204
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 14593.535326086956,
+        "stddev": 26950.082512756882,
+        "unique_codes": 183
+      }
+    },
+    {
+      "sequence": 7,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "121064e211df2a26be28b9ad5a7c56c5430aa5795444b31183ea4859f80e28e2",
+      "payload_sha256": "32cc2e973859ae824c5f778bcf9be896c7949633ede27473518390bbef093510",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1568,
+        "max": 3663,
+        "mean": 317.22494904891306,
+        "stddev": 351.27052502574935,
+        "unique_codes": 199
+      },
+      "q_signed16_interpretation": {
+        "min": -2592,
+        "max": 1535,
+        "mean": 174.23454483695653,
+        "stddev": 320.6115004503993,
+        "unique_codes": 187
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 9316.181470788044,
+        "stddev": 22332.05217835734,
+        "unique_codes": 199
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 14031.625849184782,
+        "stddev": 26561.604771700462,
+        "unique_codes": 187
+      }
+    },
+    {
+      "sequence": 8,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "6433e3cab9bba4afaca5f2b7255285dcc4cb268c49e58d4c9801cbfe66712b04",
+      "payload_sha256": "466b92ab6b5732b68f76abf7a26e2d77204cac99ecf027f2ef67e24f5598ad4e",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1520,
+        "max": 3615,
+        "mean": 323.0147758152174,
+        "stddev": 350.4489991004882,
+        "unique_codes": 195
+      },
+      "q_signed16_interpretation": {
+        "min": -2496,
+        "max": 1535,
+        "mean": 172.00900135869566,
+        "stddev": 321.7719945257746,
+        "unique_codes": 187
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 9077.101732336956,
+        "stddev": 22072.12726229221,
+        "unique_codes": 195
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 14263.139436141304,
+        "stddev": 26724.55347817369,
+        "unique_codes": 187
+      }
+    },
+    {
+      "sequence": 9,
+      "beam_index": 9,
+      "angle_cdeg": 0,
+      "bytes": 47136,
+      "complex_samples": 11776,
+      "header_xor": 0,
+      "sha256": "c7912d0f22f2ef82d02bfd39141023812f49d0982dc90a19332920ffe3597989",
+      "payload_sha256": "d620c84aafc0620fe94a63966cee7707a07de2b2a38c138f3f60d1397b3f0418",
+      "chunk_crc": "PASS",
+      "exact_selftest_pattern": false,
+      "all_payload_zero": false,
+      "i_signed16_interpretation": {
+        "min": -1648,
+        "max": 3679,
+        "mean": 322.7178158967391,
+        "stddev": 355.8978679340256,
+        "unique_codes": 205
+      },
+      "q_signed16_interpretation": {
+        "min": -2464,
+        "max": 1519,
+        "mean": 167.8443444293478,
+        "stddev": 320.90637757147243,
+        "unique_codes": 185
+      },
+      "i_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 9032.283033288044,
+        "stddev": 22021.646328710405,
+        "unique_codes": 205
+      },
+      "q_unsigned16": {
+        "min": 0,
+        "max": 65520,
+        "mean": 14526.105213994566,
+        "stddev": 26907.94929141791,
+        "unique_codes": 185
+      }
+    }
+  ],
+  "passed": true,
+  "source": "User reports MCU real-acquisition firmware; no firmware readback",
+  "real_signal_quality_assessed": false,
+  "prime": "SPI PRIME COMPLETE flags=0000\r\n",
+  "distinct_payloads": 10,
+  "selftest_pattern_detected": false
+}

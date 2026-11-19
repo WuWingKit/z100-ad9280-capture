@@ -1,0 +1,14 @@
+{
+  "port": "COM7",
+  "flash_written": false,
+  "acquisition_requested": false,
+  "programmed": true,
+  "sha256": {
+    "spi_only_master.bit": "668c917d7273f82412d661da8c3b16e213803c2b2e3bb290369488ae2855a38b",
+    "spi_only_ps.elf": "b1007a3da0f831c3519fc41ffd548344e6f825654a0b07befec996caec5fe799",
+    "radar_sync.hdf": "5debc862ff7f73c2084416c19ec63f48af94596201e6371627824170b7c1e254",
+    "ps7_init.tcl": "155772c8457feb33328a5ffc6c1f7fe041b1047cee11e236b08a3afccdf98e86"
+  },
+  "banner_verified": true,
+  "status": "SPI STATUS flags=0000 busy=0 frame=0 fault=0"
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-19",
+  "mcu_build": "both targets 0 errors 0 warnings",
+  "ps_build": "no compiler warnings",
+  "fpga_mode0_simulation": "PASS",
+  "fpga_implementation": "setup/hold and DRC gate PASS",
+  "hardware_programmed": false,
+  "flash_isolation_verified": false,
+  "end_to_end_hardware_verified": false,
+  "data_route": "PL SPI master -> AXI GPIO -> PS DDR -> UART; no DMA in this diagnostic build",
+  "sha256": {
+    "hardware/spi_only_master.bit": "668c917d7273f82412d661da8c3b16e213803c2b2e3bb290369488ae2855a38b",
+    "hardware/spi_only_ps.elf": "b1007a3da0f831c3519fc41ffd548344e6f825654a0b07befec996caec5fe799",
+    "hardware/radar_sync_mcu.bin": "bcc22139a429144f78a37b33288b9452301355b6d42737a95997cb1acd82f2a9",
+    "hardware/radar_sync_selftest.bin": "c8b325991d41eaeb102313aff50cf887c7d3c14cd3eb4d800ae11dd234e59fcd",
+    "rtl/radar_frame_capture.v": "782befd9878133d6037761153802cd16ae4ab98cef6268293f4e5a1529283ee0",
+    "software/main.c": "2001c6c8a9ec9871d06ff5064258fe640afa58106b39c8d85fef397d5949aa3a",
+    "mcu_frontend/05_application/firmware_app/source/src/app_sync_frontend.c": "2d2ec4ca122494412a9676f3678bfb09fe6e20a6ee39748c1c5ef1b24cc3f4b0"
+  }
+}
