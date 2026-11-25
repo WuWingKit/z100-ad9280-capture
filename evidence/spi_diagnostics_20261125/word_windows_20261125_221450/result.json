@@ -1,0 +1,182 @@
+[
+  {
+    "mode": "g",
+    "start": 57,
+    "expected": [
+      "88FA",
+      "A7E9",
+      "C6D8",
+      "E5C7"
+    ],
+    "observed": [
+      "88FA",
+      "A7E9",
+      "C6D8",
+      "E5C7"
+    ],
+    "match": true,
+    "fields": {
+      "CS_DOWN": 4,
+      "CS_UP": 4,
+      "SCK": 64,
+      "SELECTED_SCK": 64,
+      "FRAMES": 4,
+      "BAD": 0,
+      "PINS": 16
+    },
+    "z100": [
+      "WORD 0 TX=88FA RX=0000",
+      "WORD 1 TX=A7E9 RX=0000",
+      "WORD 2 TX=C6D8 RX=0000",
+      "WORD 3 TX=E5C7 RX=0000"
+    ]
+  },
+  {
+    "mode": "g",
+    "start": 186,
+    "expected": [
+      "1F69",
+      "3E58",
+      "5D47",
+      "7C36"
+    ],
+    "observed": [
+      "1F69",
+      "3E58",
+      "5D47",
+      "7C36"
+    ],
+    "match": true,
+    "fields": {
+      "CS_DOWN": 4,
+      "CS_UP": 4,
+      "SCK": 64,
+      "SELECTED_SCK": 64,
+      "FRAMES": 4,
+      "BAD": 0,
+      "PINS": 16
+    },
+    "z100": [
+      "WORD 0 TX=1F69 RX=0000",
+      "WORD 1 TX=3E58 RX=0000",
+      "WORD 2 TX=5D47 RX=0000",
+      "WORD 3 TX=7C36 RX=0000"
+    ]
+  },
+  {
+    "mode": "g",
+    "start": 201,
+    "expected": [
+      "EF6A",
+      "0E59",
+      "2D48",
+      "4C37"
+    ],
+    "observed": [
+      "EF6A",
+      "0E59",
+      "2D48",
+      "4C37"
+    ],
+    "match": true,
+    "fields": {
+      "CS_DOWN": 4,
+      "CS_UP": 4,
+      "SCK": 64,
+      "SELECTED_SCK": 64,
+      "FRAMES": 4,
+      "BAD": 0,
+      "PINS": 16
+    },
+    "z100": [
+      "WORD 0 TX=EF6A RX=0000",
+      "WORD 1 TX=0E59 RX=0000",
+      "WORD 2 TX=2D48 RX=0000",
+      "WORD 3 TX=4C37 RX=0000"
+    ]
+  },
+  {
+    "mode": "h",
+    "start": 57,
+    "expected": [
+      "88FA",
+      "A7E9",
+      "C6D8",
+      "E5C7"
+    ],
+    "observed": [
+      "88FA",
+      "A7E9",
+      "C6D8",
+      "E5C7"
+    ],
+    "match": true,
+    "fields": {
+      "RX": 4,
+      "OVERRUN": 0,
+      "PINS": 0
+    },
+    "z100": [
+      "WORD 0 TX=88FA RX=62B4",
+      "WORD 1 TX=A7E9 RX=43C5",
+      "WORD 2 TX=C6D8 RX=24D6",
+      "WORD 3 TX=E5C7 RX=05E7"
+    ]
+  },
+  {
+    "mode": "h",
+    "start": 186,
+    "expected": [
+      "1F69",
+      "3E58",
+      "5D47",
+      "7C36"
+    ],
+    "observed": [
+      "1F69",
+      "3E58",
+      "5D47",
+      "7C36"
+    ],
+    "match": true,
+    "fields": {
+      "RX": 4,
+      "OVERRUN": 0,
+      "PINS": 0
+    },
+    "z100": [
+      "WORD 0 TX=1F69 RX=E6F8",
+      "WORD 1 TX=3E58 RX=C809",
+      "WORD 2 TX=5D47 RX=A91A",
+      "WORD 3 TX=7C36 RX=8A2B"
+    ]
+  },
+  {
+    "mode": "h",
+    "start": 201,
+    "expected": [
+      "EF6A",
+      "0E59",
+      "2D48",
+      "4C37"
+    ],
+    "observed": [
+      "EF6A",
+      "0E59",
+      "2D48",
+      "4C37"
+    ],
+    "match": true,
+    "fields": {
+      "RX": 4,
+      "OVERRUN": 0,
+      "PINS": 0
+    },
+    "z100": [
+      "WORD 0 TX=EF6A RX=7705",
+      "WORD 1 TX=0E59 RX=5816",
+      "WORD 2 TX=2D48 RX=3927",
+      "WORD 3 TX=4C37 RX=1A38"
+    ]
+  }
+]

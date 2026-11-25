@@ -1,0 +1,36 @@
+{
+  "runs": [
+    {
+      "gap_us": 100,
+      "delay_words": 8,
+      "mismatched": 3,
+      "compared": 240,
+      "spi_rx": 256,
+      "overruns": 0
+    },
+    {
+      "gap_us": 100,
+      "delay_words": 8,
+      "mismatched": 3,
+      "compared": 256,
+      "spi_rx": 512,
+      "overruns": 0
+    },
+    {
+      "gap_us": 0,
+      "delay_words": 8,
+      "mismatched": 3,
+      "compared": 256,
+      "spi_rx": 768,
+      "overruns": 0
+    },
+    {
+      "gap_us": 0,
+      "delay_words": 8,
+      "mismatched": 3,
+      "compared": 256,
+      "spi_rx": 1024,
+      "overruns": 0
+    }
+  ]
+}

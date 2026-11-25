@@ -1,0 +1,7 @@
+BOOT STATE CAPTURE_READY
+MCU STATUS ready=1 busy=0 frame=0 seq=0 fault=0 spi_rx=0 valid=0 bad_crc=0 blocks=0
+>>> c
+MCU TRIGGER_RX source=UART id=0 seq=0 beam=9
+MCU CAPTURE_DONE source=UART id=0 seq=0 SPI_READY bytes=47136
+BOOT STATE CAPTURE_READY
+MCU STATUS ready=1 busy=0 frame=1 seq=0 fault=0 spi_rx=0 valid=0 bad_crc=0 blocks=0

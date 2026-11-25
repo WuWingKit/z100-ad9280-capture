@@ -1,0 +1,65 @@
+{
+  "mcu": "COM6",
+  "z100": "COM8",
+  "gpio_z100_rx_unscored": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "gpio": {
+    "fields": {
+      "CS_DOWN": 4,
+      "CS_UP": 4,
+      "SCK": 64,
+      "SELECTED_SCK": 64,
+      "FRAMES": 4,
+      "BAD": 0,
+      "PINS": 16
+    },
+    "words": [
+      42435,
+      15450,
+      61455,
+      255
+    ]
+  },
+  "z100_spi_rx": [
+    65280,
+    23205,
+    23100,
+    50085
+  ],
+  "mcu_spi": {
+    "fields": {
+      "RX": 4,
+      "OVERRUN": 0,
+      "PINS": 0
+    },
+    "words": [
+      42435,
+      15450,
+      61455,
+      255
+    ]
+  },
+  "gpio_miso_low_z100_rx": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "gpio_miso_high_z100_rx": [
+    65535,
+    65535,
+    65535,
+    65535
+  ],
+  "checks": {
+    "cs_and_sck_counts_match": true,
+    "gpio_mosi_word_match": true,
+    "mcu_spi_word_match": true,
+    "miso_gpio_both_levels_match": true,
+    "spi_reply_match": false
+  }
+}

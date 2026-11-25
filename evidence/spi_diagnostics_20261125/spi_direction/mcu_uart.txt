@@ -1,0 +1,6 @@
+>>> s
+BOOT STATE CAPTURE_READY
+MCU STATUS ready=1 busy=0 frame=0 seq=0 fault=0 spi_rx=0 valid=0 bad_crc=0 blocks=0
+>>> s
+BOOT STATE CAPTURE_READY
+MCU STATUS ready=1 busy=0 frame=0 seq=0 fault=0 spi_rx=0 valid=0 bad_crc=0 blocks=0

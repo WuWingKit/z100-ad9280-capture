@@ -1,0 +1,19 @@
+{
+  "rx_words": 56,
+  "compared": 40,
+  "delay_words": 8,
+  "errors": [],
+  "mcu_status": {
+    "fields": {
+      "RX": 56,
+      "OVERRUN": 0,
+      "PINS": 0
+    },
+    "words": [
+      42435,
+      15450,
+      61455,
+      255
+    ]
+  }
+}

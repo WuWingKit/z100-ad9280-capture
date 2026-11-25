@@ -1,0 +1,34 @@
+{
+  "before": {
+    "ready": 1,
+    "busy": 0,
+    "frame": 0,
+    "seq": 0,
+    "fault": 0,
+    "spi_rx": 0,
+    "valid": 0,
+    "bad_crc": 0,
+    "blocks": 0
+  },
+  "replies": [
+    "Z100 ERROR SPI_STATUS",
+    "Z100 ERROR SPI_STATUS",
+    "Z100 ERROR SPI_STATUS"
+  ],
+  "after": {
+    "ready": 1,
+    "busy": 0,
+    "frame": 0,
+    "seq": 0,
+    "fault": 0,
+    "spi_rx": 0,
+    "valid": 0,
+    "bad_crc": 0,
+    "blocks": 0
+  },
+  "delta": {
+    "spi_rx": 0,
+    "valid": 0,
+    "bad_crc": 0
+  }
+}
